@@ -7,21 +7,40 @@ In this chapter a survey of pervasive healthcare applications is presented.
 \subsection{What is IoT?}
 
 \todo[inline]{To-do: Discuss if this section should move to introduction instead}
-\acl{IoT} (or \acs{IoT}) is an emerging communication paradigm, often hailed as the driver of the Fourth Industrial Revolution \cite{Aceto2020}.
+\acl{IoT} (or \acs{IoT}) is an emerging communication paradigm, often hailed as the driver of the Fourth Industrial Revolution \cite{Aceto2020}. \bigskip
 
-The definition of this concept has evolved over time with the development of other technologies such as data analytics, embedded systems, etc. Nowadays it describes a strategy supported on the development of networks of smart devices that exchange and process information through Machine-to-Machine (M2M) communications, usually based on the Internet Protocol (IP). This technology enables ubiquitous systems to gather remarkable amounts of information regarding the surrounding environment, which can later be turned into insight through the usage of data analytics tools, like Machine Learning algorithms \cite{Singh2019}. 
+The definition of this concept has evolved over time with the development of other technologies such as data analytics, embedded systems, etc. Nowadays it describes a strategy supported on the development of networks of smart devices that exchange and process information through Machine-to-Machine (M2M) communications, usually based on the Internet Protocol (IP). This technology enables ubiquitous systems to gather remarkable amounts of information regarding the surrounding environment, which can later be turned into insight through the usage of data analytics tools, like Machine Learning algorithms \cite{Singh2019}. \bigskip
 
-\todo[inline]{To-do: Discuss the potential of IoT technologies and bridge to pervasive healthcare applications (such as in Clinics, Hospitals, Smart Home). Cite articles with references to investments in these areas.}
+\todo[inline]{To-do: Discuss the potential of IoT technologies and bridge to pervasive healthcare applications (such as in Clinics, Hospitals, Smart Home). Cite articles with references to investments in these areas.
+
+- smart systems enable continous patient monitoring
+
+}
 
 More specifically in the healthcare domain, 
 
+
+
+
 \section{An IoT Reference Model for Pervasive Healthcare Applications}
 
-In order to develop an IoT system, it is crucial to design it based on a reference model. A reference model provides a general structure (or a ``template'') for designing systems, thus enabling the comprehension of these complex systems by breaking them down into simple and distinct functional layers, as also defines some common terminology used in its domain.
+In order to develop an IoT system, it is crucial to design it based on a reference model. A reference model provides a general structure (or a ``template'') for designing systems, thus enabling the comprehension of these complex systems by breaking them down into simple and distinct functional layers, as also defines some common terminology used in its domain.\bigskip
 
-In 2014 the \acs{IoT} World Forum (IoTWF) architectural committee published an \acs{IoT} architectural reference model, composed by seven layers as shown in figure \ref{fig:iotwf-referencemodel}. This model provides a simple and clean view into the components of IoT systems and the interactions between them, without restricting the scope or locality of its components. From a hardware perspective, every element could be contained in a single rack of equipment or distributed throughout the world. The model also is flexible regarding the processing at each layer, enabling both edge / fog computing solutions and more cloud oriented approaches.
+In 2014 the \acs{IoT} World Forum (IoTWF) architectural committee published an \acs{IoT} architectural reference model, composed by seven layers as shown in figure \ref{fig:iotwf-referencemodel}. This model provides a simple and clean functional view into the different components of an \acs{IoT} system without restricting the scope or locality of its components, enabling both edge / fog computing solutions and more cloud oriented approaches. However, from a hardware perspective, in this work we will restrict our focus to the most common approach taken by investigators, using 3 different components: 
 
-Although many architectural proposals can be found in the literature \cite{Wu2020, Rubi2019, Catarinucci2015, Zhang2018, Gope2016, Tennina2014}, this model provides a clearer and general understanding of IoT systems, while simultaneously pushing for simplicity, interoperability, scalability and serviceability \cite{Cisco2014}.
+\todo[inline]{To-do: Seventh layer is people and collaboration, how can one model it?)}
+
+\begin{itemize}
+    \item \textit{Endpoint} or \textit{edge} nodes (Layer 1), which interact with the physical world, capturing data.
+    \item \textit{Gateway} devices (Layers 2-3), which integrate multiple \textit{edge} nodes, filtering and aggregating the data generated by these and relaying it to a central server; 
+    \item \textit{Central} server (Layers 4-6), which is responsible for collecting, storing and analyzing the captured data in order to provide users with valuable insight;
+\end{itemize}
+
+% Although many architectural proposals can be found in the literature \cite{Wu2020, Rubi2019, Catarinucci2015, Zhang2018, Gope2016, Tennina2014}, this model provides a clearer and general understanding of IoT systems, while simultaneously pushing for simplicity, interoperability, scalability and serviceability \cite{Cisco2014}.
+
+While this model can be used to develop IoT systems for any industry (from agriculture to smart cities), we will focus on pervasive healthcare applications and its enabling technologies. 
+
+\todo[inline]{To-do: Make images that summarize key points of each layer (by adapting original images from Cisco documentation?)}
 
 \begin{figure}[H]
     \centering
@@ -30,16 +49,12 @@ Although many architectural proposals can be found in the literature \cite{Wu202
     \label{fig:iotwf-referencemodel}
 \end{figure}
 
-While this model can be used to develop IoT systems for any industry (from agriculture to smart cities), we will focus on pervasive healthcare applications and its enabling technologies. 
-
-\todo[inline]{To-do: Make images that summarize key points of each layer (by adapting original images from Cisco documentation?)}
-
 \subsection{Layer 1: Physical Devices and Controllers}
 \label{sec:iot-model-layer1}
 
-The first layer of the model is the physical devices and controller layer. This layer houses the ``things'' in the \acl{IoT}: the endpoint devices composed of sensors and actuators that perceive and interact with the physical world. Through those interactions, these devices generate data, which is then sent across the network for processing and storage. This model does not restrict these devices' location, form factor, or origin. The model only establishes that these devices need to be able to be queried and / or controlled over the network.
+The first layer of the model is the physical devices and controller layer. This layer houses the ``things'' in the \acl{IoT}: the endpoint devices composed of sensors and actuators that perceive and interact with the physical world. Through those interactions, the devices generate data, which is then sent across the network for processing and storage. This model does not restrict these devices' location, form factor, or origin. The model only establishes that these devices need to be able to be queried and / or controlled over the network.\bigskip
 
-The first step when designing an IoT network should be to analyze the mobility and data requirements of the system \cite{10.5555/3161403}. \textbf{Mobility} describes the devices' ability to move and, if it is able to, how frequently it does so. Generally we find that the devices are attached to moving objects (\textit{e.g.} a patient's body), and therefore can be classified as mobile. \textbf{Data} requirements describe how much data is generated and transmitted by each device per unit of time, and how critical is it to the operation. Simpler health monitoring applications can include a single temperature or heart rate sensor while more complex applications can include pulse oximetry, electrocardiogram (\acs{ECG}), respiration rate, etc. 
+The first step when designing an IoT network should be to analyze the mobility and data requirements of the system \cite{10.5555/3161403}. \textbf{Mobility} describes the devices' ability to move and, if it is able to, how frequently it does so. Generally we find that the devices are attached to moving objects (\textit{e.g.} a patient's body), and therefore can be classified as mobile. \textbf{Data} requirements describe how much data is generated and transmitted by each device per unit of time, and how critical is it to the operation. Simpler health monitoring applications can include a single temperature or heart rate sensor while more complex applications can include pulse oximetry, electrocardiogram (\acs{ECG}), respiration rate, etc. \bigskip
 
 With these key requirements established, we can now discuss some other characteristics of the smart devices, like:
 
@@ -53,7 +68,7 @@ Pervasive healthcare applications are able to capture enormous amount of data. W
 \begin{table}[H]
     \centering
     \begin{tabular}{l|l}
-        \textbf{Type of monitoring} & \textbf{Type of sensors used} \\ 
+        \textbf{Type of monitoring} & \textbf{Signals measured} \\ 
         \hline
         \multirow{3}{*}{Vital Signs Monitoring} & Body Temperature, Heartbeat, Respiratory Rate, \\ & Galvanic Skin Response, Blood Pressure, Pulse Oximetry, \\ & \acf{ECG}, Glucose Level \\ \hline
         \multirow{1}{*}{Activity Monitoring} & Accelerometer, Gyroscope, Magnetometer, Ultrasound \\
@@ -77,9 +92,9 @@ In the healthcare domain, most investigators find wearable sensors, in particula
 \label{sec:iot-model-layer2}
 
 \todo[inline]{To-do: Review this paragraph. Is it in consistent with the rest of the model description?}
-The second layer of the model focuses on connectivity. The most important function of this model is ensuring reliable and timely data transmission. This includes all communications between each layer, but for simplicity's sake we will restrict our focus to communications between the edge devices (layer 1), between edge devices and ``gateway'' devices (layers 2-3) and between ``gateway'' devices and other remote servers (layers 4-6).
+The second layer of the model focuses on connectivity. The most important function of this model is ensuring reliable and timely data transmission. This includes all communications between each layer, but we will restrict our focus to communications between the edge devices (layer 1), between edge devices and ``gateway'' devices (layers 2-3) and between ``gateway'' devices and other remote servers (layers 4-6).\bigskip
 
-This model aims to make use of current networks to perform communications and processing, it does not imply the development of another network. However, some legacy devices may not be IP-enabled and others may need proprietary controllers to communicate properly. The network should be capable of integrating them by deploying specialized gateways that support those devices. 
+This model aims to make use of current networks to perform communications and processing, it does not imply the development of another network. However, some legacy devices may not be IP-enabled and others may need proprietary controllers to communicate properly. The network should be capable of integrating them by deploying specialized gateways that support those devices.
 
 \subsubsection{Communication Protocols}
 Each technology is designed with certain use cases in mind. They drive their development and thus it is natural that each one has their own advantages and disadvantages, depending on their use. For instance, short range wireless protocols like Wi-Fi or Bluetooth are limited by the transmission range, but long range protocols like NB-IoT usually have high energy consumption, which is unviable for constrained node networks. Each protocol also defines their own frame format and communicate within certain frequency bands, introducing additional differences. Due to the frequency bands used by UHF \acs{RFID}, metal and water surfaces can introduce interference in its transmissions, thus reducing the effective transmission range \cite{Cairo2018}. The figure \ref{fig:communication-protocols} shows some commonly used protocols in \acs{IoT} systems grouped by range. 
@@ -120,7 +135,7 @@ The third layer of the model is driven by the need to convert the generated data
 \begin{itemize}
     \item \textbf{Filtering}: Assessing if the data should be processed at a higher level. 
     \item \textbf{Formatting}: Reformatting data for consistent higher-level processing.
-    %\item \textbf{Decoding}: Handling cryptic data with additional context (such as the origin);
+    \item \textbf{Decoding}: Handling cryptic data with additional context (such as the origin);
     \item \textbf{Cleaning}: Reducing data to minimize the impact of data on the network and higher-level processing systems.
     \item \textbf{Analysis}: Determining whether data represents a threshold or alert.
 \end{itemize}
@@ -232,9 +247,7 @@ The information that is created by the \acs{IoT} yields little value unless it p
 
 % Standardization in the context of pervasive healthcare still does not guarantee interoperability among IoMT solutions [10], which is a general problem in IoT. Each manufacturer uses its own definitions of devices, data format, and communication protocols, which hampers integration with larger systems. Moreover, many solutions are closed and do not implement functionalities for data interchange; \cite{Rubi2019}
 
-Despite recent efforts, interoperability is still an issue of IoT systems. Many manufacturers still use their own data formats and communication protocols, which hampers integration with larger systems \cite{Rubi2019}.
-Moreover, many solutions are developed within closed ecosystems and do not implement functionalities for data exchange with other systems. 
-
+Despite recent efforts, interoperability is still an issue of IoT systems. Since there are not clear industry standards and regulations, many manufacturers push their own proprietary data formats and communication protocols, which hampers the integration of resources \cite{Rubi2019}. Solutions are developed within closed ecosystems and do not implement functionalities for exchanging information with other systems. 
 
 \todo[inline]{To-do: Complete section.}
 
