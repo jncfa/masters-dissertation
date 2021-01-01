@@ -1,0 +1,140 @@
+
+% <---- Real-time tracking systems ---->
+
+%==========================================================================================================================================
+%[1] P. Fuhrer and D. Guinard, “Building a smart hospital using RFID technologies,” Eur. Conf. eHealth 2006, Proc. ECEH 2006, pp. 131–142, 2006.
+%
+%Contribution:
+%- This paper presents one of the first IoT applications for healthcare services. The authors propose a real-time tracking system using RFID tags, which can track hospital equipment, staff, patients and medical files, which can minimize the risks of patient misidentification, loss / theft of assets and even drug counterfeiting. Thus, demonstrating how RFID technology can help improve healthcare services.
+%
+%Significance: 
+%- The authors show how the proposed system can help improve healthcare services by mitigating the risks of patient misidentification, loss / theft of assets and even drug counterfeiting. 
+%
+%Future Work:
+% "One must be sure that the deployment of radio frequency devices does not interfere with pacemakers, heart monitors or other electrical devices that are common in an hosptial. Furthermore, the consequences and side-effects of radio waves on the exposed humans have to be clarified. "
+% "(...) it should be clear that challenging cryptographic issues are raised in relation with wireless transmission and that there is a need for clear laws and recommandations about the tracking of goods and people."
+%
+%- Analyse compatibility with other hospital equipments, and consequences of long term exposure to RF. 
+%- Improving security on wireless transmissions;
+%- Increase regulation regarding the tracking of goods and people;
+
+
+%Fuhrer et al. \cite{Fuhrer2006} describes one of the first IoT applications for healthcare. The authors propose a real-time tracking system (RTLS), which requires equipping RFID tags on hospital equipment, staff, patients and medical files. By placing RFID readers in strategic locations around the hospital (e.g. entrace of rooms, handheld readers) the system is able to locate every tag. The authors show several use cases for this system, demonstrating how RTLS systems can mitigate the risks of patient misidentification, loss / theft of assets and even drug counterfeiting.
+
+%==========================================================================================================================================
+%[2] T. Adame, A. Bel, A. Carreras, J. Melià-Seguí, M. Oliver, and R. Pous, “CUIDATS: An RFID–WSN hybrid %monitoring system for smart health care environments,” Futur. Gener. Comput. Syst., vol. 78, pp. %602–615, Jan. 2018, doi: 10.1016/j.future.2016.12.023.
+% 
+%--------------------------
+% Sensors Used: (L1) 
+% - 
+% Comunication Protocol: (L2)
+% - 
+% Edge Computing: (L3)
+% -
+% Data Accumulation: (L4)
+% -
+% Data Abstraction: (L5)
+% -
+% Application Type: (L6)
+% - 
+
+%------------------------------
+%Contribution:
+%"- Design and implementation of a hybrid network consisting of RFID tags and readers, WSN beacons, and a gateway acting as a common element between both wireless technologies.
+% - Development of an RTLS system running over the hybrid network to accurately locate patients and assets.
+% - Development of an electronic wristband to track patients and monitor their vital signs within a health care environment."
+% 
+%Significance: 
+%(...)
+%
+%Future Work:
+%(...)
+%-->
+
+Adame et al. \cite{Adame2018} propose an IoT hybrid monitoring system - CUIDATS - for health care environments which integrates RFID and WSN technologies in a single platform providing real-time location, status, and tracking of patients and hospital assets. The patients are monitored via a small wristband which holds a small low power mobile sensor node, equipped with temperature, pulse and accelerometers.
+
+
+%==========================================================================================================================================
+%[3] T. Wu, F. Wu, C. Qiu, J. M. Redoute, and M. R. Yuce, “A Rigid-Flex Wearable Health Monitoring Sensor Patch for IoT-Connected Healthcare Applications,” IEEE Internet Things J., vol. 7, no. 8, pp. 6932–6945, 2020, doi: 10.1109/JIOT.2020.2977164.
+%
+%
+%Notes:
+%(...)
+%
+%----
+%Contribution:
+%"In this article, an innovative low-power wearable sensor patch is proposed for IoT-connected remote long-term healthcare applications. The sensor patch system consists of three main parts: 1) a center board for signal acquisition, processing, and transmission; 2) a power board for energy supply and charging batteries; and 3) different sensors for physiological parameters measurements. All components of the sensor patch is connected and presented in a rigid-flex structure, which is suitable for wearable health monitoring of ECG, PPG, HR, and body temperature. As the ECG and PPG are integrated on the same device, continuous BP estimation based on the PAT method can be achieved without extra wires or hardware configurations. The experimental results demonstrate the performance of the proposed sensor patch against the comparison with a commercial reference medical equipment."
+%
+%- Development of a innovative wearable sensor patch
+%
+%Significance: 
+%(...)
+%
+%
+%Future Work:
+%"Since security is not the focus of this article, the two common security measures are implemented to meet the basic requirements of the following: (...) Security Between Wearable Patches and Gateways (...) Security Measures in Gateways and Cloud Server"
+%"In our future work, more edge computing functions on the gateway will be developed for an IoT-connected healthcare platform."
+
+Wu et al. \cite{Wu2020} developed a system which uses wearable sensor networks to monitoring the patients' status. The wearable sensors transmit the different physiological signals (ECG, PPG and body temperature) using BLE to gateways, which can either by fixed or mobile, by using smartphones. The gateway exchanges data with the cloud through bridged MQTT brokers, allowing the development of local features (e.g. local UI to interact with the patients) and cloud processing features (e.g. Big Data Analytics, data storage, UI for medical professionals). 
+
+%==========================================================================================================================================
+% e-CoVig
+%
+% Contribution:
+%
+% Significance:
+%
+%
+% Future work:
+%
+Recently, and motivated by the recent pandemic crisis, investigators from ISR-Lisboa developed a system called e-CoVig, a low-cost solution for monitoring patients during the COVID-19 quarantine. 
+
+%==========================================================================================================================================
+%[5] H. Zhang, J. Li, B. Wen, Y. Xun, and J. Liu, “Connecting Intelligent Things in Smart Hospitals Using NB-IoT,” IEEE Internet Things J., vol. 5, no. 3, pp. 1550–1560, Jun. 2018, doi: 10.1109/JIOT.2018.2792423.
+%
+%Notes:
+%(...)
+%
+%----
+%Contribution:
+%(...)
+%
+%Significance: 
+%(...)
+%
+%Future Work:
+%(...)
+%----
+
+Zhang et al. \cite{Zhang2018} propose a infusion monitoring device based on an infrared sensor and NB-IoT (Narrowband IoT protocol), in order to prevent drop rate anomalies or unnoticed drug replacements. 
+
+%==========================================================================================================================================
+%[8] L. Catarinucci et al., “An IoT-Aware Architecture for Smart Healthcare Systems,” IEEE %Internet Things J., vol. 2, no. 6, pp. 515–526, Dec. 2015, doi: 10.1109/JIOT.2015.2417684.
+%
+%Notes:
+%(...)
+%
+%----
+%Contribution:
+%(...)
+%
+%Significance: 
+%(...)
+%
+%Future Work:
+%(...)
+%----
+
+
+%..placeholder...
+
+
+%<!-- Blockchain in healthcare ? -->´
+
+%agrupar os trabalhos em sub-secções:
+
+%\subsection{...}
+%discutir trabalhos
+
+%\subsection{...}
+%discutir trabalhos

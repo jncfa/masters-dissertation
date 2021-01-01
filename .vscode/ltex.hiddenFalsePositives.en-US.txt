@@ -1,0 +1,8 @@
+{"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\Q- Development of a monitoring system based on electronic wireless patches that gathers patient's sensitive information; - Integration in an existing healthcare information system (Glintt GlobalCare) through an FHIR API layer; - System validation through testbed and a real healthcare scenario;\\E$"}
+{"rule":"COMMA_PARENTHESIS_WHITESPACE","sentence":"^\\Q[hang] .\\E$"}
+{"rule":"COMMA_PARENTHESIS_WHITESPACE","sentence":"^\\Q.\\E$"}
+{"rule":"COMMA_PARENTHESIS_WHITESPACE","sentence":"^\\Q.#1.#1.\\E$"}
+{"rule":"COMMA_PARENTHESIS_WHITESPACE","sentence":"^\\Q[display] .\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\QResumo.\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\QWireless Sensor Networks (WSNs).\\E$"}
+{"rule":"EN_A_VS_AN","sentence":"^\\QIn 2014 the \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q World Forum (IoTWF) architectural committee published an \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q architectural reference model, composed by seven layers as shown in figure \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q.\\E$"}

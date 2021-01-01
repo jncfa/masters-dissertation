@@ -1,0 +1,96 @@
+\begin{thebibliography}{10}
+
+\bibitem{10.5555/3161403}
+D.~Hanes, G.~Salgueiro, P.~Grossetete, R.~Barton, and J.~Henry, {\em IoT
+  Fundamentals: Networking Technologies, Protocols, and Use Cases for the
+  Internet of Things}.
+\newblock Cisco Press, 1st~ed., 2017.
+
+\bibitem{ContinuaHealthAlliance}
+{Continua Health Alliance}, ``{Continua Design Guidelines | Personal Connected
+  Health Alliance}.''
+
+\bibitem{Aceto2020}
+G.~Aceto, V.~Persico, and A.~Pescap{\'{e}}, ``{Industry 4.0 and Health:
+  Internet of Things, Big Data, and Cloud Computing for Healthcare 4.0},'' {\em
+  Journal of Industrial Information Integration}, vol.~18, no.~February,
+  p.~100129, 2020.
+
+\bibitem{Singh2019}
+A.~Singh, A.~Payal, and S.~Bharti, ``{A walkthrough of the emerging IoT
+  paradigm: Visualizing inside functionalities, key features, and open
+  issues},'' {\em Journal of Network and Computer Applications}, vol.~143,
+  no.~February, pp.~111--151, 2019.
+
+\bibitem{Wu2020}
+T.~Wu, F.~Wu, C.~Qiu, J.~M. Redoute, and M.~R. Yuce, ``{A Rigid-Flex Wearable
+  Health Monitoring Sensor Patch for IoT-Connected Healthcare Applications},''
+  {\em IEEE Internet of Things Journal}, vol.~7, no.~8, pp.~6932--6945, 2020.
+
+\bibitem{Rubi2019}
+J.~N. Rub{\'{i}} and P.~R. Gondim, ``{IoMT platform for pervasive healthcare
+  data aggregation, processing, and sharing based on oneM2M and openEHR},''
+  {\em Sensors (Switzerland)}, vol.~19, no.~19, pp.~1--25, 2019.
+
+\bibitem{Catarinucci2015}
+L.~Catarinucci, D.~de~Donno, L.~Mainetti, L.~Palano, L.~Patrono, M.~L.
+  Stefanizzi, and L.~Tarricone, ``{An IoT-Aware Architecture for Smart
+  Healthcare Systems},'' {\em IEEE Internet of Things Journal}, vol.~2,
+  pp.~515--526, dec 2015.
+
+\bibitem{Zhang2018}
+H.~Zhang, J.~Li, B.~Wen, Y.~Xun, and J.~Liu, ``{Connecting Intelligent Things
+  in Smart Hospitals Using NB-IoT},'' {\em IEEE Internet of Things Journal},
+  vol.~5, pp.~1550--1560, jun 2018.
+
+\bibitem{Gope2016}
+P.~Gope and T.~Hwang, ``{BSN-Care: A Secure IoT-Based Modern Healthcare System
+  Using Body Sensor Network},'' {\em IEEE Sensors Journal}, vol.~16, no.~5,
+  pp.~1368--1376, 2016.
+
+\bibitem{Tennina2014}
+S.~Tennina, M.~{Di Renzo}, E.~Kartsakli, F.~Graziosi, A.~S. Lalos,
+  A.~Antonopoulos, P.~V. Mekikis, and L.~Alonso, ``{WSN4QoL: A WSN-Oriented
+  Healthcare System Architecture},'' {\em International Journal of Distributed
+  Sensor Networks}, vol.~10, p.~503417, may 2014.
+
+\bibitem{Cisco2014}
+Cisco, ``{The Internet of Things Reference Model},'' 2014.
+
+\bibitem{MinhDang2019}
+L.~{Minh Dang}, M.~J. Piran, D.~Han, K.~Min, and H.~Moon, ``{A survey on
+  internet of things and cloud computing for healthcare},'' {\em Electronics
+  (Switzerland)}, vol.~8, no.~7, pp.~1--49, 2019.
+
+\bibitem{Papa2020}
+A.~Papa, M.~Mital, P.~Pisano, and M.~{Del Giudice}, ``{E-health and wellbeing
+  monitoring using smart healthcare devices: An empirical investigation},''
+  {\em Technological Forecasting and Social Change}, vol.~153, p.~119226, apr
+  2020.
+
+\bibitem{Darwish2011}
+A.~Darwish and A.~E. Hassanien, ``{Wearable and implantable wireless sensor
+  network solutions for healthcare monitoring},'' {\em Sensors}, vol.~11,
+  no.~6, pp.~5561--5595, 2011.
+
+\bibitem{Cairo2018}
+J.-I. Cairo, J.~Bonache, F.~Paredes, and F.~Martin, ``{Interference Sources in
+  Congested Environments and its Effects in UHF-RFID Systems: A Review},'' {\em
+  IEEE Journal of Radio Frequency Identification}, vol.~2, no.~1, pp.~1--8,
+  2018.
+
+\bibitem{Baker2017}
+S.~B. Baker, W.~Xiang, and I.~Atkinson, ``{Internet of Things for Smart
+  Healthcare: Technologies, Challenges, and Opportunities},'' {\em IEEE
+  Access}, vol.~5, pp.~26521--26544, 2017.
+
+\bibitem{HL72019}
+HL7, ``{FHIR v4.0.1},'' 2019.
+
+\bibitem{Adame2018}
+T.~Adame, A.~Bel, A.~Carreras, J.~Meli{\`{a}}-Segu{\'{i}}, M.~Oliver, and
+  R.~Pous, ``{CUIDATS: An RFID–WSN hybrid monitoring system for smart health
+  care environments},'' {\em Future Generation Computer Systems}, vol.~78,
+  pp.~602--615, jan 2018.
+
+\end{thebibliography}

@@ -1,0 +1,392 @@
+PWD c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation
+INPUT C:\Users\jncfa\AppData\Local\MiKTeX\2.9\miktex\data\le\pdftex\pdflatex.fmt
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\main.tex
+OUTPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\main.log
+INPUT C:\Program Files\MiKTeX\tex\latex\base\report.cls
+INPUT C:\Program Files\MiKTeX\tex\latex\base\report.cls
+INPUT C:\Program Files\MiKTeX\tex\latex\base\size12.clo
+INPUT C:\Program Files\MiKTeX\tex\latex\base\size12.clo
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmr12.tfm
+INPUT C:\Program Files\MiKTeX\tex\latex\base\inputenc.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\base\inputenc.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\base\fontenc.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\base\fontenc.sty
+INPUT C:\Program Files\MiKTeX\fonts\tfm\jknappen\ec\ecrm1200.tfm
+INPUT C:\Program Files\MiKTeX\tex\generic\babel\babel.sty
+INPUT C:\Program Files\MiKTeX\tex\generic\babel\babel.sty
+INPUT C:\Program Files\MiKTeX\tex\generic\babel\babel.def
+INPUT C:\Program Files\MiKTeX\tex\generic\babel\txtbabel.def
+INPUT C:\Program Files\MiKTeX\tex\latex\arabi\bblopts.cfg
+INPUT C:\Program Files\MiKTeX\tex\latex\arabi\bblopts.cfg
+INPUT C:\Program Files\MiKTeX\tex\latex\babel-portuges\portuguese.ldf
+INPUT C:\Program Files\MiKTeX\tex\latex\babel-portuges\portuguese.ldf
+INPUT C:\Program Files\MiKTeX\tex\latex\babel-english\english.ldf
+INPUT C:\Program Files\MiKTeX\tex\latex\babel-english\english.ldf
+INPUT C:\Program Files\MiKTeX\tex\latex\todonotes\todonotes.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\todonotes\todonotes.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\base\ifthen.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\base\ifthen.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\xkeyval\xkeyval.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\xkeyval\xkeyval.sty
+INPUT C:\Program Files\MiKTeX\tex\generic\xkeyval\xkeyval.tex
+INPUT C:\Program Files\MiKTeX\tex\generic\xkeyval\xkvutils.tex
+INPUT C:\Program Files\MiKTeX\tex\generic\xkeyval\keyval.tex
+INPUT C:\Program Files\MiKTeX\tex\latex\xcolor\xcolor.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\xcolor\xcolor.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\graphics-cfg\color.cfg
+INPUT C:\Program Files\MiKTeX\tex\latex\graphics-cfg\color.cfg
+INPUT C:\Program Files\MiKTeX\tex\latex\graphics-def\pdftex.def
+INPUT C:\Program Files\MiKTeX\tex\latex\graphics-def\pdftex.def
+INPUT C:\Program Files\MiKTeX\tex\latex\pgf\frontendlayer\tikz.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\pgf\frontendlayer\tikz.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\pgf\basiclayer\pgf.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\pgf\basiclayer\pgf.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\pgf\utilities\pgfrcs.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\pgf\utilities\pgfrcs.sty
+INPUT C:\Program Files\MiKTeX\tex\generic\pgf\utilities\pgfutil-common.tex
+INPUT C:\Program Files\MiKTeX\tex\generic\pgf\utilities\pgfutil-common-lists.tex
+INPUT C:\Program Files\MiKTeX\tex\generic\pgf\utilities\pgfutil-latex.def
+INPUT C:\Program Files\MiKTeX\tex\latex\ms\everyshi.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\ms\everyshi.sty
+INPUT C:\Program Files\MiKTeX\tex\generic\pgf\utilities\pgfrcs.code.tex
+INPUT C:\Program Files\MiKTeX\tex\generic\pgf\utilities\pgfrcs.code.tex
+INPUT C:\Program Files\MiKTeX\tex\generic\pgf\pgf.revision.tex
+INPUT C:\Program Files\MiKTeX\tex\generic\pgf\pgf.revision.tex
+INPUT C:\Program Files\MiKTeX\tex\latex\pgf\basiclayer\pgfcore.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\pgf\basiclayer\pgfcore.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\graphics\graphicx.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\graphics\graphicx.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\graphics\graphics.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\graphics\graphics.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\graphics\trig.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\graphics\trig.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\graphics-cfg\graphics.cfg
+INPUT C:\Program Files\MiKTeX\tex\latex\graphics-cfg\graphics.cfg
+INPUT C:\Program Files\MiKTeX\tex\latex\pgf\systemlayer\pgfsys.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\pgf\systemlayer\pgfsys.sty
+INPUT C:\Program Files\MiKTeX\tex\generic\pgf\systemlayer\pgfsys.code.tex
+INPUT C:\Program Files\MiKTeX\tex\generic\pgf\systemlayer\pgfsys.code.tex
+INPUT C:\Program Files\MiKTeX\tex\generic\pgf\utilities\pgfkeys.code.tex
+INPUT C:\Program Files\MiKTeX\tex\generic\pgf\utilities\pgfkeysfiltered.code.tex
+INPUT C:\Program Files\MiKTeX\tex\generic\pgf\systemlayer\pgf.cfg
+INPUT C:\Program Files\MiKTeX\tex\generic\pgf\systemlayer\pgfsys-pdftex.def
+INPUT C:\Program Files\MiKTeX\tex\generic\pgf\systemlayer\pgfsys-pdftex.def
+INPUT C:\Program Files\MiKTeX\tex\generic\pgf\systemlayer\pgfsys-common-pdf.def
+INPUT C:\Program Files\MiKTeX\tex\generic\pgf\systemlayer\pgfsyssoftpath.code.tex
+INPUT C:\Program Files\MiKTeX\tex\generic\pgf\systemlayer\pgfsyssoftpath.code.tex
+INPUT C:\Program Files\MiKTeX\tex\generic\pgf\systemlayer\pgfsysprotocol.code.tex
+INPUT C:\Program Files\MiKTeX\tex\generic\pgf\systemlayer\pgfsysprotocol.code.tex
+INPUT C:\Program Files\MiKTeX\tex\generic\pgf\basiclayer\pgfcore.code.tex
+INPUT C:\Program Files\MiKTeX\tex\generic\pgf\basiclayer\pgfcore.code.tex
+INPUT C:\Program Files\MiKTeX\tex\generic\pgf\math\pgfmath.code.tex
+INPUT C:\Program Files\MiKTeX\tex\generic\pgf\math\pgfmathcalc.code.tex
+INPUT C:\Program Files\MiKTeX\tex\generic\pgf\math\pgfmathutil.code.tex
+INPUT C:\Program Files\MiKTeX\tex\generic\pgf\math\pgfmathparser.code.tex
+INPUT C:\Program Files\MiKTeX\tex\generic\pgf\math\pgfmathfunctions.code.tex
+INPUT C:\Program Files\MiKTeX\tex\generic\pgf\math\pgfmathfunctions.basic.code.tex
+INPUT C:\Program Files\MiKTeX\tex\generic\pgf\math\pgfmathfunctions.trigonometric.code.tex
+INPUT C:\Program Files\MiKTeX\tex\generic\pgf\math\pgfmathfunctions.random.code.tex
+INPUT C:\Program Files\MiKTeX\tex\generic\pgf\math\pgfmathfunctions.comparison.code.tex
+INPUT C:\Program Files\MiKTeX\tex\generic\pgf\math\pgfmathfunctions.base.code.tex
+INPUT C:\Program Files\MiKTeX\tex\generic\pgf\math\pgfmathfunctions.round.code.tex
+INPUT C:\Program Files\MiKTeX\tex\generic\pgf\math\pgfmathfunctions.misc.code.tex
+INPUT C:\Program Files\MiKTeX\tex\generic\pgf\math\pgfmathfunctions.integerarithmetics.code.tex
+INPUT C:\Program Files\MiKTeX\tex\generic\pgf\math\pgfmathfloat.code.tex
+INPUT C:\Program Files\MiKTeX\tex\generic\pgf\math\pgfint.code.tex
+INPUT C:\Program Files\MiKTeX\tex\generic\pgf\basiclayer\pgfcorepoints.code.tex
+INPUT C:\Program Files\MiKTeX\tex\generic\pgf\basiclayer\pgfcorepathconstruct.code.tex
+INPUT C:\Program Files\MiKTeX\tex\generic\pgf\basiclayer\pgfcorepathusage.code.tex
+INPUT C:\Program Files\MiKTeX\tex\generic\pgf\basiclayer\pgfcorescopes.code.tex
+INPUT C:\Program Files\MiKTeX\tex\generic\pgf\basiclayer\pgfcoregraphicstate.code.tex
+INPUT C:\Program Files\MiKTeX\tex\generic\pgf\basiclayer\pgfcoretransformations.code.tex
+INPUT C:\Program Files\MiKTeX\tex\generic\pgf\basiclayer\pgfcorequick.code.tex
+INPUT C:\Program Files\MiKTeX\tex\generic\pgf\basiclayer\pgfcoreobjects.code.tex
+INPUT C:\Program Files\MiKTeX\tex\generic\pgf\basiclayer\pgfcorepathprocessing.code.tex
+INPUT C:\Program Files\MiKTeX\tex\generic\pgf\basiclayer\pgfcorearrows.code.tex
+INPUT C:\Program Files\MiKTeX\tex\generic\pgf\basiclayer\pgfcoreshade.code.tex
+INPUT C:\Program Files\MiKTeX\tex\generic\pgf\basiclayer\pgfcoreimage.code.tex
+INPUT C:\Program Files\MiKTeX\tex\generic\pgf\basiclayer\pgfcoreexternal.code.tex
+INPUT C:\Program Files\MiKTeX\tex\generic\pgf\basiclayer\pgfcorelayers.code.tex
+INPUT C:\Program Files\MiKTeX\tex\generic\pgf\basiclayer\pgfcoretransparency.code.tex
+INPUT C:\Program Files\MiKTeX\tex\generic\pgf\basiclayer\pgfcorepatterns.code.tex
+INPUT C:\Program Files\MiKTeX\tex\generic\pgf\basiclayer\pgfcorerdf.code.tex
+INPUT C:\Program Files\MiKTeX\tex\generic\pgf\modules\pgfmoduleshapes.code.tex
+INPUT C:\Program Files\MiKTeX\tex\generic\pgf\modules\pgfmoduleplot.code.tex
+INPUT C:\Program Files\MiKTeX\tex\latex\pgf\compatibility\pgfcomp-version-0-65.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\pgf\compatibility\pgfcomp-version-0-65.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\pgf\compatibility\pgfcomp-version-1-18.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\pgf\compatibility\pgfcomp-version-1-18.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\pgf\utilities\pgffor.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\pgf\utilities\pgffor.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\pgf\utilities\pgfkeys.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\pgf\utilities\pgfkeys.sty
+INPUT C:\Program Files\MiKTeX\tex\generic\pgf\utilities\pgfkeys.code.tex
+INPUT C:\Program Files\MiKTeX\tex\generic\pgf\utilities\pgfkeys.code.tex
+INPUT C:\Program Files\MiKTeX\tex\latex\pgf\math\pgfmath.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\pgf\math\pgfmath.sty
+INPUT C:\Program Files\MiKTeX\tex\generic\pgf\math\pgfmath.code.tex
+INPUT C:\Program Files\MiKTeX\tex\generic\pgf\math\pgfmath.code.tex
+INPUT C:\Program Files\MiKTeX\tex\generic\pgf\utilities\pgffor.code.tex
+INPUT C:\Program Files\MiKTeX\tex\generic\pgf\utilities\pgffor.code.tex
+INPUT C:\Program Files\MiKTeX\tex\generic\pgf\math\pgfmath.code.tex
+INPUT C:\Program Files\MiKTeX\tex\generic\pgf\frontendlayer\tikz\tikz.code.tex
+INPUT C:\Program Files\MiKTeX\tex\generic\pgf\frontendlayer\tikz\tikz.code.tex
+INPUT C:\Program Files\MiKTeX\tex\generic\pgf\libraries\pgflibraryplothandlers.code.tex
+INPUT C:\Program Files\MiKTeX\tex\generic\pgf\libraries\pgflibraryplothandlers.code.tex
+INPUT C:\Program Files\MiKTeX\tex\generic\pgf\modules\pgfmodulematrix.code.tex
+INPUT C:\Program Files\MiKTeX\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibrarytopaths.code.tex
+INPUT C:\Program Files\MiKTeX\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibrarytopaths.code.tex
+INPUT C:\Program Files\MiKTeX\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibrarypositioning.code.tex
+INPUT C:\Program Files\MiKTeX\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibrarypositioning.code.tex
+INPUT C:\Program Files\MiKTeX\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibraryshadows.code.tex
+INPUT C:\Program Files\MiKTeX\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibraryshadows.code.tex
+INPUT C:\Program Files\MiKTeX\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibraryfadings.code.tex
+INPUT C:\Program Files\MiKTeX\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibraryfadings.code.tex
+INPUT C:\Program Files\MiKTeX\tex\generic\pgf\libraries\pgflibraryfadings.code.tex
+INPUT C:\Program Files\MiKTeX\tex\generic\pgf\libraries\pgflibraryfadings.code.tex
+OUTPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\main.pdf
+INPUT C:\Program Files\MiKTeX\tex\latex\tools\calc.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\tools\calc.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\acronym\acronym.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\acronym\acronym.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\bigfoot\suffix.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\bigfoot\suffix.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\xstring\xstring.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\xstring\xstring.sty
+INPUT C:\Program Files\MiKTeX\tex\generic\xstring\xstring.tex
+INPUT C:\Program Files\MiKTeX\tex\latex\base\textcomp.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\base\textcomp.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\titlesec\titlesec.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\titlesec\titlesec.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\geometry\geometry.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\geometry\geometry.sty
+INPUT C:\Program Files\MiKTeX\tex\generic\iftex\ifvtex.sty
+INPUT C:\Program Files\MiKTeX\tex\generic\iftex\ifvtex.sty
+INPUT C:\Program Files\MiKTeX\tex\generic\iftex\iftex.sty
+INPUT C:\Program Files\MiKTeX\tex\generic\iftex\iftex.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\geometry\geometry.cfg
+INPUT C:\Program Files\MiKTeX\tex\latex\geometry\geometry.cfg
+INPUT C:\Program Files\MiKTeX\tex\latex\tocbibind\tocbibind.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\tocbibind\tocbibind.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\multirow\multirow.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\multirow\multirow.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\placeins\placeins.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\placeins\placeins.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\caption\caption.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\caption\caption.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\caption\caption3.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\caption\caption3.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\caption\subcaption.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\caption\subcaption.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\appendix\appendix.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\appendix\appendix.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\pdfpages\pdfpages.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\pdfpages\pdfpages.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\eso-pic\eso-pic.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\eso-pic\eso-pic.sty
+INPUT C:\Program Files\MiKTeX\tex\generic\atbegshi\atbegshi.sty
+INPUT C:\Program Files\MiKTeX\tex\generic\atbegshi\atbegshi.sty
+INPUT C:\Program Files\MiKTeX\tex\generic\infwarerr\infwarerr.sty
+INPUT C:\Program Files\MiKTeX\tex\generic\infwarerr\infwarerr.sty
+INPUT C:\Program Files\MiKTeX\tex\generic\ltxcmds\ltxcmds.sty
+INPUT C:\Program Files\MiKTeX\tex\generic\ltxcmds\ltxcmds.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\pdfpages\pppdftex.def
+INPUT C:\Program Files\MiKTeX\tex\latex\pdfpages\pppdftex.def
+INPUT C:\Program Files\MiKTeX\tex\latex\url\url.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\url\url.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\hyperref\hyperref.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\hyperref\hyperref.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\pdftexcmds\pdftexcmds.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\pdftexcmds\pdftexcmds.sty
+INPUT C:\Program Files\MiKTeX\tex\generic\kvsetkeys\kvsetkeys.sty
+INPUT C:\Program Files\MiKTeX\tex\generic\kvsetkeys\kvsetkeys.sty
+INPUT C:\Program Files\MiKTeX\tex\generic\kvdefinekeys\kvdefinekeys.sty
+INPUT C:\Program Files\MiKTeX\tex\generic\kvdefinekeys\kvdefinekeys.sty
+INPUT C:\Program Files\MiKTeX\tex\generic\pdfescape\pdfescape.sty
+INPUT C:\Program Files\MiKTeX\tex\generic\pdfescape\pdfescape.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\hycolor\hycolor.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\hycolor\hycolor.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\letltxmacro\letltxmacro.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\letltxmacro\letltxmacro.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\auxhook\auxhook.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\auxhook\auxhook.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\kvoptions\kvoptions.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\kvoptions\kvoptions.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\hyperref\pd1enc.def
+INPUT C:\Program Files\MiKTeX\tex\latex\hyperref\pd1enc.def
+INPUT C:\Program Files\MiKTeX\tex\generic\intcalc\intcalc.sty
+INPUT C:\Program Files\MiKTeX\tex\generic\intcalc\intcalc.sty
+INPUT C:\Program Files\MiKTeX\tex\generic\etexcmds\etexcmds.sty
+INPUT C:\Program Files\MiKTeX\tex\generic\etexcmds\etexcmds.sty
+INPUT C:\Program Files\MiKTeX\tex\generic\bitset\bitset.sty
+INPUT C:\Program Files\MiKTeX\tex\generic\bitset\bitset.sty
+INPUT C:\Program Files\MiKTeX\tex\generic\bigintcalc\bigintcalc.sty
+INPUT C:\Program Files\MiKTeX\tex\generic\bigintcalc\bigintcalc.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\hyperref\hpdftex.def
+INPUT C:\Program Files\MiKTeX\tex\latex\hyperref\hpdftex.def
+INPUT C:\Program Files\MiKTeX\tex\latex\atveryend\atveryend.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\atveryend\atveryend.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\rerunfilecheck\rerunfilecheck.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\rerunfilecheck\rerunfilecheck.sty
+INPUT C:\Program Files\MiKTeX\tex\generic\uniquecounter\uniquecounter.sty
+INPUT C:\Program Files\MiKTeX\tex\generic\uniquecounter\uniquecounter.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\epigraph\epigraph.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\epigraph\epigraph.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\nextpage\nextpage.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\nextpage\nextpage.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\etoolbox\etoolbox.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\etoolbox\etoolbox.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\float\float.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\float\float.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\l3backend\l3backend-pdfmode.def
+INPUT C:\Program Files\MiKTeX\tex\latex\l3backend\l3backend-pdfmode.def
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\main.aux
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\main.aux
+OUTPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\main.aux
+INPUT C:\Program Files\MiKTeX\tex\context\base\mkii\supp-pdf.mkii
+INPUT C:\Program Files\MiKTeX\tex\context\base\mkii\supp-pdf.mkii
+INPUT C:\Program Files\MiKTeX\tex\latex\epstopdf-pkg\epstopdf-base.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\epstopdf-pkg\epstopdf-base.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\pdflscape\pdflscape.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\pdflscape\pdflscape.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\graphics\lscape.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\graphics\lscape.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\hyperref\nameref.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\hyperref\nameref.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\refcount\refcount.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\refcount\refcount.sty
+INPUT C:\Program Files\MiKTeX\tex\generic\gettitlestring\gettitlestring.sty
+INPUT C:\Program Files\MiKTeX\tex\generic\gettitlestring\gettitlestring.sty
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\main.out
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\main.out
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\main.out
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\main.out
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\main.out
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\main.out
+OUTPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\main.out
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\images\cover.pdf
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\images\cover.pdf
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\images\cover.pdf
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\images\cover.pdf
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\images\cover.pdf
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\images\cover.pdf
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\images\cover.pdf
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\images\cover.pdf
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\images\cover.pdf
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\images\cover.pdf
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\images\cover.pdf
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\images\cover.pdf
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\images\cover.pdf
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\images\cover.pdf
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\images\cover.pdf
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\images\cover.pdf
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\images\cover.pdf
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\images\cover.pdf
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\images\cover.pdf
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\images\cover.pdf
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\images\cover.pdf
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\images\cover.pdf
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\images\cover.pdf
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\title_page1.tex
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\title_page1.tex
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\images\fctuc.pdf
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\images\fctuc.pdf
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\images\fctuc.pdf
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\images\fctuc.pdf
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\images\fctuctext.pdf
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\images\fctuctext.pdf
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\images\fctuctext.pdf
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\images\fctuctext.pdf
+INPUT C:\Program Files\MiKTeX\fonts\tfm\jknappen\ec\ecrm2488.tfm
+INPUT C:\Program Files\MiKTeX\fonts\tfm\jknappen\ec\ecbx2488.tfm
+INPUT C:\Program Files\MiKTeX\fonts\tfm\jknappen\ec\ecrm1440.tfm
+INPUT C:\Program Files\MiKTeX\fonts\tfm\jknappen\ec\ecbx1440.tfm
+INPUT C:\Users\jncfa\AppData\Local\MiKTeX\2.9\pdftex\config\pdftex.map
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\title_page2.tex
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\title_page2.tex
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\images\fctuc.pdf
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\images\fctuc.pdf
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\resumo.tex
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\resumo.tex
+INPUT C:\Program Files\MiKTeX\fonts\tfm\jknappen\ec\ecbx1200.tfm
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\abstract.tex
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\abstract.tex
+INPUT C:\Program Files\MiKTeX\fonts\tfm\jknappen\ec\ecrm1095.tfm
+INPUT C:\Program Files\MiKTeX\fonts\tfm\jknappen\ec\ecti1095.tfm
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmr10.tfm
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmr8.tfm
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmr6.tfm
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmmi10.tfm
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmmi8.tfm
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmmi6.tfm
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmsy10.tfm
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmsy8.tfm
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmsy6.tfm
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\main.toc
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\main.toc
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmmi12.tfm
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmsy10.tfm
+OUTPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\main.toc
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\list_acronyms.tex
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\list_acronyms.tex
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\main.lof
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\main.lof
+OUTPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\main.lof
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\main.lot
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\main.lot
+OUTPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\main.lot
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\introduction.tex
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\introduction.tex
+INPUT C:\Program Files\MiKTeX\fonts\tfm\jknappen\ec\ecrm1728.tfm
+INPUT C:\Program Files\MiKTeX\fonts\tfm\jknappen\ec\ecbx1728.tfm
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\state_of_art.tex
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\state_of_art.tex
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\images\iotwf-referencemodel.png
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\images\iotwf-referencemodel.png
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\images\iotwf-referencemodel.png
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\images\iotwf-referencemodel.png
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\images\iotwf-referencemodel.png
+INPUT C:\Program Files\MiKTeX\fonts\tfm\jknappen\ec\ecti1200.tfm
+INPUT C:\Program Files\MiKTeX\fonts\tfm\jknappen\ec\tcrm1200.tfm
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\images\communication-protocols.png
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\images\communication-protocols.png
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\images\communication-protocols.png
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\images\communication-protocols.png
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\images\communication-protocols.png
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\images\communication-protocols-throughput.png
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\images\communication-protocols-throughput.png
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\images\communication-protocols-throughput.png
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\images\communication-protocols-throughput.png
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\images\communication-protocols-throughput.png
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\state_of_art-sysrev.tex
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\state_of_art-sysrev.tex
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\images\cdg-architecutre.png
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\images\cdg-architecutre.png
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\images\cdg-architecutre.png
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\images\cdg-architecutre.png
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\images\cdg-architecutre.png
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\main.bbl
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\main.bbl
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\main.aux
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\main.out
+INPUT c:\Users\jncfa\Documents\MEGA\UC\6º Ano\Projeto WoW\Dissertation\main.out
+INPUT C:\Users\jncfa\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\tcrm1200.pk
+INPUT C:\Users\jncfa\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\tcrm1200.pk
+INPUT C:\Users\jncfa\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecti1200.pk
+INPUT C:\Users\jncfa\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecti1200.pk
+INPUT C:\Users\jncfa\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1728.pk
+INPUT C:\Users\jncfa\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1728.pk
+INPUT C:\Users\jncfa\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1200.pk
+INPUT C:\Users\jncfa\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1200.pk
+INPUT C:\Users\jncfa\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1095.pk
+INPUT C:\Users\jncfa\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1095.pk
+INPUT C:\Users\jncfa\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecti1095.pk
+INPUT C:\Users\jncfa\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecti1095.pk
+INPUT C:\Users\jncfa\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1200.pk
+INPUT C:\Users\jncfa\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1200.pk
+INPUT C:\Users\jncfa\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1440.pk
+INPUT C:\Users\jncfa\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1440.pk
+INPUT C:\Users\jncfa\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1440.pk
+INPUT C:\Users\jncfa\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1440.pk
+INPUT C:\Users\jncfa\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx2488.pk
+INPUT C:\Users\jncfa\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx2488.pk

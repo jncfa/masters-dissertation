@@ -1,0 +1,10 @@
+testbed
+FHIR
+comparision
+IoTWF
+Glintt
+GlobalCare
+aformentioned
+thouroughly
+backhaul
+requirments
