@@ -1,3 +1,5 @@
+In 
+
 
 % <---- Real-time tracking systems ---->
 
@@ -25,19 +27,22 @@
 %[2] T. Adame, A. Bel, A. Carreras, J. Melià-Seguí, M. Oliver, and R. Pous, “CUIDATS: An RFID–WSN hybrid %monitoring system for smart health care environments,” Futur. Gener. Comput. Syst., vol. 78, pp. %602–615, Jan. 2018, doi: 10.1016/j.future.2016.12.023.
 % 
 %--------------------------
-% Sensors Used: (L1) 
+% Measured Signals: (L1) 
 % - 
-% Comunication Protocol: (L2)
-% - 
+% Networking Protocols: (L2)
+% - WiFi(868 MHz), RFID
 % Edge Computing: (L3)
-% -
-% Data Accumulation: (L4)
-% -
-% Data Abstraction: (L5)
-% -
-% Application Type: (L6)
-% - 
-
+% - Fall Detection is done on IoT node, RTT on gateway
+% Data Storage: (L4)
+% - MySQL
+% Data Formats: (L5)
+% - Custom JSON format (No specification)
+% Application Features: (L6)
+% - Real-Time Tracking System (Patients and Assets), Fall Detection, Vital signs monitoring 
+% Security:
+% - AES-128 (iot node <-> gateway), WPA-Personal (gateway <-> server)
+% Other Notes: 
+% - Ran a hospital trial
 %------------------------------
 %Contribution:
 %"- Design and implementation of a hybrid network consisting of RFID tags and readers, WSN beacons, and a gateway acting as a common element between both wireless technologies.
