@@ -1,4 +1,4 @@
-In 
+\todo[inline]{To-do: Complete section.}
 
 
 % <---- Real-time tracking systems ---->
@@ -21,7 +21,7 @@ In
 %- Increase regulation regarding the tracking of goods and people;
 
 
-%Fuhrer et al. \cite{Fuhrer2006} describes one of the first IoT applications for healthcare. The authors propose a real-time tracking system (RTLS), which requires equipping RFID tags on hospital equipment, staff, patients and medical files. By placing RFID readers in strategic locations around the hospital (e.g. entrace of rooms, handheld readers) the system is able to locate every tag. The authors show several use cases for this system, demonstrating how RTLS systems can mitigate the risks of patient misidentification, loss / theft of assets and even drug counterfeiting.
+Fuhrer et al. \cite{Fuhrer2006} describes one of the first IoT applications for healthcare. The authors propose a real-time locating system (RTLS), which requires equipping RFID tags on hospital equipment, staff, patients and medical files. By placing RFID readers in strategic locations around the hospital (e.g. entrace of rooms, handheld readers) the system is able to locate every tag. The authors show several use cases for this system, demonstrating how RTLS systems can mitigate the risks of patient misidentification, loss / theft of assets and even drug counterfeiting.
 
 %==========================================================================================================================================
 %[2] T. Adame, A. Bel, A. Carreras, J. Melià-Seguí, M. Oliver, and R. Pous, “CUIDATS: An RFID–WSN hybrid %monitoring system for smart health care environments,” Futur. Gener. Comput. Syst., vol. 78, pp. %602–615, Jan. 2018, doi: 10.1016/j.future.2016.12.023.
@@ -41,18 +41,20 @@ In
 % - Real-Time Tracking System (Patients and Assets), Fall Detection, Vital signs monitoring 
 % Security:
 % - AES-128 (iot node <-> gateway), WPA-Personal (gateway <-> server)
+% Integration with HIS:
+% - No
 % Other Notes: 
 % - Ran a hospital trial
 %------------------------------
-%Contribution:
+% Contribution:
 %"- Design and implementation of a hybrid network consisting of RFID tags and readers, WSN beacons, and a gateway acting as a common element between both wireless technologies.
 % - Development of an RTLS system running over the hybrid network to accurately locate patients and assets.
 % - Development of an electronic wristband to track patients and monitor their vital signs within a health care environment."
 % 
-%Significance: 
+% Significance: 
 %(...)
 %
-%Future Work:
+% Future Work:
 %(...)
 %-->
 
@@ -83,7 +85,7 @@ Adame et al. \cite{Adame2018} propose an IoT hybrid monitoring system - CUIDATS 
 Wu et al. \cite{Wu2020} developed a system which uses wearable sensor networks to monitoring the patients' status. The wearable sensors transmit the different physiological signals (ECG, PPG and body temperature) using BLE to gateways, which can either by fixed or mobile, by using smartphones. The gateway exchanges data with the cloud through bridged MQTT brokers, allowing the development of local features (e.g. local UI to interact with the patients) and cloud processing features (e.g. Big Data Analytics, data storage, UI for medical professionals). 
 
 %==========================================================================================================================================
-% e-CoVig
+% [4] e-CoVig
 %
 % Contribution:
 %
@@ -95,26 +97,7 @@ Wu et al. \cite{Wu2020} developed a system which uses wearable sensor networks t
 Recently, and motivated by the recent pandemic crisis, investigators from ISR-Lisboa developed a system called e-CoVig, a low-cost solution for monitoring patients during the COVID-19 quarantine. 
 
 %==========================================================================================================================================
-%[5] H. Zhang, J. Li, B. Wen, Y. Xun, and J. Liu, “Connecting Intelligent Things in Smart Hospitals Using NB-IoT,” IEEE Internet Things J., vol. 5, no. 3, pp. 1550–1560, Jun. 2018, doi: 10.1109/JIOT.2018.2792423.
-%
-%Notes:
-%(...)
-%
-%----
-%Contribution:
-%(...)
-%
-%Significance: 
-%(...)
-%
-%Future Work:
-%(...)
-%----
-
-Zhang et al. \cite{Zhang2018} propose a infusion monitoring device based on an infrared sensor and NB-IoT (Narrowband IoT protocol), in order to prevent drop rate anomalies or unnoticed drug replacements. 
-
-%==========================================================================================================================================
-%[8] L. Catarinucci et al., “An IoT-Aware Architecture for Smart Healthcare Systems,” IEEE %Internet Things J., vol. 2, no. 6, pp. 515–526, Dec. 2015, doi: 10.1109/JIOT.2015.2417684.
+%[5] L. Catarinucci et al., “An IoT-Aware Architecture for Smart Healthcare Systems,” IEEE %Internet Things J., vol. 2, no. 6, pp. 515–526, Dec. 2015, doi: 10.1109/JIOT.2015.2417684.
 %
 %Notes:
 %(...)
@@ -132,14 +115,3 @@ Zhang et al. \cite{Zhang2018} propose a infusion monitoring device based on an i
 
 
 %..placeholder...
-
-
-%<!-- Blockchain in healthcare ? -->´
-
-%agrupar os trabalhos em sub-secções:
-
-%\subsection{...}
-%discutir trabalhos
-
-%\subsection{...}
-%discutir trabalhos
