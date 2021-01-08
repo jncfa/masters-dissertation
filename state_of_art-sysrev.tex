@@ -6,70 +6,110 @@
 %==========================================================================================================================================
 %[1] P. Fuhrer and D. Guinard, “Building a smart hospital using RFID technologies,” Eur. Conf. eHealth 2006, Proc. ECEH 2006, pp. 131–142, 2006.
 %
-%Contribution:
-%- This paper presents one of the first IoT applications for healthcare services. The authors propose a real-time tracking system using RFID tags, which can track hospital equipment, staff, patients and medical files, which can minimize the risks of patient misidentification, loss / theft of assets and even drug counterfeiting. Thus, demonstrating how RFID technology can help improve healthcare services.
-%
-%Significance: 
-%- The authors show how the proposed system can help improve healthcare services by mitigating the risks of patient misidentification, loss / theft of assets and even drug counterfeiting. 
-%
-%Future Work:
-% "One must be sure that the deployment of radio frequency devices does not interfere with pacemakers, heart monitors or other electrical devices that are common in an hosptial. Furthermore, the consequences and side-effects of radio waves on the exposed humans have to be clarified. "
-% "(...) it should be clear that challenging cryptographic issues are raised in relation with wireless transmission and that there is a need for clear laws and recommandations about the tracking of goods and people."
-%
-%- Analyse compatibility with other hospital equipments, and consequences of long term exposure to RF. 
-%- Improving security on wireless transmissions;
-%- Increase regulation regarding the tracking of goods and people;
+%--------------------------
+% Physiological & Environmental Signals: (L1) 
+% - RFID tag
+% Networking Protocols: (L2)
+% - RFID (EPC Gen1?), WiFi
+% Gateway: (L3)
+% - Beaglebone Black
+% Data Storage: (L4)
+% - MySQL
+% Data Formats: (L5)
+% - Physical Markup Language
+% Application Features: (L6)
+% - Real-Time Tracking System (Patients and Assets)
+% Security:
+% - Unknown Data Encryption 
+% User Interface:
+% - Custom Web application
+% Other Notes: 
+%------------------------------
 
-
-Fuhrer et al. \cite{Fuhrer2006} describes one of the first IoT applications for healthcare. The authors propose a real-time locating system (RTLS) using \acs{RFID} tags. These tags are placed in hospital equipment, staff, patients and medical files and their location can be tracked through \acs{RFID} readers fixed in strategic locations around the hospital (\textit{e.g.} entrance of rooms, handheld readers). The authors demonstrate how systems like these can mitigate the risks of patient misidentification, loss or theft of assets and even drug counterfeiting. 
-
+In \cite{Fuhrer2006} one of the first \acs{IoT} applications for healthcare is described. The authors propose a real-time locating system (RTLS) using \acs{RFID} tags. These tags are placed in hospital equipment, staff, patients and medical files and using \acs{RFID} readers placed in strategic locations around the hospital (\textit{e.g.} entrance of rooms, handheld readers), it is possible to track the location of each object. When a \acs{RFID} reader detects a \acs{RFID} tag it communicates this information, using Wi-Fi, to a central server. Healthcare workers can then view this information with a web application, which contains a location history of the tagged object. The authors show how these RTLS systems can mitigate the risks of patient misidentification, loss or theft of assets and even drug counterfeiting, demonstrating the value that \acs{IoT} applications can bring to hospitals. However, in this article, security and privacy issues are not discussed. Although not stated explicitly, communications between the RFID tags and the RFID readers are assumed to be unencrypted, which means ``unethical individuals could snoop on people and surreptitiously collect data (...) without their knowledge'', even after leaving the hospital if the tags are not removed. This raises serious privacy concerns, as the tags could contain private information that can be detrimental to the patients if revealed.
 
 %==========================================================================================================================================
 %[2] T. Adame, A. Bel, A. Carreras, J. Melià-Seguí, M. Oliver, and R. Pous, “CUIDATS: An RFID–WSN hybrid %monitoring system for smart health care environments,” Futur. Gener. Comput. Syst., vol. 78, pp. %602–615, Jan. 2018, doi: 10.1016/j.future.2016.12.023.
 % 
 %--------------------------
-% Measured Signals: (L1) 
-% - 
+% Physiological & Environmental Signals: (L1) 
+% - Temperature, Heart Rate, Accelerometer
 % Networking Protocols: (L2)
-% - WiFi(868 MHz), RFID
-% Edge Computing: (L3)
-% - Fall Detection is done on IoT node, RTT on gateway
+% - RFID (European UHF EPC Gen2), WiFi
+% Gateway: (L3)
+% - Beaglebone Black
 % Data Storage: (L4)
 % - MySQL
 % Data Formats: (L5)
-% - Custom JSON format (No specification)
+% - HTML, Custom JSON format (No specification)
 % Application Features: (L6)
 % - Real-Time Tracking System (Patients and Assets), Fall Detection, Vital signs monitoring 
 % Security:
 % - AES-128 (iot node <-> gateway), WPA-Personal (gateway <-> server)
-% Integration with HIS:
-% - No
+% User Interface:
+% - Custom Web application
 % Other Notes: 
 % - Ran a hospital trial
 %------------------------------
-% Contribution:
-%"- Design and implementation of a hybrid network consisting of RFID tags and readers, WSN beacons, and a gateway acting as a common element between both wireless technologies.
-% - Development of an RTLS system running over the hybrid network to accurately locate patients and assets.
-% - Development of an electronic wristband to track patients and monitor their vital signs within a health care environment."
-% 
-% Significance: 
-%(...)
-%
-% Future Work:
-%(...)
 %-->
 
-Adame et al. \cite{Adame2018} propose an IoT hybrid monitoring system - CUIDATS - for health care environments which integrates RFID and WSN technologies in a single platform providing real-time location, status, and tracking of patients and hospital assets. The patients are monitored via a small wristband which holds a small low power mobile sensor node, equipped with temperature, pulse and accelerometers.
+In \cite{Adame2018} the authors build upon this concept, introducing monitoring of the patient's vital signs, using a small wristband which holds a low power device equipped with temperature, heart rate and accelerometer sensors. The system can also detect with 70\% accuracy if the patient has fallen, sending an immediate message to the gateway, which will later alert the clinical staff of the emergency (although how the staff is alerted is not discussed). The authors ran a pilot test within hospital premises and found it was well-received by the clinical staff who praised the system for its intuitiveness and non-intrusiveness, stating that it could be easily integrated with their current \acs{HIS}. However, the authors pointed out some issues with the usage of \acs{RFID} tags with sensors for patient monitoring. The \acs{RFID} reader needs to provide power to the \acs{RFID} tags, and when using these tags with sensors, the readers need to be configured to allow these tags to be powered up.
+
+Moreover, despite claiming the system can be easily integrated with the \acs{HIS}, 
+
+%==========================================================================================================================================
+%[3] L. Catarinucci et al., “An IoT-Aware Architecture for Smart Healthcare Systems,” IEEE %Internet Things J., vol. 2, no. 6, pp. 515–526, Dec. 2015, doi: 10.1109/JIOT.2015.2417684.
+%
+%--------------------------
+% Physiological & Environmental Signals: (L1) 
+% - Temperature, ECG, Accelerometer, Barometric Pressure, Ambient Light
+% Networking Protocols: (L2)
+% - RFID (European UHF EPC Gen2), 6LowPAN
+% Gateway: (L3)
+% - TI MSP430F2618, Smartphone
+% Data Storage: (L4)
+% - 
+% Data Formats: (L5)
+% - 
+% Application Features: (L6)
+% - Real-Time Tracking System (Patients and Assets), Fall Detection, Vital signs monitoring 
+% Security:
+% - 
+% User Interface:
+% - 
+% Other Notes: 
+% - 
+%------------------------------
+%----
+\cite{Catarinucci2015}
+
+%..placeholder...
 
 
 %==========================================================================================================================================
-%[3] T. Wu, F. Wu, C. Qiu, J. M. Redoute, and M. R. Yuce, “A Rigid-Flex Wearable Health Monitoring Sensor Patch for IoT-Connected Healthcare Applications,” IEEE Internet Things J., vol. 7, no. 8, pp. 6932–6945, 2020, doi: 10.1109/JIOT.2020.2977164.
+%[4] T. Wu, F. Wu, C. Qiu, J. M. Redoute, and M. R. Yuce, “A Rigid-Flex Wearable Health Monitoring Sensor Patch for IoT-Connected Healthcare Applications,” IEEE Internet Things J., vol. 7, no. 8, pp. 6932–6945, 2020, doi: 10.1109/JIOT.2020.2977164.
 %
 %
-%Notes:
-%(...)
-%
-%----
+%--------------------------
+% Measured Signals: (L1) 
+% - 
+% Networking Protocols: (L2)
+% - BLE (v4)
+% Gateway: (L3)
+% - Raspberry Pi 3, Smartphone
+% Data Storage: (L4)
+% - MySQL
+% Data Formats: (L5)
+% - 
+% Application Features: (L6)
+% - 
+% Security:
+% - AES-128
+% Integration with HIS:
+% - No
+% Other Notes: 
+% - 
+%------------------------------
 %Contribution:
 %"In this article, an innovative low-power wearable sensor patch is proposed for IoT-connected remote long-term healthcare applications. The sensor patch system consists of three main parts: 1) a center board for signal acquisition, processing, and transmission; 2) a power board for energy supply and charging batteries; and 3) different sensors for physiological parameters measurements. All components of the sensor patch is connected and presented in a rigid-flex structure, which is suitable for wearable health monitoring of ECG, PPG, HR, and body temperature. As the ECG and PPG are integrated on the same device, continuous BP estimation based on the PAT method can be achieved without extra wires or hardware configurations. The experimental results demonstrate the performance of the proposed sensor patch against the comparison with a commercial reference medical equipment."
 %
@@ -83,10 +123,12 @@ Adame et al. \cite{Adame2018} propose an IoT hybrid monitoring system - CUIDATS 
 %"Since security is not the focus of this article, the two common security measures are implemented to meet the basic requirements of the following: (...) Security Between Wearable Patches and Gateways (...) Security Measures in Gateways and Cloud Server"
 %"In our future work, more edge computing functions on the gateway will be developed for an IoT-connected healthcare platform."
 
+In \cite{Wu2020} 
+
 Wu et al. \cite{Wu2020} developed a system which uses wearable sensor networks to monitoring the patients' status. The wearable sensors transmit the different physiological signals (ECG, PPG and body temperature) using BLE to gateways, which can either by fixed or mobile, by using smartphones. The gateway exchanges data with the cloud through bridged MQTT brokers, allowing the development of local features (e.g. local UI to interact with the patients) and cloud processing features (e.g. Big Data Analytics, data storage, UI for medical professionals). 
 
 %==========================================================================================================================================
-% [4] e-CoVig
+% [5] e-CoVig
 %
 % Contribution:
 %
@@ -96,23 +138,3 @@ Wu et al. \cite{Wu2020} developed a system which uses wearable sensor networks t
 % Future work:
 %
 Recently, and motivated by the recent pandemic crisis, investigators from ISR-Lisboa developed a system called e-CoVig, a low-cost solution for monitoring patients during the COVID-19 quarantine. 
-
-%==========================================================================================================================================
-%[5] L. Catarinucci et al., “An IoT-Aware Architecture for Smart Healthcare Systems,” IEEE %Internet Things J., vol. 2, no. 6, pp. 515–526, Dec. 2015, doi: 10.1109/JIOT.2015.2417684.
-%
-%Notes:
-%(...)
-%
-%----
-%Contribution:
-%(...)
-%
-%Significance: 
-%(...)
-%
-%Future Work:
-%(...)
-%----
-
-
-%..placeholder...

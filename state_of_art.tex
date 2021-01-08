@@ -1,14 +1,12 @@
 In this chapter a survey of pervasive healthcare applications is presented. In order to gain a greater understanding of which are the building blocks of an \acf{IoT} system, a reference model is also presented.
 
-\todo[inline]{To-do: Add small chapter introduction. }
-
 \section{Internet of Things}
 
 \subsection{What is IoT?}
 
 \acl{IoT} (or \acs{IoT}) is an emerging communication paradigm, often hailed as the driver of the Fourth Industrial Revolution \cite{Aceto2020}. \bigskip
 
-The definition of this concept has evolved over time with the development of other technologies such as data analytics, embedded systems, etc. Nowadays it describes a strategy supported on the development of networks of smart devices that exchange and process information through Machine-to-Machine (M2M) communications, usually based on the Internet Protocol (IP). This technology enables ubiquitous systems to gather remarkable amounts of information regarding the surrounding environment, which can later be turned into insight through the usage of data analytics tools, like Machine Learning algorithms \cite{Singh2019}. \bigskip
+The definition of this concept has evolved over time with the development of other technologies such as data analytics, embedded systems, etc. Nowadays it describes a strategy supported on the development of networks of smart devices that exchange and process information through Machine-to-Machine (M2M) communications, usually based on the Internet Protocol (IP). This technology enables ubiquitous systems to gather remarkable amounts of information regarding the surrounding environment, which can later be turned into insight through the usage of data analytics tools, like Machine Learning algorithms. \bigskip
 
 More specifically in the healthcare domain, 
 
@@ -17,11 +15,11 @@ More specifically in the healthcare domain,
 - smart systems enable continous patient monitoring
 }
 
-\section{An IoT Reference Model for Pervasive Healthcare Applications}
+\section{A Reference Model for Pervasive Healthcare Applications}
 
-In order to develop an IoT system, it is crucial to design it based on a reference model. A reference model provides a general structure (or a ``template'') for designing systems, thus enabling the comprehension of these complex systems by breaking them down into simple and distinct functional layers, as also defines some common terminology used in its domain.\bigskip
+In order to develop an IoT system, it is crucial to design it based on a reference model. A reference model provides a general structure (or a ``template'') for designing systems, thus enabling the comprehension of these complex systems by breaking them down into simple and distinct functional layers, while also defining some common terminology used in its domain.\bigskip
 
-In 2014 the \acs{IoT} World Forum (IoTWF) architectural committee published an \acs{IoT} architectural reference model, composed by seven layers as shown in figure \ref{fig:iotwf-referencemodel}. This model provides a simple and clean functional view into the different components of an \acs{IoT} system without restricting the scope or locality of its components, enabling both edge / fog computing solutions and more cloud oriented approaches. However, from a hardware perspective, in this work we will restrict our focus to the most common approach taken by investigators, using 3 different components: 
+In 2014 the \acs{IoT} World Forum (IoTWF) architectural committee published an \acs{IoT} architectural reference model, composed by seven layers as shown in figure \ref{fig:iotwf-referencemodel}. This model provides a simple and clean functional view into the different components of an \acs{IoT} system without restricting the scope or locality of its components. However, from a hardware perspective, in this work we will restrict our focus to the most common approach taken by investigators, using 3 different components: 
 
 \begin{itemize}
     \item \textbf{Endpoint} or \textbf{edge} nodes (corresponding to Layer 1), which interact with the physical world, capturing data.
@@ -43,18 +41,20 @@ While this model can be used to develop IoT systems for any industry (from agric
 \subsection{Layer 1: Physical Devices and Controllers}
 \label{sec:iot-model-layer1}
 
+\todo[inline]{To-do: Review this section later.}
 The first layer of the model is the physical devices and controller layer. This layer houses the ``things'' in the \acl{IoT}: the endpoint devices composed of sensors and actuators that perceive and interact with the physical world. Through those interactions, the devices generate data, which is then sent across the network for analysis and storage. \bigskip
 
-When designing an \acs {IoT} network, the first step should be to analyze the mobility and data requirements of the system \cite{10.5555/3161403}. \textbf{Mobility} describes the devices' ability to move and, if it is able to, how frequently it does so. \textbf{Data} requirements describe how much data is generated and transmitted by each device per unit of time, and how critical is it to the operation. Simpler health monitoring applications can include a single temperature or heart rate sensor while more complex applications can include pulse oximetry, electrocardiogram (\acs{ECG}), respiration rate, etc. \bigskip
+When designing an \acs {IoT} network, the first step should be to analyze the mobility and data requirements of the system \cite{10.5555/3161403}. \textbf{Mobility} describes the devices' ability to move and, if it is able to, how frequently it does so. \textbf{Data} requirements describe how much data is generated and transmitted by each device per unit of time, and how critical is it to the operation. Simpler health monitoring applications can include a single temperature or heart rate sensor while more complex applications can include pulse oximetry, electrocardiogram (\acs{ECG}), respiration rate sensors, etc. 
+\bigskip
 
 With these key requirements established, we can now discuss some other characteristics of the smart devices, like:
 
 \begin{itemize}
     \item \textbf{Power source}: This classification describes if the device has an internal energy supply powering the device or if it has continuous power delivery from an external source. If the device must be mobile, it will require a portable power source, a battery. Battery-powered devices are not bound to a single location, but the finite energy source constrains the device's energy consumption and lifetime, leading to limited memory, computation and connectivity capabilities. 
-    \item \textbf{Transmission range}: This classification describes how far away the devices can communicate. In healthcare, these usually have very short transmission ranges. For example, a fitness band that communicates with a smartphone will be at most located a few meters from it.
+    \item \textbf{Transmission range}: This classification describes how far away the devices can communicate. In healthcare, these usually have short transmission ranges. For example, a fitness band that communicates with a smartphone will be at most located a few meters from it. 
 \end{itemize}
 
-In order to properly design these devices, it is necessary to understand what problems currently reside within clinical environments. Today, hospitalized patients need to be wired to various measurement instruments when continuous biomonitoring is required. This confines the patients to their beds, restricting their mobility, and may also cause skin irritations and infections, aggravating their discomfort and deterioration of their health condition \cite{Darwish2011}. Moreover, the detachment of electrodes from the patient's body, provoked by patient's movements, is one of the main sources of false alarms. These require immediate attention from the clinic's staff, contributing to their exhaustion and may ultimately result in the desensitization to the alarms, reducing their response time to real emergencies \cite{DursunErgezen2020}. Wearable, wireless, and non-intrusive devices can to minimize these issues to a large extent, and are seen as one of the key components of \acs{IoT}-based healthcare systems \cite{Baker2017}.  \bigskip
+In order to properly design these devices, it is necessary to understand what problems currently reside within clinical environments. Today, hospitalized patients need to be wired to various measurement instruments when continuous biomonitoring is required. This confines the patients to their beds, restricting their mobility, and may also cause skin irritations and infections, aggravating their discomfort and deterioration of their health condition \cite{Darwish2011}. Moreover, the detachment of electrodes from the patient's body, provoked by patient's movements, is one of the main sources of false alarms. These require immediate attention from the hospital staff, contributing to their exhaustion and may ultimately result in the desensitization to the alarms, reducing their response time to real emergencies \cite{DursunErgezen2020}. Wearable, wireless, and non-intrusive devices can to minimize these issues to a large extent, and are seen as one of the key components of \acs{IoT}-based healthcare systems \cite{Baker2017}.  \bigskip
 
 In recent years there has been remarkable progress on the development of wearable devices, driven by recent technological breakthroughs in the miniaturization of sensors and microfabrication processes \cite{Adame2018}. From the literature, we can classify the sensors used in these devices in 3 distinct categories based on information that can be extracted from them, as shown in table \ref{tab:layer1-sensors}:
 
@@ -69,7 +69,7 @@ In recent years there has been remarkable progress on the development of wearabl
     \begin{tabular}{l|l}
         \textbf{Type of monitoring} & \textbf{Type of sensors used} \\ 
         \hline
-        \multirow{3}{*}{Vital Signs Monitoring} & Body Temperature, Heartbeat, Respiratory Rate, \\ & Galvanic Skin Response, Blood Pressure, Pulse Oximetry, \\ & \acf{ECG}, Glucose Level Sensors \\ \hline
+        \multirow{3}{*}{Vital Signs Monitoring} & Body Temperature, Heart Rate, Heart Rate Variability, \\ & Respiratory Rate, Galvanic Skin Response, Blood Pressure, \\ & Pulse Oximetry, \acs{ECG}, Glucose Level Sensors \\ \hline
         \multirow{2}{*}{Activity Monitoring} & Accelerometer, Gyroscope, Magnetometer, Ultrasound Sensors,\\ & \acf{RFID} Tags\\
         \hline
         \multirow{1}{*}{Environmental Monitoring} & Air Temperature, Humidity, Hazardous Gas Sensors \\
@@ -78,18 +78,16 @@ In recent years there has been remarkable progress on the development of wearabl
     \label{tab:layer1-sensors}
 \end{table}
 
-% Current research focuses on minimizing energy consumption of the devices to extend their lifetime. (...)
-
 \subsection{Layer 2: Connectivity}
 \label{sec:iot-model-layer2}
 
-\todo[inline]{To-do: Remake this section!!!!}
+\todo[inline]{To-do: Review this section later!!}
 
-The second layer of the model focuses on connectivity, on linking the different components of our system. The most important function of this layer is provide reliable and timely data transmission. This includes all communications within the system, which can be split into two categories: communications within the local network (\textit{e.g.} between edge nodes and the gateway devices), and communications between the edge of the local network (\textit{e.g.} gateway devices) and the central server. \bigskip
+The second layer of the model focuses on connectivity, on linking the different components of our system, ensuring reliable and timely data transmissions. This includes all communications within the system, which can be split into two categories: communications within the local network (\textit{e.g.} between edge nodes and the gateway devices), and communications between the edge of the local network (\textit{e.g.} gateway devices) and the central server. \bigskip
 
 \subsubsection{Communication Protocols}
 
-Technologies are designed with certain use cases in mind. They drive their development and thus it is natural that each one has their own advantages and disadvantages, depending on their use. For instance, short range wireless protocols like Wi-Fi or Bluetooth are limited by the transmission range, but long range protocols like NB-IoT usually have high energy consumption, which are unviable for networks with constrained devices. Each protocol also defines their own frame format and communicate within certain frequency bands, which may require special licenses. Due to the frequency bands used by UHF \acs{RFID}, metal and water surfaces near the devices introduce great interference in its transmissions due to signal reflections, thus reducing the effective transmission range \cite{Cairo2018}. The figure \ref{fig:communication-protocols} shows some commonly used protocols in \acs{IoT} systems grouped by range. 
+Technologies are designed with certain use cases in mind. They drive their development and thus it is natural that each one has their own advantages and disadvantages, depending on their use. For instance, short range wireless protocols are limited by the transmission range, but long range protocols usually have a higher energy consumption, which may be unviable for networks with very constrained devices. Each protocol also defines their own frame format and communicate within certain frequency bands, which may require special licenses. Due to the frequency bands used by UHF \acs{RFID}, metal and water surfaces near the devices introduce great interference in its transmissions due to signal reflections, thus reducing the effective transmission range \cite{Cairo2018}. The figure \ref{fig:communication-protocols} shows some commonly used protocols in \acs{IoT} systems grouped by range. 
 
 \begin{figure}[H]
     \centering
@@ -100,17 +98,28 @@ Technologies are designed with certain use cases in mind. They drive their devel
 
 \todo[inline]{To-do: Make new image based on this one.}
 
+Regarding 
+
+\todo[inline]{To-do: Add small comparison of most common protocols WSN used in healthcare? BLE, ZigBee?}
+
+Regarding 
+
+\todo[inline]{To-do: Complete section with short comparison between NB-IoT, LTE? Mention WiFi as the best solution tho }
+
+\todo[inline]{To-do: Complete section with short comparison between MQTT and CoAP}
+
+
 The choice of the communication protocol is driven by the characteristics of the smart devices, as defined in the first layer. However, we can highlight other key points that affect this decision:
 
 \begin{itemize}
     %\item \textbf{Cost}: The cost of implementing certain protocols may not be economically viable. \acs{RFID} systems are a great example of this. The development of \acs{RFID} tags is inexpensive, but this is offset by the immense cost of the \acs{RFID} readers, which can quickly become unsustainable.
     \item \textbf{Latency}: Certain applications deal with time critical events, for example the detection of health emergencies. In these cases, any delays in the communications can cause great detriment to the patient's well-being, making it crucial to minimize them.
     \item \textbf{Throughput}: The communication protocol should ensure there is enough bandwidth to handle all communications within the designated transmission range. Even within similar technologies, this can vary wildly with the range as seen in figure \ref{fig:communication-protocols-throughput}. 
-    \item \textbf{Security}: Security is one of the most important requirements of any system, but this is especially true for healthcare systems. Due to the sensitive nature of the information, it is crucial to secure the information from malicious actors. Communication protocols must implement security mechanisms, such as encryption or data integrity verifications, that ensure the transmissions are not compromised in transit, thus denying third parties the ability to snoop or tamper the transmissions.
-    \item \textbf{Interoperability}: To ensure the interoperability of the system it is imperative to choose protocols that are widely accepted and supported by the industry. %, ensuring maintainability.  
+    \item \textbf{Security}: Security is one of the most important requirements of any system, but this is especially true for healthcare systems. Due to the sensitive nature of the information, it is crucial to secure the information from malicious actors. Communication protocols must implement security mechanisms, such as encryption or data integrity verifications, that ensure the transmissions are not compromised in transit, thus denying third parties the ability to snoop or tamper the transmissions. This issue is studied in depth by \cite{Gope2016}.
+    \item \textbf{Interoperability}: To ensure the interoperability of the system it is imperative to choose protocols that are widely accepted and supported by the industry. This also contributes to the longevity of the system, as these will most likely remain supported for longer time periods. %, ensuring maintainability.  
     \item \textbf{Scalability}: This determines how many devices are supported and how many more can be added to the system, thus giving us a measure of the system's flexibility for expanding beyond the initial development. 
 \end{itemize}
- 
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.55\linewidth]{images/communication-protocols-throughput.png}
@@ -118,22 +127,10 @@ The choice of the communication protocol is driven by the characteristics of the
     \label{fig:communication-protocols-throughput}
 \end{figure}
 
-\todo[inline]{To-do: Complete section with a small comparison of most common protocols used in healthcare? BLE, ZigBee?}
-
-% \subsection{Security in the IoT}
-\todo[inline]{To-do: Add a section exposing most common security measures and attack vectors?}
-
-% \acs{IoT}
-% Discussions of security for each level and for the movement of data between levels could fill a multitude of papers.
-% For the purpose of the IoT Reference Model, security measures must:
-% ● Secure each device or system
-% ● Provide security for all processes at each level
-% ● Secure movement and communication between each level, whether north- or south-bound
-
 \subsection{Layer 3: Edge (Fog) Computing}
 \label{sec:iot-model-layer3}
 
-\acs{IoT} systems can often have hundreds or even thousands of sensors generating data multiple times per second, 24 hours per day, which can demand an unsustainable amount of network and computing resources. Moreover, certain applications may be time critical, where delays in communication can be very detrimental. Therefore, it is crucial to initiate data processing as close to the edge of the network as possible. This paradigm is usually referred to as ``edge computing'' (when the data processing occurs at the endpoint devices) or ``fog computing'' (when it happens at the edge of local network, \textit{e.g} in ``gateway'' devices). The third layer of the model defines how the system prepares the generated data for storage and higher level processing for the next layers. The data processing at this stage is generally very limited, mostly focused on ``preprocessing'' the data and handling time critical events. More demanding and thorough analysis should be left to the central server, which holds much greater computing power. The different processes applied at this stage usually are:
+\acs{IoT} systems can often have hundreds or even thousands of sensors generating data multiple times per second, 24 hours per day, which can demand an unsustainable amount of network and computing resources. Moreover, certain applications may be time critical, where delays in communication can be very detrimental. To minimize these effects, it is crucial to initiate data processing as close to the edge of the network as possible. This paradigm is usually referred to as ``edge computing'' (when the data processing occurs at the endpoint devices) or ``fog computing'' (when it happens at the edge of local network, \textit{e.g} in ``gateway'' devices). The third layer of the model defines how the system prepares the data for storage and higher level processing for the next layers. The data processing at this stage is generally very limited, mostly focused on ``preprocessing'' the data and handling time critical events. More demanding and thorough analysis should be left to the central server, which holds much greater computing power. The different processes applied at this stage usually are:
 
 \begin{itemize}
     \item \textbf{Filtering}: Assessing if the data should be processed at a higher level. 
@@ -147,50 +144,36 @@ The choice of the communication protocol is driven by the characteristics of the
 
 \todo[inline]{To-do: Review this section later.}
 
-The data that is generated by the edge devices is propagated through the network, moving through each layer with each sensor reading. Up to this point, the model is event driven. However, most applications cannot make use of the data as it is generated. Typically, it is assumed the data is at rest and can be easily accessed. In this layer, Data Accumulation, we define how the system captures the data and stores it, so it becomes usable for applications when needed, providing a transition to query-based processing. This includes any issues related with data storage: how the data should be stored (\textit{e.g.} using a relational database, non-relational database, distributed file systems, etc.), what data should be stored and which should be kept for short-term use, etc.
+The data that is generated by the edge devices is propagated through the system, moving through each layer with each sensor reading. Up to this point, the model is event driven. However, most applications cannot make use of the data at the rate it is generated. In this layer, Data Accumulation, we define how the system captures the data and stores it, so it becomes usable for applications when needed, providing a transition from event to query-based processing. This includes any issues related with data storage: how the data should be stored (\textit{e.g.} using a relational database, non-relational database, distributed file systems, data compression, etc.), what data should be stored and which should be kept for short-term use, etc.
 
-In healthcare, big data analytics is seen as one of the most promising features of \acs{IoT} applications. However, the massive data collection that is associated with ubiquitous systems causes many issues concerning the processing and storage of data. Cloud platforms are often seen as a solution to this problem \cite{Baker2017}. This is made possible due to the elasticity in allocating, swiftly and inexpensively, shared resources on-demand, adjusting itself to the needs of each application. We can find 3 distinct types of cloud services:
+In healthcare, big data analytics is seen as one of the most promising features of \acs{IoT} applications. However, the massive data collection that is associated with ubiquitous systems causes many issues concerning the processing and storage of data. Cloud platforms are often seen as a solution to this problem \cite{Baker2017}. This is made possible due to the elasticity in allocating, swiftly and inexpensively, computing and storage resources on-demand, adjusting itself to the needs of each application. We can find 3 distinct types of cloud services:
 
 \begin{itemize}
-    \item \textbf{Infrastructure as Service (IaaS)}: Provides control over the remote machine (composed of virtual or dedicated hardware), operative system and middleware. This approach gives system designers the highest level of flexibility over the infrastructure.
+    \item \textbf{Infrastructure as Service (IaaS)}: Provides control over the remote machine (composed of virtual or dedicated hardware), operative system and middleware. This approach gives system designers the highest level of flexibility over the infrastructure, but requires more maintenance.
     \item \textbf{Platform as a Service (PaaS)}: Provides a simple framework for developing applications, where the service provider manages the underlying infrastructure issues such as software updates and hardware maintenance. 
-    \item \textbf{Software as a Service (SaaS)}: Provides the finished applications used by the end users, in this case health workers, that enable them to work. A simple example is a web-based email service, such as Gmail or Microsoft Outlook. 
+    \item \textbf{Software as a Service (SaaS)}: Provides the finished applications to be used by the end users, in this case health workers, that enable them to work. A simple example is a web-based email service, such as Gmail or Microsoft Outlook. 
 \end{itemize}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth]{images/cloud-services.png}
     \caption[Differences between the cloud offerings and on-premise solutions.]{ Differences between the cloud offerings and on-premise solutions. Source: \cite{RedHat2021}}
-    %\label{fig:communication-protocols}
+    \label{fig:differences-between-cloud-services}
 \end{figure}
+
+Nonetheless, security and privacy remain as key issues in cloud systems. The information must remain accessible to authorized parties such as healthcare providers, but the patient's health data has to kept private. To solve this, there are two commonly adopted features in the literature:  access control policies and data encryption. Access control policies define who can access the data, by authenticating them (validating the identity of the user) and by authorizing them (ensuring that the user has permissions to perform a given operation). Data encryption ensures that, even if the data is leaked, it is still unreadable to third parties, and therefore the sensitive information remains secure and private.
 
 \subsection{Layer 5: Data Abstraction}
 \label{sec:iot-model-layer5}
 
-\todo[inline]{To-do: Complete section.}
+\todo[inline]{To-do: Review this section later.}
 
-% Reconciles multiple data formats and ensures consistent semantics from various sources. Confirms that the data set is complete and consolidates data into one place or multiple data stores using virtualization.
-% The fifth layer is tasked with reconciling the 
+In the previous layer, Data Accumulation, we've defined how the system captures the information. In large scale systems, the collection of data may require the development of multiple concurrent storage solutions, each using different technologies, resulting in a very complex environment. The purpose of this layer is simplify how the applications access the data, to reconcile the different data stores and ensure the information is complete and consistent. 
 
-% IoT systems will need to scale to a corporate—or even global—level and will require multiple storage systems to accommodate IoT device data and data from traditional enterprise ERP, HRMS, CRM, and other systems. The data abstraction functions of Level 5 are focused on rendering data and its storage in ways that enable developing simpler, performance-enhanced applications. With multiple devices generating data, there are many reasons why this data may not land in the same data storage:
-% ● There might be too much data to put in one place.
-% ● Moving data into a database might consume too much processing power, so that retrieving it must be separated from the data generation process. This is done today with online transaction processing (OLTP) databases and data warehouses.
-% ● Devices might be geographically separated, and processing is optimized locally.
-% ● Levels 3 and 4 might separate “continuous streams of raw data” from “data that represents an event.” Data storage for streaming data may be a big data system, such as Hadoop. Storage for event data may be a relational database management system (RDBMS) with faster query times.
-% ● Different kinds of data processing might be required. For example, in-store processing will focus on different things than across-all-stores summary processing.
-% For these reasons, the data abstraction level must process many different things. These include:
-% ● Reconciling multiple data formats from different sources
-% ● Assuring consistent semantics of data across sources
-% ● Confirming that data is complete to the higher-level application
-% ● Consolidating data into one place (with ETL, ELT, or data replication) or providing access to multiple data stores through data virtualization
-% ● Protecting data with appropriate authentication and authorization;
-% ● Normalizing or denormalizing and indexing data to provide fast application access;
+This is generally accomplished with the development of \acl{API}s (\acs{API}). An \acs{API} is a computing interface that defines a set of rules that ``explain how computers and applications communicate with one another''. \cite{IBMAPI}, acting as an intermediary between different systems and software components. It defines what operations can be performed, how to request them, which are the accepted data types, etc. 
 
-\subsubsection{\acf{FHIR}}
+Regarding healthcare services, as patients continuously move around the healthcare ecosystem, their health information must be available, discoverable and understandable to different entities (hospitals, laboratories, pharmacies, etc.). This prompts the digitization of medical files and the development of standards for exchanging these records instantly and securely to authorized users \cite{HL72019}, which are called \acl{EHR}s (\acs{EHR}s). \acs{EHR}s is the digital equivalent of a patient's paper-chart, it contains the patients' full medical history: previous diagnoses, treatment plans, test results, known allergies, among other details. It is now an essential component of health IT. One of the most prominent \acf{FHIR} is a standard data format for exchanging \acs{EHR}s, developed by Health Level Seven International (HL7). HL7 is a non-profit organization involved in the development of international healthcare informatics for over 20 years. \acs{FHIR} builds upon previous data format standards like HL7 v2 and HL7 v3, and is becoming more and more widely adopted within the healthcare industry. 
 
-As patients continuously move around the healthcare ecosystem, their health information must be available, discoverable and understandable to different entities (hospitals, laboratories, pharmacies, etc.). This prompts the digitization of medical files and the development of standards for exchanging these records instantly and securely to authorized users \cite{HL72019}, which are called \acl{EHR}s (\acs{EHR}s). \acs{EHR}s is the digital equivalent of a patient's paper-chart, it contains the patients' full medical history: previous diagnoses, treatment plans, test results, known allergies, among other details. It is now an essential component of health IT. 
-
-\acf{FHIR} is a standard data format for exchanging \acs{EHR}s, developed by Health Level Seven International (HL7). HL7 is a non-profit organization involved in the development of international healthcare informatics for over 20 years. \acs{FHIR} builds upon previous data format standards like HL7 v2 and HL7 v3, and is widely adopted within the healthcare industry. 
 
 \subsection{Layer 6: Application}
 \label{sec:iot-model-layer6}
@@ -199,7 +182,7 @@ As patients continuously move around the healthcare ecosystem, their health info
 
 % Interprets data using software application. Applications may monitor, control and provide reports based on the analysis of the data.
 
-The sixth layer is the application layer, where the interpretation of the captured data occurs. 
+The sixth layer is the application layer, where the system proceeds to analyze the data captured and 
 
 % Finally, machine learning to perform diagnostics or provide treatment plans would be extremely valuable in a healthcare context, so a cloud storage framework for healthcare would need to enable value. As all of the characteristics of big data are important to healthcare applications, recent research in this area has focused on storing a wide variety of data generated by voluminous IoT systems in an organized manner that may be useful for later data analysis.
 
@@ -218,7 +201,7 @@ The sixth layer is the application layer, where the interpretation of the captur
 \subsection{Layer 7: Collaboration and Processes}
 \label{sec:iot-model-layer7}
 
-\todo[inline]{To-do: The Cisco model defines a seventh layer: Collaboration and Processes, but how can one model for it (if it is even possible)? Should this section be removed entirely, or what should be added to make it more complete? }
+\todo[inline]{To-do: The Cisco model defines a seventh layer: Collaboration and Processes, but how can one model for it (if it is even possible)?  Should this section be removed entirely, or what should be added to make it more complete? }
 
 The information that is created by the \acs{IoT} yields little value unless it prompts action, which requires people and processes (seventh layer) — this is what differs \acs{IoT} from traditional \acl{IT} systems. The objective is not the application — it is to empower people to work better and more efficiently. The sixth layer (Applications) provides business people the right insight, at the right time, so they can make the right decision. To do this people must be able to communicate and collaborate, which often requires multiple steps and transcends multiple applications \cite{Cisco2014}.
 
@@ -230,9 +213,6 @@ The information that is created by the \acs{IoT} yields little value unless it p
 % Quadro comparativo com maiores diferenças entre cada projeto e o WoW-WP4
 
 \todo[inline]{To-do: Place table with a list of criteria to compare the different approaches.}
-% Competing solutions and constraints
-%
-% Most of our competitors are only partial — they either develop IoT platforms to collect the signals from other devices already in the market, or they develop innovative medical devices for remote monitoring. The majority of the companies commercializing telemonitoring solutions use big equipment/ medical devices manufactured by other companies, which use communication standards and Wi-Fi to transmit the data to a cloud platform developed by them, where it is analyzed, providing healthcare professionals the results. Mainly, these solutions are used for domiciliary care, not in hospital facilities, and some are specific for certain pathologies (diabetes, COPD). Examples of companies providing this type of solutions are: HopeCare and VitalMobile in Portugal and Tunstall in Spain. Other companies develop wireless wearables to collect biosignals, mainly for wellness purposes. Most of these devices cannot be used for diagnosing without further exams. An example is QardioCore, a wearable electrocardiogram monitor, designed to improve detection and monitoring of cardiac conditions during the daily basis and when performing physical activity. The data collected by the device is sent to an App, which analyses the signal. The results can then be sent by e-mail to the physician. This solution does not have a platform or an online portal to support the analysis, neither it integrates with other systems
 
 \subsection{Weaknesses of literature}
 
