@@ -6,11 +6,11 @@ jobs:
     steps:
       - name: Set up Git repository
         uses: actions/checkout@v2
-      - name: Compile LaTeX document
-        uses: xu-cheng/latex-action@v2
+      - name: LaTeX compilation
+        uses: dante-ev/latex-action@v0.2.0
         with:
+          # The root LaTeX file to be compiled
           root_file: main.tex
-          post_compile: "latexmk -c"  
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
