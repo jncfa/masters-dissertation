@@ -23,10 +23,10 @@
 \usepackage{acronym}					% List of acronyms
 \usepackage{textcomp} 					% Extra characters
 \usepackage{graphicx} 					% \includegraphics{}, the most common command to include images in figures 
-\usepackage{titlesec}					% To manually format the chapter titles
+\usepackage{titlesec}		 			% To manually format the chapter titles
 \usepackage[left=2.5cm,right=2cm,top=2cm,bottom=2cm]{geometry} % Margins, as dictated by the rules
 \usepackage[nottoc]{tocbibind} 	% Hyperlinks in table of contents, useful for navigation
-\usepackage{multirow}
+\usepackage{multirow, makecell, pifont, rotating}
 \usepackage[section]{placeins}			% \FloatBarrier, a useful command when your figures are trying to run away
 \usepackage{caption}					% For captioning figures
 \usepackage{subcaption}					% Subfigures (the subfigure package is deprecated and should not be used)
@@ -51,6 +51,9 @@
 \usepackage{etoolbox}
 \usepackage{float}
 
+\renewcommand\cellalign{lc}
+\newcommand{\xmark}{\ding{55}}%
+\newcommand{\cmark}{\ding{51}}%
 \setlength{\headheight}{16pt}
 \renewcommand{\baselinestretch}{1.5}	% 1.5 line spacing, as mandated by the rules
 \titleformat{\chapter}[hang] 			% Smaller chapter titles
