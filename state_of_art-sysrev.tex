@@ -51,9 +51,8 @@ In \cite{Fuhrer2006} one of the first \acs{IoT} applications for healthcare is d
 % Other Notes: 
 % - Ran a hospital trial
 %------------------------------
-%-->
 
-In \cite{Adame2018} the authors build upon this concept, introducing monitoring of the patient's vital signs, using a small wristband which holds a low power device equipped with temperature, heart rate and accelerometer sensors. The system can also detect with 70\% accuracy if the patient has fallen, sending an immediate message to the gateway, which will later alert the clinical staff of the emergency (although how the staff is alerted is not discussed). The authors ran a pilot test within hospital premises and found it was well-received by the clinical staff who praised the system for its intuitiveness and non-intrusiveness, stating that it could be easily integrated with their current \acs{HIS}. However, the authors pointed out some issues with the usage of \acs{RFID} tags with sensors for patient monitoring. The \acs{RFID} reader needs to provide power to the \acs{RFID} tags, and when using these tags with sensors, the readers need to be configured to allow these tags to be powered up. Regarding e-health standards, the authors did not discuss any protocols for exchanging data such as \acs{FHIR}, which can result in a 
+In \cite{Adame2018} the authors build upon this concept, introducing monitoring of the patient's vital signs, using a small wristband which holds a low power device equipped with temperature, \acs{PPG} (used to obtain the heart rate) and accelerometer sensors. The system can also detect with 70\% accuracy if the patient has fallen, sending an immediate message to the gateway, which will later alert the clinical staff of the emergency. The authors ran a pilot test within hospital premises which was well-received by the clinical staff who praised the system for its intuitiveness and non-intrusiveness, stating that it could be easily integrated with their current \acs{HIS}. However, the authors pointed out some issues with the usage of \acs{RFID} tags with sensors for patient monitoring. The \acs{RFID} reader needs to provide power to the \acs{RFID} tags, and when using these tags with sensors, the readers need to be configured to allow these tags to be powered up. Regarding e-health standards, the authors did not discuss any protocols for exchanging data such as \acs{FHIR}, which can undermine the integration of the system with existing \acs{HIS}s.
 
 %==========================================================================================================================================
 %[3] L. Catarinucci et al., “An IoT-Aware Architecture for Smart Healthcare Systems,” IEEE %Internet Things J., vol. 2, no. 6, pp. 515–526, Dec. 2015, doi: 10.1109/JIOT.2015.2417684.
@@ -78,11 +77,7 @@ In \cite{Adame2018} the authors build upon this concept, introducing monitoring 
 % Other Notes: 
 % - 
 %------------------------------
-%----
-\cite{Catarinucci2015}
-
-%..placeholder...
-
+% \cite{Catarinucci2015}
 
 %==========================================================================================================================================
 %[4] T. Wu, F. Wu, C. Qiu, J. M. Redoute, and M. R. Yuce, “A Rigid-Flex Wearable Health Monitoring Sensor Patch for IoT-Connected Healthcare Applications,” IEEE Internet Things J., vol. 7, no. 8, pp. 6932–6945, 2020, doi: 10.1109/JIOT.2020.2977164.
@@ -108,30 +103,8 @@ In \cite{Adame2018} the authors build upon this concept, introducing monitoring 
 % Other Notes: 
 % - 
 %------------------------------
-%Contribution:
-%"In this article, an innovative low-power wearable sensor patch is proposed for IoT-connected remote long-term healthcare applications. The sensor patch system consists of three main parts: 1) a center board for signal acquisition, processing, and transmission; 2) a power board for energy supply and charging batteries; and 3) different sensors for physiological parameters measurements. All components of the sensor patch is connected and presented in a rigid-flex structure, which is suitable for wearable health monitoring of ECG, PPG, HR, and body temperature. As the ECG and PPG are integrated on the same device, continuous BP estimation based on the PAT method can be achieved without extra wires or hardware configurations. The experimental results demonstrate the performance of the proposed sensor patch against the comparison with a commercial reference medical equipment."
-%
-%- Development of a innovative wearable sensor patch
-%
-%Significance: 
-%(...)
-%
-%
 %Future Work:
 %"Since security is not the focus of this article, the two common security measures are implemented to meet the basic requirements of the following: (...) Security Between Wearable Patches and Gateways (...) Security Measures in Gateways and Cloud Server"
 %"In our future work, more edge computing functions on the gateway will be developed for an IoT-connected healthcare platform."
 
-In \cite{Wu2020} 
-
-Wu et al. \cite{Wu2020} developed a system which uses wearable sensor networks to monitoring the patients' status. The wearable sensors transmit the different physiological signals (ECG, PPG and body temperature) using BLE to gateways, which can either by fixed or mobile, by using smartphones. The gateway exchanges data with the cloud through bridged MQTT brokers, allowing the development of local features (e.g. local UI to interact with the patients) and cloud processing features (e.g. Big Data Analytics, data storage, UI for medical professionals). 
-
-%==========================================================================================================================================
-% [5] e-CoVig
-%
-% Contribution:
-%
-% Significance:
-%
-%
-% Future work:
-%
+Wu et al. \cite{Wu2020} developed a system which uses wearable sensor networks to monitoring the patients' status. The wearable sensors transmit the different physiological signals (ECG, PPG and body temperature) using \acs{BLE} to gateways, which can either by fixed (using a Raspberry Pi module) or mobile (using a smartphone). The gateway exchanges data with the cloud through bridged \acs{MQTT} brokers, after which it is stored in a MySQL database. The local users can interact with the system through a web based user interface (UI) using the smartphone or other web browsers in the local area network. 
