@@ -13,8 +13,8 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   build_latex:
-  - name: Compile Latex
-    uses: dante-ev/latex-action@v0.2.0
-    with:
-      root_file: main.tex
+    - name: Compile Latex
+      uses: dante-ev/latex-action@v0.2.0
+      with:
+        root_file: main.tex
 
