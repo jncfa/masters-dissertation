@@ -59,11 +59,30 @@
 \titleformat{\chapter}[hang] 			% Smaller chapter titles
 {\normalfont\huge\bfseries}{\thechapter}{1em}{} 
 
-% Your info goes here
+\newcommand{\MONTH}{%
+  \ifcase\the\month
+  \or January% 1
+  \or February% 2
+  \or March% 3
+  \or April% 4
+  \or May% 5
+  \or June% 6
+  \or July% 7
+  \or August% 8
+  \or September% 9
+  \or October% 10
+  \or November% 11
+  \or December% 12
+  \fi}
+\makeatletter
+\newcommand{\YEAR}{\the\year}
+\makeatother
+
+% Não estamos presos a este título. Uma vez que temos uma ideia concreta das tarefas pela frente, estás à vontade para propor um titulo mais específico. Não me chocava ver palavras com "acquisition", "secure communication", "scalability" e/ou "interoperability" no teu título.
 \newcommand{\thesistitle}{Wireless IoT Architecture for Smart Nodes deployed in Hospital Beds}			% Your work's title
 \newcommand{\myname}{José Nuno da Cruz Faria}				% Your name
-\newcommand{\statedate}{Coimbra, ? 2021}					% The date, usually "Place, Month Year"
-\newcommand{\supervisorname}{Prof. Doutor David B. S. Portugal}		% Your supervisor's name
+\newcommand{\statedate}{Coimbra, \MONTH\ \YEAR}					% The date, usually "Place, Month Year"
+\newcommand{\supervisorname}{Doutor David B. S. Portugal}		% Your supervisor's name
 \newcommand{\cosupervisorname}{Prof. Doutor Mahmoud Tavakoli}	% Your co-supervisor's name, if any.
 
 % MAIN DOCUMENT
