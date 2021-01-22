@@ -42,12 +42,11 @@ jobs:
           <!doctype html>
           <html>
             <head>
-              <title>GitHub Pages deployed!</title>
+              <title>Version ${{ github.ref }}</title>
             </head>
             <body>
-              <embed src="${{ steps.create_release.outputs.upload_url }}" width="500" height="375" type="application/pdf">
-              <p>GitHub Pages with <strong>${{ github.sha }}</strong> commit ID has been deployed through <a href="https://github.com/marketplace/actions/github-pages">GitHub Pages action</a> successfully.</p>
-            </body>
+              <embed src="${{ steps.upload-release-asset.outputs.browser_download_url }}" width="100% height=100%" type="application/pdf">
+          </body>
           </html>
           EOL
       -
