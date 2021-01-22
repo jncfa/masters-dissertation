@@ -166,9 +166,9 @@ The authors indicate that \acs{MQTT} might be more suitable when considering a c
 \subsection{Layer 3: Edge (Fog) Computing}
 \label{sec:iot-model-layer3}
 
-\acs{IoT} systems may have hundreds or even thousands of sensors generating data multiple times per second, 24 hours per day, which may require an unsustainable amount of network and computing resources. Moreover, certain applications are time critical, where delays in communication can be very detrimental. To minimize these effects, it is crucial to initiate data processing as close to the edge of the network as possible. This paradigm is usually referred to as ``edge computing, when the data processing occurs at the endpoint devices, or ``fog computing, when it happens at the edge of local network, \textit{e.g.} in ``gateway devices. \bigskip
+\acs{IoT} systems may have hundreds or even thousands of sensors generating data multiple times per second, 24 hours per day, which may require an unsustainable amount of network and computing resources. Moreover, certain applications are time critical, where delays in communication can be very detrimental. To minimize these effects, it is crucial to initiate data processing as close to the edge of the network as possible. This paradigm is usually referred to as edge computing, when the data processing occurs at the endpoint devices, or fog computing, when it happens at the edge of local network, \textit{e.g.} in gateway devices. \bigskip
 
-The third layer of the model defines how the system prepares the data for storage and higher level processing for the next layers. However, the endpoint or gateway devices often have limited computing capabilities, so the data processing is generally focused on ``preprocessing the data in real-time and handling more time critical events. More demanding and thorough data analysis is usually left to the central server. \bigskip
+The third layer of the model defines how the system prepares the data for storage and higher level processing for the next layers. However, the endpoint or gateway devices often have limited computing capabilities, so the data processing is generally focused on preprocessing the data in real-time and handling more time critical events. More demanding and thorough data analysis is usually left to the central server. \bigskip
 
 The different processes applied at this stage can be summarized into four distinct categories:
 
@@ -252,10 +252,7 @@ One of the most prominent standards for exchanging \acs{EHR}s is \acf{FHIR}. \ac
 
 The sixth layer is the application layer, where the system ingests the captured data and proceeds to analyze it. Users can then interact with the system through Graphical User Interfaces (UI), which provide different functionalities depending on the application. Some may show simple reports regarding the collected data \cite{Doukas2012, Wu2020}, other may allow users to monitor and control the different components of the system. Thus, in this layer, the system delivers the value for the end users.
 
-% As previously mentioned, one of the greatest benefits \acs{IoT} systems can provide is big data analytics. 
-
-% Recently, and motivated by the recent pandemic crisis, investigators from ISR-Lisboa developed a system called e-CoVig, a low-cost solution for monitoring patients during the COVID-19 quarantine \cite{}.  
-
+% As previously mentioned, one of the greatest benefits \acs{IoT} systems can provide is big data analytics.  
 
 % In healthcare, and particularly in hospitals, clinical professionals use \acl{HIS}s (\acs{HIS}). These systems are used to manage all different aspects of a hospitals operation, medical, administrative, financial and legal. 
 
@@ -294,14 +291,10 @@ The information that is created by the \acs{IoT} yields little value unless it p
 
 \todo[inline]{To-do: Complete section! 
 - Add introductory paragraph! 
-
 Perform a critical analysis of all related work.
-
 You should make clear and focus on what is your contributions, and state clearly what is *not* your contributions (i.e. out of the scope of this work).
-
 Falta um parágrafo introdutório.
 O que se vai fazer nesta sub.secção? pq?
-
 }
 \input{state_of_art-sysrev}
 
@@ -316,6 +309,7 @@ O que se vai fazer nesta sub.secção? pq?
           \cite{Adame2018} & \makecell{Temperature, \\Heart Rate,\\ Accelerometer} & \makecell{EPC/RFID,\\ Wi-Fi} & MySQL & None & \makecell{RTLS, \\ Fall Detection,\\ Vital signs\\ monitoring}& \makecell{Unspecified Storage \\Encryption} \\
           % \cite{Catarinucci2015} & \makecell{Temperature, \\ \acs{ECG}, Accelerometer,\\  Barometric Pressure,\\  Ambient Light} & \makecell{EPC/RFID, 6LowPAN,\\ CoAP} & MySQL & None & RTLS & ? \\
           \cite{Wu2020} & \makecell{Temperature, \\Heart Rate,\\ Accelerometer} & \makecell{BLE, Wi-Fi, \\ MQTT} & MySQL & None & \makecell{RTLS, \\ Fall Detection,\\ Vital signs\\ monitoring}& \makecell{AES-128} \\
+          \cite{Doukas2012} & \makecell{Temperature, \\Heart Rate,\\ } & & & & &  \\
           %\cite{} & & & & & &  \\
         \end{tabular}
       \caption{Comparison between different pervasive healthcare applications.}
@@ -328,26 +322,22 @@ O que se vai fazer nesta sub.secção? pq?
 \todo[inline]{To-do: Review section later!}
 \label{sec:weaknesses}
 
+% Apenas identificas o problema da Interoperabilidade e Standards?
+% Pensa tb nas questões de segurança e escalabilidade. 
+% Pode não ser uma fraqueza/desafio comum a *todos* os trabalhos na literatura mas ser algo q nem sempre é bem resolvido.
+
 %\subsubsection{Security and Privacy} 
 % From the literature, we find that researchers ensure data security and privacy through 
 %\subsubsection{Interoperability} 
 
-% Apenas identificas o problema da Interoperabilidade e Standards?
-% Pensa tb nas questões de segurança e escalabilidade. 
-% Pode não ser uma fraqueza/desafio comum a *todos* os trabalhos na literatura mas ser algo q nem sempre é bem resolvido.
-% 
-
 Despite recent efforts, interoperability is still an issue of \acs{IoT} systems. Due to the lack of clear and concise industry standards and regulations, many manufacturers develop their own proprietary data formats and communication protocols, which hampers the integration of new resources since the systems are designed within closed ecosystems \cite{Rubi2019}. Moreover, the adoption of new systems can be often met with much objection from the clinical staff due to their mistrust of technology \cite{DursunErgezen2020}. 
 To facilitate the deployment of new healthcare systems in hospitals, these need to be integrated easily in existing \acs{HIS}. \bigskip
 
-Fortunately, there are several international initiatives to promote the use of \acs{IoT} in health in a standardized way, such as HIMSS (Healthcare Information and Management Systems Society) and the Personal Connected Health Alliance (PCHAlliance). PCHAlliance for example promotes the adoption of the Continua Design Guidelines (CDG), which facilitates the integration of personal health devices into health systems. These guidelines have been recognized by ITU (International Telecommunication Union) and the European Commission and are adopted by countries such as Denmark, Norway and the USA, among others \cite{PersonalConnectedHealthAlliance2017}. These guidelines describe a series of e-health standards like \acs{FHIR} which facilitate the transfer  
+Fortunately, there are several international initiatives to promote the use of \acs{IoT} in health in a standardized way, such as HIMSS (Healthcare Information and Management Systems Society) and the Personal Connected Health Alliance (PCHAlliance). PCHAlliance for example promotes the adoption of the Continua Design Guidelines (CDG), which facilitates the integration of personal health devices into health systems. These guidelines have been recognized by ITU (International Telecommunication Union) and the European Commission and are adopted by countries such as Denmark, Norway and the USA, among others \cite{PersonalConnectedHealthAlliance2017}. These guidelines describe a series of e-health standards like \acs{FHIR} which facilitate the exchange of information between systems, in order to ensure the implementations become truly interoperable.
 
-Within this project we aim to continue to expand the capabilities of the Continua Design Principles to
-further extend the software to collect the data that is being exchanged between sensors, gateways,
-and end services to make implementations truly interoperable.
+% Within this project we aim to continue to expand the capabilities of the Continua Design Principles tofurther extend the software to collect the data that is being exchanged between sensors, gateways, and end services to make implementations truly interoperable.
 
-The PCHAlliance publishes and promotes the global adoption of standards and the implementation guidelines that unleash the massive amounts of medical-grade data that enables a more holistic perspective. Commercial ready software enables the rapid integration of these standards into your product. A conformity assessment program verifies that the standards have been properly and uniformly implemented.
-
+% The PCHAlliance publishes and promotes the global adoption of standards and the implementation guidelines that unleash the massive amounts of medical-grade data that enables a more holistic perspective. Commercial ready software enables the rapid integration of these standards into your product. A conformity assessment program verifies that the standards have been properly and uniformly implemented.
 
 \section{Statement of Contributions}
 \todo[inline]{To-do: Complete section!}
@@ -356,8 +346,41 @@ The PCHAlliance publishes and promotes the global adoption of standards and the 
 %2) inspira-se nos conceitos extistentes nisto e naquilo.
 
 % Note to self: The biostickers will be mentioned in the first chapter when presenting the objectives.
-After studying the different approaches taken by investigators, and in context of the \acs{WoW} project, we propose a novel \acs{IoT} infrastructure that uses the \acs{FHIR} standard in order to fully integrate the data in the existing \acs{HIS}, Glintt GlobalCare. Other researchers in the \acs{ISR} have already developed wearable devices, designated ``biostickers, using two different networking stacks - BLE and EPC/RFID. The system must ensure reliable and secure communications with the devices, implementing the aformentioned security features in section \ref{sec:weaknesses}. From an hardware perspective, the system will be composed of 3 different components: the biostickers, the ``Smart Box, which acts as a central node of the WBAN, aggregating the data and then communicating it along the network, and the ``Smart Gateway, which serves as a fog server in order to mitigate latency and other computing issues and acts as the gateway to the \acs{HIS}. In the next chapter we will start the development of the system by first tackling the communication between the biostickers and the ``Smart Boxes. 
+After studying the different approaches taken by researchers, and in context of the dissertation, we propose a novel fully modular \acs{IoT} infrastructure that uses the \acs{FHIR} standard in order to fully integrate the data in the existing \acs{HIS}, Glintt GlobalCare. Other researchers in the \acf{ISR} already developed wearable devices, designated ``biostickers'', using two different networking stacks — \acs{BLE} and \acs{EPC/RFID}. The system must ensure reliable and secure communications with the devices for each protocol, implementing the aforementioned security features in section \ref{sec:weaknesses}. From a hardware perspective, the system is composed of 3 different components, as seen Figure \ref{fig:wow-architecture}: the biostickers, that acquire the patient's physiological signals, the ``SmartBox'', which acts as a central node of the WBAN and aggregate the data and then communicates it to the gateway, and the ``Smart Gateway'', which serves as a fog server in order to mitigate latency and other computing issues and acts as the gateway to the \acs{HIS}. 
 
-% In the context of the WoW project, a preliminary study will be performed, by analyzing 24 hours of data from 3 volunteers who are using a speciﬁc drug (i.e.! paracetamol) in order to illustrate the eﬀect of the drug intake on various parameters, including temperature, emotions, heart rate, blood oxygen, and respiration.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{images/wow-architecture.png}
+    \caption{Overview of the proposed \acs{IoT}-connected healthcare system.}
+    \label{fig:wow-architecture}
+\end{figure}
+
+For the work developed throughout the dissertation, we have set the following goals: 
+
+\begin{itemize}
+    \item Develop and deploy SmartBoxes embedded in hospital beds for data acquisition from biostickers attached to patients’ skin via \acs{RFID}:
+    \begin{itemize}
+        \item Hardware evaluation of 2 different \acs{IoT} kits (Raspberry Pi and Udoo Bolt).
+        \item Viability study of a disruptive battery-less \acs{RFID} data acquisition compared to a \acs{BLE} acquisition.
+        \item Implementation of reliable and secure \acs{RFID} data acquisition and general communication between the biosticker and the Smart Boxes.
+        \item Selection of hardware components and assembly of SmartBox prototype;
+    \end{itemize}
+    \item Establishment of data integration pipelines using \acs{MQTT} and management of the multiple SmartBoxes in the Smart Gateway;
+    \item Development of a \acs{FHIR} \acs{API} layer to integrate the proposed system in the GlobalCare \acs{HIS}.
+    \item Evaluation of the performance of the proposed system through controlled lab tests and later deployment hospital trials within the WoW project.
+\end{itemize}
+\todo[inline]{Adiciono também o objetivo da análise de dados? Ou até ver deixo só estes?}
+
+\section{Summary}
+
+In the next chapter, we begin with the hardware evaluation of the different \acs{IoT} kits and the implementation of secure communications between the biostickers and the SmartBoxes.
+
+% - Hardware evaluation for edge nodes which integrate electronic wireless patches that gather patient's physiological signals;
+% - Integrating IoT system in an existing healthcare information system (Glintt GlobalCare software) through an FHIR API layer;
+% - Evaluation of the performance of the proposed system through a testbed and a real healthcare scenario;
+
+% In the context of the WoW project, a preliminary study will be performed, by analyzing 24 hours of data from 3 volunteers who are using a speciﬁc drug (i.e.! paracetamol) in order to illustrate the effect of the drug intake on various parameters, including temperature, emotions, heart rate, blood oxygen, and respiration.
+
+% Se fizer sentido, na dissertação podes ter um capitulo de "Technological Background", que faz um overview às ferramentas de sotware e ao próprio hardware utilizado no projecto. (to be discussed later)
 
 \bigskip
