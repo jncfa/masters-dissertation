@@ -10,11 +10,11 @@ jobs:
     steps:
       - name: Set up Git repository
         uses: actions/checkout@v2
-      - name: LaTeX compilation
-        uses: dante-ev/latex-action@v0.2.0
-        with:
-          # The root LaTeX file to be compiled
-          root_file: main.tex
+      #- name: LaTeX compilation
+      #  uses: dante-ev/latex-action@v0.2.0
+      #  with:
+      #    # The root LaTeX file to be compiled
+      #    root_file: main.tex
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
@@ -35,3 +35,27 @@ jobs:
           asset_path: ./main.pdf
           asset_name: main.pdf
           asset_content_type: application/pdf
+      - name: Generate dummy page
+        run: |
+          mkdir public
+          cat > public/index.html <<EOL
+          <!doctype html>
+          <html>
+            <head>
+              <title>GitHub Pages deployed!</title>
+            </head>
+            <body>
+              <embed src="${{ steps.create_release.outputs.upload_url }}" width="500" height="375" type="application/pdf">
+              <p>GitHub Pages with <strong>${{ github.sha }}</strong> commit ID has been deployed through <a href="https://github.com/marketplace/actions/github-pages">GitHub Pages action</a> successfully.</p>
+            </body>
+          </html>
+          EOL
+      -
+        name: Deploy to GitHub Pages
+        if: success()
+        uses: crazy-max/ghaction-github-pages@v2
+        with:
+          target_branch: gh-pages
+          build_dir: public
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
