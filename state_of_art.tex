@@ -1,10 +1,5 @@
-In this chapter a survey of pervasive healthcare applications is presented. In order to gain a greater understanding of which are the building blocks of a typical \acf{IoT} system, a reference model is also presented.
+Being central to the work described in this dissertation, in this chapter a survey of pervasive healthcare applications is presented. In order to gain a greater understanding of which are the building blocks of a typical \acf{IoT} system, a reference model for \acs{IoT} systems is also discussed. 
 
-% Aqui é necessário algum contexto ao leitor. Uma vez que vais entregar um estado da arte, é dificil desacoplares isto completamente do teu trabalho.
-% Seria importante uma frase introdutória do estilo:
-% "Being central to the work described in this dissertation/report/document, in this chapter..."
-
-\todo[inline]{To-do: Redo introductory paragraph (see coments in latex).}
 
 \section{Internet of Things}
 
@@ -14,9 +9,13 @@ In this chapter a survey of pervasive healthcare applications is presented. In o
 
 \acl{IoT} (or \acs{IoT}) is an emerging communication paradigm, often hailed as the driver of the Fourth Industrial Revolution \cite{Aceto2020}. \bigskip
 
-\todo[inline]{To-do: Highlight definition using a box (see coments in latex).}
+The definition of this concept has evolved over time with the development of other technologies such as data analytics, embedded systems, sensors, etc. Fundamentally, it can be described as the following \cite{Baker2017}: \bigskip
 
-The definition of this concept has evolved over time with the development of other technologies such as data analytics, embedded systems, sensors, etc. Fundamentally, it describes a strategy supported on the development of networks of smart devices that exchange and process information through Machine-to-Machine (M2M) communications, usually based on the \acf{IP} \cite{Baker2017}. This technology enables ubiquitous systems to gather remarkable amounts of information regarding the surrounding environment, which can later be turned into insight through the usage of data fusion and data analytics tools, like Machine Learning. \bigskip
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black]
+    \acs{IoT} is a strategy supported on the development of networks of smart devices that exchange and process information through Machine-to-Machine (M2M) communications, usually based on the \acf{IP}.
+\end{tcolorbox}
+
+This technology enables ubiquitous systems to gather remarkable amounts of information regarding the surrounding environment, which can later be turned into insight through the usage of data fusion and data analytics tools, like Machine Learning. \bigskip
 
 In the specific context of healthcare, this technology can provide many benefits as it enables remote and continuous health monitoring \cite{Doukas2012, Wu2020, Fan2014}. It allows non-critical patients to be monitored from the comfort of their own houses, rather than in hospitals or clinics, reducing the strain on scarce hospital resources such as health professionals or beds. This is particularly beneficial to those who live in rural areas, with limited access to healthcare services. It enables elderly people and those with chronic diseases to have greater control over their own health, thus allowing them to live more independently. Moreover, with the automatization of medical procedures, these systems can make healthcare infrastructures more efficient and therefore lower the costs of healthcare \cite{Catarinucci2015, Adame2018}. Particularly, in the realm of clinical research, by analyzing the data collected by these ubiquitous systems, it may be possible to find new relationships between certain pathologies and different physiological signals, such as variations in body temperature or heart rate \cite{Choi2016}. These correlations, commonly referred to as biomarkers, can be used by these systems to assist clinical decisions, enabling novel predictive, prognostic, and diagnostic processes in healthcare.
 
@@ -34,7 +33,7 @@ In 2014, the \acs{IoT} World Forum (IoTWF) architectural committee published an 
 
 While this model can be used to generically develop \acs{IoT} systems for any industry (\textit{e.g.} from agriculture to smart cities), in the context of the dissertation we will focus on pervasive healthcare applications. \bigskip
 
-\todo[inline]{To-do: Make new image based on this one. (!!)}
+% \todo[inline]{To-do: Make new image based on this one. (!!)}
 
 \begin{figure}[H]
     \centering
@@ -92,16 +91,8 @@ From the literature, a set of key requirements that drive the decision of the co
     \item \textbf{Interoperability}: To ensure the interoperability of intrinsically different modules of the system it is imperative to choose protocols that are widely accepted and supported in the application domain. This also contributes to the longevity and maintenance of the system, as these will most likely remain supported for longer time periods. 
     \item \textbf{Range}: The communication protocol must ensure the devices can communicate within the required transmission range.
     \item \textbf{Scalability}: These systems contain an enormous amount of devices, which must be uniquely identified. The communication protocol must ensure that every device in the network is addressable, and that performance is not severely impacted by the addition of new devices.
-    \item \textbf{Throughput}: The communication protocol should ensure there is enough bandwidth to handle all communications within the designated transmission range. Even within similar technologies, this can vary wildly with the range, as seen in Figure \ref{fig:communication-protocols-throughput}.  
-
+    \item \textbf{Throughput}: The communication protocol should ensure there is enough bandwidth to handle all communications within the designated transmission range. Even within similar technologies, this can vary wildly with the range \cite{10.5555/3161403}.
 \end{itemize}
-
-\begin{figure}[H] 
-    \centering
-    \includegraphics[width=0.55\linewidth]{images/communication-protocols-throughput.png}
-    \caption{Throughput versus Transmission range for four communications protocols (quais?) with similar ranges. Source: \cite{10.5555/3161403}}
-    \label{fig:communication-protocols-throughput}
-\end{figure}
 
 % IEEE 802.15.4?
 Regarding communications within the local network, these generally have short transmission ranges \cite{Baker2017}. Wearable devices can be often arranged in networks, aptly designated ``Wireless Body Area Network''. The most widely adopted protocol is \acf{BLE}, a low-energy version of the classic Bluetooth protocol \cite{Doukas2012, Wu2019, Wu2020}. ZigBee and \acf{RFID} are also used in many systems in this domain, particularly in more asset tracking oriented applications \cite{Fuhrer2006, Catarinucci2015, Adame2018}. Despite the absence of a universal specification for \acs{RFID}, the most widely used standard is the EPCglobal Gen2 RFID \cite{EPCglobal2006}, which is the standard considered in this work. For the sake of simplicity, we use \acs{EPC/RFID} to designate it. \bigskip
@@ -129,7 +120,7 @@ Out of the abovementioned technologies, \acs{BLE} offers greater throughput, bet
 Regarding communications between the gateway devices and the central server, most researchers try to make use of existing infrastructure in order to facilitate the deployment of new systems. This means, that the communications between the gateway devices and the central server are often done through generic IP-based protocols such as Wi-Fi and Ethernet \cite{Adame2018, Fuhrer2006, Wu2020, Catarinucci2015}. \bigskip
 
 \subsubsection{Application Protocols}
-\todo[inline]{To-do: Review this section later.}
+%\todo[inline]{To-do: Remake this intro paragraph?}
 
 So far we have discussed the underlying networking technologies that link the devices in our system. But according to the OSI Model, many of these technologies do not define the application layer: how the devices communicate with each other, how the data is formatted, if there is a hierarchy within the network, etc. When considering networks composed of constrained devices, generic web-based protocols such as Hypertext Transfer Protocol (HTTP) may not be adequate for \acs{IoT} applications, which prompts the development of novel lightweight messaging protocols suited for these systems. The most used application layer protocols in \acs{IoT} systems are \acf{MQTT} and \acf{CoAP}. Table \ref{tab:comparsion-applicationprotocols} overviews these widely used protocols. \bigskip
 
@@ -180,7 +171,7 @@ The different processes applied at this stage can be summarized into four distin
 
 The data that is generated by the edge devices is propagated through the system, and eventually reaches the central server. Up to this point, model is event driven. However, most applications cannot make use of the data at the rate it is generated \cite{10.5555/3161403}. In the Data Accumulation layer, we need to define how the system captures the data and stores it, so it becomes usable for applications when needed, thus transiting from event to query-based processing. \bigskip
 
-As the devices continuously generate data, the system will require more and more resources in order to process and store all of this information, raising some concerns regarding how the data can be managed. In \cite{Doukas2012}, the authors propose the usage of cloud platforms as a solution to these problems. This is made possible due to the elasticity in allocating, swiftly and inexpensively, computing and storage resources on-demand, adjusting itself to the needs of each application. Three distinct types of cloud services can be found: %, Figure \ref{fig:differences-between-cloud-services}:
+As the devices continuously generate data, the system will require more and more resources in order to process and store all of this information, raising some concerns regarding how the data can be managed. In \cite{Doukas2012}, the authors propose the usage of cloud platforms as a solution to these problems. This is made possible due to the elasticity in allocating, swiftly and inexpensively, computing and storage resources on-demand, adjusting itself to the needs of each application. Three distinct types of cloud services can be found: 
 
 \begin{itemize}
     \item \textbf{Infrastructure as Service (IaaS)}: Provides control over the remote machine (composed of virtual or dedicated hardware), operative system and middleware. This approach gives system designers the highest level of flexibility over the infrastructure, but requires more maintenance.
@@ -208,8 +199,8 @@ Regarding storage solutions, most research works use traditional relational data
         %\textbf{Features} 
         & \textbf{SQL}& \textbf{NoSQL}  \\ \hline
         \textbf{Type of database} & Relational & Non-relational \\
-        \textbf{Database model} & Table-based database & \makecell{Document-based databases, Key-value stores, \\ graph stores, wide column stores} \\
-        \textbf{Data type} & Appropriate for structured data & Appropriate for unstructured or semi-structured data \\
+        \textbf{Database model} & Table-based database & \makecell{Document-based databases, \\ Key-value stores, graph stores, \\ wide column stores} \\
+        \textbf{Data type} & Appropriate for structured data & \makecell{Appropriate for unstructured or \\ semi-structured data} \\ 
         \textbf{Schema} & Strict schema & Dynamic schema \\
         \textbf{Query} & \makecell{Uses Standard Query \\Language (SQL), appropriate for \\ complex query operations} & \makecell{Uses Unstructured Query \\ Languages (\textit{e.g.} UnQL), does not support \\ complex query operations}  \\ 
         \textbf{Scalability} & Vertical & Horizontal \\
@@ -223,27 +214,24 @@ Regarding storage solutions, most research works use traditional relational data
 \subsection{Layer 5: Data Abstraction}
 \label{sec:iot-model-layer5}
 
-\todo[inline]{To-do: Complete section (develop FHIR section).} 
+%\todo[inline]{To-do: Complete section (develop FHIR section).} 
 
 In the previous layer, we have defined how the system captures the information. In some cases, the collection of data may require the development of multiple concurrent storage solutions, each using different technologies, resulting in a very complex environment. The purpose of this layer is to develop services that simplify how the applications access the data, to reconcile the different data stores and ensure the information is complete and consistent \cite{Cisco2014}. Applications can then interact with these databases through interfaces exposed by these services, designated \acl{API}s (\acs{API}s). \bigskip 
 
-An \acs{API} is a computing interface that defines a set of rules that ``explain how computers and applications communicate with one another, acting as an intermediary between these different components \cite{IBMAPI}. It defines what operations can be performed, how to request them, which are the accepted data types, etc. In this case, it decouples applications from the storage solutions, by encapsulating their functionality behind the interface. This ensures the modularity of the system as the applications become independent of whichever technologies are used in the data stores. \bigskip
+An \acs{API} is a computing interface that defines a set of rules that ``explain how computers and applications communicate with one another, acting as an intermediary between these different components \cite{IBMAPI}. It defines which operations can be performed, how to request them, which are the accepted data types, etc. In this case, it decouples applications from the storage solutions, by encapsulating their functionality behind the interface. This ensures the modularity of the system as the applications become independent of whichever technologies are used in the data stores. \bigskip
 
-Understanding what and how information is shared within the healthcare domain is fundamental. As patients continuously move around the healthcare ecosystem, their health information must be available, discoverable and understandable to different entities (hospitals, laboratories, pharmacies, etc.). This prompts the digitization of medical files and the development of standards for exchanging these records instantly and securely to authorized parties \cite{HL72019}, which are called \acl{EHR}s (\acs{EHR}s). \acs{EHR}s are the digital equivalent of a patients paper-chart, they contain the patients full medical history: previous diagnoses, treatment plans, test results, known allergies, among other details. \bigskip
+Understanding what and how information is shared within the healthcare domain is fundamental. As patients continuously move around the healthcare ecosystem, their health information must be available, discoverable and understandable to different entities (hospitals, laboratories, pharmacies, etc.). This prompts the digitization of medical files and the development of standards for exchanging these records instantly and securely to authorized parties \cite{HL72019}, which are called \acl{EHR}s (\acs{EHR}s). \acs{EHR}s are the digital equivalent of a patient's paper-chart, they contain the patient's full medical history: previous diagnoses, treatment plans, test results, known allergies, among other details. \bigskip
 
-% Comparison between OpenEHR and FHIR?
-One of the most prominent standards for exchanging \acs{EHR}s is \acf{FHIR}. \acs{FHIR} is a standard developed by Health Level Seven International (HL7), which is a non-profit organization involved in the development of international healthcare informatics for over 20 years. \acs{FHIR} builds upon previous data format standards like HL7 v2 and HL7 v3, and is becoming widely adopted within the healthcare industry \cite{Peng2019}. 
+One of the most prominent standards for exchanging \acs{EHR}s is \acf{FHIR}. \acs{FHIR} is a standard developed by Health Level Seven International (HL7), which is a non-profit organization involved in the development of international healthcare informatics for over 20 years. \acs{FHIR} builds upon previous data format standards like HL7 v2 and HL7 v3, and is becoming widely adopted within the healthcare industry \cite{Peng2019}. This standard defines a lightweight RESTful framework using common data formats, like JSON and XML, so it can be readily integrated into lightweight web services, thus underlining its suitability for web-based platforms \cite{Gruendner2019}.
 
 % \todo[inline]{To-do: If time allows it, add 2 examples of articles where APIs implemented.} 
 
 \subsection{Layer 6: Application}
 \label{sec:iot-model-layer6}
 
-\todo[inline]{To-do: Complete section!}
-
 The sixth layer corresponds to the application layer, where the system ingests the captured data, analyzes it and delivers the value to the end users. Users can then interact with the system through Graphical User Interfaces (UI), which provide different functionalities depending on the application. Some may show simple reports regarding the collected data \cite{Doukas2012, Wu2020}, and others may allow users to monitor and have greater control over the different components of the system. \bigskip
 
-In the healthcare domain, \acs{IoT} applications generally focus on delivering clinical decision support \cite{Gruendner2019,Wagholikar2017,Fan2014, BrainAnswer} and asset tracking \cite{Adame2018, Fuhrer2006, Catarinucci2015} features. Clinical decision support is one of the main drivers for usage of artificial intelligence in medicine\cite{Choi2016}. (...) 
+As seen in an earlier section, Table \ref{tab:layer1-sensors} shows what kind of information is generally acquired in \acs{IoT} healthcare applications. Using artificial intelligence, it is also possible to correlate all of this information to guide the clinical decisions from healthcare providers \cite{Gruendner2019, Wagholikar2017, BrainAnswer}. \bigskip
 
 \subsection{Layer 7: Collaboration and Processes}
 \label{sec:iot-model-layer7}
@@ -251,7 +239,7 @@ In the healthcare domain, \acs{IoT} applications generally focus on delivering c
 % Não removia, uma secção curta e concisa está OK porque não é tão relevante para o trabalho como as outras.
 % Podes mencionar, de forma conceptual apenas (não estou a ver nesta fase como operacionalizar no projecto ainda, nem vala a pena especular) o seguinte:
 % "Analyze opportunities to improve the efficiency and effectiveness of the processes."
-% "Identification of the goals, deliverables, activities, patterns of collaboration, techniques, actions, and % technologies associated with each process."
+% "Identification of the goals, deliverables, activities, patterns of collaboration, techniques, actions, and technologies associated with each process."
 % Ver:
 % https://ieeexplore.ieee.org/document/6148656
 
@@ -260,24 +248,16 @@ The information that is created by the \acs{IoT} yields little value unless it p
 
 \section{Survey on \acs{IoT} Applications for Healthcare}
 \label{sec:sim-approaches}
-
-\todo[inline]{To-do: Complete section! 
-- Add introductory paragraph! 
-Perform a critical analysis of all related work.
-You should make clear and focus on what is your contributions, and state clearly what is *not* your contributions (i.e. out of the scope of this work).
-Falta um parágrafo introdutório.
-O que se vai fazer nesta sub.secção? pq?
-}
 \input{state_of_art-sysrev}
 
 \subsection{Comparative Analysis}
 % Baptiza cada trabalho com um nome teu, seguido da referencia.
-\todo[inline]{Todo: Ver a questão de batizar os trabalhos.}
+% \todo[inline]{Todo: Ver a questão de batizar os trabalhos.}
  \renewcommand{\arraystretch}{2}
   \begin{sidewaystable}[h]
       \centering
       \begin{tabular}{l|l|l|l|l|l|l}
-        \textbf{References} & \makecell{\textbf{Measured} \textbf{Signals}} & \makecell{\textbf{Networking} \textbf{Protocols}}& \makecell{\textbf{Data} \textbf{Storage}} & \makecell{\textbf{e-Health} \textbf{Standards}} & \textbf{Features} & \textbf{Security Features} \\ \hline
+        \textbf{References} & \makecell{\textbf{Measured} \textbf{Signals}} & \makecell{\textbf{Networking} \textbf{Protocols}}& \makecell{\textbf{Data} \textbf{Storage}} & \makecell{\textbf{e-Health} \textbf{Standards}} & \makecell{\textbf{Application} \\ \textbf{Features}} & \textbf{Security Features} \\ \hline
           \cite{Fuhrer2006} & \xmark & \makecell{EPC/RFID,\\ Wi-Fi} & MySQL & None & \makecell{RTLS}& \makecell{Unspecified Storage \\Encryption} \\ \hdashline
           \cite{Adame2018} & \makecell{Temperature, \\Heart Rate,\\ Accelerometer} & \makecell{EPC/RFID,\\ Wi-Fi} & MySQL & None & \makecell{RTLS, \\ Fall Detection,\\ Vital signs\\ monitoring}& \makecell{AES-128, WPA-Personal} \\ \hdashline
           %\cite{Catarinucci2015} & \makecell{Temperature, \\ \acs{ECG}, Accelerometer,\\  Barometric Pressure,\\  Ambient Light} & \makecell{EPC/RFID, 6LowPAN,\\ CoAP} & MySQL & None & RTLS & ? \\
@@ -293,21 +273,25 @@ O que se vai fazer nesta sub.secção? pq?
 
 \clearpage
 \subsection{Weaknesses of literature}
-\todo[inline]{To-do: Review section later!}
+%\todo[inline]{To-do: Finish section!}
 \label{sec:weaknesses}
 
 % Apenas identificas o problema da Interoperabilidade e Standards?
 % Pensa tb nas questões de segurança e escalabilidade. 
 % Pode não ser uma fraqueza/desafio comum a *todos* os trabalhos na literatura mas ser algo q nem sempre é bem resolvido.
 
-%\subsubsection{Security and Privacy} 
-% From the literature, we find that researchers ensure data security and privacy through 
-%\subsubsection{Interoperability} 
+\subsubsection{Security and Privacy} 
+
+From the literature, we find that many solutions secure communications between the devices using standard encryption algorithms like Advanced Encryption Standard (AES) \cite{Adame2018, Wu2020, Doukas2012}. However, very few discuss authentication and authorization processes \cite{Doukas2012, Gope2016}. To ensure that no data is leaked to malicious authors, the networking protocols used must ensure these security properties. \bigskip
+
+Many web services currently use \acf{TLS}\footnote{The Transport Layer Security (TLS) Protocol Version 1.3: https://tools.ietf.org/html/rfc8446}. This protocol ensures integrity, confidentiality and authentication as it combines public key cryptography to validate the identity of the communicating parties, symmetric-key algorithms to encrypt the transmissions and message integrity checks to ensure the transmissions are not tampered during transport. These properties make this protocol invaluable for secure communications over the web, and thus should be an integral component of \acs{IoT} networks. Moreover, access control needs be considered. The systems are composed with many devices, which may have different levels of access level for each device. For example, limiting access to certain topics in \acs{MQTT}, so that devices can only subscribe and publish messages in specific topics.        
+ 
+\subsubsection{Interoperability} 
 
 Despite recent efforts, interoperability is still an issue of \acs{IoT} systems. Due to the lack of clear and concise industry standards and regulations, many manufacturers develop their own proprietary data formats and communication protocols, which hampers the integration of new resources since the systems are designed within closed ecosystems \cite{Rubi2019}. Moreover, the adoption of new systems can be often met with much objection from the clinical staff due to their mistrust of technology \cite{DursunErgezen2020}. 
 To facilitate the deployment of new healthcare systems in hospitals, these need to be integrated easily in existing \acs{HIS}. \bigskip
 
-Fortunately, there are several international initiatives to promote the use of \acs{IoT} in health in a standardized way, such as HIMSS (Healthcare Information and Management Systems Society) and the Personal Connected Health Alliance (PCHAlliance). PCHAlliance for example promotes the adoption of the Continua Design Guidelines (CDG), which facilitates the integration of personal health devices into health systems. These guidelines have been recognized by ITU (International Telecommunication Union) and the European Commission and are adopted by countries such as Denmark, Norway and the USA, among others \cite{PersonalConnectedHealthAlliance2017}. These guidelines describe a series of e-health standards like \acs{FHIR} which facilitate the exchange of information between systems, in order to ensure the implementations become truly interoperable.
+Fortunately, there are several international initiatives to promote the use of \acs{IoT} in health in a standardized way, such as HIMSS (Healthcare Information and Management Systems Society) and the Personal Connected Health Alliance (PCHAlliance). PCHAlliance, for example, advocates the adoption of the Continua Design Guidelines (CDG), which facilitates the integration of personal health devices into health systems. These guidelines have been recognized by ITU (International Telecommunication Union) and the European Commission and are adopted by countries such as Denmark, Norway and the USA, among others \cite{PersonalConnectedHealthAlliance2017}. These guidelines promote a series of e-health standards like \acs{FHIR} which facilitate the exchange of information between systems, in order to ensure that the implementations become truly interoperable.
 
 % Within this project we aim to continue to expand the capabilities of the Continua Design Principles tofurther extend the software to collect the data that is being exchanged between sensors, gateways, and end services to make implementations truly interoperable.
 
@@ -315,7 +299,7 @@ Fortunately, there are several international initiatives to promote the use of \
 
 \section{Statement of Contributions}
 
-After studying the different approaches taken by researchers, and in context of the dissertation, we propose a novel fully modular \acs{IoT} infrastructure that uses the \acs{FHIR} standard in order to fully integrate the data in the existing \acs{HIS}, Glintt GlobalCare. Other researchers in the \acf{ISR} already developed wearable devices, designated ``biostickers'', using two different networking stacks — \acs{BLE} and \acs{EPC/RFID}. The system must ensure reliable and secure communications with the devices for each protocol, implementing the aforementioned security features in section \ref{sec:weaknesses}. From a hardware perspective, the system is composed of 3 different components, as seen Figure \ref{fig:wow-architecture}: the biostickers, that acquire the patient's physiological signals, the ``SmartBox'', which acts as a central node of the WBAN and aggregate the data and then communicates it to the gateway, and the ``Smart Gateway'', which serves as a fog server in order to mitigate latency and other computing issues and acts as the gateway to the \acs{HIS}. 
+After studying the different approaches taken by researchers, and in the context of the dissertation, we propose a novel fully modular \acs{IoT} infrastructure that uses the \acs{FHIR} standard in order to fully integrate the data into the existing \acs{HIS}, Glintt GlobalCare. Other researchers in the \acf{ISR} have already developed wearable devices, designated ``biostickers'', using two different networking stacks — \acs{BLE} and \acs{EPC/RFID}. The system must ensure reliable and secure communications with the devices for each protocol. From a hardware perspective, the system is composed of 3 different components, as seen in Figure \ref{fig:wow-architecture}: the biostickers, that acquire the patient's physiological signals, the ``SmartBox'', which acts as a central node of the WBAN and aggregates the data, communicating it to the gateway, and the ``Smart Gateway'', which serves as a fog server in order to mitigate latency and other computing issues and acts as the gateway to the \acs{HIS}. 
 
 \begin{figure}[H]
     \centering
@@ -324,7 +308,7 @@ After studying the different approaches taken by researchers, and in context of 
     \label{fig:wow-architecture}
 \end{figure}
 
-\todo[inline]{To-do: Replace image with a cleaner one. }
+% \todo[inline]{To-do: Replace image with a cleaner one. }
 
 For the work developed throughout the dissertation, we have set the following goals: 
 
@@ -343,7 +327,7 @@ For the work developed throughout the dissertation, we have set the following go
 \end{itemize}
 
 \section{Summary}
-In this chapter, we have discussed the importance of \acs{IoT} systems, how these are composed and how these can bring value to healthcare providers. After analyzing the different systems in the literature, their weaknesses and strengths, we have defined a set of criteria to guide the development of our own implementation.
+In this chapter, we have discussed the importance of \acs{IoT} systems, how these are composed and how these can bring value to healthcare providers. After analyzing the different systems in the literature, we have defined a set of criteria to guide the development of our own implementation.
 
 \bigskip
 
