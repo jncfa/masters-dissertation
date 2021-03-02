@@ -3,8 +3,9 @@
 % This report describes the work developed under the project "Wireless IoT Architecture for Smart Nodes deployed in Hospital Beds", which took place in the Institute of Systems and Robotics (ISR) in Coimbra in the past year. 
 
 \section{Context}
+\todo[inline]{To-do: Finish section.}
 
-% Due to all the technological and healthcare advances over the last years, we have observed a steady increase of life expectancy. A consequence of this fact is that 
+Due to all the technological and healthcare advances over the last years, we have observed a steady increase of life expectancy. As a consequence of this fact, 
 
 % The steadily aging population [1] and related rise of chronical illnesses places significant strain on modern healthcare systems [2]. 
 
@@ -21,27 +22,12 @@ Today, hospitalized patients need to be wired to various measurement instruments
 % \todo[inline]{To-do: Steady increase of population lifespan introduces many challenges to healthcare systems (more elderly people, chronic diseases become more common, thus greater pressure on these systems, bigger healthcare costs, ...); What has digital health done to help this? concepts: IoT, digital health...}
 
 \section{System Requirements}
+\todo[inline]{To-do: Choose another title for this section and finish section.}
 
-\begin{itemize}
-    \item \textbf{Must:}
-    \begin{itemize}
-        \item Integration with GlobalCare: In order to exchange information with Glintt's GlobalCare HIS, the cloud server will require an application programing interface (API). All communication with GlobalCare is performed through this interface. 
-    \end{itemize}
-    \item \textbf{Should:}
-    \begin{itemize}
-        \item 
-    \end{itemize}
-    \item \textbf{Could:}
-    \begin{itemize}
-        \item 
-    \end{itemize}
-    \item \textbf{Would:}
-    \begin{itemize}
-        \item 
-    \end{itemize}
-\end{itemize}
-% The main objective of this work is the development and validation of an \acs{IoT} architecture in the context of the \acs{WoW} project. Previous work by \acs{ISR} researchers has resulted in the development of wearable devices, designated ``biostickers''...
+The main objective of this work is the development and validation of an \acs{IoT} architecture in the context of the \acs{WoW} project. Previous work by \acs{ISR} researchers has resulted in the development of wearable devices, designated ``biostickers''...
+
 % The system should be non-invasive, reliable and satisfy the stringent security and privacy requirements of health information systems. 
+
 % - Hardware evaluation for edge nodes which integrate electronic wireless patches that gather patient's physiological signals;
 % - Integrating IoT system in an existing healthcare information system (Glintt GlobalCare software) through an FHIR API layer;
 % - Evaluation of the performance of the proposed system through a testbed and a real healthcare scenario;
@@ -54,6 +40,30 @@ Today, hospitalized patients need to be wired to various measurement instruments
 % Note: you are **not** explaining the specifics of how; this will be done in the following chapters! 
 
 % You are just saying what Must, Should,Could and Would be implemented to be able to solve the problem described above
+
+
+\begin{itemize}
+    \item \textbf{Must:}
+    \begin{itemize}
+        \item In order to exchange information with Glintt's GlobalCare HIS, the cloud server will require an application programing interface (\acs{API}). All communication with GlobalCare is performed through this interface. 
+        \item All communications within the system must be secure and any sensitive data cannot be accessed by unauthorized third parties.
+        \item The system must be able to function for long periods of time without continuous support or maintenance.
+        \item The system must be non-invasive and intuitive.
+    \end{itemize}
+    \item \textbf{Should:}
+    \begin{itemize}   
+        \item With long-term monitoring, large amounts of information should be gathered to create valuable datasets that can be used to improve patient monitoring.
+        \item In order to facilitate the integration of this system into healthcare information services, the system must adopt international standards for exchanging information.
+    \end{itemize}
+    \item \textbf{Could:}
+    \begin{itemize}
+        \item For long-term patient monitoring, the system should be capable of identifying anomalies / biomarkers in patients' biosignals.
+    \end{itemize}
+    \item \textbf{Would:}
+    \begin{itemize}
+        \item ...
+    \end{itemize}
+\end{itemize}
 \section{Thesis Structure}
 
 This document is organized into different sections. The first chapter provides an introduction to the theme of the dissertation, discussing the context and motivation behind the work developed. In the second chapter a brief overview into \acs{IoT} infrastructures and its healthcare applications is shown. 
