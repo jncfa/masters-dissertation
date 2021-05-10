@@ -1,22 +1,26 @@
 
 \todo[inline]{Todo: Add Smartbox description}
-
+In
 
 \section{Deciding on an Hardware Platform}
 
-In the context of the dissertation, two different single board computers were considered for the development of the SmartBox: a Rasberry Pi 4 Model B and an Udoo Bolt v3. In the following sections we will discuss the characteristics of each platform 
+In the context of the dissertation, two different \acl{SBC}s (\acs{SBC}) were considered for the development of the SmartBox: a Raspberry Pi 4 Model B and an Udoo Bolt v3. In the following sections we will discuss and compare the characteristics of each platform. 
 
 \todo[inline]{Todo: add photos of the raspi and udoo bolt}
 
 \subsubsection{Raspberry Pi 4 Model B}
 
-Raspberry Pi denotes a series of single board computers which are developed by the Raspberry Pi Foundation, in association with Broadcom...
+Raspberry Pi denotes a series of single board computers which are developed by the Raspberry Pi Foundation, a UK-based charity that aims to educate the general public about the power of computing and digital making, in association with Broadcom. It is one of the most popular hardware platforms used by developers due to its accessible price and community support.
+The Raspberry Pi 4 Model B is the latest  was released in 2019, 
 
 \subsubsection{Udoo Bolt V3}
 
-Just like the Raspberry Pi, the UDOO Bolt V3 is a single-board computer, but a particularly powerful one. The board uses an AMD Ryzen™ Embedded V1202B SoC...
+The UDOO Bolt V3 is a single-board computer.  but . The board uses an AMD Ryzen™ Embedded V1202B SoC.
 
 \subsection{Comparing the Hardware Platforms}
+
+From the table \ref{tab:comparsion-hardwareplatform}, we can infer that the Raspberry Pi is a much more affordable alternative.
+
 
 \renewcommand{\arraystretch}{2}
 \begin{table}[H]
@@ -29,8 +33,9 @@ Just like the Raspberry Pi, the UDOO Bolt V3 is a single-board computer, but a p
         \textbf{Storage} & \makecell{No internal storage, \\ SDXC Card Support} & \makecell{32GB internal eMMC + \\1x SATA III and 2x M.2 connectors}\\
         \textbf{Networking} & \makecell{2.4/5.0 GHz WiFi, Gigabit \\ Ethernet, Bluetooth 5.0, BLE} & \makecell{Gigabit Ethernet + M.2 Key E slot \\ for optional WiFi+BT module}\\ 
         \textbf{I/O Ports} & 2 × USB 3.0, 2 × USB 2.0 & \makecell{2x USB 3.0 Type-A, 2x USB Type-C (w/ \\ Display Port + Power Delivery), 2x HDMI} \\
-        \textbf{Other} & Power over Ethernet (PoE)–enabled & \makecell{Includes ATmega32U4 microcontroller\\ (Arduino Leonardo compatible), RTC Battery} \\   
+        \makecell[r]{\textbf{Other} \\\textbf{Features}} & Power over Ethernet (PoE)–enabled & \makecell{Includes ATmega32U4 microcontroller\\ (Arduino Leonardo compatible), RTC Battery} \\   
         \textbf{Dimensions} & 0.85 x 0.56 x 0.17 cm & 12 x 12 x 7 cm \\
+        \textbf{Price} & \makecell{61,73 € (including SDXC Card\\ and case)} & \makecell{61,73 € (including SDXC Card\\ and case)} \\
     \end{tabular}
     \caption{Comparison of the specifications of the Raspberry Pi 4B and Udoo Bolt V3.}
     \label{tab:comparsion-hardwareplatform}
@@ -38,11 +43,23 @@ Just like the Raspberry Pi, the UDOO Bolt V3 is a single-board computer, but a p
 
 
 
-In order to understand the differences in performance between these two platforms, a set of 3 tests were conducted.
+In order to understand the differences in performance between these two platforms, a test suite was developed and conducted. The tools developed for each test can be found in \href{https://bitbucket.org/wow-project/smartbox_benchmark_tests}{\textit{https://bitbucket.org/wow-project/smartbox\_benchmark\_tests}}.
 
 \subsubsection{Test 1: \textit{7-Zip} CPU Benchmark}
+\dots
+
 \subsubsection{Test 2: Python Benchmark}
+In this test, the hardware platforms ran simple Python scripts 
+
+
 \subsubsection{Test 3: \acs{MQTT} Benchmark}
+As the Smartbox will communicate with the Smart Gateway through \acs{MQTT}, we have evaluated how each system handles the load associated with an MQTT client. For this test, each \acs{SBC} ran a simple \acs{MQTT} client which was subscribing to a single topic and publishing to another topic.
+
+
+\subsubsection{Test 4: Phoronix Test Suite}
+The Phoronix Test Suite\footnote{Phoronix Test Suite - Linux Testing \& Benchmarking Platform, Automated Testing, Open-Source Benchmarking: \textit{https://www.phoronix-test-suite.com/}} is an open-source benchmarking platform used for comparing the performance of different systems. The framework provides compilations of tests for a variety of tools and is also fully customizable and expandable, allowing users to develop and automate their own tests in a clean, reproducible and easy-to-use fashion.  
+
+For the purposes of evaluating which single board computer should be used, we chose the Python and CPU tests provided by Phoronix\footnote{OpenBenchmarking.org - Cross-Platform, Open-Source Automated Benchmarking Platform: \textit{https://openbenchmarking.org/}}. These tests provide a quantitative score describing the \acs{SBC} performance during the test, 
 
 
 \section{Communication with the Biostickers}
