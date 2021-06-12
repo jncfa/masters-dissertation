@@ -1,0 +1,118 @@
+{
+  "main": {
+    "id": "2f18cc748b894164",
+    "type": "split",
+    "children": [
+      {
+        "id": "8eb21890882e6584",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "Technical Implementation/MQTT Specification.md",
+            "mode": "source"
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "3887cc866a91d89d",
+    "type": "split",
+    "children": [
+      {
+        "id": "54f1f7d2a90dcfff",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "c9671f42a8f22bd4",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "6f6bdbeac836027c",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "8438c95157ba5ff7",
+            "type": "leaf",
+            "state": {
+              "type": "starred",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 268.0140953063965
+  },
+  "right": {
+    "id": "198dc2f3283e2054",
+    "type": "split",
+    "children": [
+      {
+        "id": "839e4c02ce6215ff",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "8e6de92d7ba088ea",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Technical Implementation/MQTT Specification.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": false
+              }
+            }
+          },
+          {
+            "id": "bd97e9884ff26dc9",
+            "type": "leaf",
+            "state": {
+              "type": "calendar",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "8eb21890882e6584",
+  "lastOpenFiles": [
+    "Technical Implementation/MQTT Specification.md",
+    "2021-05-06.md",
+    "2021-05-05.md",
+    "Technical Implementation/Gateway/FHIR/Setting up FHIR Service.md",
+    "Technical Implementation/Gateway/MQTT/AuthPlugin Notes.md",
+    "Technical Implementation/Gateway/MQTT/Setting up MQTT broker.md",
+    "2021-04-29.md",
+    "Technical Implementation/Gateway/Getting Started with Gateway.md",
+    "Technical Implementation/Gateway/General Notes for Gateway.md",
+    "Technical Implementation/Smartbox/General Notes for Smartbox.md"
+  ]
+}
