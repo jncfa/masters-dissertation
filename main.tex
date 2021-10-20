@@ -87,7 +87,7 @@
 \newcommand{\statedate}{Coimbra, \MONTH\ \YEAR}					% The date, usually "Place, Month Year"
 \newcommand{\supervisorname}{Doutor David B. S. Portugal}		% Your supervisor's name
 \newcommand{\cosupervisorname}{Prof. Doutor Mahmoud Tavakoli}	% Your co-supervisor's name, if any.
-
+\usepackage{adjustbox}
 % MAIN DOCUMENT
 \begin{document}
 \pagenumbering{roman}
@@ -133,17 +133,17 @@
 
 % INSPIRATIONAL QUOTE
 % Setup
-\setlength\epigraphwidth{12cm}
-\setlength\epigraphrule{0pt}
-\makeatletter
-\patchcmd{\epigraph}{\@epitext{#1}}{\itshape\@epitext{#1}}{}{}
-\makeatother
+%\setlength\epigraphwidth{12cm}
+%\setlength\epigraphrule{0pt}
+%\makeatletter
+%\patchcmd{\epigraph}{\@epitext{#1}}{\itshape\@epitext{#1}}{}{}
+%\makeatother
 % Actual Quote
-\vspace*{\fill}
-\epigraph{``Inspirational quotes are cool.”}
-{--- \textup{A renowned author}, A Great Book}
-\vspace*{\fill}
-\newpage\null\thispagestyle{empty}\newpage
+%\vspace*{\fill}
+%\epigraph{``Inspirational quotes are cool.”}
+%{--- \textup{A renowned author}, A Great Book}
+%\vspace*{\fill}
+%\newpage\null\thispagestyle{empty}\newpage
 
 % TABLE OF CONTENTS
 \pagestyle{plain}

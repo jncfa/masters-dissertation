@@ -1,0 +1,2 @@
+https://itnext.io/benchmark-databases-in-docker-mysql-postgresql-sql-server-7b129368eed7?gi=ccceab3166ec
+https://blog.timescale.com/blog/choose-postgresql-for-iot-19688efc60ca/

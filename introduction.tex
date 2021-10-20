@@ -5,15 +5,11 @@
 \section{Context}
 \todo[inline]{To-do: ...}
 
-Due to all the technological and healthcare advances over the last years, we have observed a steady increase of life expectancy. As a consequence of this fact, 
+Due to all the technological and healthcare advances over the last years, we have observed a steady increase of life expectancy. As a consequence of this, modern healthcare systems are under significant strain due to their limited resources - both human resources and medical equipment, hospital beds, etc.
 
 % The steadily aging population [1] and related rise of chronical illnesses places significant strain on modern healthcare systems [2]. 
 
-% E especialmente tendo em conta a situação pandémica que vivemos, observa-se uma necessidade clara de aliviar essa pressão. Felizmente, a Internet das Coisas é vista como um grande promessa para resolver esta questão.
-
-% Podemos hoje encontrar iniciativas que caminham nesta direção como na automatização de certos processos (como a monitorização periódica dos pacientes), aliviando a alocação de recursos, e até na área de investigação para encontrar correlações entre determinados sinais biológicos e certas patologias (também designadas de biomarcadores), permitindo efetuar diagnósticos mais rápidos e com maior facilidade.
-
-Today, hospitalized patients need to be wired to various measurement instruments when continuous biomonitoring is required. This confines the patients to their beds, restricting their mobility, which can cause skin irritations and infections, aggravating their discomfort and deterioration of their health condition \cite{Darwish2011}. Moreover, the detachment of electrodes from the patient's body, provoked by patient's movements, is one of the main sources of false alarms. These require immediate attention from the hospital staff, contributing to their exhaustion and may ultimately result in the desensitization to the alarms, reducing their response time to real emergencies \cite{DursunErgezen2020}.
+Moreover, today, hospitalized patients need to be wired to various measurement instruments when continuous biomonitoring is required. This confines the patients to their beds, restricting their mobility, which can cause skin irritations and infections, aggravating their discomfort and deterioration of their health condition \cite{Darwish2011}. Futhermore, the detachment of electrodes from the patient's body, provoked by patient's movements, is one of the main sources of false alarms. These require immediate attention from the hospital staff, contributing to their exhaustion and may ultimately result in the desensitization to the alarms, reducing their response time to real emergencies \cite{DursunErgezen2020}.
 
 % Context and Motivation.
 % Expand on: Why digital healthcare is important/ IoT/ Areas of Application of IoT/Challenges
@@ -22,10 +18,10 @@ Today, hospitalized patients need to be wired to various measurement instruments
 % \todo[inline]{To-do: Steady increase of population lifespan introduces many challenges to healthcare systems (more elderly people, chronic diseases become more common, thus greater pressure on these systems, bigger healthcare costs, ...); What has digital health done to help this? concepts: IoT, digital health...}
 
 \section{System Requirements}
-\todo[inline]{To-do: Choose another title for this section and finish section.}
 
-The main objective of this work is the development and validation of an \acs{IoT} architecture in the context of the \acs{WoW} project. Previous work by \acs{ISR} researchers has resulted in the development of wearable devices, designated ``biostickers''...
+The main objective of this work is the development and validation of an \acs{IoT} architecture in the context of the \acs{WoW} project. Previous work by \acs{ISR} researchers has resulted in the development of wearable devices, designated ``Biostickers'', which are electronic patches equipped with sensors that gather the patient's physiological signals and communicate that data wirelessly. The main goal of this project, is the development of a system capable of integrating the data that is acquired by the biostickers into an existing \acs{HIS}, GlobalCare by Glintt. 
 
+The requirements for the system, and their priorities (based on a MoSCoW analysis\footnote{MoSCoW Prioritization: \url{https://www.productplan.com/glossary/moscow-prioritization/}}), are the following: 
 % The system should be non-invasive, reliable and satisfy the stringent security and privacy requirements of health information systems. 
 
 % - Hardware evaluation for edge nodes which integrate electronic wireless patches that gather patient's physiological signals;
@@ -41,27 +37,25 @@ The main objective of this work is the development and validation of an \acs{IoT
 
 % You are just saying what Must, Should,Could and Would be implemented to be able to solve the problem described above
 
-
 \begin{itemize}
     \item \textbf{Must:}
     \begin{itemize}
-        \item In order to exchange information with Glintt's GlobalCare HIS, the cloud server will require an application programing interface (\acs{API}). All communication with GlobalCare is performed through this interface. 
+        \item The system must be able to communicate with the \acs{HIS}, i.e. capable of processing incoming requests and transmit necessary data.
         \item All communications within the system must be secure and any sensitive data cannot be accessed by unauthorized third parties.
         \item The system must be able to function for long periods of time without continuous support or maintenance.
         \item The system must be non-invasive and intuitive.
     \end{itemize}
     \item \textbf{Should:}
     \begin{itemize}   
-        \item With long-term monitoring, large amounts of information should be gathered to create valuable datasets that can be used to improve patient monitoring.
         \item In order to facilitate the integration of this system into healthcare information services, the system must adopt international standards for exchanging information.
     \end{itemize}
     \item \textbf{Could:}
     \begin{itemize}
-        \item For long-term patient monitoring, the system should be capable of identifying anomalies / biomarkers in patients' biosignals.
+        \item With long-term monitoring, large amounts of information should be gathered to create valuable datasets that can be used to improve patient monitoring.
     \end{itemize}
     \item \textbf{Would:}
     \begin{itemize}
-        \item ...
+        \item For long-term patient monitoring, the system should be capable of identifying anomalies / biomarkers in patients' biosignals.
     \end{itemize}
 \end{itemize}
 

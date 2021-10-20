@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Daily Logs/2021-06-12.md",
+            "file": "Meeting Notes/20th April Meeting Notes.md",
             "mode": "source"
           }
         }
@@ -76,7 +76,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Daily Logs/2021-06-12.md",
+                "file": "Meeting Notes/20th April Meeting Notes.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,15 +104,15 @@
   },
   "active": "09d3ec79e2c0ff88",
   "lastOpenFiles": [
-    "Daily Logs/2021-03-21.md",
-    "Daily Logs/2021-03-21 1.md",
-    "Daily Logs/2021-03-24.md",
-    "Daily Logs/2021-03-25.md",
-    "Daily Logs/2021-03-26.md",
-    "Daily Logs/2021-03-27.md",
-    "Daily Logs/2021-04-07.md",
-    "Daily Logs/2021-04-08.md",
-    "Daily Logs/2021-04-14.md",
-    "Daily Logs/2021-04-17.md"
+    "Meeting Notes/20th April Meeting Notes.md",
+    "Thesis Notes/Technical Implementation/Gateway/Database/Setting up Database Service.md",
+    "Thesis Notes/Technical Implementation/Gateway/Database/Database Schema.md",
+    "Thesis Notes/Technical Implementation/Gateway/Database/Compiling C++ Requirements.md",
+    "Thesis Notes/Technical Implementation/Gateway/FHIR/Setting up FHIR Service.md",
+    "Daily Logs/2021-06-12.md",
+    "Daily Logs/2021-09-03.md",
+    "Daily Logs/2021-06-13.md",
+    "Thesis Notes/Technical Implementation/MQTT Specification.md",
+    "Thesis Notes/Technical Implementation/Smartbox/General Notes for Smartbox.md"
   ]
 }
