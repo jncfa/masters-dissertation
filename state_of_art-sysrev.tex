@@ -108,7 +108,7 @@ In \cite{Adame2018}, the authors propose a RTLS system that also monitors the pa
 %"Since security is not the focus of this article, the two common security measures are implemented to meet the basic requirements of the following: (...) Security Between Wearable Patches and Gateways (...) Security Measures in Gateways and Cloud Server"
 %"In our future work, more edge computing functions on the gateway will be developed for an IoT-connected healthcare platform."
 
-\todo[inline]{To-do: Review the critical analysis of this article.}
+%\todo[inline]{To-do: Review the critical analysis of this article.}
 
 Wu et al. \cite{Wu2020} develop a system which uses wearable sensor patches to monitor the patients' status. The wearable sensors transmit the different physiological signals (ECG, PPG and body temperature) to gateways using \acs{BLE}, which can either by fixed (using a Raspberry Pi module) or mobile (using a smartphone app). The gateway exchanges data with the cloud through bridged \acs{MQTT} brokers, after which it is stored in a MySQL database. The data is stored both in the cloud server and in the fixed gateway. The local users can interact with the system through a web-based user interface (UI) using the smartphone or other web browsers in the local area network. However, the usage of local data storage can cause data integrity issues as the system must ensure databases in both the server and gateways are synchronized at all times. This can undermine the scalability of the system, as the redundant data synchronization can become a performance bottleneck in the long term. \bigskip
 

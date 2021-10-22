@@ -189,12 +189,9 @@ As the devices continuously generate data, the system will require more and more
 
 Nonetheless, security and privacy remain as key concerns for the implementation of cloud-based solutions. The information must remain accessible to authorized parties such as healthcare providers, but the patients health data has to be kept private. To solve this, there are two commonly adopted features in the literature: access control policies and data encryption \cite{Baker2017}. Access control policies define who can access the data, by authenticating them (validating the identity of the user) and by authorizing them (ensuring that the user has permissions to perform a given operation). Data encryption ensures that, even if the data is leaked, it is still unreadable to third parties, and therefore sensitive information remains secure and private. \bigskip
 
-Regarding storage solutions, most research works use traditional relational databases (RDBMS) as the means of storing data \cite{Fuhrer2006, Wu2020, Catarinucci2015, Adame2018}. These are often referred to simply \acs{SQL} or \acf{SQL}, which is the language used to  interact with the database.
+Regarding storage solutions, most research works use traditional relational databases (RDBMS) as the means of storing data \cite{Fuhrer2006, Wu2020, Catarinucci2015, Adame2018}. These are often referred to simply \acs{SQL} or \acf{SQL} databases, which is the language used to interact with the database.
 
-However, as the data is very heterogenous and unstructured, the authors of \cite{Subahi2019} propose using NoSQL databases. NoSQL or ``not only SQL'' 
-
-
-which can offer much greater flexibility as the schema in these databases is dynamic. Moreover, NoSQL data stores typically outperform SQL databases as the data increases in volume \cite{Xu2014}. Table \ref{tab:comparsion-databasetech} illustrates the differences between these two technologies. 
+However, as the data in \acs{IoT} can very heterogenous and unstructured, the authors of \cite{Subahi2019} propose using NoSQL databases. NoSQL or ``not only SQL'' describes a class of database systems that can support -- and are more optimized for -- storing semi-structured and unstructured data. NoSQL data stores typically outperform SQL databases as the data increases in volume \cite{Xu2014}. Table \ref{tab:comparsion-databasetech} illustrates the differences between these two technologies. 
 
 \renewcommand{\arraystretch}{2}
 \begin{table}[H]
@@ -208,7 +205,7 @@ which can offer much greater flexibility as the schema in these databases is dyn
         \textbf{Schema} & Strict schema & Dynamic schema \\
         \textbf{Query} & \makecell{Uses Standard Query \\Language (SQL), appropriate for \\ complex query operations} & \makecell{No standard query language}  \\ 
         \textbf{Scalability} & Vertical & Horizontal \\
-        \textbf{Performance} & Lower than NoSQL & Optimized for large datasets \\
+        \textbf{Performance} & Generally lower than NoSQL systems & Optimized for large datasets \\
     \end{tabular}
     \caption{Comparison between SQL and NoSQL technologies.}
     \label{tab:comparsion-databasetech}
@@ -248,8 +245,7 @@ As seen in an earlier section, Table \ref{tab:layer1-sensors} shows what kind of
 % https://ieeexplore.ieee.org/document/6148656
 
 
-The information that is created by the \acs{IoT} yields little value unless it prompts action, which requires integrating people and business processes (seventh layer). The objective is not the application — it is to empower people to work better and more efficiently by providing valuable insight at the right time.
-To do this people must be able to communicate and collaborate, which often requires multiple steps and transcends multiple applications \cite{Cisco2014}. However, this component of the system is beyond the scope of this work and thus it will not be discussed further.
+The information that is created by the \acs{IoT} yields little value unless it prompts action, which requires integrating people and business processes (seventh layer). The purpose of these systems is to empower people to work better and more efficiently by providing valuable insight at the right time. To do this people must be able to communicate and collaborate, which often requires multiple steps and transcends multiple applications \cite{Cisco2014}. However, this component of the system is beyond the scope of this work and thus it will not be discussed further.
 
 \section{Survey on \acs{IoT} Applications for Healthcare}
 \label{sec:sim-approaches}
@@ -301,9 +297,15 @@ Within this project we aim to continue to expand the capabilities of the Continu
 
 % The PCHAlliance publishes and promotes the global adoption of standards and the implementation guidelines that unleash the massive amounts of medical-grade data that enables a more holistic perspective. Commercial ready software enables the rapid integration of these standards into your product. A conformity assessment program verifies that the standards have been properly and uniformly implemented.
 
-\section{Statement of Contributions}
 
-After studying the different approaches taken by researchers, and in the context of the dissertation, we propose a novel fully modular \acs{IoT} infrastructure that uses the \acs{FHIR} standard in order to fully integrate the data into the existing \acs{HIS}, GlobalCare by Glintt. Other researchers in the \acf{ISR} have already developed wearable devices, designated ``Biostickers'', using the \acs{BLE} networking stack. The system must ensure reliable and secure communications between every device. From a hardware perspective, the system is composed of 3 different components, as seen in Figure \ref{fig:wow-architecture}: the Biostickers, that acquire the patient's physiological signals, the ``SmartBox'', which acts as a central node of the \acs{WBAN} and aggregates the data, communicating it to the gateway, and the ``Smart Gateway'', which serves as a fog server in order to mitigate latency and other computing issues and acts as the gateway to the \acs{HIS}. 
+\section{Statement of Contributions}
+%\section{System Architecture}
+
+\paragraph{}Researchers in the Institute of Systems and Robotics (ISR) have already developed wearable devices, designated ``Biostickers'', using the \acs{BLE} networking stack. The project also foresaw the usage of \acs{RFID} as a possible networking stack, in an effort of creating battery-less devices, but this was shown to be unfeasible due to strict energy consumption and energy transfer requirements that could not be met during development. 
+
+\paragraph{}After studying the different approaches taken by researchers, and in the context of the dissertation, we propose a novel fully modular \acs{IoT} infrastructure that uses the \acs{FHIR} standard in order to fully integrate the data into the existing \acs{HIS}, GlobalCare by Glintt. 
+
+\paragraph{}From a hardware perspective, the system is composed of 3 different components, as seen in Figure \ref{fig:wow-architecture}: the Biostickers, that acquire the patient's physiological signals, the ``SmartBox'', which acts as a central node of the \acs{WBAN} and aggregates the data, communicating it to the gateway, and the ``Smart Gateway'', which serves as a fog server in order to mitigate latency and other computing issues and acts as the gateway to the \acs{HIS}. The system must ensure reliable and secure communications between every device. 
 
 \begin{figure}[H]
     \centering
@@ -312,14 +314,14 @@ After studying the different approaches taken by researchers, and in the context
     \label{fig:wow-architecture}
 \end{figure}
 
-More particularly, as for the work developed throughout the dissertation, we have set the following goals: 
+For the work developed throughout the dissertation, we have set the following goals: 
 
 \begin{itemize}
-    \item Develop and deploy SmartBoxes embedded in hospital beds for data acquisition from Biostickers attached to patients’ skin:
+    \item Contributing to the deployment of the SmartBoxes embedded in hospital beds for data acquisition from Biostickers attached to patients’ skin:
     \begin{itemize}
         \item Hardware evaluation of 2 different \acs{IoT} kits (Raspberry Pi and Udoo Bolt).
         \item Evaluation of different \acs{BLE} adapters for data acquisition.
-        \item Selection of hardware components and assembly of SmartBox prototype;
+        %\item Selection of hardware components and assembly of SmartBox prototype;
     \end{itemize}
     \item Establishment of data integration pipelines using \acs{MQTT} and management of the multiple SmartBoxes in the Smart Gateway;
     \item Development of a \acs{FHIR} \acs{API} layer to integrate the proposed system in the GlobalCare \acs{HIS}.
