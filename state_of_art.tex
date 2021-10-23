@@ -288,8 +288,7 @@ Many web services currently use \acf{TLS}\footnote{The Transport Layer Security 
  
 \subsubsection{Interoperability} 
 
-Despite recent efforts, interoperability is still an issue of \acs{IoT} systems. Due to the lack of clear and concise industry standards and regulations, many manufacturers develop their own proprietary data formats and communication protocols, which hampers the integration of new resources since the systems are designed within closed ecosystems \cite{Rubi2019}. Moreover, the adoption of new systems can be often met with much objection from the clinical staff due to their mistrust of technology \cite{DursunErgezen2020}. 
-To facilitate the deployment of new healthcare systems in hospitals, these need to be integrated easily in existing \acs{HIS}. \bigskip
+Despite recent efforts, interoperability is still an issue of \acs{IoT} systems. Due to the lack of clear and concise industry standards and regulations, many manufacturers develop their own proprietary data formats and communication protocols, which hampers the integration of new resources since the systems are designed within closed ecosystems \cite{Rubi2019}. \bigskip
 
 Fortunately, there are several international initiatives to promote the use of \acs{IoT} in health in a standardized way, such as HIMSS (Healthcare Information and Management Systems Society) and the Personal Connected Health Alliance (PCHAlliance). PCHAlliance, for example, advocates the adoption of the Continua Design Guidelines (CDG), which facilitates the integration of personal health devices into health systems. These guidelines have been recognized by ITU (International Telecommunication Union) and the European Commission and are adopted by countries such as Denmark, Norway and the USA, among others \cite{PersonalConnectedHealthAlliance2017}. These guidelines promote a series of e-health standards like \acs{FHIR} which facilitate the exchange of information between systems, in order to ensure that the implementations become truly interoperable.
 
@@ -305,7 +304,7 @@ Within this project we aim to continue to expand the capabilities of the Continu
 
 \paragraph{}After studying the different approaches taken by researchers, and in the context of the dissertation, we propose a novel fully modular \acs{IoT} infrastructure that uses the \acs{FHIR} standard in order to fully integrate the data into the existing \acs{HIS}, GlobalCare by Glintt. 
 
-\paragraph{}From a hardware perspective, the system is composed of 3 different components, as seen in Figure \ref{fig:wow-architecture}: the Biostickers, that acquire the patient's physiological signals, the ``SmartBox'', which acts as a central node of the \acs{WBAN} and aggregates the data, communicating it to the gateway, and the ``Smart Gateway'', which serves as a fog server in order to mitigate latency and other computing issues and acts as the gateway to the \acs{HIS}. The system must ensure reliable and secure communications between every device. 
+\paragraph{}From a hardware perspective, the \acs{IoT} system is composed of 3 different components, as seen in Figure \ref{fig:wow-architecture}: the Biostickers, that acquire the patient's physiological signals, the ``SmartBox'', which acts as a central node of the \acs{WBAN} and aggregates the data, communicating it to the gateway, and the ``Smart Gateway'', which serves as a fog server in order to mitigate latency and other computing issues and acts as the gateway to the \acs{HIS}. The system must ensure reliable and secure communications between every device. 
 
 \begin{figure}[H]
     \centering
@@ -317,7 +316,7 @@ Within this project we aim to continue to expand the capabilities of the Continu
 For the work developed throughout the dissertation, we have set the following goals: 
 
 \begin{itemize}
-    \item Contributing to the deployment of the SmartBoxes embedded in hospital beds for data acquisition from Biostickers attached to patients’ skin:
+    \item Contributing to the development and deployment of the SmartBoxes embedded in hospital beds for data acquisition from Biostickers attached to patients’ skin:
     \begin{itemize}
         \item Hardware evaluation of 2 different \acs{IoT} kits (Raspberry Pi and Udoo Bolt).
         \item Evaluation of different \acs{BLE} adapters for data acquisition.
