@@ -3,6 +3,9 @@ In the proposed architecture, the SmartBox plays the role of acquiring the data 
 Each SmartBox is associated to a single patient, captures the data of each Biosticker associated with that patient and stores it in a local database for redundancy. 
 It should also be capable of analyzing and process the data in real time, before propagating it to the higher layers in the system architecture, in order to reduce computation and networking overhead on the Smart Gateway. The \acs{WoW} project also foresees the usage of a classification algorithm in the SmartBox to determine the body pose of the patient, as well as filtering the respiration data to account for signal fluctuations caused by sudden movements by the patient.  
 
+\section{Overview of SmartBox Services}
+
+\todo[inline]{Todo: Add overview of all services to be run in the SmartBox. }
 \section{Deciding on a Hardware Platform}
 
 In the context of the dissertation, two different \acl{SBC}s (\acs{SBC}) were considered for the development of the SmartBox: a Raspberry Pi 4 Model B and an UDOO BOLT v3. In the following sections we will discuss and compare the characteristics of each platform. 
@@ -21,10 +24,10 @@ At the time of the writing of this dissertation, the Raspberry Pi 4 Model B is t
 
 \subsubsection{UDOO BOLT V3}
 
-As stated by the manufacturer\footnote{Product Website: https://www.udoo.org/discover-the-udoo-bolt/}, the ``UDOO BOLT is a quantum leap compared to current maker boards''. It represents a series of high performance \acs{SBC}, equipped with the latest generation of AMD Ryzen Embedded SoC. Additionally, it contains an Arduino Compatible microcontroller (connected via UART), making it the UDOO BOLT extremely versatile with its.
-The UDOO Bolt is incredibly well supported by UDOO. And since it runs desktop Linux distros and Windows 10, third-party support is top-notch. Unfortunately, it doesn't have nearly the same community support of Raspberry Pi.
+As stated by the manufacturer\footnote{Product Website: https://www.udoo.org/discover-the-udoo-bolt/}, the ``UDOO BOLT is a quantum leap compared to current maker boards''. It represents a series of high performance \acs{SBC}, equipped with the latest generation of AMD Ryzen Embedded SoC. Additionally, it contains an Arduino Compatible microcontroller (connected via UART), making it the UDOO BOLT extremely versatile.
+The UDOO Bolt is incredibly well supported by UDOO but unfortunately, it doesn't have nearly the same community support of Raspberry Pi.
 
-The UDOO BOLT V3 is the entry-level product of the series, but it is still capable of outperforming full-fledged computers such as the Apple MacBook 13", which just goes to show how powerful these \acs{SBC}s can be.
+\paragraph{}The UDOO BOLT V3 is the entry-level product of the series, but it is still capable of outperforming full-fledged computers such as the Apple MacBook 13", which just goes to show how powerful these \acs{SBC}s can be.
 
 \begin{figure}[H]
     \centering
@@ -37,20 +40,20 @@ The UDOO BOLT V3 is the entry-level product of the series, but it is still capab
 
 In order to decide on which platform to pick for the development of the project, it's crucial to compare the specification of both boards, which can be seen in the Table \ref{tab:comparsion-hardwareplatform}.
 
-\renewcommand{\arraystretch}{2}
+\renewcommand{\arraystretch}{2.5}
 \begin{table}[H]
     \centering
     \begin{tabular}{r|l|l}
         %\textbf{Features} 
         & \textbf{Raspberry Pi 4B}& \textbf{UDOO BOLT V3}  \\ \hline
-        \textbf{SoC} &  \makecell{Broadcom BCM2711 (ARM v8 \\ 64-bit) 4-core @ 1.5GHz} & \makecell{AMD Ryzen™ Embedded V1202B (x86-64) \\ 2-core @ 2.3GHz (up to 3.2GHz turbo)}\\
-        \textbf{RAM} & 2, 4 or 8 GB LPDDR4 & Up to 32GB DDR4 (Not included) \\ 
-        \textbf{Storage} & \makecell{No internal storage, \\ SDXC Card Support} & \makecell{32GB internal eMMC + \\1x SATA III and 2x M.2 connectors}\\
+        \textbf{SoC} &  \makecell{Broadcom BCM2711 \\ (ARMv8 64-bit) \\ 4-core @ 1.5GHz} & \makecell{AMD Ryzen™ Embedded V1202B \\ (AMD64 64-bit) 2-core @ 2.3GHz \\ (up to 3.2GHz turbo)}\\
+        \textbf{RAM} & 2, 4 or 8GB LPDDR4 & Up to 32GB DDR4 (Not included) \\ 
+        \textbf{Storage} & \makecell{No internal storage, \\ SDXC Card Support} & \makecell{32GB internal eMMC + \\1 × SATA III and \\ 2 × M.2 connectors}\\
         \textbf{Networking} & \makecell{2.4/5.0 GHz WiFi, Gigabit \\ Ethernet, Bluetooth 5.0, BLE} & \makecell{Gigabit Ethernet + M.2 Key E slot \\ for optional WiFi+BT module}\\ 
-        \textbf{I/O Ports} & \makecell{ 2 × USB 3.0, 2 × USB 2.0, \\ 2x (Mini) HDMI} & \makecell{2x USB 3.0 Type-A, 2x USB Type-C (w/ \\ Display Port + Power Delivery), 2x HDMI} \\
-        \makecell[r]{\textbf{Other} \\\textbf{Features}} & Power over Ethernet (PoE)–enabled & \makecell{Includes ATmega32U4 microcontroller\\ (Arduino Leonardo compatible), \\ RTC Battery} \\   
-        \textbf{Dimensions} & 0.85 x 0.56 x 0.17 cm & 12 x 12 x 7 cm \\
-        \textbf{Price} & \makecell{75.93 € (including 32GB SDXC Card\\ and case)} & \makecell{534.48 € (including external power supply\\ and 16GB RAM module)} \\
+        \textbf{I/O Ports} & \makecell{ 2 × USB 3.0, 2 × USB 2.0, \\ 2 × (Mini) HDMI} & \makecell{2 × USB 3.0 Type-A, \\ 2 × USB Type-C (w/ Display Port \\ + Power Delivery), 2 × HDMI} \\
+        \makecell[r]{\textbf{Other} \\\textbf{Features}} & \makecell{Power over Ethernet \\(PoE)–enabled} & \makecell{Includes ATmega32U4 microcontroller\\ (Arduino Leonardo compatible), \\ RTC Battery} \\   
+        \textbf{Dimensions} & 8.5 x 5.6 x 1.7 cm & 12 x 12 x 7 cm \\
+        \textbf{Price} & \makecell{75.93 € (\textbf{8GB Model}, \\ including a32GB SDXC Card\\ and case)} & \makecell{534.48 € (including external power \\ supply and a 16GB RAM module)} \\
     \end{tabular}
     \caption{Specifications of the Raspberry Pi 4B and UDOO BOLT V3.}
     \label{tab:comparsion-hardwareplatform}
@@ -61,38 +64,57 @@ In order to decide on which platform to pick for the development of the project,
 \paragraph{} From the Table \ref{tab:comparsion-hardwareplatform}, we immediately conclude that the Raspberry Pi is a much more affordable alternative. At over 1/7 of the price, it already has a working WiFi+BT networking module (which is not included in the UDOO BOLT), nearly identical Input/Output (I/O) port capability and a smaller size. UDOO BOLT V3 on the other hand, has a much better SoC, which should result in a much better overall computing performance.
 
 
-\paragraph{} In order to understand how these differences in the specification between these two platforms translate to real-world performance, a test suite was developed and conducted. The tools developed for each test can be found here\footnote{https://github.com/WoW-Institute-of-Systems-and-Robotics/smartbox\_benchmark\_tests}. 
+\paragraph{} In order to understand how these differences in the hardware specification between the \acs{SBC}s translate to real-world performance, a test suite was developed and conducted to quantify the performance of each \acs{SBC}. The tools developed for each test can be found here\footnote{https://github.com/WoW-Institute-of-Systems-and-Robotics/smartbox\_benchmark\_tests}. 
 
 \paragraph{}In the next sections, we detail how each test works and discuss how each \acs{SBC} performed. 
 
-%\subsubsection{Test 1: \textit{7-Zip} CPU Benchmark}
-%\dots
-
 \subsubsection{Test 1: Python Benchmark}
 
-Given the data processing requirements for the SmartBox, and as Python will be used as the main scripting language for most of the SmartBox development, we developed a simple test to estimate the Python performance, or more specifically performance of arithmetic tasks, on each \acs{SBC}. On this test, each \acs{SBC} calculates the \textit{n}-th number in the Fibonacci sequence\footnote{https://en.wikipedia.org/wiki/Fibonacci\_number}, and we measure the time taken. This process is repeated 100 times for different numbers to determine the average run time for different amounts.
+Given the data processing requirements for the SmartBox, and as Python will be used as the main scripting language for most of the SmartBox development, we developed a simple test to estimate the Python performance, or more specifically (single-threaded) performance of arithmetic tasks, on each \acs{SBC}. On this test, each \acs{SBC} calculates the \textit{n}-th number in the Fibonacci sequence\footnote{https://en.wikipedia.org/wiki/Fibonacci\_number}, and we measure the time taken. This process is repeated 10 times for different numbers to determine the average run time for different amounts.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6 \linewidth]{images/fibonacci-test.pdf}
-    \caption [Results of the custom Python benchmark for the Raspberry Pi 4B and UDOO BOLT V3.]{ Results of the custom Python benchmark for the Raspberry Pi 4B and UDOO BOLT V3. }
+    \includegraphics[width=0.8 \linewidth]{images/fibonacci-test.pdf}
+    \caption [Results of the custom Python benchmark for the Raspberry Pi 4B and UDOO BOLT V3.]{ Results of the custom Python benchmark for the Raspberry Pi 4B and UDOO BOLT V3. The standard deviation for each run time is inferior to 1\% for each result, and therefore cannot be displayed in the figure.}
     \label{fig:fibonacci-tests}
 \end{figure}
 
-From the Figure \ref{fig:fibonacci-tests}, we can observe that the time taken for computing each number increases exponentially for each platform. By analyzing the data, we can see that the UDOO BOLT V3 outperforms Raspberry Pi 4B on average by a factor of 2.7 $\pm$ 0.6.
+From the Figure \ref{fig:fibonacci-tests}, we can observe that the time taken for computing each number increases exponentially for each platform. By analyzing the data, we can see that the UDOO BOLT V3 outperforms Raspberry Pi 4B on average by a factor of 2.5 $\pm$ 0.2.
 
 \subsubsection{Test 2: Phoronix Test Suite}
 
-The Phoronix Test Suite\footnote{Phoronix Test Suite - Linux Testing \& Benchmarking Platform, Automated Testing, Open-Source Benchmarking: \textit{https://www.phoronix-test-suite.com/}} is an open-source benchmarking platform used for comparing the performance of different systems. The framework provides compilations of tests for a variety of tools and is also fully customizable and expandable, allowing users to develop and automate their own tests in a clean, reproducible and easy-to-use fashion.  
+The Phoronix Test Suite\footnote{Phoronix Test Suite - Linux Testing \& Benchmarking Platform, Automated Testing, Open-Source Benchmarking: \url{https://www.phoronix-test-suite.com/}} is an open-source benchmarking platform used for comparing the performance of different systems. The framework provides compilations of tests for a variety of tools and is also fully customizable and expandable, allowing users to develop and automate their own tests in a clean, reproducible and easy-to-use fashion. The test profiles work by measuring some property of the benchmark, (\textit{e.g.} the run time for calculating the first 100 Fibonacci numbers) and use it to provide an estimate of the performance of the \acs{SBC}, which can be easily used for comparison between different systems. 
 
-For the purposes of evaluating which single board computer should be used, we chose the Python PyPerformance and PyBench, and 7-Zip test profiles provided by Phoronix\footnote{OpenBenchmarking.org - Cross-Platform, Open-Source Automated Benchmarking Platform: \textit{https://openbenchmarking.org/}}. These test profiles work by measuring the time \acs{SBC}s take to perform different tasks (\textit{e.g.} calculating the first 100 Fibonacci numbers) and calculate a quantitive score based on these run times, which is useful for comparing CPU (and more particularly Python) performance between different systems.
+\paragraph{} For the purposes of evaluating which \acs{SBC} should be used, we chose the following standard test profiles provided by Phoronix\footnote{OpenBenchmarking.org - Cross-Platform, Open-Source Automated Benchmarking Platform: \url{https://openbenchmarking.org/}}, which are a compilation of the most popular Python and CPU benchmarks used:
 
-\todo[inline]{Todo: Add the missing Phoronix benchmark graph?}
+\begin{itemize}
+    \item BYTE Unix Benchmark (``BYTE'') -- Runs BYTE UNIX benchmark suite (more particularly, the Dhrystone 2 synthetic benchmark) to measure the amount of instructions per second (IPS). Its purpose is to provide a basic indicator of the CPU performance of a given system.
+    \item 7-Zip Compression (``7-Zip'') -- Runs the benchmark feature integrated in 7-Zip to measure the amount of millions instructions per second (MIPS). The benchmark consists of a LZMA data compression and decompression, using all available threads in the system (meaning it will scale heavily with the amount of threads in the system). 
+    \item PyBench Benchmark (``PyBench'') -- Executes different function such as built-in function calls and nested for-loops and measures its runtime.
 
+    \item PyPerformance \textit{chaos} Benchmark (``chaos'') -- Create chaos game-like\footnote{Chaos game: \url{https://en.wikipedia.org/wiki/Chaos_game}} fractals and measures its run-time.
+    \item PyPerformance \textit{float} Benchmark (``float'') -- Create 100,000 random floating-point numbers and calculate the co-sine, sine and square root of each one and measures its run-time.
+    \item PyPerformance \textit{nbody} Benchmark (``nbody'') -- Runs an \textit{n-body} problem simulation\footnote{\textit{n-body} problem: \url{https://en.wikipedia.org/wiki/N-body_problem}} and measures its run-time.
+    \item PyPerformance \textit{json\_loads} Benchmark (``json'') -- Evaluates \acf{JSON}\footnote{The JavaScript Object Notation (JSON) Data Interchange Format: \url{https://www.rfc-editor.org/rfc/rfc8259.html}} parsing and serialization, a widely used open stardard data format, by dumping and loading thousands of objects and measures its runtime.
+    \item PyPerformance \textit{crypto\_pyaes} Benchmark (``crypto'') -- Runs the AES block-cipher Python implementation and measures its run-time.
+    \item PyPerformance \textit{regex\_compile} Benchmark (``regex'') -- Compiles a \textit{regular expression} or \textit{regex} in Python and measures its run-time.
+    \item PyPerformance \textit{python\_startup} Benchmark (``startup'') -- Measures Python's startup time.
+    \item PyPerformance \textit{django\_template} Benchmark (``django'') -- Builds a 150x150-cell HTML table and measures its run-time.
+\end{itemize}
+
+\paragraph{} The benchmark results obtained were published to the \textit{OpenBenchmarking.org} website, and can be found by visiting the following webpage: \url{https://openbenchmarking.org/result/2110255-JNCF-211025851}.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8 \linewidth]{images/phoronix-benchmarks.pdf}
+    \caption [Phoronix benchmarks results for the UDOO BOLT V3 and Raspberry Pi 4B.]{ Phoronix benchmarks results for the UDOO BOLT V3 and Raspberry Pi 4B. The performance values for each test are normalized to UDOO BOLT V3 performance.}
+    \label{fig:phronix-benchmarks}
+\end{figure}
+
+\paragraph{} From the Figure \ref{fig:phronix-benchmarks}, we can observe that UDOO BOLT V3 performs much better than Raspberry Pi 4B in every benchmark, as expected. By analyzing the data, we find that UDOO BOLT V3 outperforms Raspberry Pi 4B on average by a factor of 2.21 $\pm$ 0.4.
 
 \subsubsection{Test 3: \acs{MQTT} Benchmark}
 
-As the SmartBox will communicate with the Smart Gateway through \acs{MQTT}, we decided to evaluate how each system handles the load associated with an \acs{MQTT} client. For this test, each \acs{SBC} ran a simple \acs{MQTT} client which was subscribing to a single topic and publishing to another topic using a given transmission rate, with an \acs{MQTT} broker in the local network.
+As the SmartBox will communicate with the Smart Gateway through \acs{MQTT}, we decided to evaluate how each system handles the load associated with an \acs{MQTT} client. For this test, each \acs{SBC} ran a simple \acs{MQTT} client which was subscribing to a single topic and publishing to another topic using a given transmission rate, a message with a payload containing the string ``hello world'' to a \acs{MQTT} broker in the local network.
 
 \begin{figure}[H]
     \centering
@@ -105,7 +127,7 @@ The \acs{MQTT} client is a very lightweight process, and as seen in Figure \ref{
 
 \subsubsection{Conclusion}
 
-Based on the results of our tests we conclude that UDOO BOLT V3 heavily outperforms the Raspberry Pi 4 Model B in CPU benchmarks, but shows a negligible difference in memory usage. However, we find that these performance gains do not meaningfully impact the SmartBox functionality, for example, in the \acs{MQTT} communication. Due to the extremely affordable price of the Raspberry Pi 4B, we have decided to move forward with the Raspberry Pi 4B for the development of the project.
+Based on the results of our tests we conclude that UDOO BOLT V3 heavily outperforms the Raspberry Pi 4 Model B in CPU benchmarks, but shows a negligible difference in memory usage. Nonetheless, we find that these performance gains do not meaningfully impact the SmartBox functionality, for example, in the \acs{MQTT} communication. Due to the extremely affordable price of the Raspberry Pi 4B, we have decided to move forward with the Raspberry Pi 4B for the development of the project.
 
 \section{Communication with the Biostickers}
 
@@ -122,8 +144,8 @@ Based on the results of our tests we conclude that UDOO BOLT V3 heavily outperfo
 \begin{enumerate}
     \item Slave Latency:
     \item Connection Interval:
-    \item Supervisor Timeout
-    \item \acs{MTU} for the \acs{ATT} protocol: 
+    \item Supervisor Timeout:
+    \item \acf{MTU} for the \acs{ATT} protocol: 
 \end{enumerate}
 
 \subsubsection{Test 1: Roundtrip Time Measurement}

@@ -102,14 +102,14 @@ Out of the abovementioned technologies, \acs{BLE} offers greater throughput, bet
  \begin{table}[H]
      \centering
      \begin{tabular}{r|l|l|l}
-         & \textbf{\acl{BLE}} & \textbf{EPC/\acs{RFID}}& \textbf{ZigBee}  \\ \hline
-         \textbf{Band of operation} & 2.4 GHz & LF, HF, UHF, EHF & 2.4 GHz \\
+         & \textbf{\acs{BLE}} & \textbf{EPC/\acs{RFID}}& \textbf{ZigBee}  \\ \hline
+         \makecell[r]{\textbf{Band of} \\ \textbf{operation}} & 2.4 GHz & LF, HF, UHF, EHF & 2.4 GHz \\
          \textbf{Communication} & Bidirectional & \makecell{Unidirectional \\ (Bidirectional for\\ Active tags)} & Bidirectional \\
-         \textbf{Topology} & \makecell{ Point-to-Point, Piconet, \\ Broadcast, Mesh } & Point-to-Point & Mesh \\
+         \textbf{Topology} & \makecell{ Point-to-Point, \\ Piconet, Broadcast,\\ Mesh } & Point-to-Point & Mesh \\
          \textbf{Range} & <100m & \makecell{<10m, (100m for\\ Active tags)} & 20m \\
-         \textbf{Data rate (Typical) } & 1Mbps & 40kbps & 250kbps \\
+         \makecell[r]{\textbf{Data rate} \\ \textbf{(Typical)}} & 1Mbps & 40kbps & 250kbps \\
          \textbf{\acs{IP} Stack} & \xmark & \xmark & \cmark \\
-         \textbf{Security Features} & \makecell{AES-128, Secure pairing \\ prior to key exchange} & \xmark & \makecell{AES-128 (Optional),\\ Network key shared \\across network, \\ Optional link key to \\ secure application layer \\ communications}\\
+         \makecell[r]{\textbf{Security} \\ \textbf{Features}} & \makecell{AES-128, Secure \\ pairing prior to \\ key exchange} & \xmark & \makecell{AES-128 (Optional),\\ Network key shared \\across network, \\ Optional link key to \\ secure application layer \\ communications}\\
      \end{tabular}
      \caption[Comparison between the more common communication protocols used within short range]{Comparison between the more common communication protocols used within short range. Adapted from \cite{Baker2017}.}
      \label{tab:comparsion-shortrangeprotocols}
@@ -133,7 +133,7 @@ So far we have discussed the underlying networking technologies that link the de
         \textbf{Messaging pattern} & P-S (asynchronous) & R-R (synchronous) \\
         \textbf{Communication model} & Many-to-many & One-to-one \\
         \textbf{Security} & SSL/TLS (Optional) & DTLS \\
-        \textbf{Strengths} & \makecell{TCP and Quality of Service (QoS),\\ robust \\communications, easier to implement } & \makecell{Better for lossy networks,\\ lower latency} \\
+        \textbf{Strengths} & \makecell{TCP and Quality of \\ Service (QoS), robust \\communications, easier \\ to implement } & \makecell{Better for lossy networks,\\ lower latency} \\
         \textbf{Weaknesses} & \makecell{Higher overhead and energy\\ consumption than \acs{CoAP}} & \makecell{Not as reliable and \\less supported than MQTT} \\
     \end{tabular}
     \caption[Comparison between \acs{CoAP} and \acs{MQTT} protocols.]{Comparison between \acs{CoAP} and \acs{MQTT} protocols. Adapted from \cite{10.5555/3161403}.}
@@ -205,7 +205,7 @@ However, as the data in \acs{IoT} can very heterogenous and unstructured, the au
         \textbf{Schema} & Strict schema & Dynamic schema \\
         \textbf{Query} & \makecell{Uses Standard Query \\Language (SQL), appropriate for \\ complex query operations} & \makecell{No standard query language}  \\ 
         \textbf{Scalability} & Vertical & Horizontal \\
-        \textbf{Performance} & Generally lower than NoSQL systems & Optimized for large datasets \\
+        \textbf{Performance} & \makecell{Generally lower than \\ NoSQL systems} & Optimized for large datasets \\
     \end{tabular}
     \caption{Comparison between SQL and NoSQL technologies.}
     \label{tab:comparsion-databasetech}
