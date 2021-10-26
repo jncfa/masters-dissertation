@@ -1,7 +1,7 @@
 
-In the proposed architecture, the SmartBox plays the role of acquiring the data that is transmitted wirelessly by the Biostickers.
-Each SmartBox is associated to a single patient, captures the data of each Biosticker associated with that patient and stores it in a local database for redundancy. 
-It should also be capable of analyzing and process the data in real time, before propagating it to the higher layers in the system architecture, in order to reduce computation and networking overhead on the Smart Gateway. The \acs{WoW} project also foresees the usage of a classification algorithm in the SmartBox to determine the body pose of the patient, as well as filtering the respiration data to account for signal fluctuations caused by sudden movements by the patient.  
+In the proposed architecture, the \textit{SmartBox} plays the role of acquiring the data that is transmitted wirelessly by the \textit{Biostickers}.
+Each \textit{SmartBox} is associated to a single patient, captures the data of each \textit{Biosticker} associated with that patient and stores it in a local database for redundancy. 
+It should also be capable of analyzing and process the data in real time, before propagating it to the higher layers in the system architecture, in order to reduce computation and networking overhead on the Smart Gateway. The \acs{WoW} project also foresees the usage of a classification algorithm in the \textit{SmartBox} to determine the body pose of the patient, as well as filtering the respiration data to account for signal fluctuations caused by sudden movements by the patient.  
 
 
 \paragraph{}Additionally, for debugging purposes, researchers at the \acs{ISR} developed a simple developer \acs{GUI}, which can be seen on Figure \ref{fig:smartbox-gui}.
@@ -9,11 +9,11 @@ It should also be capable of analyzing and process the data in real time, before
 \begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth]{images/smartbox-gui.png}
-    \caption{Image of the developer \acf{GUI} for debugging the SmartBox acquisition, designed by other researchers at the \acs{ISR}.}
+    \caption{Image of the developer \acf{GUI} for debugging the \textit{SmartBox} acquisition, designed by other researchers at the \acs{ISR}.}
     \label{fig:smartbox-gui}
 \end{figure}
 
-\paragraph{} Regarding the data acquisition, the SmartBox collects 5 distinct biosignals (which can be seen on the developer low level \acs{GUI} on Figure \ref{fig:smartbox-gui}):
+\paragraph{} Regarding the data acquisition, the \textit{SmartBox} collects 5 distinct biosignals (which can be seen on the developer low level \acs{GUI} on Figure \ref{fig:smartbox-gui}):
 
 \begin{itemize}
     \item \acf{ECG} -- Byte array (20 byte length) with the electrical signal measured, with a frequency of 20Hz.
@@ -27,7 +27,7 @@ It should also be capable of analyzing and process the data in real time, before
 
 \section{Deciding on a Hardware Platform}
 
-In the context of the dissertation, two different \acl{SBC}s (\acs{SBC}) were considered for the development of the SmartBox: a Raspberry Pi 4 Model B and an UDOO BOLT v3. In the following sections we will discuss and compare the characteristics of each platform. 
+In the context of the dissertation, two different \acl{SBC}s (\acs{SBC}) were considered for the development of the \textit{SmartBox}: a Raspberry Pi 4 Model B and an UDOO BOLT v3. In the following sections we will discuss and compare the characteristics of each platform. 
 
 \subsubsection{Raspberry Pi 4 Model B}
 
@@ -89,12 +89,12 @@ In order to decide on which platform to pick for the development of the project,
 
 \subsubsection{Test 1: Python Benchmark}
 
-Given the data processing requirements for the SmartBox, and as Python will be used as the main scripting language for most of the SmartBox development, we developed a simple test to estimate the Python performance, or more specifically (single-threaded) performance of arithmetic tasks, on each \acs{SBC}. On this test, each \acs{SBC} calculates the \textit{n}-th number in the Fibonacci sequence\footnote{https://en.wikipedia.org/wiki/Fibonacci\_number}, and we measure the time taken. This process is repeated 10 times for different numbers to determine the average run time for different amounts.
+Given the data processing requirements for the \textit{SmartBox}, and as Python will be used as the main scripting language for most of the \textit{SmartBox} development, we developed a simple test to estimate the Python performance, or more specifically (single-threaded) performance of arithmetic tasks, on each \acs{SBC}. On this test, each \acs{SBC} calculates the \textit{n}-th number in the Fibonacci sequence\footnote{https://en.wikipedia.org/wiki/Fibonacci\_number}, and we measure the time taken. This process is repeated 10 times for different numbers to determine the average run time for different amounts.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8 \linewidth]{images/fibonacci-test.pdf}
-    \caption [Results of the custom Python benchmark for the Raspberry Pi 4B and UDOO BOLT V3.]{ Results of the custom Python benchmark for the Raspberry Pi 4B and UDOO BOLT V3. The standard deviation for each run time is inferior to 1\% for each result, and therefore cannot be displayed in the figure.}
+    \caption [Results of the custom Python benchmark for the Raspberry Pi 4B and UDOO BOLT V3.]{ Results of the custom Python benchmark for the Raspberry Pi 4B and UDOO BOLT V3. The standard deviation for each run time is inferior to 0.1\% in each test, and therefore cannot be displayed in the figure.}
     \label{fig:fibonacci-tests}
 \end{figure}
 
@@ -132,7 +132,7 @@ The Phoronix Test Suite\footnote{Phoronix Test Suite - Linux Testing \& Benchmar
 
 \subsubsection{Test 3: \acs{MQTT} Benchmark}
 
-As the SmartBox will communicate with the Smart Gateway through \acs{MQTT}, we decided to evaluate how each system handles the load associated with an \acs{MQTT} client. For this test, each \acs{SBC} ran a simple \acs{MQTT} client which was subscribing to a single topic and publishing to another topic using a given transmission rate, a message with a payload containing the string ``hello world'' to a \acs{MQTT} broker in the local network.
+As the \textit{SmartBox} will communicate with the Smart Gateway through \acs{MQTT}, we decided to evaluate how each system handles the load associated with an \acs{MQTT} client. For this test, each \acs{SBC} ran a simple \acs{MQTT} client which was subscribing to a single topic and publishing to another topic using a given transmission rate, a message with a payload containing the string ``hello world'' to a \acs{MQTT} broker in the local network.
 
 \begin{figure}[H]
     \centering
@@ -145,28 +145,47 @@ The \acs{MQTT} client is a very lightweight process, and as seen in Figure \ref{
 
 \subsubsection{Conclusion}
 
-Based on the results of our tests we conclude that UDOO BOLT V3 heavily outperforms the Raspberry Pi 4 Model B in CPU benchmarks, but shows a negligible difference in memory usage. Nonetheless, we find that these performance gains do not meaningfully impact the SmartBox functionality, for example, in the \acs{MQTT} communication. Due to the extremely affordable price of the Raspberry Pi 4B, we have decided to move forward with the Raspberry Pi 4B for the development of the project.
+Based on the results of our tests we conclude that UDOO BOLT V3 heavily outperforms the Raspberry Pi 4 Model B in CPU benchmarks, but shows a negligible difference in memory usage. Nonetheless, we find that these performance gains do not meaningfully impact the \textit{SmartBox} functionality, for example, in the \acs{MQTT} communication. Due to the extremely affordable price of the Raspberry Pi 4B, we have decided to move forward with the Raspberry Pi 4B for the development of the project.
+
+\clearpage
 
 \section{Communication with the Biostickers}
 
-\subsection{Overview of \acf{BLE}}
+As previously mentioned, the communication between the \textit{Biostickers} and the \textit{SmartBox} makes use of the \acs{BLE} protocol. One of the advantages of using the Raspberry Pi 4B, as discussed in the previous section, was the fact that it included all networking functionality needed for the project. 
+
+\paragraph{} However, the communication with the \textit{Biostickers} is very critical and demanding. During the development of the project, researchers from \acs{ISR} decided to use a \textit{Biosticker} with a commercially available Pulse Oximeter in order to capture all required biosignals. This means the \acs{BLE} acquisition system must be capable of handling both communications simultaneously. Before moving forward with the development, we need to understand if the included \acs{BLE} adapter is sufficient for the task, or if we need to consider a different acquisition system.
+
+\paragraph{} In order to understand how data transmission works between \acs{BLE} devices, some technical background regarding the data transmission in protocol is presented.
+
+\subsection{Technical Background} 
+ % Ver https://www.scirp.org/journal/paperinformation.aspx?paperid=103686
+
+\todo[inline]{To-do: Intro to Link Layer, LE 1M e 2M, packet format, mention GATT and overview data transmission...}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{images/placeholder-image.png}
+    \caption[Link Layer packet format for uncoded \acs{PHY}s (LE 1M and LE 2M).]{Link Layer packet format for uncoded \acs{PHY}s (LE 1M and LE 2M). Adapted from: \cite{Specification1999}}
+    \label{fig:ble-ll-packet-format}
+\end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth]{images/ble-sending-data.PNG}
     \caption[Message sequence chart between two \acs{BLE} devices sending data and replying to the request.]{Message sequence chart between two \acs{BLE} devices sending data and replying to the request. Source: \cite{Specification1999}}
-    \label{fig:differences-between-cloud-services}
+    \label{fig:ble-message-sequence-chart}
 \end{figure}
 
-
 \begin{enumerate}
-    \item Slave Latency:
-    \item Connection Interval:
-    \item Supervisor Timeout:
+    \item Slave Latency: Number of consecutive connection events the slave device is not required to listen for the master. It allows a slave to use a reduced number of connection events, thus minimizing power consumption.
+    \item Connection Interval: Time between two consecutive connection events.
+    \item Supervisor Timeout: Maximum time between two received data \acs{PDU}s before the connection is considered lost.
     \item \acf{MTU} for the \acs{ATT} protocol: 
 \end{enumerate}
 
 \subsubsection{Test 1: Roundtrip Time Measurement}
+
+\todo[inline]{...}
 
 \begin{figure}[H]
     \begin{minipage}[r]{0.49\linewidth}
@@ -200,6 +219,7 @@ Based on the results of our tests we conclude that UDOO BOLT V3 heavily outperfo
 \end{figure}
 
 \subsubsection{Test 2: Bandwidth Measurement}
+\todo[inline]{...}
 
 
 \section{Summary}
