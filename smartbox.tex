@@ -174,14 +174,21 @@ As previously mentioned, the communication between the \textit{Biostickers} and 
     \includegraphics[width=\linewidth]{images/ble-sending-data.PNG}
     \caption[Message sequence chart between two \acs{BLE} devices sending data and replying to the request.]{Message sequence chart between two \acs{BLE} devices sending data and replying to the request. Source: \cite{Specification1999}}
     \label{fig:ble-message-sequence-chart}
+
 \end{figure}
 
-\begin{enumerate}
+
+\subsubsection{Connection Parameters}
+
+\begin{itemize}
     \item Slave Latency: Number of consecutive connection events the slave device is not required to listen for the master. It allows a slave to use a reduced number of connection events, thus minimizing power consumption.
     \item Connection Interval: Time between two consecutive connection events.
     \item Supervisor Timeout: Maximum time between two received data \acs{PDU}s before the connection is considered lost.
     \item \acf{MTU} for the \acs{ATT} protocol: 
-\end{enumerate}
+\end{itemize}
+
+
+\subsection{Testing \acs{BLE} Communication} 
 
 \subsubsection{Test 1: Roundtrip Time Measurement}
 
