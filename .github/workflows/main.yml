@@ -10,11 +10,11 @@ jobs:
     steps:
       - name: Set up Git repository
         uses: actions/checkout@v2
-     # - name: LaTeX compilation
-     #   uses: dante-ev/latex-action@v0.2.0
-     #   with:
+      - name: LaTeX compilation
+        uses: dante-ev/latex-action@v0.2.0
+        with:
           # The root LaTeX file to be compiled
-     #     root_file: main.tex
+          root_file: main.tex
       - name: Get current time
         uses: 1466587594/get-current-time@v2
         id: current-time
