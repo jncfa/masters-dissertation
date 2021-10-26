@@ -8,3 +8,4 @@
 {"rule":"EN_A_VS_AN","sentence":"^\\QIn 2014 the \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q World Forum (IoTWF) architectural committee published an \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q architectural reference model, composed by seven layers as shown in figure \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q.\\E$"}
 {"rule":"ENGLISH_WORD_REPEAT_BEGINNING_RULE","sentence":"^\\QMonitorization of the patient's environment, mainly used for assessing environmental hazards, e.g gas leaks in a patient's home or an industrial workplace.\\E$"}
 {"rule":"EN_A_VS_AN","sentence":"^\\QThe first step when designing an \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q network should be to analyze the mobility and data requirements of the system \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q.\\E$"}
+{"rule":"SENTENCE_WHITESPACE","sentence":"^\\QConceptual illustration of the system components within a medical facility.\\E$"}

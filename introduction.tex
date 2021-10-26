@@ -4,15 +4,17 @@
 
 \section{Context}
 
-\paragraph{} Due to all the technological and healthcare advances over the last years, we have observed a steady increase of life expectancy. With the steadily aging population a rise of chronic illnesses can be noticed, which places significant strain on modern healthcare systems due to their limited resources - both human resources and medical equipment, hospital beds, etc. This is an evermore pressing concern, particularly with the recent Covid-19 epidemic, that is testing the limits of current healthcare systems. 
+\todo[inline]{To-do: Include missing citations.}
 
-\paragraph{} In an effort to combat this, many countries and organizations are currently promoting the shift towards digital healthcare through several funding programs, such as the European Union \cite{EuropeanUnion2021} or other initiatives by the World Health Organization \cite{WorldHealthOrganization2020}. The usage of digital technologies in health has the potential to radically change how healthcare is delivered, by enhancing the efficiency and cost-effectiveness of care, enabling new business models for service providers \cite{WorldHealthOrganization2020}.
+\paragraph{} Due to all the technological and healthcare advances over the last years, we have observed a steady increase of life expectancy. With the growing aging population a rise of chronic illnesses can be noticed, which places significant strain on modern healthcare systems due to their limited resources - both human resources and medical equipment, hospital beds, etc. This is an evermore pressing concern, particularly with the recent Covid-19 epidemic, that is testing the limits of current healthcare systems. 
 
-\paragraph{} In particular, there's one technology which has stood out from the rest, having potential to fulfill this vision for digital health -- \acf{IoT}. \acs{IoT} has been used to revolutionize different industries, such as smart grids \cite{Faria2020}, oil and gas industry \cite{Shoja2018} and many more. The basic concept of \acs{IoT} is enabling processing capability and connectivity to ``physical objects'' or groups of these, allowing them to be capable of connecting with other devices and exchange data. Today, we find that hospitalized patients need to be wired to various measurement instruments when continuous biomonitoring is required. \acs{IoT} is not only capable of challenging this restriction, detaching patients from their beds and restoring them much-needed comfort (perhaps even allowing them to return to their own homes), but also provide value to the various stakeholders in the healthcare system with the automatization of processes, continuous and remote monitoring, clinical decision support, etc.
+\paragraph{} In an effort to counter this, many countries and organizations are currently promoting the shift towards digital healthcare through several funding programs, such as the European Union \cite{EuropeanUnion2021} and World Health Organization initiatives \cite{WorldHealthOrganization2020}. The usage of digital technologies in health has the potential to radically change how healthcare is delivered, by enhancing the efficiency and cost-effectiveness of care, and enabling new business models for service providers \cite{WorldHealthOrganization2020}.
+
+\paragraph{} In particular, there is one paradigm which has stood out, having potential to fulfill this vision for digital health -- \textbf{\acf{IoT}}. \acs{IoT} has been used to revolutionize different industries, such as smart grids \cite{Faria2020}, oil and gas industry \cite{Shoja2018} and many more. The basic concept of \acs{IoT} is enabling processing capability and connectivity to ``physical objects'' or groups of these, allowing them to be capable of connecting with other devices and exchange data. Today, we find that hospitalized patients need to be wired to various measurement instruments when continuous biomonitoring is required. \acs{IoT} is not only capable of challenging this restriction, detaching patients from their beds and restoring them much-needed comfort (perhaps even allowing them to return to their own homes), but also provide value to the various stakeholders in the healthcare system with the automatization of processes, continuous and remote monitoring, clinical decision support, etc.
 
 \paragraph{} However, there are still many challenges to tackle before deploying such technologies in a medical environment. In particular, interoperability, security, and privacy are challenges which are recurrently identified in the literature. 
 
-Any device that exposed to the Internet is a possible security liability, and thus the development of efficient security measures is crucial to ensure the data remains private. 
+Any device that is exposed to the Internet is a possible security liability, and thus the development of efficient security measures is crucial to ensure that data remains private. 
 
 Moreover, the adoption of these novel systems can be often met with much objection from the clinical staff due to their mistrust of technology \cite{DursunErgezen2020}. To facilitate their deployment in hospitals, these need to be integrated easily in existing \acl{HIS}s (\acs{HIS}).
 
@@ -28,10 +30,12 @@ Moreover, the adoption of these novel systems can be often met with much objecti
 
 \section{System Requirements}
 
-Previous work by Institute of Systems and Robotics (ISR) researchers resulted in the development of wearable devices, designated ``Biostickers'', which are electronic patches equipped with sensors that gather the patient's physiological signals and communicate wirelessly. 
-The main objective of this work is the development and validation of an \acs{IoT} architecture capable of integrating the data that is acquired by the Biostickers into an existing \acs{HIS}, in the context of the \acs{WoW} project. 
+Previous work by researchers at the Institute of Systems and Robotics (ISR) resulted in the development of wearable devices, designated ``Biostickers'', which are electronic patches equipped with sensors that gather the patient's physiological signals and communicate wirelessly \cite{silva2020domiciliary}. 
+\textbf{The main objective of this dissertation work} is the development and validation of an \acs{IoT} architecture capable of integrating the data that is acquired by the Biostickers into an existing \acs{HIS}, in the context of the \acs{WoW} R\&D project \footnote{wOw -- A step towards domiciliary hospitalization: \url{https://inovglintt.com/financiamento/wow/}}. 
 
-The requirements for the system, and their priorities (based on a MoSCoW analysis\footnote{MoSCoW Prioritization: \url{https://www.productplan.com/glossary/moscow-prioritization/}}), are the following: 
+\todo[inline]{To-do: Discuss importance of my work, both general impact and to the WoW project.}
+
+The requirements for the system, and their priorities based on a MoSCoW prioritization analysis\cite{stapleton1997dsdm}, are the following: 
 % The system should be non-invasive, reliable and satisfy the stringent security and privacy requirements of health information systems. 
 
 % - Hardware evaluation for edge nodes which integrate electronic wireless patches that gather patient's physiological signals;
@@ -57,18 +61,16 @@ The requirements for the system, and their priorities (based on a MoSCoW analysi
     \end{itemize}
     \item \textbf{Should:}
     \begin{itemize}   
-        \item In order to facilitate the integration of this system into healthcare information services, the system must adopt international standards for exchanging information.
-    \end{itemize}
-    \item \textbf{Could:}
-    \begin{itemize}
         \item With long-term monitoring, large amounts of information should be gathered to create valuable datasets that can be used to improve patient monitoring.
     \end{itemize}
+    \item \textbf{Could:}
     \item \textbf{Would:}
     \begin{itemize}
-        \item For long-term patient monitoring, the system should be capable of identifying anomalies / biomarkers in patients' biosignals.
+        \item For long-term patient monitoring, the system would be capable of identifying anomalies / biomarkers in patients' biosignals.
     \end{itemize}
 \end{itemize}
 
-\section{Thesis Structure}
+\section{Dissertation Structure}
 
-This document is organized into different sections. The first chapter provides an introduction to the theme of the dissertation, discussing the context and motivation behind the work developed. In the second chapter a brief overview into \acs{IoT} infrastructures and its healthcare applications is shown. 
+This document is organized into different sections. The first chapter provides an introduction to the theme of the dissertation, discussing the context and motivation behind the work developed. In the second chapter a brief overview into \acs{IoT} infrastructures and its healthcare applications is shown, along with a statement of the contributions of this work. The third chapter focuses on hardware analysis for one of the \acs{IoT} system components which will be presented shortly, the ``SmartBox''. The fourth chapter describes the service architecture within another system component, the ``Smart Gateway'', which is validated experimentally and analyzed in the fifth chapter.
+Finally, in the sixth and final chapter, we reflect upon the work developed and discuss the completion of the objectives and on future work.

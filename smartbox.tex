@@ -3,9 +3,28 @@ In the proposed architecture, the SmartBox plays the role of acquiring the data 
 Each SmartBox is associated to a single patient, captures the data of each Biosticker associated with that patient and stores it in a local database for redundancy. 
 It should also be capable of analyzing and process the data in real time, before propagating it to the higher layers in the system architecture, in order to reduce computation and networking overhead on the Smart Gateway. The \acs{WoW} project also foresees the usage of a classification algorithm in the SmartBox to determine the body pose of the patient, as well as filtering the respiration data to account for signal fluctuations caused by sudden movements by the patient.  
 
-\section{Overview of SmartBox Services}
 
-\todo[inline]{Todo: Add overview of all services to be run in the SmartBox. }
+\paragraph{}Additionally, for debugging purposes, researchers at the \acs{ISR} developed a simple developer \acs{GUI}, which can be seen on Figure \ref{fig:smartbox-gui}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{images/smartbox-gui.png}
+    \caption{Image of the developer \acf{GUI} for debugging the SmartBox acquisition, designed by other researchers at the \acs{ISR}.}
+    \label{fig:smartbox-gui}
+\end{figure}
+
+\paragraph{} Regarding the data acquisition, the SmartBox collects 5 distinct biosignals (which can be seen on the developer low level \acs{GUI} on Figure \ref{fig:smartbox-gui}):
+
+\begin{itemize}
+    \item \acf{ECG} -- Byte array (20 byte length) with the electrical signal measured, with a frequency of 20Hz.
+    \item Respiration Rate -- An unsigned integer (4 bytes) representation of the rate of respiration, with a frequency of 10Hz.
+    \item Heart Rate -- An unsigned byte representation of the heart rate in \textit{beats per minute}, with a frequency of 4Hz.
+    \item Body Temperature -- An IEEE 11073\footnote{\url{https://standards.ieee.org/standard/11073-10207-2017.html}} floating-point number representation of the body temperature, with a frequency of 1Hz.
+    \item Oxygen Saturation -- An standard floating-point number (4 bytes) representation of the oxygen saturation, with a frequency of 1Hz.
+\end{itemize}
+
+\todo[inline]{Todo: Confirm with @Bernardo acquisition rates for each value.}
+
 \section{Deciding on a Hardware Platform}
 
 In the context of the dissertation, two different \acl{SBC}s (\acs{SBC}) were considered for the development of the SmartBox: a Raspberry Pi 4 Model B and an UDOO BOLT v3. In the following sections we will discuss and compare the characteristics of each platform. 
@@ -25,9 +44,9 @@ At the time of the writing of this dissertation, the Raspberry Pi 4 Model B is t
 \subsubsection{UDOO BOLT V3}
 
 As stated by the manufacturer\footnote{Product Website: https://www.udoo.org/discover-the-udoo-bolt/}, the ``UDOO BOLT is a quantum leap compared to current maker boards''. It represents a series of high performance \acs{SBC}, equipped with the latest generation of AMD Ryzen Embedded SoC. Additionally, it contains an Arduino Compatible microcontroller (connected via UART), making it the UDOO BOLT extremely versatile.
-The UDOO Bolt is incredibly well supported by UDOO but unfortunately, it doesn't have nearly the same community support of Raspberry Pi.
+The UDOO Bolt is incredibly well-supported by UDOO but unfortunately, it doesn't have nearly the same community support of Raspberry Pi.
 
-\paragraph{}The UDOO BOLT V3 is the entry-level product of the series, but it is still capable of outperforming full-fledged computers such as the Apple MacBook 13", which just goes to show how powerful these \acs{SBC}s can be.
+\paragraph{} The UDOO BOLT V3 is the entry-level product of the series, but it is still capable of outperforming full-fledged computers such as the Apple MacBook 13", which just goes to show how powerful these \acs{SBC}s can be.
 
 \begin{figure}[H]
     \centering
