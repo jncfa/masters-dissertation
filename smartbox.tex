@@ -1,7 +1,21 @@
 
-In the proposed architecture, the \textit{SmartBox} plays the role of acquiring the data that is transmitted wirelessly by the \textit{Biostickers}.
+In the proposed architecture, the \textit{SmartBox} plays the role of acquiring the data that is transmitted wirelessly by the \textit{Biostickers}, which can be seen on Figure \ref{fig:biosticker-imgs}.
 Each \textit{SmartBox} is associated to a single patient, it captures the data of each \textit{Biosticker} attached to that patient, and stores it in a local database for redundancy. 
 It should also be capable of analyzing and process the data in real time, before propagating it to the higher layers in the system architecture, in order to reduce computation and networking overhead on the Smart Gateway. The \acs{WoW} project also foresees the usage of a classification algorithm in the \textit{SmartBox} to determine the body pose of the patient, as well as filtering the respiration data to account for signal fluctuations caused by sudden movements by the patient.  
+
+\begin{figure}[H]
+    \begin{minipage}[r]{0.74\linewidth}
+        \includegraphics[width=\linewidth]{images/biosticker imgs/test.png}
+    \end{minipage}
+    \begin{minipage}[l]{0.25\linewidth}
+        \includegraphics[width=\linewidth]{images/biosticker imgs/a.png}
+        \includegraphics[width=\linewidth]{images/biosticker imgs/b.png}
+        \includegraphics[width=\linewidth]{images/biosticker imgs/c.png}
+    \end{minipage}
+    \centering
+    \caption[Illustration of the \textit{Biostickers}.]{Illustration of the \textit{Biostickers}. On the left, a conceptual illustration of the different components that form the \textit{Biosticker} is shown. On the right, photographies of a test volunteer using the \textit{Biosticker} are exhibited.}
+    \label{fig:biosticker-imgs}
+\end{figure}
 
 
 \paragraph{} Additionally, for debugging purposes, researchers at the \acs{ISR} developed a simple developer \acs{GUI}, which can be seen on Figure \ref{fig:smartbox-gui}.
@@ -131,7 +145,7 @@ The Phoronix Test Suite\footnote{Phoronix Test Suite - Linux Testing \& Benchmar
 
 \subsubsection{Test 3: \acs{MQTT} Benchmark}
 
-As the \textit{SmartBox} is intended to communicate with the Smart Gateway through \acs{MQTT} messages, we also evaluate how each system handles the load associated with an \acs{MQTT} client. For this test, each \acs{SBC} ran a simple \acs{MQTT} client, which subscribes to a single topic and publishes a message to another topic at a given transmission rate, with a payload containing the string ``hello world'', through an \acs{MQTT} broker in the local network.
+As the \textit{SmartBox} is intended to communicate with the \textit{Smart Gateway} through \acs{MQTT} messages, we also evaluate how each system handles the load associated with an \acs{MQTT} client. For this test, each \acs{SBC} ran a simple \acs{MQTT} client, which subscribes to a single topic and publishes a message to another topic at a given transmission rate, with a payload containing the string ``hello world'', through an \acs{MQTT} broker in the local network.
 
 \todo[inline]{To-do: Repeat tests with higher rates if time allows it.}
 \begin{figure}[H]
