@@ -266,9 +266,9 @@ In the \acs{WoW} project, the data acquisition is developed using the official L
     %\item The adapter should support the LE 2M physical layer for better throughput.
 \end{itemize}
 
-\paragraph{} After researching the available market, we chose the Asus USB-BT500 USB adapter\footnote{Asus USB-BT500 Bluetooth 5.0 USB Adapter: \url{https://www.asus.com/Networking-IoT-Servers/Adapters/All-series/USB-BT500/}} due to its affordability and availability, making it an adequate fit for the project's needs.
+\paragraph{} After researching the available market, we chose the ASUS USB-BT500 USB adapter\footnote{ASUS USB-BT500 Bluetooth 5.0 USB Adapter: \url{https://www.asus.com/Networking-IoT-Servers/Adapters/All-series/USB-BT500/}} due to its affordability and availability, making it an adequate fit for the project's needs.
 
-\paragraph{} In the next section, we perform multiple tests to evaluate the performance of Asus USB-BT500 and the internal \acs{BLE} adapter in the Raspberry Pi 4B.
+\paragraph{} In the next section, we perform multiple tests to evaluate the performance of ASUS USB-BT500 and the internal \acs{BLE} adapter in the Raspberry Pi 4B.
 
 \subsection{Testing \acs{BLE} Communication} 
 
@@ -343,32 +343,32 @@ In this first test, we measure the roundtrip time of a single \acs{ATT} data pac
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.75\linewidth]{images/ble-roundtrip-hci0-0cm.pdf}
-    \caption[Average \acs{BLE} connection roundtrip time obtained using the Asus USB-BT500 adapter at a distance of 0m.]{Average \acs{BLE} connection roundtrip time obtained using the Asus USB-BT500 adapter at a distance of $0\text{m} \pm 0.2$.}
+    \caption[Average \acs{BLE} connection roundtrip time obtained using the ASUS USB-BT500 adapter at a distance of 0m.]{Average \acs{BLE} connection roundtrip time obtained using the ASUS USB-BT500 adapter at a distance of $0\text{m} \pm 0.2$.}
     \label{fig:ble-roundtrip-hci0-0m}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.75\linewidth]{images/ble-roundtrip-hci0-300cm.pdf}
-    \caption[Average \acs{BLE} connection roundtrip time obtained using the Asus USB-BT500 adapter at a distance of 3m.]{Average \acs{BLE} connection roundtrip time obtained using the Asus USB-BT500 adapter at a distance of $3\text{m} \pm 0.2$.}
+    \caption[Average \acs{BLE} connection roundtrip time obtained using the ASUS USB-BT500 adapter at a distance of 3m.]{Average \acs{BLE} connection roundtrip time obtained using the ASUS USB-BT500 adapter at a distance of $3\text{m} \pm 0.2$.}
     \label{fig:ble-roundtrip-hci0-3m}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.75\linewidth]{images/ble-roundtrip-hci0-600cm.pdf}
-    \caption[Average \acs{BLE} connection roundtrip time obtained using the Asus USB-BT500 adapter at a distance of 6m.]{Average \acs{BLE} connection roundtrip time obtained using the Asus USB-BT500 adapter at a distance of $6\text{m} \pm 0.2$.}
+    \caption[Average \acs{BLE} connection roundtrip time obtained using the ASUS USB-BT500 adapter at a distance of 6m.]{Average \acs{BLE} connection roundtrip time obtained using the ASUS USB-BT500 adapter at a distance of $6\text{m} \pm 0.2$.}
     \label{fig:ble-roundtrip-hci0-6m}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.75\linewidth]{images/ble-roundtrip-hci0-900cm.pdf}
-    \caption[Average \acs{BLE} connection roundtrip time obtained using the Asus USB-BT500 adapter at a distance of 9m.]{Average \acs{BLE} connection roundtrip time obtained using the Asus USB-BT500 adapter at a distance of $9\text{m} \pm 0.2$.}
+    \caption[Average \acs{BLE} connection roundtrip time obtained using the ASUS USB-BT500 adapter at a distance of 9m.]{Average \acs{BLE} connection roundtrip time obtained using the ASUS USB-BT500 adapter at a distance of $9\text{m} \pm 0.2$.}
     \label{fig:ble-roundtrip-hci0-9m}
 \end{figure}
 
-\paragraph{} During the development of these tests, we discovered an functionaly which was not documented in the specification -- \acf{DLE}. This feature, introduced in Bluetooth 4.2, allows \acs{LL} data packet payload to increase significantly in size, up to 251 bytes (compared to the 23 bytes when not using this feature). This gives a head start for the Asus USB-BT500, as it is capable of sending over 10 times more data in a single packet, compared to the Raspberry Pi 4B's internal \acs{BLE} adapter. Raspberry Pi 4B's internal \acs{BLE} adapter can handle a maximum of 20 bytes and ASUS USB-BT500 can handle up to 244 bytes (in the \acs{ATT} payload).
+\paragraph{} During the development of these tests, we discovered an functionaly which was not documented in the specification -- \acf{DLE}. This feature, introduced in Bluetooth 4.2, allows \acs{LL} data packet payload to increase significantly in size, up to 251 bytes (compared to the 23 bytes when not using this feature). This gives a head start for the ASUS USB-BT500, as it is capable of sending over 10 times more data in a single packet, compared to the Raspberry Pi 4B's internal \acs{BLE} adapter. Raspberry Pi 4B's internal \acs{BLE} adapter can handle a maximum of 20 bytes and ASUS USB-BT500 can handle up to 244 bytes (in the \acs{ATT} payload).
 
 \paragraph{} Nonetheless, we find that for both adapters, the minimum roundtrip time is the same: appoximately 40ms. This is an odd value, given that the connection interval was set to 7.5ms, meaning the time it takes to transmit a single message and recieve it on the \textit{SmartBox} takes more than 4 connection intervals, which is nearly double of what should be expected (one interval for the transmission of the packet to the nRF52-DK and one interval to retrieve the packet). Since the roundtrip time accounts for both the transmission and reception of the data packet, this means we likely dealing with a $\sim$12ms delay in every transmission / reception.
 
@@ -396,7 +396,7 @@ Below, we have the bandwidth graphs obtained for different transmission rates (w
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.75\linewidth]{images/ble-bandwidth-hci1-0cm.pdf}
-    \caption[\acs{BLE} connection bandwidth obtained using the Asus USB-BT500 adapter at a distance of 0m.]
+    \caption[\acs{BLE} connection bandwidth obtained using the ASUS USB-BT500 adapter at a distance of 0m.]
     {\acs{BLE} connection bandwidth obtained using the Raspberry Pi 4B internal \acs{BLE} adapter at a distance of $0\text{m} \pm 0.2$. The maximum bandwidth at this distance is $23.988$ kbps, achieved at 25ms time interval between packets with 46.45\% packet loss.}
     \label{fig:ble-bandwidth-hci1-0m}
 \end{figure}
@@ -404,59 +404,61 @@ Below, we have the bandwidth graphs obtained for different transmission rates (w
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.75\linewidth]{images/ble-bandwidth-hci1-300cm.pdf}
-    \caption[\acs{BLE} connection bandwidth obtained using the Asus USB-BT500 adapter at a distance of 3m.]    {\acs{BLE} connection bandwidth obtained using the Raspberry Pi 4B internal \acs{BLE} adapter at a distance of $3\text{m} \pm 0.2$. The maximum bandwidth at this distance is $26.425$ kbps, achieved at 25ms time interval between packets with 41.01\% packet loss.}
+    \caption[\acs{BLE} connection bandwidth obtained using the ASUS USB-BT500 adapter at a distance of 3m.]    {\acs{BLE} connection bandwidth obtained using the Raspberry Pi 4B internal \acs{BLE} adapter at a distance of $3\text{m} \pm 0.2$. The maximum bandwidth at this distance is $26.425$ kbps, achieved at 25ms time interval between packets with 41.01\% packet loss.}
     \label{fig:ble-bandwidth-hci1-3m}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.75\linewidth]{images/ble-bandwidth-hci1-600cm.pdf}
-    \caption[\acs{BLE} connection bandwidth obtained using the Asus USB-BT500 adapter at a distance of 6m.]{\acs{BLE} connection bandwidth obtained using the Raspberry Pi 4B internal \acs{BLE} adapter at a distance of $6\text{m} \pm 0.2$. The maximum bandwidth at this distance is $27.188$ kbps, achieved at 30ms time interval between packets with 27.17\% packet loss.}
+    \caption[\acs{BLE} connection bandwidth obtained using the ASUS USB-BT500 adapter at a distance of 6m.]{\acs{BLE} connection bandwidth obtained using the Raspberry Pi 4B internal \acs{BLE} adapter at a distance of $6\text{m} \pm 0.2$. The maximum bandwidth at this distance is $27.188$ kbps, achieved at 30ms time interval between packets with 27.17\% packet loss.}
     \label{fig:ble-bandwidth-hci1-6m}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.75\linewidth]{images/ble-bandwidth-hci1-900cm.pdf}
-    \caption[\acs{BLE} connection bandwidth obtained using the Asus USB-BT500 adapter at a distance of 9m.]{\acs{BLE} connection bandwidth obtained using the Raspberry Pi 4B internal \acs{BLE} adapter at a distance of $9\text{m} \pm 0.2$. The maximum bandwidth at this distance is $26.556$ kbps, achieved at 30ms time interval between packets with 28.87\% packet loss.}
+    \caption[\acs{BLE} connection bandwidth obtained using the ASUS USB-BT500 adapter at a distance of 9m.]{\acs{BLE} connection bandwidth obtained using the Raspberry Pi 4B internal \acs{BLE} adapter at a distance of $9\text{m} \pm 0.2$. The maximum bandwidth at this distance is $26.556$ kbps, achieved at 30ms time interval between packets with 28.87\% packet loss.}
     \label{fig:ble-bandwidth-hci1-9m}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.75\linewidth]{images/ble-bandwidth-hci0-0cm.pdf}
-    \caption[\acs{BLE} connection bandwidth obtained using the Asus USB-BT500 adapter at a distance of 0m.]{\acs{BLE} connection bandwidth obtained using the Asus USB-BT500 adapter at a distance of $0\text{m} \pm 0.2$. The maximum bandwidth at this distance is $178.304$ kbps, achieved at 75ms time interval between packets with 2.13\% packet loss.}
+    \caption[\acs{BLE} connection bandwidth obtained using the ASUS USB-BT500 adapter at a distance of 0m.]{\acs{BLE} connection bandwidth obtained using the ASUS USB-BT500 adapter at a distance of $0\text{m} \pm 0.2$. The maximum bandwidth at this distance is $178.304$ kbps, achieved at 75ms time interval between packets with 2.13\% packet loss.}
     \label{fig:ble-bandwidth-hci0-0m}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.75\linewidth]{images/ble-bandwidth-hci0-300cm.pdf}
-    \caption[\acs{BLE} connection bandwidth obtained using the Asus USB-BT500 adapter at a distance of 3m.]{\acs{BLE} connection bandwidth obtained using the Asus USB-BT500 adapter at a distance of $3\text{m} \pm 0.2$. The maximum bandwidth at this distance is $194.708$ kbps, achieved at 75ms time interval between packets with 0.25\% packet loss.}
+    \caption[\acs{BLE} connection bandwidth obtained using the ASUS USB-BT500 adapter at a distance of 3m.]{\acs{BLE} connection bandwidth obtained using the ASUS USB-BT500 adapter at a distance of $3\text{m} \pm 0.2$. The maximum bandwidth at this distance is $194.708$ kbps, achieved at 75ms time interval between packets with 0.25\% packet loss.}
     \label{fig:ble-bandwidth-hci0-3m}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.75\linewidth]{images/ble-bandwidth-hci0-600cm.pdf}
-    \caption[\acs{BLE} connection bandwidth obtained using the Asus USB-BT500 adapter at a distance of 6m.]{\acs{BLE} connection bandwidth obtained using the Asus USB-BT500 adapter at a distance of $6\text{m} \pm 0.2$. The maximum bandwidth at this distance is $182.186$ kbps, achieved at 75ms time interval between packets with 0\% packet loss.}
+    \caption[\acs{BLE} connection bandwidth obtained using the ASUS USB-BT500 adapter at a distance of 6m.]{\acs{BLE} connection bandwidth obtained using the ASUS USB-BT500 adapter at a distance of $6\text{m} \pm 0.2$. The maximum bandwidth at this distance is $182.186$ kbps, achieved at 75ms time interval between packets with 0\% packet loss.}
     \label{fig:ble-bandwidth-hci0-6m}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.75\linewidth]{images/ble-bandwidth-hci0-900cm.pdf}
-    \caption[\acs{BLE} connection bandwidth obtained using the Asus USB-BT500 adapter at a distance of 9m.]{\acs{BLE} connection bandwidth obtained using the Asus USB-BT500 adapter at a distance of $9\text{m} \pm 0.2$. The maximum bandwidth at this distance is $166.484$ kbps, achieved at 80ms time interval between packets with 2.53\% packet loss.}
+    \caption[\acs{BLE} connection bandwidth obtained using the ASUS USB-BT500 adapter at a distance of 9m.]{\acs{BLE} connection bandwidth obtained using the ASUS USB-BT500 adapter at a distance of $9\text{m} \pm 0.2$. The maximum bandwidth at this distance is $166.484$ kbps, achieved at 80ms time interval between packets with 2.53\% packet loss.}
     \label{fig:ble-bandwidth-hci0-9m}
 \end{figure}
 
 As expected from the previous tests, ASUS USB-BT500 shows a much better throughput since it can transmit more data in the \acs{LL} data packets. 
 
-\paragraph{} Additionally we observe packet loss on the communication as time interval between packets reaches closer to the ``breaking point'' where the connection suddenly crashes, which is also expected. However, the internal \acs{BLE} adapter shows a much more noticable packet loss (particularly after the time interval between packets is higher than 100ms). Despite the heavy packet loss, we observe that the maximum observed bandwidth (accounting for the packet loss) is always achieved at the minimum time interval between packets.
+\paragraph{} Additionally we observe some packet loss on the communication as time interval between packets reaches closer to the ``breaking point'' where the connection suddenly crashes, which is also expected. However, the internal \acs{BLE} adapter shows a much more noticable packet loss (particularly when the time interval between packets is higher than 100ms). Despite the heavy packet loss, we observe that the maximum observed bandwidth (accounting for the packet loss) is always achieved at the minimum time interval between packets.
 
 \subsection{Decision on \acs{BLE} adapter}
 
-From the previous tests, we see that the internal \acs{BLE} adapter lacks the support for \acs{DLE} feature, which reduces greatly the communication throughput.  
+From the previous tests, we see that the Raspberry Pi 4B's internal \acs{BLE} adapter lacks the support for \acs{DLE} feature, which reduces greatly the communication throughput. Additionally, in order to achieve this maximum throughput on Raspberry Pi 4B, we need to deal with extremely high packet loss (over 40\%!), meaning we need to either accept the packet loss, which is not feasible, or reduce the \acs{BLE} throughput to minimize the packet loss. The ASUS USB-BT500 on the other hand has a throughput 10 times bigger than the internal adapter, with very low packet loss (which can also be mitigated by reducing slightly the throughput).
+
+\paragraph{} Due to all of the aforementioned reasons, we have decided to move forward with the ASUS USB-BT500 adapter for the development of \acs{BLE} data acquisition in the scope of the \acs{WoW} project.
 
 \section{Summary}
 In this chapter, we conducted an compreensive performance study of the different \acs{SBC}s considered for the \textit{SmartBox} development, as well as extensive analysis of the \acs{BLE} data communication.
