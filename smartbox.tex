@@ -61,6 +61,8 @@ The UDOO Bolt is incredibly well-supported by UDOO but unfortunately, it does no
 
 In order to decide on which platform to pick for the development of the project, it is crucial to compare the specification of both boards, which can be seen in the Table \ref{tab:comparsion-hardwareplatform}.
 
+\paragraph{} From Table \ref{tab:comparsion-hardwareplatform}, we immediately conclude that the Raspberry Pi is a much more affordable alternative. At over 1/7 of the price, it already has a working WiFi+BT networking module (which is not included in the UDOO BOLT), nearly identical Input/Output (I/O) port capability and a smaller size. UDOO BOLT V3 on the other hand, has a much better SoC, which is expected to delivery a much better overall computing performance.
+
 \renewcommand{\arraystretch}{2.5}
 \begin{table}[H]
     \centering
@@ -80,10 +82,6 @@ In order to decide on which platform to pick for the development of the project,
     \label{tab:comparsion-hardwareplatform}
 \end{table}
 \renewcommand{\arraystretch}{1}
-
-
-\paragraph{} From the Table \ref{tab:comparsion-hardwareplatform}, we immediately conclude that the Raspberry Pi is a much more affordable alternative. At over 1/7 of the price, it already has a working WiFi+BT networking module (which is not included in the UDOO BOLT), nearly identical Input/Output (I/O) port capability and a smaller size. UDOO BOLT V3 on the other hand, has a much better SoC, which is expected to delivery a much better overall computing performance.
-
 
 \paragraph{} In order to understand how these differences in the hardware specification between the \acs{SBC}s translate to real-world performance, a test suite was developed and conducted to quantify the performance of each \acs{SBC}. The tools developed for each test can be found here\footnote{\url{https://github.com/WoW-Institute-of-Systems-and-Robotics/smartbox\_benchmark\_tests}}. 
 
@@ -106,7 +104,7 @@ From Figure \ref{fig:fibonacci-tests}, we can observe that the time taken for co
 
 The Phoronix Test Suite\footnote{Phoronix Test Suite - Linux Testing \& Benchmarking Platform, Automated Testing, Open-Source Benchmarking: \url{https://www.phoronix-test-suite.com/}} is an open-source benchmarking platform used for comparing the performance of different systems. The framework provides compilations of tests for a variety of tools and is also fully customizable and expandable, allowing users to develop and automate their own tests in a clean, reproducible and easy-to-use fashion. The test profiles work by measuring some property of the benchmark, (\textit{e.g.} the run time for calculating the first 100 Fibonacci numbers) and use it to provide an estimate of the performance of the \acs{SBC}, which can be easily used for comparison between different systems. 
 
-\paragraph{} For the purposes of evaluating the computing performance of each \acs{SBC}, we chose the following standard test profiles provided by Phoronix\footnote{OpenBenchmarking.org - Cross-Platform, Open-Source Automated Benchmarking Platform: \url{https://openbenchmarking.org/}}, which are a compilation of the most popular Python and CPU benchmarks used:
+\paragraph{} For the purposes of evaluating the computing performance of each \acs{SBC}, we chose the following standard test profiles provided by Phoronix\footnote{OpenBenchmarking.org - Cross-Platform, Open-Source Automated Benchmarking Platform: \url{https://openbenchmarking.org/}}, which are a compilation of the most popular Python and CPU benchmarks used \footnote{The benchmark results obtained were published in the \textit{OpenBenchmarking.org} website, and can be found by visiting the following webpage: \url{https://openbenchmarking.org/result/2110255-JNCF-211025851}.}:
 
 \begin{itemize}
     \item BYTE Unix Benchmark (``BYTE''), single-threaded CPU benchmark -- Runs BYTE UNIX benchmark suite (more particularly, the Dhrystone 2 synthetic benchmark) to measure the amount of instructions per second (IPS). 
@@ -118,44 +116,48 @@ The Phoronix Test Suite\footnote{Phoronix Test Suite - Linux Testing \& Benchmar
     \item PyPerformance \textit{json\_loads} Benchmark (``json''), single-threaded Python \& CPU benchmark -- Evaluates \acf{JSON}\footnote{The JavaScript Object Notation (JSON) Data Interchange Format: \url{https://www.rfc-editor.org/rfc/rfc8259.html}} parsing and serialization, a widely used open stardard data format, by dumping and loading thousands of objects and measures its runtime.
     \item PyPerformance \textit{crypto\_pyaes} Benchmark (``crypto''), single-threaded Python \& CPU benchmark -- Runs the AES block-cipher Python implementation and measures its run-time.
     \item PyPerformance \textit{regex\_compile} Benchmark (``regex''), single-threaded Python \& CPU benchmark -- Compiles different \textit{regular expressions} or \textit{regexes} in Python and measures its run-time.
-    \item PyPerformance \textit{python\_startup} Benchmark (``startup''), single-threaded Python \& general system perforamnce benchmark -- Measures Python's startup time.
+    \item PyPerformance \textit{python\_startup} Benchmark (``startup''), single-threaded Python \& general system performance benchmark -- Measures Python's startup time.
     \item PyPerformance \textit{django\_template} Benchmark (``django''), single-threaded Python benchmark -- Builds a 150x150-cell HTML table and measures its run-time.
 \end{itemize}
 
-\paragraph{} The benchmark results obtained were published to the \textit{OpenBenchmarking.org} website, and can be found by visiting the following webpage: \url{https://openbenchmarking.org/result/2110255-JNCF-211025851}.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8 \linewidth]{images/phoronix-benchmarks.pdf}
-    \caption [Phoronix benchmarks results for the UDOO BOLT V3 and Raspberry Pi 4B.]{ Phoronix benchmarks results for the UDOO BOLT V3 and Raspberry Pi 4B. The performance values for each test are normalized to UDOO BOLT V3 performance.}
+    \caption [Phoronix benchmarks for the UDOO BOLT V3 and Raspberry Pi 4B.]{ Phoronix benchmarks for the UDOO BOLT V3 and Raspberry Pi 4B. The performance values for each test are normalized to UDOO BOLT V3 performance.}
     \label{fig:phronix-benchmarks}
 \end{figure}
 
-\paragraph{} From the Figure \ref{fig:phronix-benchmarks}, we can observe that UDOO BOLT V3 performs much better than Raspberry Pi 4B in every benchmark, as expected. By analyzing the data, we find that UDOO BOLT V3 outperforms Raspberry Pi 4B on average by a factor of 2.21 $\pm$ 0.4.
+\paragraph{} From Figure \ref{fig:phronix-benchmarks}, we can observe that UDOO BOLT V3 performs much better than Raspberry Pi 4B in every benchmark, as expected. We also notice some disparity in the relative performance throughout the benchmarks, in particular, the 7-Zip benchmark. This is likely due to the fact that 7-Zip benchmark is a multithreaded test, and as Raspberry Pi 4B has more threads than UDOO BOLT V3, it manages to close the performance gap (albeit only slightly). By analyzing the data, we find that UDOO BOLT V3 outperforms Raspberry Pi 4B on average by a factor of 2.21 $\pm$ 0.4.
 
 \subsubsection{Test 3: \acs{MQTT} Benchmark}
 
-As the \textit{SmartBox} will communicate with the Smart Gateway through \acs{MQTT}, we decided to evaluate how each system handles the load associated with an \acs{MQTT} client. For this test, each \acs{SBC} ran a simple \acs{MQTT} client which was subscribing to a single topic and publishing to another topic using a given transmission rate, a message with a payload containing the string ``hello world'' to a \acs{MQTT} broker in the local network.
+As the \textit{SmartBox} is intended to communicate with the Smart Gateway through \acs{MQTT} messages, we also evaluate how each system handles the load associated with an \acs{MQTT} client. For this test, each \acs{SBC} ran a simple \acs{MQTT} client, which subscribes to a single topic and publishes a message to another topic at a given transmission rate, with a payload containing the string ``hello world'', through an \acs{MQTT} broker in the local network.
 
+\todo[inline]{To-do: Repeat tests with higher rates if time allows it.}
 \begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth]{images/mqtt_test_results.pdf}
-    \caption[Results of the \acs{MQTT} benchmark for Raspberry Pi 4B and UDOO BOLT V3.]{Results of the \acs{MQTT} benchmark for Raspberry Pi 4B and UDOO BOLT V3. As the transmission frequency increases, we observe that the Raspberry Pi consumes more resources than the UDOO BOLT V3, nonetheless, these are very negligible performance differences, with an impact of < 0.5\% resource usage.}
+    \caption[\acs{MQTT} benchmark for Raspberry Pi 4B and UDOO BOLT V3.]{\acs{MQTT} benchmark for Raspberry Pi 4B and UDOO BOLT V3. As the transmission frequency increases, we observe that the Raspberry Pi consumes more resources than the UDOO BOLT V3, nonetheless, these are very negligible performance differences, with an impact of < 0.5\% resource usage.}
     \label{fig:mqtt-tests}
 \end{figure}
 
-The \acs{MQTT} client is a very lightweight process, and as seen in Figure \ref{fig:mqtt-tests}, is capable of running on both platforms with trivial performance impact.
+The \acs{MQTT} client is a very lightweight process, and as seen in Figure \ref{fig:mqtt-tests}, it is capable of running on both platforms with trivial performance impact.
 
-\subsubsection{Conclusion}
+\subsection{Final Decision on SmartBox hardware}
 
-Based on the results of our tests we conclude that UDOO BOLT V3 heavily outperforms the Raspberry Pi 4B in CPU benchmarks, but shows a negligible difference in memory usage. Nonetheless, we find that these performance gains do not meaningfully impact the \textit{SmartBox} functionality, for example, in the \acs{MQTT} communication. Due to the extremely affordable price of the Raspberry Pi 4B, we have decided to move forward with the Raspberry Pi 4B for the development of the project.
+Based on the results of our tests we conclude that UDOO BOLT V3 heavily outperforms the Raspberry Pi 4B in CPU benchmarks, but shows a negligible difference in memory usage. Nonetheless, we find that these performance gains do not meaningfully impact the \textit{SmartBox} functionality, for example, in the \acs{MQTT} communication. We can also extend this to other features, such as the developer \acs{GUI} or the Python acquisition script, which should have a similar resource load to the \acs{MQTT} client in the previous \acs{MQTT} benchmark.
 
-\clearpage
+\paragraph{} Additionally, the Raspberry Pi 4B comes out of the box with an included WiFi+\acs{BLE} combo networking card, 8GB of RAM (as we chose the 8GB model), and a much smaller form factor -- which is very useful for embedding the \textit{SmartBox} in the \textit{SmartBeds}. And this is at 1/7 the cost of UDOO BOLT V3, making this much more affordable to scale and replicate the system with many \textit{SmartBoxes}.
+
+\paragraph{} Due to all of the aforementioned reasons, we have decided to move forward with the Raspberry Pi 4B for the \textit{SmartBox} development in the scope of the \acs{WoW} project.
 
 \section{Communication with the Biostickers}
 
 As previously mentioned, the communication between the \textit{Biostickers} and the \textit{SmartBox} makes use of the \acs{BLE} protocol. One of the advantages of using the Raspberry Pi 4B, as discussed in the previous section, is the fact that it already includes all networking functionality needed for the project. 
 
-\paragraph{} However, the communication with the \textit{Biostickers} is very critical and demanding. During the development of the project, the research team has decided to use a \textit{Biosticker} coupled with a commercially available Pulse Oximeter in order to capture all required biosignals. This means that the \acs{BLE} acquisition system must be capable of handling both communications simultaneously. Having this in mind, we need to understand if the included \acs{BLE} adapter of the Raspberry Pi board is sufficient for the task, or if we need to consider a different acquisition hardware.
+% explicar pra que serve e q sinal adquire
+
+\paragraph{} However, the communication with the \textit{Biostickers} is very critical and demanding. During the development of the project, the research team has decided to use a \textit{Biosticker} coupled with a commercially available Pulse Oximeter -- used to measure oxygen saturation at the finger tip --  in order to capture all required biosignals. This means that the \acs{BLE} acquisition system must be capable of handling both communications simultaneously. Having this in mind, we need to understand if the included \acs{BLE} adapter of the Raspberry Pi board is sufficient for the task, or if we need to consider a different acquisition hardware.
 
 \paragraph{} In order to understand how data transmission works between \acs{BLE} devices, some technical background regarding the data transmission in protocol is presented.
 
@@ -173,48 +175,45 @@ The \acs{BLE} protocol stack is organized into three major components, as shown 
     \label{fig:ble-protocol-stack}
 \end{figure}
 
-At the Controller layer, we have the \acf{PHY} and \acf{LL} components.
+At the Controller layer, we have the \acf{PHY} and \acf{LL} components. 
 
-The \acf{PHY} is the bottom layer of the \acs{BLE} stack, and is responsible for the transmission and reception of information over radio waves on the Industrial Scientific Medical (ISM) 2.4GHz band.
+The \acf{PHY} is the bottom layer of the \acs{BLE} stack, and is responsible for the transmission and reception of information over radio waves on the Industrial Scientific Medical (ISM) 2.4GHz band. According to the latest revision of the specification \cite{Specification1999}, \acs{BLE} supports 3 distinct physical layers: LE 1M, LE 2M and LE Coded. The first is the default \acs{PHY}, with a data rate of 1 Mbps, which existed in previous versions of Bluetooth, the latter 2 were introduced in Bluetooth 5. LE 2M is an upgrade of the previous \acs{PHY}, doubling the data rate to 2 Mbps, and LE Coded has a much larger range (up to 4x), at cost of a lower data rate (500 kbps or 125 kbps). 
 
-The Host Layer contains the higher level protocols of the protocol stack that interact with the application level layers. 
+The \acf{LL} layer interfaces directly with the \acs{PHY}, and manages the link state of the radio. It also provides the mechanism for the higher layers to interact with the radio transceiver. 
 
-The \acs{L2CAP} is responsible for encapsulates the data from the higher layers in the protocol stack and
+\paragraph{} Afterwards, we have the Host Layer, containing the higher level components of the protocol stack that interact with the application level layers. The \acs{L2CAP} is responsible for managing the data between the \acs{LL} and the higher layers in the protocol stack. It abstracts the communication details from the higher layers, handling seamlessly the fragmentation of the data into multiple \acs{LL} data packets for transmission and reassembly of \acs{LL} data packets for higher layer protocols such as \acf{ATT}.
 
+\acs{ATT} is the protocol used to expose the application data to other \acs{BLE} devices through data structured called ``Attributes'', which are smallest addressable units of data used by \acs{ATT}. From the application point of view, data is exchanged using \acf{GATT}, which can be viewed as a ``meta-layed'' on top of \acs{ATT}. Regarding \acs{GATT} there are 3 main constructs to consider:
 
-, such as \acf{L2CAP}, \acf{GAP},  while the Controller Layer handles the lower layers related to 
+\begin{itemize}
+    \item \acs{GATT} Characteristic -- The lowest level concept in \acs{GATT} transactions is the Characteristic, which encapsulates a single data point, \textit{e.g.} a temperature measurement, a accelerometer reading, etc. It also defines the different types of interactions, such as reading, writing, subscribing for notifications, etc.
+    \item \acs{GATT} Service -- A collection of \acs{GATT} characteristics.
+    \item \acs{GATT} Profile -- A collection of Services, usually predefined by Bluetooth SIG, but can also be a custom profile.
+\end{itemize}
 
-The Application Layer contains the user application, which interfaces with the Bluetooth protocol stack.
+The \acf{SMP} handles the security in the data transmissions, containing the security algorithms used to encrypt and decrypt the communication.
 
-The data packet format for \acs{BLE} messages is shown in Figure \ref{fig:ble-ll-packet-format}.
+\paragraph{} The Application Layer contains the user application, which interfaces with the Bluetooth protocol stack.
 
-The \acs{L2CAP} is responsible for encapsulates the data from the higher layers in the protocol stack and
-
-
-The L2CAP achieves the transmission of the large data packets by segmenting and then at the receiver, re-assembling the packets so that the data can be fitted into the limits of the lower layer data packets.
+\paragraph{} The data packet format for \acs{BLE} transmissions is displayed in Figure \ref{fig:ble-ll-packet-format}, showing how the data is encapsulated for the transmission.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth]{images/bluetooth data packet format.pdf}
-    \caption[Diagram of the \acs{BLE} data packet format for uncoded \acs{PHY}s (LE 1M and LE 2M).]{\acs{BLE} data packet format for uncoded \acs{PHY}s (LE 1M and LE 2M). Adapted from \cite{Specification1999, Farej2020}.}
+    \caption[Diagram of the \acs{BLE} data packet format for uncoded \acs{PHY}s (LE 1M and LE 2M).]{\acs{BLE} data packet format for uncoded \acs{PHY}s (LE 1M and LE 2M). Adapted from \cite{Specification1999, Farej2020}. The Message Integrity Check (MIC) and Cyclic Redundancy Check (CRC), which are not discussed above, are used for validating the integrity of the data packet.}
     \label{fig:ble-ll-packet-format}
 \end{figure}
 
 
-\paragraph{} Before we disuss \acs{BLE} data transmissions, it is important to indicate certain terminology which is used in the area:
+\paragraph{} Before we discuss \acs{BLE} data transmissions, it is important to expose certain terminology which is used in the area:
 
 \begin{itemize}
-    \item Slave Latency: Number of consecutive connection events the slave device is not required to listen for the master. It allows a device to use a reduced number of connection events, thus minimizing power consumption.
+    \item Central device (or master): Device that initiates commands and requests.
+    \item Peripheral device (or slave): Device that receives commands and requests, and returns responses.
+    \item Connection Event: Moment of the connection where the devices engage in radio transmissions.
 \end{itemize}
 
-
-
-\begin{itemize}
-    \item Slave Latency: Number of consecutive connection events the slave device is not required to listen for the master. It allows a device to use a reduced number of connection events, thus minimizing power consumption.
-    \item Connection Interval: Time between two consecutive connection events.
-    \item Supervisor Timeout: Maximum time between two received data \acs{PDU}s before the connection is considered lost.
-    \item \acf{MTU} for the \acs{ATT} protocol: Length of the \acs{PDU} for the \acs{ATT} protocol, which includes the \acs{ATT} header as well as the payload containing the data to be transmitted.
-\end{itemize}
+\paragraph{} Figure \ref{fig:ble-message-sequence-chart} shows a single communication event during a \acs{BLE} communication between two devices, A and B. When the device A wants to communicate to the device B, the data must be first fragmented into different \acs{LL} data packets on the \acs{L2CAP} layer, which for this simple example is not considered. The data is transmitted to device B through the \acs{LL} layer, and the data is then reassembled on device B. One thing to consider is that, although there are not rules enforcing the Connection Event to have just transmit one data packet, some \acs{BLE} protocol stack implementation may not support sending more than one packet per Connection Event. 
 
 
 \begin{figure}[H]
@@ -224,16 +223,21 @@ The L2CAP achieves the transmission of the large data packets by segmenting and 
     \label{fig:ble-message-sequence-chart}
 \end{figure}
 
-
-\clearpage
+\paragraph{} There are multiple parameters which guide how \acs{BLE} data connections are performed, which are the following: 
+\begin{itemize}
+    \item Slave Latency: Number of consecutive connection events the slave device is not required to listen for the master. It allows a slave to use a reduced number of connection events, thus minimizing power consumption.
+    \item Connection Interval: Time between two consecutive connection events.
+    \item Supervisor Timeout: Maximum time between two received data \acs{PDU}s before the connection is considered lost.
+    \item \acf{MTU} for the \acs{ATT} protocol: Length of the \acs{PDU} for the \acs{ATT} protocol, which includes the \acs{ATT} header as well as the payload containing the data to be transmitted.
+\end{itemize}
 
 \subsubsection{\acs{BLE} protocol stack on Linux} 
 
 In the \acs{WoW} project, the data acquisition is developed using the official Linux implementation of \acs{BLE} protocol stack\footnote{\textit{BlueZ}: \url{http://www.bluez.org/profiles/}} -- \textit{BlueZ} -- in order to promote interoperability; since these drivers are developed and used by the community, allowing us to use multiple \acs{BLE} adapters, and even different \acs{SBC}s, using the same codebase without being tied down to proprietary code. 
 
-\paragraph{} Currently, \textit{BlueZ} only officially supports up to the Bluetooth 4.2 specification, which is, at the time of writing, is still the predominantly used version \cite{Faria2020}. Nonetheless, Bluetooth specifications are generally backwards compatible with older versions.
+% \paragraph{} Currently, \textit{BlueZ} only officially supports up to the Bluetooth 4.2 specification, which is, at the time of writing, is still the predominantly used version \cite{Faria2020}. Nonetheless, Bluetooth specifications are generally backwards compatible with older versions.
 
-\todo[inline]{Nota para @David Portugal: Isto é o que está indicado no website, mas existem funcionalidades de Bluetooth 5.X que estão implementadas (mas não especificam o escopo que está implementado). Indico alguma coisa sobre isso? Removo este parágrafo? Ou deixo tudo como está? }
+% \todo[inline]{Nota para @David Portugal: Isto é o que está indicado no website, mas existem funcionalidades de Bluetooth 5.X que estão implementadas (mas não especificam o escopo que está implementado). Indico alguma coisa sobre isso? Removo este parágrafo? Ou deixo tudo como está? }
 
 
 \subsection{Choosing a \acs{BLE} adapter} 
@@ -254,10 +258,7 @@ In the \acs{WoW} project, the data acquisition is developed using the official L
 
 To ensure an \acs{BLE} adapter is capable of handling the communication on the \textit{SmartBox} side for the \acs{WoW} project, we created two different tests to evaluate their performance at different distances: a test to evaluate the roundtrip time for a single message (for different sizes), and a test to evaluate the maximum bandwidth achieveable using a packet loss analysis for multiple frequencies.
 
-
-\subsubsection{Firmware developed for the tests}
-
-In the \acs{WoW} project, 
+\paragraph{} For these tests, we need to ensure the conditions are very similar to those when acquiring data from the \textit{Biostickers}. To this end, we use the same microcontroller -- nRF52832 \acs{SoC} -- which is used in the \textit{Biostickers}, with our own custom firmware for the tests. Therefore, the device which is used for ``simulating'' the \acs{BLE} device for the tests is the nRF52-DK developer kit\footnote{\url{https://www.nordicsemi.com/Products/Development-hardware/nrf52-dk}}. The firmware for the microcontroller is built using the latest version of MbedOS\footnote{\url{https://os.mbed.com/mbed-os/}} and can be found here\footnote{\url{https://github.com/WoW-Institute-of-Systems-and-Robotics/ble-test-firmwares/}}.
 
 \subsubsection{Test Conditions}
 
@@ -293,129 +294,142 @@ Additionally, these tests were conducted indoors, with the devices (the \acs{BLE
 
 \subsubsection{Test 1: Roundtrip Time Measurement}
 
-In this first test, we measure the roundtrip time of a single \acs{ATT} data packet on a \acs{BLE} connection. 
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.75\linewidth]{images/ble-roundtrip-hci0-0cm.pdf}
-    \label{fig:ble-roundtrip-hci0-0m}
-    \caption[Average \acs{BLE} connection roundtrip time obtained for different distances using the Asus USB-BT500 adapter.]{Average \acs{BLE} connection roundtrip time obtained for different distances using the Asus USB-BT500 adapter.}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.75\linewidth]{images/ble-roundtrip-hci0-300cm.pdf}
-    \label{fig:ble-roundtrip-hci0-3m}
-    \caption[Average \acs{BLE} connection roundtrip time obtained for different distances using the Asus USB-BT500 adapter.]{Average \acs{BLE} connection roundtrip time obtained for different distances using the Asus USB-BT500 adapter.}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.75\linewidth]{images/ble-roundtrip-hci0-600cm.pdf}
-    \label{fig:ble-roundtrip-hci0-6m}
-    \caption[Average \acs{BLE} connection roundtrip time obtained for different distances using the Asus USB-BT500 adapter.]{Average \acs{BLE} connection roundtrip time obtained for different distances using the Asus USB-BT500 adapter.}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.75\linewidth]{images/ble-roundtrip-hci0-900cm.pdf}
-    \label{fig:ble-roundtrip-hci0-9m}
-    \caption[Average \acs{BLE} connection roundtrip time obtained for different distances using the Asus USB-BT500 adapter.]{Average \acs{BLE} connection roundtrip time obtained for different distances using the Asus USB-BT500 adapter.}
-\end{figure}
-
+In this first test, we measure the roundtrip time of a single \acs{ATT} data packet on a \acs{BLE} connection for different payload sizes. For this test, the nRF52-DK board exposed two \acs{GATT} characteristics: one to be updated by the \textit{SmartBox} (characteristic ``A''), and one to which the \textit{SmartBox} subscribed (characteristic ``B''). When the \textit{SmartBox} writes on characteristic ``A'', the nRF52-DK changed the value of the characteristic ``B'', immediately sending a notification to the \textit{SmartBox}. The roundtrip time for our purposes is then the time taken to recieve the notification on characteristic ``B'' after updating the value of characteristic ``A''. Below, are the roundtrip time graphs for different payload sizes obtained for each adapter at different distances. Each test was run 5 times to ensure the results are consistent.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.75\linewidth]{images/ble-roundtrip-hci1-0cm.pdf}
     \label{fig:ble-roundtrip-hci1-0m}
-    \caption[Average \acs{BLE} connection roundtrip time obtained for different distances using the Asus USB-BT500 adapter.]{Average \acs{BLE} connection roundtrip time obtained for different distances using the Asus USB-BT500 adapter.}
+    \caption[Average \acs{BLE} connection roundtrip time obtained using Raspberry Pi 4B's internal \acs{BLE} adapter at a distance of 0m.]{Average \acs{BLE} connection roundtrip time obtained using Raspberry Pi 4B's internal \acs{BLE} adapter at a distance of $0\text{m} \pm 0.2$.}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.75\linewidth]{images/ble-roundtrip-hci1-300cm.pdf}
     \label{fig:ble-roundtrip-hci1-3m}
-    \caption[Average \acs{BLE} connection roundtrip time obtained for different distances using the Raspberry Pi 4B adapter.]{Average \acs{BLE} connection roundtrip time obtained for different distances using the Asus USB-BT500 adapter.}
+    \caption[Average \acs{BLE} connection roundtrip time obtained using Raspberry Pi 4B's internal \acs{BLE} adapter at a distance of 3m.]{Average \acs{BLE} connection roundtrip time obtained using Raspberry Pi 4B's internal \acs{BLE} adapter at a distance of $3\text{m} \pm 0.2$.}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.75\linewidth]{images/ble-roundtrip-hci1-600cm.pdf}
     \label{fig:ble-roundtrip-hci1-6m}
-    \caption[Average \acs{BLE} connection roundtrip time obtained for different distances using the Asus USB-BT500 adapter.]{Average \acs{BLE} connection roundtrip time obtained for different distances using the Asus USB-BT500 adapter.}
+    \caption[Average \acs{BLE} connection roundtrip time obtained using Raspberry Pi 4B's internal \acs{BLE} adapter at a distance of 6m.]{Average \acs{BLE} connection roundtrip time obtained using Raspberry Pi 4B's internal \acs{BLE} adapter at a distance of $6\text{m} \pm 0.2$.}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.75\linewidth]{images/ble-roundtrip-hci1-900cm.pdf}
     \label{fig:ble-roundtrip-hci1-9m}
-    \caption[Average \acs{BLE} connection roundtrip time obtained for different distances using the Asus USB-BT500 adapter.]{Average \acs{BLE} connection roundtrip time obtained for different distances using the Asus USB-BT500 adapter.}
+    \caption[Average \acs{BLE} connection roundtrip time obtained using Raspberry Pi 4B's internal \acs{BLE} adapter at a distance of 9m.]{Average \acs{BLE} connection roundtrip time obtained using Raspberry Pi 4B's internal \acs{BLE} adapter at a distance of $9\text{m} \pm 0.2$.}
 \end{figure}
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{images/ble-roundtrip-hci0-0cm.pdf}
+    \label{fig:ble-roundtrip-hci0-0m}
+    \caption[Average \acs{BLE} connection roundtrip time obtained using the Asus USB-BT500 adapter at a distance of 0m.]{Average \acs{BLE} connection roundtrip time obtained using the Asus USB-BT500 adapter at a distance of $0\text{m} \pm 0.2$.}
+\end{figure}
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{images/ble-roundtrip-hci0-300cm.pdf}
+    \label{fig:ble-roundtrip-hci0-3m}
+    \caption[Average \acs{BLE} connection roundtrip time obtained using the Asus USB-BT500 adapter at a distance of 3m.]{Average \acs{BLE} connection roundtrip time obtained using the Asus USB-BT500 adapter at a distance of $3\text{m} \pm 0.2$.}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{images/ble-roundtrip-hci0-600cm.pdf}
+    \label{fig:ble-roundtrip-hci0-6m}
+    \caption[Average \acs{BLE} connection roundtrip time obtained using the Asus USB-BT500 adapter at a distance of 6m.]{Average \acs{BLE} connection roundtrip time obtained using the Asus USB-BT500 adapter at a distance of $6\text{m} \pm 0.2$.}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{images/ble-roundtrip-hci0-900cm.pdf}
+    \label{fig:ble-roundtrip-hci0-9m}
+    \caption[Average \acs{BLE} connection roundtrip time obtained using the Asus USB-BT500 adapter at a distance of 9m.]{Average \acs{BLE} connection roundtrip time obtained using the Asus USB-BT500 adapter at a distance of $9\text{m} \pm 0.2$.}
+\end{figure}
+
+We find that for both adapters, the minimum roundtrip time is the same: appoximately ~40ms. This is an odd value, given that the connection interval was set to 7.5ms, meaning the time it takes to transmit a single message and recieve it on the \acs{SmartBox} takes nearly x4 connection intervals, nearly double of what should be expected. Nonetheless, it is still a 
+ 
+We can also observe that for both adapters, the roundtrip times measurements become significantively noisy as the distance increases, as expected, although it is particularly noticable for the Raspberry Pi 4B's internal \acs{BLE} adapter on Figure \ref{fig:ble-roundtrip-hci1-9m}. 
+
+\paragraph{} During the development of these tests, we discovered an functionaly which was not documented in the specification -- \acf{DLE}. This feature, introduced in Bluetooth 4.2, allows \acs{LL} data packet payload to increase significantly in size, up to 251 bytes (compared to the 23 bytes when not using this feature). This gives a lead start for the Asus USB-BT500, as it is capable of sending nearly x10 more data in a single transmission, compared to the Raspberry Pi 4B's internal \acs{BLE} adapter.
+
+\paragraph{} 
 
 \subsubsection{Test 2: Bandwidth Measurement}
-\todo[inline]{...}
+
+In this second test, we measure the maximum bandwidth for the \acs{BLE} connection by adjusting the transmission rate, or more accurately, the time between the transmission of each packet. 
+
+For this test, the nRF52-DK board exposed 7 \acs{GATT} characteristics for the \textit{SmartBox} to subscribe to. The nRF52-DK then continuously changes the value of the characteristic, immediately triggering a notification to the \textit{SmartBox} -- one for each characteristic. The transmission rate was increased until the connection became to unstable and crashed. Below, are the bandwidth graphs obtained for different transmission rates (which correspond to the frequency with which the characteristics are updated) for each adapter. Each test was run 3 times to ensure the results are consistent.
+
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.75\linewidth]{images/ble-bandwidth-hci1-0cm.pdf}
+    \caption[\acs{BLE} connection bandwidth obtained using the Asus USB-BT500 adapter at a distance of 0m.]{\acs{BLE} connection bandwidth obtained using the Raspberry Pi 4B internal \acs{BLE} adapter at a distance of $0\text{m} \pm 0.2$.}
     \label{fig:ble-bandwidth-hci1-0m}
-    \caption[Average roundtrip time obtained at a distance of 9m using \acs{BLE} connection.]{Average \acs{BLE} connection roundtrip time at a distance of $9\text{m} \pm 0.2$.}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.75\linewidth]{images/ble-bandwidth-hci1-300cm.pdf}
+    \caption[\acs{BLE} connection bandwidth obtained using the Asus USB-BT500 adapter at a distance of 3m.]{\acs{BLE} connection bandwidth obtained using the Raspberry Pi 4B internal \acs{BLE} adapter at a distance of $3\text{m} \pm 0.2$.}
     \label{fig:ble-bandwidth-hci1-3m}
-    \caption[Average roundtrip time obtained at a distance of 9m using \acs{BLE} connection.]{Average \acs{BLE} connection roundtrip time at a distance of $9\text{m} \pm 0.2$.}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.75\linewidth]{images/ble-bandwidth-hci1-600cm.pdf}
+    \caption[\acs{BLE} connection bandwidth obtained using the Asus USB-BT500 adapter at a distance of 6m.]{\acs{BLE} connection bandwidth obtained using the Raspberry Pi 4B internal \acs{BLE} adapter at a distance of $6\text{m} \pm 0.2$.}
     \label{fig:ble-bandwidth-hci1-6m}
-    \caption[Average roundtrip time obtained at a distance of 9m using \acs{BLE} connection.]{Average \acs{BLE} connection roundtrip time at a distance of $9\text{m} \pm 0.2$.}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.75\linewidth]{images/ble-bandwidth-hci1-900cm.pdf}
+    \caption[\acs{BLE} connection bandwidth obtained using the Asus USB-BT500 adapter at a distance of 9m.]{\acs{BLE} connection bandwidth obtained using the Raspberry Pi 4B internal \acs{BLE} adapter at a distance of $9\text{m} \pm 0.2$.}
     \label{fig:ble-bandwidth-hci1-9m}
-    \caption[Average roundtrip time obtained at a distance of 9m using \acs{BLE} connection.]{Average \acs{BLE} connection roundtrip time at a distance of $9\text{m} \pm 0.2$.}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.75\linewidth]{images/ble-bandwidth-hci0-0cm.pdf}
+    \caption[\acs{BLE} connection bandwidth obtained using the Asus USB-BT500 adapter at a distance of 0m.]{\acs{BLE} connection bandwidth obtained using the Asus USB-BT500 adapter at a distance of $0\text{m} \pm 0.2$.}
     \label{fig:ble-bandwidth-hci0-0m}
-    \caption[Average roundtrip time obtained at a distance of 9m using \acs{BLE} connection.]{Average \acs{BLE} connection roundtrip time at a distance of $9\text{m} \pm 0.2$.}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.75\linewidth]{images/ble-bandwidth-hci0-300cm.pdf}
+    \caption[\acs{BLE} connection bandwidth obtained using the Asus USB-BT500 adapter at a distance of 3m.]{\acs{BLE} connection bandwidth obtained using the Asus USB-BT500 adapter at a distance of $3\text{m} \pm 0.2$.}
     \label{fig:ble-bandwidth-hci0-3m}
-    \caption[Average roundtrip time obtained at a distance of 9m using \acs{BLE} connection.]{Average \acs{BLE} connection roundtrip time at a distance of $9\text{m} \pm 0.2$.}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.75\linewidth]{images/ble-bandwidth-hci0-600cm.pdf}
+    \caption[\acs{BLE} connection bandwidth obtained using the Asus USB-BT500 adapter at a distance of 6m.]{\acs{BLE} connection bandwidth obtained using the Asus USB-BT500 adapter at a distance of $6\text{m} \pm 0.2$.}
     \label{fig:ble-bandwidth-hci0-6m}
-    \caption[Average roundtrip time obtained at a distance of 9m using \acs{BLE} connection.]{Average \acs{BLE} connection roundtrip time at a distance of $9\text{m} \pm 0.2$.}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.75\linewidth]{images/ble-bandwidth-hci0-900cm.pdf}
+    \caption[\acs{BLE} connection bandwidth obtained using the Asus USB-BT500 adapter at a distance of 9m.]{\acs{BLE} connection bandwidth obtained using the Asus USB-BT500 adapter at a distance of $9\text{m} \pm 0.2$.}
     \label{fig:ble-bandwidth-hci0-9m}
-    \caption[Average roundtrip time obtained at a distance of 9m using \acs{BLE} connection.]{Average \acs{BLE} connection roundtrip time at a distance of $9\text{m} \pm 0.2$.}
 \end{figure}
 
 
 
 \subsection{Decision on \acs{BLE} adapter}
+
+From the previous tests, we see that the internal \acs{BLE} adapter lacks the support for \acs{DLE} feature, which reduces greatly the communication throughput.  
+
+
 
 \section{Summary}
 In this chapter, we \dots
