@@ -1,0 +1,36 @@
+bandwidth hci0 0
+(adapter: hci0, d:0) Min value: 75 ms
+(adapter: hci0, d:0) Min value: 80 ms
+(adapter: hci0, d:0) Min value: 85 ms
+bandwidth hci0 300
+(adapter: hci0, d:300) Min value: 70 ms
+(adapter: hci0, d:300) Min value: 75 ms
+(adapter: hci0, d:300) Min value: 70 ms
+bandwidth hci0 600
+(adapter: hci0, d:600) Min value: 85 ms
+(adapter: hci0, d:600) Min value: 75 ms
+(adapter: hci0, d:600) Min value: 75 ms
+bandwidth hci0 900
+(adapter: hci0, d:900) Min value: 90 ms
+(adapter: hci0, d:900) Min value: 90 ms
+(adapter: hci0, d:900) Min value: 80 ms
+bandwidth hci1 0cm
+(adapter: hci1, d:0) Min value: 25 ms
+(adapter: hci1, d:0) Min value: 25 ms
+(adapter: hci1, d:0) Min value: 25 ms
+bandwidth hci1 300cm
+(adapter: hci1, d:300) Min value: 25 ms
+(adapter: hci1, d:300) Min value: 25 ms
+(adapter: hci1, d:300) Min value: 25 ms
+bandwidth hci1 600cm
+(adapter: hci1, d:600) Min value: 25 ms
+(adapter: hci1, d:600) Min value: 25 ms
+(adapter: hci1, d:600) Min value: 25 ms
+bandwidth hci1 900cm
+(adapter: hci1, d:900) Min value: 25 ms
+(adapter: hci1, d:900) Min value: 25 ms
+(adapter: hci1, d:900) Min value: 25 ms
+
+roundtrip hci0 0cm
+Payload Size Diff: 34.666666666666664 +- 3.5433819375782165
+Average Roundtrip Time Diff (ms): 8.945516541353388 +- 1.2190843592229361

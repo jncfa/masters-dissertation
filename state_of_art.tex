@@ -1,4 +1,4 @@
-In this chapter a survey of pervasive healthcare applications is presented. In order to gain a greater understanding of the building blocks of a typical \acf{IoT} system, a reference model for \acs{IoT} systems is also discussed. With this knowledge, we present a comparative analysis of similar works in the literature, identifying their strengths and weaknesses. the The chapter is concluded by stating the contributions that this work pretends to achieve.
+In this chapter a survey of pervasive healthcare applications is presented. In order to gain a greater understanding of the building blocks of a typical \acf{IoT} system, a reference model for \acs{IoT} systems is also discussed. With this knowledge, we present a comparative analysis of similar works in the literature, identifying their strengths and weaknesses. The chapter is concluded by stating the contributions that this work proposes to achieve.
 
 \section{Internet of Things}
 
@@ -10,9 +10,9 @@ In this chapter a survey of pervasive healthcare applications is presented. In o
 
 The definition of this concept has evolved over time with the development of other technologies such as data analytics, embedded systems, sensors, etc. Fundamentally, it can be described as the following \cite{Baker2017}: \bigskip
 
-\todo[inline]{To-do: Find alternatives for strategy maybe?}
+\todo[inline]{To-do: Find alternatives for 'strategy' - communication strategy, architecture, technology? I opted with technology, awaiting feedback}
 \begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black]
-    \acs{IoT} is a strategy supported on the development of networks of smart devices that exchange and process information through Machine-to-Machine (M2M) communications, usually based on the \acf{IP}.
+    \acs{IoT} is a technology supported on the development of networks of smart devices that exchange and process information through Machine-to-Machine (M2M) communications, usually based on the \acf{IP}.
 \end{tcolorbox}
 
 This technology enables ubiquitous systems to gather remarkable amounts of information regarding the surrounding environment, which can later be turned into insight through the usage of data fusion and data analytics tools, like Machine Learning. \bigskip
@@ -25,11 +25,11 @@ Reference models provide an abstract framework for designing systems and a set o
 
 In 2014, the \acs{IoT} World Forum (IoTWF) architectural committee published an \acs{IoT} architectural reference model, composed by seven layers as shown in Figure \ref{fig:iotwf-referencemodel}. This model \cite{Cisco2014} provides a simple and clean functional view into the different components of an \acs{IoT} system, without narrowing the scope or locality of its components. While this model can be used to generically develop \acs{IoT} systems for any industry (\textit{e.g.} from agriculture to smart cities), in the context of the dissertation we will focus on pervasive healthcare applications. \bigskip
 
-\todo[inline]{To-do: Make new image based on this one. (!!)}
+%\todo[inline]{To-do: Make new image based on this one. (!!)}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.85\linewidth]{images/iotwf-referencemodel.png}
+    \includegraphics[width=0.6\linewidth]{images/iotwf-referencemodel.pdf}
     \caption[IoT reference model published by IoTWF.]{IoT reference model published by IoTWF. Source: \cite{Cisco2014}.}
     \label{fig:iotwf-referencemodel}
 \end{figure}
@@ -79,7 +79,7 @@ The second layer of the model focuses on connectivity, on linking the different 
 
 \subsubsection{Communication Protocols}
 
-Technology is designed with particular use cases in mind. These catalyze their development, so each technology has its own advantages and disadvantages. For instance, short range wireless protocols are limited by transmission range, but long range protocols have a higher energy consumption, which may become unviable for networks with highly constrained devices. Each protocol defines their own frame formats and communicates within certain frequency bands, some of which may require licenses. Using licensed frequency bands can provide a better performance as it ensures greater reliability since the network operator grants you exclusivity of frequency spectrum within a certain areas. \bigskip
+Technology is designed with particular use cases in mind, built to fulfill a certain need which other similar technologies fail to meet \cite{Cisco2014}. As such, each technology will be different, having advantages and disadvantages depending on its usage. For instance, short range wireless protocols are, by definition, limited by transmission range, but longer range protocols have in general a higher energy consumption, which may become unviable for networks with highly constrained devices. Some protocols communicate within certain frequency bands, some of which may require special licenses. Using licensed frequency bands can provide a better performance as it ensures greater reliability since the network operator grants you exclusivity of frequency spectrum within certain areas but may be too costly. \bigskip
 
 From the literature, a set of key requirements that drive the decision of the communication protocols can be identified \cite{Baker2017, Catarinucci2015, Adame2018}:
 
@@ -102,6 +102,7 @@ Out of the abovementioned technologies, \acs{BLE} offers greater throughput, bet
 \renewcommand{\arraystretch}{1.5}
  \begin{table}[H]
      \centering
+     \begin{adjustbox}{width=0.9\columnwidth,center}
      \begin{tabular}{r|l|l|l}
          & \textbf{\acs{BLE}} & \textbf{EPC/\acs{RFID}}& \textbf{ZigBee}  \\ \hline
          \makecell[r]{\textbf{Band of} \\ \textbf{operation}} & 2.4 GHz & LF, HF, UHF, EHF & 2.4 GHz \\
@@ -112,6 +113,7 @@ Out of the abovementioned technologies, \acs{BLE} offers greater throughput, bet
          \textbf{\acs{IP} Stack} & \xmark & \xmark & \cmark \\
          \makecell[r]{\textbf{Security} \\ \textbf{Features}} & \makecell{AES-128, Secure \\ pairing prior to \\ key exchange} & \xmark & \makecell{AES-128 (Optional),\\ Network key shared \\across network, \\ Optional link key to \\ secure application layer \\ communications}\\
      \end{tabular}
+    \end{adjustbox}
      \caption[Overview of the most common communication protocols used within short range]{Overview of the most common communication protocols used within short range. Adapted from \cite{Baker2017}.}
      \label{tab:comparsion-shortrangeprotocols}
  \end{table} 
@@ -142,11 +144,26 @@ So far we have discussed the underlying networking technologies that link the de
 \end{table} 
 \renewcommand{\arraystretch}{1}
 
-In \cite{Rubi2019}, the authors compare these two protocols in greater length, along with the more commonly used web-based protocol Hypertext Transfer Protocol (HTTP). They analyze the latency in the communications (from the edge devices to remote servers) and the RAM usage in the devices for each protocol and for different data sources (respiration rate, oxygen saturation and heart rate signals) and found that \acs{CoAP} presented the best overall performance. Nonetheless, all protocols had very low latencies (less than 1.5s) and low memory usage. \bigskip
+In \cite{Rubi2019}, the authors compare these two protocols in greater length, along with the more commonly used web-based protocol Hypertext Transfer Protocol (HTTP). They analyze the latency in the communications (from the edge devices to remote servers) and the RAM usage in the devices for each protocol and for different data sources (respiration rate, oxygen saturation and heart rate signals) and found that \acs{CoAP} presented the best overall performance. Nonetheless, all protocols had very low latencies (less than 1.5s) and low memory usage.
 
-The authors indicate that \acs{MQTT} might be more suitable when considering a certain messaging pattern — the ``Publish/Subscribe'' (P-S) model. In this model, the devices that send messages, called ``publishers'', communicate them to an intermediary message broker, through a ``message topic'' (also called logical channels). The devices that wish to receive messages, called ``subscribers'', can subscribe to these topics by requesting it to the message broker. Whenever a publisher sends a message, the broker broadcasts it to all devices that have subscribed to the selected topic. \bigskip
+\paragraph{} The authors indicate that \acs{MQTT} might be more suitable when considering a certain messaging pattern — the ``Publish/Subscribe'' model. In this model, the devices that send messages, called ``publishers'', communicate them to an intermediary message broker, through a ``message topic'' (also called logical channels). The devices that wish to receive messages, called ``subscribers'', can subscribe to these topics by requesting it to the message broker. Whenever a publisher sends a message, the broker broadcasts it to all devices that have subscribed to the selected topic.
 
-\acs{CoAP} uses a different messaging pattern, called ``Request-Response''. In this paradigm, a device sends a request to receive certain data and the second responds to this request. % observe that the former model is event-driven while the latter is query-based \cite{Rubi2019}. % Due to the nature of how the data is generated in these types of pervasive applications, an event-driven protocol like \acs{MQTT} might be more adequate.
+\paragraph{} \acs{CoAP} uses a different messaging pattern, called ``Request-Response''. In this paradigm, a device sends a request to receive certain data and the second responds to this request.
+ % observe that the former model is event-driven while the latter is query-based \cite{Rubi2019}. % Due to the nature of how the data is generated in these types of pervasive applications, an event-driven protocol like \acs{MQTT} might be more adequate.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{images/mqtt message sequence diagram.pdf}
+    \caption[Diagram of a \acs{MQTT} message sequence.]{Diagram of a \acs{MQTT} message sequence. In this diagram, we have two clients (A and B) connecting to the \acs{MQTT} broker, where client A transmits two messages to the topic ``client/b'' while client B subscribes to that topic to demonstrate how the Publish-Subscribe model works. In \acs{MQTT}, a client recieves a message whenever a client (including itself) publishes a message on that topic.}
+    \label{fig:mqtt-message-sequence-diagram}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{images/coap message sequence diagram.pdf}
+    \caption[Diagram of a \acs{CoAP} message sequence.]{Diagram of a \acs{CoAP} message sequence. In this diagram, we have a client making a GET request to the \acs{CoAP} server to retrieve information, in order to demonstrate how the Request-Response model works. In \acs{CoAP}, the requests are delivered asyncronously, and so the response messages must contain a ``token'' value so that the client can identify which request resulted in this response.}
+    \label{fig:coap-message-sequence-diagram}
+\end{figure}
 
 \subsection{Layer 3: Edge (Fog) Computing}
 \label{sec:iot-model-layer3}
@@ -181,7 +198,7 @@ As the devices continuously generate data, the system will require more and more
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\linewidth]{images/cloud-services.png}
+    \includegraphics[width=0.85\linewidth]{images/cloud-services.pdf}
     \caption[Differences between the cloud offerings and on-premise solutions.]{ Differences between the cloud offerings and on-premise solutions. Source: \cite{RedHat2021}}
     \label{fig:differences-between-cloud-services}
 \end{figure}
@@ -197,6 +214,7 @@ However, since the data in \acs{IoT} can very heterogenous and unstructured, the
 \renewcommand{\arraystretch}{2}
 \begin{table}[H]
     \centering
+    \begin{adjustbox}{width=0.9\columnwidth,center}
     \begin{tabular}{r|l|l}
         %\textbf{Features} 
         & \textbf{SQL}& \textbf{NoSQL}  \\ \hline
@@ -208,6 +226,7 @@ However, since the data in \acs{IoT} can very heterogenous and unstructured, the
         \textbf{Scalability} & Vertical & Horizontal \\
         \textbf{Performance} & \makecell{Generally lower than \\ NoSQL systems} & Optimized for large datasets \\
     \end{tabular}
+    \end{adjustbox}
     \caption{Comparison between SQL and NoSQL database technologies.}
     \label{tab:comparsion-databasetech}
 \end{table} 
@@ -251,8 +270,7 @@ The information that is created by the \acs{IoT} systems yields little value unl
 \label{sec:sim-approaches}
 \input{state_of_art-sysrev}
 
-% Baptiza cada trabalho com um nome teu, seguido da referencia.
-% \todo[inline]{Todo: Ver a questão de batizar os trabalhos.}
+In order to summarize the key properties of the previously discussed solutions, the following table, Table \ref{tab:comparsion-articles} is presented.
 
 \begin{landscape}
 \renewcommand{\arraystretch}{2}
@@ -291,11 +309,6 @@ Despite recent efforts, \textbf{interoperability} is still an issue for \acs{IoT
 
 Fortunately, there are several international initiatives to promote the use of \acs{IoT} in health in a standardized way, such as HIMSS (Healthcare Information and Management Systems Society) and the Personal Connected Health Alliance (PCHAlliance). PCHAlliance, for example, advocates the adoption of the Continua Design Guidelines (CDG), which facilitates the integration of personal health devices into health systems. These guidelines have been recognized by ITU (International Telecommunication Union) and the European Commission and are adopted by countries such as Denmark, Norway and the USA, among others \cite{PersonalConnectedHealthAlliance2017}. These guidelines promote a series of e-health standards like \acs{FHIR} which facilitate the exchange of information between systems, in order to ensure that the implementations become truly interoperable.
 
-Within this project we aim to continue to expand the capabilities of the Continua Design Guidelines to further extend the software to collect the data that is being exchanged between sensors, gateways, and end services to make implementations truly interoperable.
-
-% The PCHAlliance publishes and promotes the global adoption of standards and the implementation guidelines that unleash the massive amounts of medical-grade data that enables a more holistic perspective. Commercial ready software enables the rapid integration of these standards into your product. A conformity assessment program verifies that the standards have been properly and uniformly implemented.
-
-
 \section{Statement of Contributions}
 %\section{System Architecture}
 
@@ -303,12 +316,16 @@ Within this project we aim to continue to expand the capabilities of the Continu
 
 \paragraph{} Having this in mind, and in the context of this dissertation work, we propose a novel fully modular \acs{IoT} infrastructure that uses the \acs{FHIR} standard in order to fully integrate the data into an existing and widely used \acs{HIS} -- GlobalCare\footnote{GlobalCare by Glintt: \url{https://globalcare.glintt.com/}} by Glintt - Healthcare Solutions, S.A. 
 
-\todo[inline]{To-do: Present components via enumeration.}
+\paragraph{} From a hardware perspective, the \acs{IoT} system is composed of 3 different components, as seen in Figure \ref{fig:wow-architecture}:
+\begin{itemize}
+    \item the \textit{Biostickers}, that acquire the patient's physiological signals;
+    \item the \textit{SmartBox}, which acts as a central node of the \acs{WBAN} and aggregates the data, communicating it to the gateway;
+    \item and finally, the \textit{Smart Gateway}, which serves as a fog server in order to mitigate latency and other computing issues and acts as the gateway to the \acs{HIS}, by communicating with the ``Interoperability'' \acs{FHIR} layer on the \acs{HIS}.
+\end{itemize}
 
-\paragraph{} From a hardware perspective, the \acs{IoT} system is composed of 3 different components, as seen in Figure \ref{fig:wow-architecture}: the \textit{Biostickers}, that acquire the patient's physiological signals, the \textit{SmartBox}, which acts as a central node of the \acs{WBAN} and aggregates the data, communicating it to the gateway, and the \textit{Smart Gateway}, which serves as a fog server in order to mitigate latency and other computing issues and acts as the gateway to the \acs{HIS}. The system must ensure reliable and secure communications between every device. 
+\paragraph{} As the goal of the project is the deployment of the system in an hospital, Centro Hospitalar e Universitário de Coimbra (CHUC), each \textit{SmartBox} is coupled with an hospital bed, which is often referred internally as a \textit{SmartBed}.
 
-\todo[inline]{To-do: explicitly mention what makes the smart box "smart".}
-
+\clearpage
 \begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth]{images/wow-system-architecture.pdf}
@@ -327,7 +344,8 @@ For the work developed throughout the dissertation, we propose the following con
     \end{itemize}
     \item Design and development of data integration pipelines using \acs{MQTT} and management of the multiple SmartBoxes in the Smart Gateway;
     \item Implementation of a \acs{FHIR} \acs{API} layer to integrate the proposed system in the GlobalCare \acs{HIS}.
-    \item Evaluation of the performance of the proposed system through controlled lab tests and deployment for hospital trials within the \acs{WoW} project.
+    \item Evaluation of the performance of the proposed system on hospital trials within the \acs{WoW} project.
+    % through controlled lab tests and 
     %\item Evaluate the need for data analysis to extract relevant user profiles/anomalies for long-term biomonitoring data of multiple anonymous users.
 \end{itemize}
 

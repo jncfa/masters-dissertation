@@ -1,0 +1,31 @@
+dist:0, adap:hci0) bandwidth 178304.27954122634bps, time between packets 75.0 (->78.26447097622619) ms, packet loss 2.1309941042742007 %
+dist:0, adap:hci0) bandwidth 170425.37600816312bps, time between packets 80.0 (->80.39325843322304) ms, packet loss 0.21933488983422336 %
+dist:0, adap:hci0) bandwidth 160752.9411764706bps, time between packets 85.0 (->84.93971627329881) ms, packet loss 0.0 %
+
+dist:300, adap:hci0) bandwidth 189729.88550874146bps, time between packets 70.0 (->74.59269494426493) ms, packet loss 2.8023127516693314 %
+dist:300, adap:hci0) bandwidth 182186.66666666666bps, time between packets 75.0 (->74.69656055134939) ms, packet loss 0.0 %
+dist:300, adap:hci0) bandwidth 194708.83002422607bps, time between packets 70.0 (->70.94488257453555) ms, packet loss 0.25162396299893536 %
+
+dist:600, adap:hci0) bandwidth 158444.3514843018bps, time between packets 85.0 (->87.42798407872517) ms, packet loss 1.4361103910593371 %
+dist:600, adap:hci0) bandwidth 181290.58460294857bps, time between packets 75.0 (->75.65654296279298) ms, packet loss 0.49184832244479576 %
+dist:600, adap:hci0) bandwidth 182186.66666666666bps, time between packets 75.0 (->75.00180445219341) ms, packet loss 0.0 %
+
+dist:900, adap:hci0) bandwidth 151822.22222222222bps, time between packets 90.0 (->90.49962531952632) ms, packet loss 0.0 %
+dist:900, adap:hci0) bandwidth 151611.09435370247bps, time between packets 90.0 (->91.19923516011342) ms, packet loss 0.1390625597685689 %
+dist:900, adap:hci0) bandwidth 166484.48482272957bps, time between packets 80.0 (->83.44958835289258) ms, packet loss 2.5266482302520124 %
+
+dist:0, adap:hci1) bandwidth 23988.98254821514bps, time between packets 25.0 (->50.78983730026674) ms, packet loss 46.45316395487692 %
+dist:0, adap:hci1) bandwidth 25321.98905949413bps, time between packets 25.0 (->48.86195312492886) ms, packet loss 43.47770299220059 %
+dist:0, adap:hci1) bandwidth 23881.37012736652bps, time between packets 25.0 (->51.919825785479304) ms, packet loss 46.69337025141402 %
+
+dist:300, adap:hci1) bandwidth 25299.89699827855bps, time between packets 25.0 (->48.53454218611753) ms, packet loss 43.52701562884253 %
+dist:300, adap:hci1) bandwidth 22108.241178888955bps, time between packets 25.0 (->54.87024551176455) ms, packet loss 50.65124736855144 %
+dist:300, adap:hci1) bandwidth 26425.506152324047bps, time between packets 25.0 (->46.240854048156635) ms, packet loss 41.014495195705244 %
+
+dist:600, adap:hci1) bandwidth 22443.946968698314bps, time between packets 25.0 (->54.45753326619356) ms, packet loss 49.901904087726976 %
+dist:600, adap:hci1) bandwidth 26758.076276357155bps, time between packets 30.0 (->45.8176395344927) ms, packet loss 28.326581402614767 %
+dist:600, adap:hci1) bandwidth 27188.181049633607bps, time between packets 30.0 (->45.18540424176) ms, packet loss 27.17451504562427 %
+
+dist:900, adap:hci1) bandwidth 23737.395966053882bps, time between packets 25.0 (->51.17783400189497) ms, packet loss 47.01474114720116 %
+dist:900, adap:hci1) bandwidth 26556.619134605102bps, time between packets 30.0 (->45.15538351736625) ms, packet loss 28.866198746593476 %
+dist:900, adap:hci1) bandwidth 25333.061602555776bps, time between packets 25.0 (->48.158351509397285) ms, packet loss 43.452987494295144 %
