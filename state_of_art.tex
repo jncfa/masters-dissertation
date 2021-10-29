@@ -10,9 +10,8 @@ In this chapter a survey of pervasive healthcare applications is presented. In o
 
 The definition of this concept has evolved over time with the development of other technologies such as data analytics, embedded systems, sensors, etc. Fundamentally, it can be described as the following \cite{Baker2017}: \bigskip
 
-\todo[inline]{To-do: Find alternatives for 'strategy' - communication strategy, architecture, technology? I opted with technology, awaiting feedback}
 \begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black]
-    \acs{IoT} is a technology supported on the development of networks of smart devices that exchange and process information through Machine-to-Machine (M2M) communications, usually based on the \acf{IP}.
+    \acs{IoT} addresses the development of networks of smart devices that exchange and process information through Machine-to-Machine (M2M) communications, usually based on the \acf{IP}.
 \end{tcolorbox}
 
 This technology enables ubiquitous systems to gather remarkable amounts of information regarding the surrounding environment, which can later be turned into insight through the usage of data fusion and data analytics tools, like Machine Learning. \bigskip
@@ -144,6 +143,14 @@ So far we have discussed the underlying networking technologies that link the de
 \end{table} 
 \renewcommand{\arraystretch}{1}
 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{images/coap message sequence diagram.pdf}
+    \caption[Diagram of a \acs{CoAP} message sequence.]{ Diagram of a \acs{CoAP} message sequence. In this diagram, we have a client making a GET request to the \acs{CoAP} server to retrieve information. In \acs{CoAP}, the requests are delivered asynchronously, and so the response messages must contain a ``token'' value so that the client can identify which request resulted in this response.}
+    \label{fig:coap-message-sequence-diagram}
+\end{figure}
+
 In \cite{Rubi2019}, the authors compare these two protocols in greater length, along with the more commonly used web-based protocol Hypertext Transfer Protocol (HTTP). They analyze the latency in the communications (from the edge devices to remote servers) and the RAM usage in the devices for each protocol and for different data sources (respiration rate, oxygen saturation and heart rate signals) and found that \acs{CoAP} presented the best overall performance. Nonetheless, all protocols had very low latencies (less than 1.5s) and low memory usage.
 
 \paragraph{} The authors indicate that \acs{MQTT} might be more suitable when considering a certain messaging pattern — the ``Publish/Subscribe'' model. In this model, the devices that send messages, called ``publishers'', communicate them to an intermediary message broker, through a ``message topic'' (also called logical channels). The devices that wish to receive messages, called ``subscribers'', can subscribe to these topics by requesting it to the message broker. Whenever a publisher sends a message, the broker broadcasts it to all devices that have subscribed to the selected topic.
@@ -154,15 +161,8 @@ In \cite{Rubi2019}, the authors compare these two protocols in greater length, a
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.75\linewidth]{images/mqtt message sequence diagram.pdf}
-    \caption[Diagram of a \acs{MQTT} message sequence.]{Diagram of a \acs{MQTT} message sequence. In this diagram, we have two clients (A and B) connecting to the \acs{MQTT} broker, where client A transmits two messages to the topic ``client/b'' while client B subscribes to that topic to demonstrate how the Publish-Subscribe model works. In \acs{MQTT}, a client recieves a message whenever a client (including itself) publishes a message on that topic.}
+    \caption[Diagram of a \acs{MQTT} message sequence.]{ Diagram of a \acs{MQTT} message sequence. In this diagram, we have two clients (A and B) connecting to the \acs{MQTT} broker, where client A transmits two messages to the topic ``client/b'' while client B subscribes to that topic. In \acs{MQTT}, a client receives a message whenever a client (including itself) publishes a message on that topic.}
     \label{fig:mqtt-message-sequence-diagram}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.5\linewidth]{images/coap message sequence diagram.pdf}
-    \caption[Diagram of a \acs{CoAP} message sequence.]{Diagram of a \acs{CoAP} message sequence. In this diagram, we have a client making a GET request to the \acs{CoAP} server to retrieve information, in order to demonstrate how the Request-Response model works. In \acs{CoAP}, the requests are delivered asyncronously, and so the response messages must contain a ``token'' value so that the client can identify which request resulted in this response.}
-    \label{fig:coap-message-sequence-diagram}
 \end{figure}
 
 \subsection{Layer 3: Edge (Fog) Computing}
@@ -270,7 +270,7 @@ The information that is created by the \acs{IoT} systems yields little value unl
 \label{sec:sim-approaches}
 \input{state_of_art-sysrev}
 
-In order to summarize the key properties of the previously discussed solutions, the following table, Table \ref{tab:comparsion-articles} is presented.
+Table \ref{tab:comparsion-articles} summarizes the key properties of the previously discussed solutions.
 
 \begin{landscape}
 \renewcommand{\arraystretch}{2}
