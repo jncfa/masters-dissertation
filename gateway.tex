@@ -20,9 +20,17 @@ In the proposed architecture, the \textit{Smart Gateway} is the central module o
 
 \section{Service Architecture}
 
-The \textit{Smart Gateway} must 
+The \textit{Smart Gateway} must..
 
-\paragraph{} Figure \ref{fig:gateway_serviceoverview} illustrate the different services implemented in the \textit{Smart Gateway}
+\begin{itemize}
+    \item Manage devices and device associations: The \textit{Smart Gateway} maintains a list of all the \textit{SmartBoxes} that are managed by the system, as well as every \textit{Biosticker} and every sensor in the \textit{Biosticker} (which are used to indicate respective biosignal to the \acs{HIS}). 
+    \item Data anonymization;
+    \item Data pre-processing;
+    \item Real-time data collection;
+    \item 
+\end{itemize}
+
+\paragraph{} Figure \ref{fig:gateway_serviceoverview} illustrates the different services implemented in the \textit{Smart Gateway}.
 
 \begin{figure}[H]
     \centering
@@ -64,8 +72,8 @@ Figure \ref{fig:wow-dbschema-full} contains the database model implemented in ou
 
 \subsubsection{MQTT Client Information}
 
-Figure \ref{fig:wow-dbschema-mqtt} contains the information relevant for \acs{MQTT} communications, mostly related with security. In order to ensure that each device only has access to its own resources, the system implements a \acf{RBAC} policy. 
-In this type of access control, the system allows and revokes access to resources according to the role of the device.
+Figure \ref{fig:wow-dbschema-mqtt} contains the information relevant for \acs{MQTT} communications, mostly related with security. To ensure that each device only has access to its own resources, the system implements a \acf{RBAC} policy. 
+In this type of access control, the system allows and revokes access to resources according to the role of the device. 
 
 \paragraph{} In context of the \acs{WoW} project, the following roles are used:
 
@@ -75,20 +83,26 @@ In this type of access control, the system allows and revokes access to resource
     \item Developer device role: Indicates the \acs{MQTT} client is a developer device, used solely for debugging purposes.
 \end{itemize}
 
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth]{images/database-schema-mqtt.pdf}
-    \caption[\acs{MQTT} information in the schema implemented in the \textit{Smart Gateway}.]{\acs{MQTT} information in the schema implemented in the \textit{Smart Gateway}.}
+    \caption[\acs{MQTT} information in the schema implemented in the \textit{Smart Gateway}.]{\acs{MQTT} information in the schema implemented in the \textit{Smart Gateway}.
+    The ``mqtt.roles'' table contains the different \acs{RBAC} roles for the \acs{MQTT} communication and ``mqtt.role\_permissions'' table lists the permissions available to each role using \acs{MQTT} topic wildcards. The ``mqtt.client'' table lists the clients and their properties, such as their \acs{UUID}, the timestamp of their last connection, or a \textit{flag} to indicate if the communication failed during the last communication.
+    
+    }
     \label{fig:wow-dbschema-mqtt}
 \end{figure}
 
 \subsubsection{Sensor Data}
-\dots 
+
+Figure \ref{fig:wow-dbschema-sensors} contains the sensor data collected over time. The tables 
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth]{images/database-schema-sensordata.pdf}
-    \caption[test]{test}
+    \caption[Sensor data information in the schema implemented in the \textit{Smart Gateway}.]{
+        Sensor data information in the schema implemented in the \textit{Smart Gateway}. Our database model has one table for each different type of biosignal (temperature, \acs{ECG}, etc.). The properties of the table are defined according to the data acquired on the \textit{SmartBox} level, which are detailed in Section \ref{sec:biosticker_data}.}
     \label{fig:wow-dbschema-sensors}
 \end{figure}
 
@@ -101,7 +115,7 @@ In this type of access control, the system allows and revokes access to resource
     \caption[test]{test}
     \label{fig:wow-dbschema-fhir}
 \end{figure}
-
+ 
 
 \subsubsection{Stored Procedures}
 
@@ -150,4 +164,4 @@ extensible
 
 \section{Summary}
 
-In this chapter, we presented the different components which form the \textit{Smart Gateway}.
+In this chapter, we presented the different components which form the \textit{Smart Gateway}. In the chapter, we evaluate the performance of our proposed solution through a hospital trial.
