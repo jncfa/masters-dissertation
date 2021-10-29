@@ -7,7 +7,7 @@ In the proposed architecture, the \textit{Smart Gateway} is the central module o
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\linewidth]{images/gateway-image.png}
+    \includegraphics[width=0.4\linewidth]{images/gateway-image.png}
     \caption[Intel NUC NUC8i7BEH.]{Intel NUC NUC8i7BEH.}
     \label{fig:gateway_image}
 \end{figure}
@@ -20,30 +20,45 @@ In the proposed architecture, the \textit{Smart Gateway} is the central module o
 
 \section{Service Architecture}
 
-The \textit{Smart Gateway} must..
+As we have seen, there are multiple key features that form the \textit{Smart Gateway}. From Figure \ref{fig:wow-architecture}, we can list the different \textit{Smart Gateway} components:  
 
 \begin{itemize}
-    \item Manage devices and device associations: The \textit{Smart Gateway} maintains a list of all the \textit{SmartBoxes} that are managed by the system, as well as every \textit{Biosticker} and every sensor in the \textit{Biosticker} (which are used to indicate respective biosignal to the \acs{HIS}). 
-    \item Data anonymization;
-    \item Data pre-processing;
-    \item Real-time data collection;
-    \item 
+    \item \textbf{Manage devices and device associations}: The \textit{Smart Gateway} maintains a list of all the \textit{SmartBoxes} that are managed by the system, as well as every \textit{Biosticker} and every sensor in the \textit{Biosticker} (which are used to indicate the respective biosignal to the \acs{HIS}). The \textit{Smart Gateway} also tracks the sensor subscriptions per \textit{SmartBox}.
+    \item \textbf{Data anonymization}: Any private data (\textit{i.e.} information that can be used to identify a user) that is stored in the \textit{Smart Gateway} is anonymized in order to meet data protection regulations\footnote{Resolution of the Council of Ministers no. 41/2018, of 28 March, following the new General Data Protection Regulation (GDPR), approved by Regulation (EU) 2016/679:  \url{https://dre.pt/application/file/a/114936962\%20}}. 
+    \item \textbf{Data pre-processing}: The \textit{Smart Gateway} processes the data as it is collected in order to clean the data before storing it indefinitely, and to detect critical conditions of the patients' state to prompt an immediate notification to the health professionals.
+    \item \textbf{Real-time data acquisition}: The \textit{Smart Gateway} acquires the data transmitted by \textit{SmartBoxes} in real-time. 
+    \item \textbf{Manage data collection}: After receiving and processing the data from the \textit{SmartBoxes}, the \textit{Smart Gateway} stores indefinitely for long-term biomonitoring analytics.
+    \item \textbf{\acs{HIS} \acs{FHIR} Integration}: The \textit{Smart Gateway} handles the communication with the \acs{HIS}, or more accurately, it processes \acs{FHIR} all requests from the \acs{HIS}, and also transforms the acquired sensor data into \acs{FHIR} messages and communicates it to the \acs{HIS}. 
 \end{itemize}
 
-\paragraph{} Figure \ref{fig:gateway_serviceoverview} illustrates the different services implemented in the \textit{Smart Gateway}.
+To implement these components, we propose the following service architecture within the \textit{Smart Gateway}, as illustrated on Figure \ref{fig:gateway_serviceoverview}. The correspondence between the services and the \textit{Smart Gateway} components is described in Table \ref{tab:gateway-service}.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\linewidth]{images/service overview gateway.pdf}
-    \caption[Service architecture implemented in the \textit{Smart Gateway}.]{Service architecture implemented in the \textit{Smart Gateway}. The diagram displays the different technologies used throughout the development. The services communicate with each other using Unix Sockets, a Linux exclusive protocol for \acf{IPC}.}
+    \includegraphics[width=0.8\linewidth]{images/service overview gateway.pdf}
+    \caption[Service architecture implemented in the \textit{Smart Gateway}.]{Service architecture implemented in the \textit{Smart Gateway}. The diagram displays the different technologies used throughout the development. The services communicate with each other using Unix Domain Sockets, a Linux protocol for \acf{IPC}.}
     \label{fig:gateway_serviceoverview}
 \end{figure}
+\begin{table}[]
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{ccc}
+    \hline
+    \textbf{Smart Gateway Module}          & \textbf{Smart Gateway Module} & \textbf{Description}                                                                                                                                                             \\ \hline
+    Real-time data acquisition             & MQTT Broker                   & \makecell[c]{This service is responsible for \\ handling all smart boxes communication, ensuring data encryption, \\ authorization, etc.}                                                           \\
+    Data pre-processing                    & Data processing               & \makecell[c]{This service is responsible for \\ data filtering and preliminary data processing.}                                                                                                  \\
+    Manage data collection                 & \multirow{2}{*}{Data storage} & \multirow{2}{*}{\makecell[c]{This service holds and manages \\ critical system information, \\ such as authorized clients, permission \\ access for each client and \\ all of the collected sensor data.}} \\
+    Manage devices and device associations &                               &                                                                                                                                                                                  \\
+    Data anonymization                     & \multirow{2}{*}{FHIR Server}  & \multirow{2}{*}{This service is responsible for handling communications with  ``Interoperability'' layer  of \acs{HIS}.}                                                         \\
+    \acs{HIS} \acs{FHIR} Integration       &                               &                                                                                                                                                                                 
+    \end{tabular}
+    }
+\end{table}
 
+\paragraph{} 
 
 \subsection{Security on Linux}
-- o isolamento dos processos é feito através do "utilizador" que está a executar o processo. cada processo tem apenas acesso aos seus serviços.
-
-- indicar que estamos a usar Unix Sockets para a comunicação entre processos;
+%- o isolamento dos processos é feito através do "utilizador" que está a executar o processo, e é este o utilizador que delimita as permissões de e
+- indicar que estamos a usar Unix Sockets para a comunicação entre processos \footnote{\url{https://man7.org/linux/man-pages/man7/unix.7.html}}; 
 
 - o uso de unix sockets permite usar o sistema de permissões do sistema operativo para controlar o acesso às sockets (através dos ``utilizadores'' que estão a executar os serviços).
 
@@ -61,7 +76,6 @@ The data storage in the \textit{Smart Gateway} is one of the most important comp
 
 \subsection{Database Schema}
 Figure \ref{fig:wow-dbschema-full} contains the database model implemented in our PostgreSQL database. It describes all information that is contained in the \textit{Smart Gateway}, the relations within that data, organized according to the functionality it is related to, which will be explored in greater detail in the next sections.
-
 
 \begin{figure}[H]
     \centering
@@ -121,6 +135,12 @@ Figure \ref{fig:wow-dbschema-sensors} contains the sensor data collected over ti
 
 %During development, we noticed that our database service was consuming a concerning amount of resources when 
 - de modo a maximizar o desempenho do serviço da base de dados, os diferentes pedidos de base de dados (queries) foram configurados e pré-compilados na base de dados. isto reduz o tamanho dos pedidos enviados à base de dados (pois em vez de enviar transações complexas, executamos apenas uma função na base de dados), faz com que a base de dados não tenha de validar a estrutura dos pedidos (porque já foi pre-compilada), particularmente para eviar injeções de SQL.
+
+
+Since the \acs{Smart Gateway} makes use of an \acs{RDBMS}, services that access the database use \acf{SQL} to perform requests, such as retrieving data or inserting data. In order to maximize the performance of our data storage solution, we implement ``Stored Procedures'', which are subroutines that are stored in the \acs{RDBMS}. These procedures are pre-compiled \acs{SQL} statements that are defined in the \acs{RDBMS}, 
+
+
+which improve performance (since the database system no longer needs to validate and compile a complex query)
 
 \section{Connection to the SmartBoxes}
 
