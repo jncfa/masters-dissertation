@@ -480,7 +480,7 @@ As expected from the previous tests, ASUS USB-BT500 shows a much better throughp
 
 \paragraph{} Additionally, we observe some packet loss on the communication as time interval between packets reaches closer to the ``breaking point'' where the connection suddenly crashes, which is also expected. However, the internal \acs{BLE} adapter shows a much more noticeable packet loss (particularly when the time interval between packets is higher than 100ms). Despite the heavy packet loss, we observe that the maximum observed bandwidth (accounting for the packet loss) is always achieved at the minimum time interval between packets.
 
-\subsection{Decision on \acs{BLE} adapter}
+\subsection{Decision on the \acs{BLE} adapter}
 
 From the previous tests, we see that the Raspberry Pi 4B's internal \acs{BLE} adapter lacks the support for \acs{DLE} feature, which reduces greatly the communication throughput. Additionally, in order to achieve this maximum throughput on Raspberry Pi 4B, we need to deal with extremely high packet loss (over 40\%!), meaning we need to either accept the packet loss, which is not feasible, or reduce the \acs{BLE} throughput to minimize the packet loss. The ASUS USB-BT500 on the other hand has a throughput 10 times bigger than the internal adapter, with very low packet loss (which can also be mitigated by reducing slightly the throughput).
 

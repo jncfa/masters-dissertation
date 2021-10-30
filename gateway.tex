@@ -351,7 +351,7 @@ One of the major flaws of Mosquitto is that it does not supply proper dynamic au
 \end{figure}
 \section{Data pre-processing}
 
-The Data pre-processing service is used to process the incoming data from the \textit{SmartBoxes} in real-time. It subscribes to incoming \acs{MQTT} messages using a \acs{MQTT} client with superuser privileges to have access to all topics. It validates the \acs{MQTT} messages according to the message formats specified in Section \ref{sec:mqtt payload format}, filters any irrelevant information, and stores it in the database. Currently, it does not apply any data analytics to detect critical conditions. The code for the service can be found here\footnote{\url{https://github.com/WoW-Institute-of-Systems-and-Robotics/gateway_pyservice}}. 
+The Data pre-processing service is used to process the incoming data from the \textit{SmartBoxes} in real-time. It subscribes to incoming \acs{MQTT} messages using a \acs{MQTT} client with superuser privileges, that grants access to all topics. It validates the \acs{MQTT} messages according to the message formats specified in Section \ref{sec:mqtt payload format}, filters any irrelevant information, and stores it in the database. Currently, it does not apply any data analytics to detect critical conditions. The code for the service can be found here\footnote{\url{https://github.com/WoW-Institute-of-Systems-and-Robotics/gateway_pyservice}}. 
 
 \paragraph{} Figure \ref{fig:dataprocess_flowdiagram} shows how incoming data is processed by the service. 
 
@@ -366,38 +366,107 @@ The Data pre-processing service is used to process the incoming data from the \t
 The \acs{HIS} \acs{FHIR} Integration service is used to manage the communication to and from GlobalCare \acs{HIS}. The service must implement a \acs{FHIR} \acs{HTTP} server\footnote{\url{https://www.hl7.org/fhir/http.html}} capable of handling requests from the \acs{HIS}, as well as transform the sensor measurement data into \acs{FHIR} messages and communicate it to the \acs{HIS}.
 
 \paragraph{} Out of the open-source implementations of the \acs{FHIR} specification available\footnote{\url{https://confluence.hl7.org/pages/viewpage.action?pageId=35718838}}
-, the HAPI-FHIR Java library\footnote{\url{https://hapifhir.io}} is one of the longest supported \acs{FHIR} implementations, with over 18 years of active development. The project is backed and maintained by Smile CDR\footnote{\url{https://www.smilecdr.com}}, a health technology company with a long-standing reputation in the health \acs{IT} field. Additionally, it is a Java library, which is a programming language used by the author, in contrast to other available implementations.
+, the HAPI-FHIR Java library\footnote{\url{https://hapifhir.io}} is one of the longest supported \acs{FHIR} implementations, with over 18 years of active development. The project is backed and maintained by Smile CDR\footnote{\url{https://www.smilecdr.com}}, a health technology company with a long-standing reputation in the health \acs{IT} field. Additionally, it is a Java library, which is a programming language used by the author, in contrast to other available implementations. The HAPI-FHIR library also provides a simple and intuitive \acs{API} to interact with \acs{FHIR} resources\footnote{\url{https://www.hl7.org/fhir/resource.html}}, the objects used to represent any data in the protocol, handling all data parsing or serialization of data into \textit{FHIR} resources and vice versa.
 
-\paragraph{} Thus, we decided to use HAPI-FHIR Java library to implement the \acs{FHIR} server. The HAPI-FHIR library provides a simple and intuitive \acs{API} to interact with \acs{FHIR} Resources\footnote{\url{https://www.hl7.org/fhir/resource.html}}, which are the objects used to exchange data in the protocol.
+\paragraph{} For these reasons we decided to use HAPI-FHIR Java library to implement the \acs{FHIR} server. The software library provides several mechanisms to build \acs{FHIR} \acs{HTTP} servers. In our case, we use Plain Server model\footnote{\url{https://hapifhir.io/hapi-fhir/docs/server_plain/introduction.html}} to develop our \acs{FHIR} server. Using this model, we only need to implement the logic associated with interactions with the data storage solution to create our own \acs{FHIR} server, while the HAPI-FHIR handles all the \acs{HTTP} processing, as well as parsing and serialization of data into \acs{FHIR} resources. It should be noted that, although \acs{FHIR} supports both \acf{XML} and \acf{JSON} data formats, we  are only using the \acs{JSON} data format for representing the \acs{FHIR} resources. 
 
-\paragraph{} HAPI-FHIR provides several mechanisms to build \acs{FHIR} \acs{HTTP} servers. In our case, we use Plain Server implementation\footnote{\url{https://hapifhir.io/hapi-fhir/docs/server_plain/introduction.html}} to develop our \acs{FHIR} server. Using this implementation, we only need to implement the logic associated with the interactions to the data storage solution, while the HAPI-FHIR ensures all the \acs{HTTP} processing, as well as parsing and serialization of data into \acs{FHIR} resources.
-
-\paragraph{} The \acs{HAPI-FHIR} Plain Server implementation is based on Java Servlet  	
-3.1 \acs{API}\footnote{\url{https://docs.oracle.com/javaee/7/tutorial/servlets.htm}}. Servlets, in short, are applications that are hosted on web servers, used to extend their capabilities. 
-
-\paragraph{} In order to have a functional \acs{FHIR} server, we need a web server capable of hosting the \acs{HAPI-FHIR} Plain Server servlet. \footnote{\url{https://www.eclipse.org/jetty/}}
+\paragraph{} The HAPI-FHIR Plain Server implementation is based on Java Servlet  	
+3.1 \acs{API}\footnote{\url{https://docs.oracle.com/javaee/7/tutorial/servlets.htm}}. Servlets are applications that are hosted on web servers, used to extend their capabilities. This means that in order to have a functional \acs{FHIR} server, we need a web server capable of hosting the HAPI-FHIR Plain Server servlet. Since Eclipse Jetty9\footnote{\url{https://www.eclipse.org/jetty/}} is the web server used on the HAPI-FHIR documentation, and is a relatively popular server (being used by Facebook, Google, Yahoo, etc.), we chose to proceed with it for the development of the \acs{HIS} \acs{FHIR} Integration service. The code for the service can be found here\footnote{\url{https://github.com/WoW-Institute-of-Systems-and-Robotics/gateway_fhir_server/}}.
 
 \subsection{FHIR Server} 
 
-The servlet is composed of three major components:
+The servlet is composed by three major components:
+
 \begin{itemize}
-    \item ``Resource Providers'' - which define the different interactions which are supported by our \acs{FHIR} server and invoke the CRUD (create, read, update and delete) operations over our arbitrary data store through the ``Database Handler'';
-    \item ``Database Handler'' - which defines how the \acs{FHIR} server connects to the data storage solution, which implements and exposes the methods used by the ``Resource Providers'' to interact with the data. This component is also responsible for translating the data, as its stored in the data storage solution into valid \acs{FHIR} resources and vice versa;
-    \item ``Subscription Handler'' - which handles the transmission of sensor data to the \acs{HIS} through \acs{FHIR} Observations\footnote{\url{https://www.hl7.org/fhir/observation.html}}. The scheduling of the transmission tasks is performed using the Quartz Scheduler library\footnote{\url{http://www.quartz-scheduler.org/}}.
+    \item ``Resource Providers'' -- defines the interactions with the \acs{FHIR} resources over \acs{HTTP} which are supported by our \acs{FHIR} server. It also invokes the CRUD operations (create, read, update and delete) over our arbitrary data store through the ``Database Handler''.
+    \item ``Database Handler'' -- defines how the \acs{FHIR} server connects to the data storage solution, which implements and exposes the methods used by the ``Resource Providers'' to interact with the data. This component is also responsible for translating the data as its stored in the data storage solution into valid \acs{FHIR} resources and vice versa.
+    \item ``Subscription Handler'' -- handles the transmission of sensor data to the \acs{HIS} using \acs{FHIR} Observations\footnote{\url{https://www.hl7.org/fhir/observation.html}}.
 \end{itemize}
 
+\paragraph{} The Resource Providers define how and what resources can be interacted with by the \acs{HIS}. Currently, the only interaction that is implemented is a \textit{read} operation\footnote{\url{https://www.hl7.org/fhir/http.html\#read}} on \acs{FHIR} Device resources\footnote{\url{https://www.hl7.org/fhir/device.html}}. \acs{FHIR} Devices are the resources used to represent the \textit{SmartBox} and \textit{Biosticker} sensors. Figure \ref{fig:fhir-get-device} shows how this interaction is processed by the \acs{FHIR} server.
 
-- Falar do que são os FHIR Resources, e mais especificamente dos Resources usados para transmitir os dados -> Bundle, Device, Observation
-- Apresentação do diagrama de comunicação de informação
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{images/fhir get device.pdf}
+    \caption[Sequence diagram describing the \textit{read} interaction on \acs{FHIR} Device resource.]{Sequence diagram describing the \textit{read} interaction on \acs{FHIR} Device resource. Although this is describing an interaction on the Device resources, the sequence diagram for \textit{read} interaction on any other \acs{FHIR} resource should be very similar to this one.}
+    \label{fig:fhir-get-device}
+\end{figure} 
 
-\subsubsection{Resource Providers}
+\paragraph{} As mentioned, the \acs{FHIR} Device resource is used to represent both the \textit{SmartBox} and the \textit{Biosticker} sensors in the \acs{FHIR} protocol. To distinguish if a Device resource is a sensor or is a \textit{SmartBox}, the resource uses the field ``Device.identifier'' to report the device's \acs{UUID}, and the field ``Device.type'' to describe the type of device using codes from a SNOMED-CT\footnote{\url {https://www.snomed.org}} code-set. Additionally, sensors are considered ``child'' Devices that must always have a parent Device associated with them. This means Device resources for sensors define the field ``Device.parent'', which must contain a reference to a \textit{SmartBox}. 
 
-\subsubsection{Database Handler}
+\paragraph{} The \acs{JSON} representation of the \acs{FHIR} resource for the \textit{SmartBox} is the following:
+\begin{lstlisting}[language=json]            
+{ 
+    "resourceType": "Device", 
+    "identifier": [ 
+        { 
+            "system": "urn:ietf:rfc:3986", 
+            "value": "urn:uuid:00000000-0000-0000-0000-000000000001"  
+        } 
+    ], 
+    "type": { 
+        "coding": [ 
+            { 
+                "system": "http://snomed.info/sct", 
+                "code": "5159002", 
+                "display": "Physiologic monitoring system" 
+            } 
+        ], 
+        "text": "Smartbox" 
+    } 
+}
+\end{lstlisting} 
+\paragraph{} The \acs{JSON} representation of the \acs{FHIR} resource for a sensor is the following:
+\begin{lstlisting}[language=json]            
+{
+    "resourceType": "Device",
+    "identifier": [
+        {
+            "system": "urn:ietf:rfc:3986",
+            "value": "urn:uuid:00000000-0000-0000-0000-000000000002"
+        }
+    ],
+    "type": {
+        "coding": [
+            {
+                "system": "http://snomed.info/sct",
+                "code": "701914001",
+                "display": "Emergency heart rate monitor"
+            }
+        ],
+        "text": "Emergency heart rate monitor"
+    },
+    "parent": {
+        "reference": "urn:uuid:00000000-0000-0000-0000-000000000001"
+    }
+}
+\end{lstlisting} 
+% 
+% \begin{lstlisting}[language=json]            
+% { 
+%     "resourceType": "Bundle", 
+%     "type": "transaction", 
+%     "entry": [ 
+%         {
+%             "fullUrl": "urn:uuid:00000000-0000-0000-0000-000000000001",  
+%             "resource": { 
+%                 //...
+%             }
+%         }
+%     ]
+% }
+% \end{lstlisting} 
 
-\subsubsection{Subscription Handler}
-In order to have a functional system for a stable version, only part of FHIR specification was implemented, which was the transmission of \textit{Observations} as a result of a \textit{ServiceRequest}. In this version, all associations between patients and smartboxes and \textit{ServiceRequests} were pre-configured. Additionally, the authentication protocol used was Basic Authentication instead of \textit{OAuth2}, in this initial phase.
+\paragraph{} The Subscription Handler is the component responsible for handling data subscription requests from the \acs{HIS}. In order to prepare the system for the upcoming hospital trials, the research team decided to use a pre-defined list of the subscriptions which remains static for the duration of the execution of the service. 
 
-As defined previously, the transmission of \textit{Observations} by gateway is performed by sending a \textit{Bundle resource} \footnote{\url{https://www.hl7.org/fhir/bundle.html}}to the base URL of the HIS FHIR server, which must contain the \textit{Observations resource} itself, the \textit{Device resource} representing the Smart Box and also representing the sensor that reported this observation.
+\paragraph{} To setup the subscriptions, after the \acs{FHIR} server initializes, the Subscription Handler sends a request to the Database Handler to retrieve the list of all active subscriptions. Subscription Handler then schedules tasks according to the data specified in the subscription data, which trigger periodically notification events, as seen in Figure \ref{fig:fhir-post-bundle}. The scheduling of the transmission tasks is performed using the Quartz Scheduler library\footnote{\url{http://www.quartz-scheduler.org/}}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{images/fhir post bundle.pdf}
+    \caption[Sequence diagram describing the communication of sensor data to the \acs{HIS}.]{Sequence diagram describing the communication of sensor data to the \acs{HIS}. The process is triggered by the Quartz Scheduler when there is a scheduled notification task at that given time. The \acs{FHIR} server parses the sensor data into its \acs{FHIR} representation, the \acs{FHIR} Observation resource, and then bundles it (in a Bundle resource\footnote{\url{https://www.hl7.org/fhir/bundle.html}}) with the \acs{FHIR} Device resources of the sensor and \textit{SmartBox} associated to that sensor. This is necessary because the ``Interoperability'' layer on the GlobalCare \acs{HIS} does not hold information regarding the associations between the sensors and the \textit{SmartBox}, and the associations with patients are performed in regard to the \textit{SmartBox}, not the sensor. Instead, it relies on the \textit{Smart Gateway} to send that data, along with the measurement to properly process it.}
+    \label{fig:fhir-post-bundle}
+\end{figure} 
 
 \section{Summary}
 
