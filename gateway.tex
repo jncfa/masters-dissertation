@@ -180,7 +180,7 @@ Nonetheless, we can restrict access of the devices to its own individual topics 
 
 
 
-For example, we can define a permission that grants PUBLISH access to the ``smartbox/\%c/temperature'' topic to all \textit{SmartBoxes}, where ``\%c'' is the wildcard for the client \acs{UUID}. This means that a \textit{SmartBox} with client \acs{UUID}\footnote{Although this is not a valid \acs{UUID}, it is used to facilitate the explanation of how topic wildcards work.} ``1'' can publish a message to the topic ``smartbox/1/temperature'', but cannot publish to ``smartbox/2/temperature''.
+For example, we can define a permission that grants PUBLISH access to the ``smartbox/\%c/temperature'' topic to all \textit{SmartBoxes}, where ``\%c'' is a wildcard for the client \acs{UUID}. This means that a \textit{SmartBox} with client \acs{UUID}\footnote{Although this is not a valid \acs{UUID}, it is used to facilitate the explanation of how topic wildcards work.} ``1'' can publish a message to the topic ``smartbox/1/temperature'', but cannot publish to ``smartbox/2/temperature''.
 
 \clearpage 
 \subsubsection{Message Format}
@@ -218,7 +218,10 @@ where \textit{client\_id} is the \acs{UUID} of the \acs{MQTT} client, \textit{ti
     "is_celsius" : true 
 } 
         \end{lstlisting} 
-    \item ``MEASUREMENT\_IMU'': Indicates that the message is an \acs{IMU} measurement. The payload format for this message is:
+        where the ``temperature'' field is the temperature measurement, and ``is\_celsius'' field indicates whether the measurement value it is in Celsius or Fahrenheit.
+    
+    \clearpage
+        \item ``MEASUREMENT\_IMU'': Indicates that the message is an \acs{IMU} measurement. The payload format for this message is:
         \begin{lstlisting}[language=json]            
 "payload": {
     "imu": {
@@ -228,36 +231,41 @@ where \textit{client\_id} is the \acs{UUID} of the \acs{MQTT} client, \textit{ti
         "pose_description" : "SITTING"
 } 
         \end{lstlisting} 
-\clearpage
+        where the ``linear\_acceleration'' field is the accelerometer measurement,``angular\_velocity'' field is the gyroscope measurement, and ``pose\_description'' is the text description of the current body pose of the patient.
+
     \item ``MEASUREMENT\_ECG'': Indicates that the message is an \acs{ECG} measurement. The payload format for this message is:
         \begin{lstlisting}[language=json]            
 "payload": {
     "ecg" : 10
 } 
         \end{lstlisting} 
- 
+        where the ``ecg'' field is the \acs{ECG} measurement.
     \item ``MEASUREMENT\_PULSEOXIMETRY'': Indicates that the message is a pulse oximetry measurement. The payload format for this message is:
         \begin{lstlisting}[language=json]            
 "payload": {
     "spo2" : 10.0
 } 
         \end{lstlisting} 
+        where the ``spo2'' field is the pulse oximetry measurement.
+
+
     \item ``MEASUREMENT\_HR'': Indicates that the message is a heart rate measurement. The payload format for this message is:
         \begin{lstlisting}[language=json]            
 "payload": {
     "bpm" : 10.0
 } 
         \end{lstlisting} 
+        where the ``bpm'' field is the heart rate measurement.
+
+
     \item ``MEASUREMENT\_RESPIRATION'': Indicates that the message is a respiratory rate measurement. The payload format for this message is:
         \begin{lstlisting}[language=json]            
 "payload": {
     "respiration" : 10.0
 } 
         \end{lstlisting} 
+        where the ``respiration'' field is the respiration rate measurement.
 \end{itemize}
-
-
-\clearpage
 \subsubsection{Data endpoints}
 To communicate the sensor data, the \textit{SmartBox} must publish to different endpoints, depending on the type of sensor data that is transmitted:
 
@@ -342,9 +350,7 @@ One of the major flaws of Mosquitto is that it does not supply proper dynamic au
 \end{figure}
 \section{Data pre-processing}
 
-The Data pre-processing service is used to process the incoming data from the \textit{SmartBoxes} in real-time. It validates and filters the data, and stores it in the database. Currently, it does not apply any data analytics to detect critical conditions. The code for the service can be found here\footnote{\url{https://github.com/WoW-Institute-of-Systems-and-Robotics/gateway_pyservice}}.
-
-\paragraph{} Figure \ref{fig:dataprocess_flowdiagram} shows how the data is processed by the service. 
+The Data pre-processing service is used to process the incoming data from the \textit{SmartBoxes} in real-time. It validates the message, filters any irrelevant information, and stores it in the database. Currently, it does not apply any data analytics to detect critical conditions. The code for the service can be found here\footnote{\url{https://github.com/WoW-Institute-of-Systems-and-Robotics/gateway_pyservice}}. Figure \ref{fig:dataprocess_flowdiagram} shows how the data is processed by the service. 
 
 \begin{figure}[H]
     \centering
@@ -354,6 +360,7 @@ The Data pre-processing service is used to process the incoming data from the \t
 \end{figure}
 
 \section{\acs{HIS} \acs{FHIR} Integration}
+\acs{HIS} \acs{FHIR} Integration service is 
 
 - Mini introdução ao FHIR;
 - mencionar camada de interoperabilidade da globalcare;
