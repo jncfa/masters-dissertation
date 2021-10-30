@@ -1,7 +1,7 @@
 
 In the proposed architecture, the \textit{SmartBox} plays the role of acquiring the data that is transmitted wirelessly by the \textit{Biostickers}, which can be seen on Figure \ref{fig:biosticker-imgs}.
 Each \textit{SmartBox} is associated to a single patient, it captures the data of each \textit{Biosticker} attached to that patient, and stores it in a local database for redundancy. 
-It should also be capable of analyzing and process the data in real time, before propagating it to the higher layers in the system architecture, in order to reduce computation and networking overhead on the Smart Gateway. The \acs{WoW} project also foresees the usage of a classification algorithm in the \textit{SmartBox} to determine the body pose of the patient, as well as filtering the respiration data to account for signal fluctuations caused by sudden movements by the patient.  
+It should also be capable of analyzing and processing the data in real time, before propagating it to the higher layers in the system architecture, in order to reduce computation and networking overhead on the Smart Gateway. The \acs{WoW} project also foresees the usage of a classification algorithm in the \textit{SmartBox} to determine the body pose of the patient, as well as filtering the respiration data to account for signal fluctuations caused by sudden movements from the patient.  
 
 \begin{figure}[H]
     \begin{minipage}[r]{0.74\linewidth}
@@ -233,7 +233,7 @@ The \acf{SMP} handles the security in the data transmissions, containing the sec
     \item Connection Event: Moment of the connection where the devices engage in radio transmissions.
 \end{itemize}
 
-\paragraph{} As seen previously, there are multiple layers that involved in the transmission of data in \acs{BLE}. Figure \ref{fig:ble-ll-packet-format} displays the format of a \acs{BLE} data packet, showing how the data is encapsulated for the transmission.
+\paragraph{} As seen previously, there are multiple layers that are involved in the transmission of data in \acs{BLE}. Figure \ref{fig:ble-ll-packet-format} displays the format of a \acs{BLE} data packet, showing how the data is encapsulated for the transmission.
 
 \begin{figure}[H]
     \centering
@@ -398,7 +398,7 @@ As discussed in Section \ref{sec:ble_test_conditions}, the \acs{DLE} functionali
 \paragraph{} Nonetheless, we find that for both adapters, the minimum roundtrip time is the same: approximately 40ms. This is an odd value, given that the connection interval was set to 7.5ms, meaning the time it takes to transmit a single message and receive it on the \textit{SmartBox} takes more than 4 connection intervals, which is more than double of what should be expected (one interval for the transmission of the packet to the nRF52-DK and one interval to retrieve the packet, totaling $7.5+7.5=15$ms + processing time overhead at the application level). Since the roundtrip time accounts for both the transmission and reception of the data packet, this means we are likely dealing with a $\sim$12ms delay in every transmission / reception.
 
 
-\paragraph{} We also notice that the graphs for the ASUS USB-BT500 tests, in particular on Figure \ref{fig:ble-roundtrip-hci0-0m}, that the roundtrip graphs have a shape similar to that of a ``stepping function''. By analyzing the data from Figure \ref{fig:ble-roundtrip-hci0-0m}, we find that on average each step has a width of $36.2 \pm 0.98$ bytes, and a height difference of $9.18 \pm 1.18$ms (which is quite close to the connection interval, 7.5ms).
+\paragraph{} We also notice that the roundtrip graphs for the ASUS USB-BT500 tests, in particular on Figure \ref{fig:ble-roundtrip-hci0-0m}, have a shape similar to that of a ``stepping function''. By analyzing the data from Figure \ref{fig:ble-roundtrip-hci0-0m}, we find that on average each step has a width of $36.2 \pm 0.98$ bytes, and a height difference of $9.18 \pm 1.18$ms (which is quite close to the connection interval, 7.5ms).
 
 \paragraph{} This likely indicates that the data is being fragmented on the \acs{L2CAP} every $\sim$36 bytes (meaning it is the maximum payload size that can be sent in a single connection event), and split across multiple connection intervals, instead of being transmitted in a single packet. 
 

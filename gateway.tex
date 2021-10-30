@@ -151,7 +151,7 @@ Figure \ref{fig:wow-dbschema-fhir} describes the information associated with the
 
 \subsubsection{Stored Procedures}
 
-Since the data storage implemented in the \textit{Smart Gateway} is a \acs{RDBMS}, services that access the database use \acf{SQL} to perform requests, such as retrieving or inserting data. In order to maximize the performance of our data storage solution, we implement ``Stored Procedures'', which are custom subroutines that are stored in the \acs{RDBMS}. These procedures are pre-compiled \acs{SQL} statements, which are simply a set of instructions to execute to perform a given task, that are defined in the \acs{RDBMS}, and can greatly improve the performance of these systems since these:
+Since the data storage implemented in the \textit{Smart Gateway} is a \acs{RDBMS}, services that access the database use \acf{SQL} to perform requests, such as retrieving or inserting data. In order to maximize the performance of our data storage solution, we implement ``Stored Procedures'', which are custom subroutines that are stored in the \acs{RDBMS}. These procedures are pre-compiled \acs{SQL} statements, which are simply a set of instructions to perform a given task, that are defined in the \acs{RDBMS}, and can greatly improve the performance of these systems since these:
 
 \begin{itemize}
     \item Reduce significantly the amount of data that is exchanged -- instead of sending a request with a complex \acs{SQL} query to the database, the application sends a request for the execution of a subroutine along with its parameters, thus reducing the size of the request and the time it takes to interpret it.
@@ -381,7 +381,7 @@ The servlet is composed by three major components:
 
 \begin{itemize}
     \item ``Resource Providers'' -- defines the interactions with the \acs{FHIR} resources over \acs{HTTP} which are supported by our \acs{FHIR} server. It also invokes the CRUD operations (create, read, update and delete) over our arbitrary data store through the ``Database Handler''.
-    \item ``Database Handler'' -- defines how the \acs{FHIR} server connects to the data storage solution, which implements and exposes the methods used by the ``Resource Providers'' to interact with the data. This component is also responsible for translating the data as its stored in the data storage solution into valid \acs{FHIR} resources and vice versa.
+    \item ``Database Handler'' -- defines how the \acs{FHIR} server connects to the data storage solution, which implements and exposes the methods used by the ``Resource Providers'' to interact with the data. This component is also responsible for translating the data as it is stored in the data storage solution into valid \acs{FHIR} resources and vice versa.
     \item ``Subscription Handler'' -- handles the transmission of sensor data to the \acs{HIS} using \acs{FHIR} Observations\footnote{\url{https://www.hl7.org/fhir/observation.html}}.
 \end{itemize}
 
@@ -390,7 +390,7 @@ The servlet is composed by three major components:
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.9\linewidth]{images/fhir get device.pdf}
-    \caption[Sequence diagram describing the \textit{read} interaction on \acs{FHIR} Device resource.]{Sequence diagram describing the \textit{read} interaction on \acs{FHIR} Device resource. Although this is describing an interaction on the Device resources, the sequence diagram for \textit{read} interaction on any other \acs{FHIR} resource should be very similar to this one.}
+    \caption[Sequence diagram describing the \textit{read} interaction on \acs{FHIR} Device resource.]{Sequence diagram describing the \textit{read} interaction on \acs{FHIR} Device resource. Although this is describing an interaction on the Device resources, the sequence diagram of a \textit{read} interaction on any other \acs{FHIR} resource should be very similar to this one.}
     \label{fig:fhir-get-device}
 \end{figure} 
 
@@ -470,4 +470,5 @@ The servlet is composed by three major components:
 
 \section{Summary}
 
-In this chapter, we presented the different components which form the \textit{Smart Gateway}. In the chapter, we evaluate the performance of our proposed solution through a hospital trial.
+In this chapter, we presented the different components which form the \textit{Smart Gateway}. 
+Next, we evaluate the performance of our proposed solution through a hospital trial.
