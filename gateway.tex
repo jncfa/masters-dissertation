@@ -71,13 +71,14 @@ The data storage in the \textit{Smart Gateway} is one of the most important comp
 \paragraph{} With this in mind, we decided to use PostgreSQL for the data storage in the \textit{Smart Gateway}. PostgreSQL\footnote{\url{https://www.postgresql.org}} is an advanced, enterprise-class, and open-source \acs{RDBMS}. It has over 30 years of active development by the open source community, earning a strong reputation for its reliability, feature set and robustness.
 
 \subsection{Database Schema}
-Figure \ref{fig:wow-dbschema-full} contains the database model implemented in our PostgreSQL database. It describes all information that is contained in the \textit{Smart Gateway}, the relations within that data, organized according to how that information is used (\textit{i.e.} the service / functionality it is associated with). The data stored in the system can be organized into 4 distinct groups:
+Figure \ref{fig:wow-dbschema-full} contains the database model implemented in our PostgreSQL database. It describes all information that is contained in the \textit{Smart Gateway}, the relations within that data, organized according to how that information is used (\textit{i.e.} the service / functionality it is associated with). The data stored in the system can be categorized into 5 distinct groups:
 
 \begin{enumerate}
     \item \textbf{System data} -- Information about the devices which are managed by the system: the \textit{SmartBoxes}, the \textit{Biostickers} and the sensors in each \textit{Biostickers}. 
     \item \textbf{\acs{MQTT} related data} -- Information about the \acs{MQTT} clients and their permissions. 
     \item \textbf{Sensor observation data} -- Biological signals measured and communicated by the \textit{SmartBoxes}.
     \item \textbf{\acs{FHIR} data} -- Data related with \acs{FHIR} communications, such as the subscription requests from the \acs{HIS} to communicate the acquired sensor measurements.
+    \item \textbf{Stored procedures} -- Custom subroutines that define the operations used by other services (\textit{e.g.} the \acs{MQTT} broker) to interact with the stored data (insertions, deletions, searches, etc.).
 \end{enumerate}
 
 \clearpage 
@@ -105,7 +106,7 @@ Figure \ref{fig:wow-dbschema-system} describes the components or entities of the
 \subsubsection{MQTT related data}
 
 Figure \ref{fig:wow-dbschema-mqtt} describes the information relevant for \acs{MQTT} communications, mostly related with security. To ensure that each device only has access to allowed resources, the system implements a role-based access control (\acs{RBAC}) policy. 
-In this type of access control, the system allows or revokes access to resources according to the role of the device, meaning that all devices with a given role share the same permission list. The permissions for the \acs{RBAC} policy contain 3 properties: the ID of the role it applies to, the topic name, and the level of access (PUBLISH, SUBSCRIBE and/or READ\footnote{READ access in this context is the ability to receive messages from the broker when subscribed to that topic. SUBSCRIBE access is the ability to issue a subscription request, and PUBLISH the ability to publish messages.}) to be granted (or revoked), as seen in Figure \ref{fig:wow-dbschema-mqtt}. 
+In this type of access control, the system allows or revokes access to resources according to the role of the device, meaning that all devices with a given role share the same list of permissions. The permissions for the \acs{RBAC} policy contain 3 properties: the ID of the role it applies to, the topic name, and the level of access (PUBLISH, SUBSCRIBE and/or READ\footnote{READ access in this context is the ability to receive messages from the broker when subscribed to that topic. SUBSCRIBE access is the ability to issue a subscription request, and PUBLISH the ability to publish messages.}) to be granted (or revoked), as seen in Figure \ref{fig:wow-dbschema-mqtt}. 
 
 \paragraph{} In context of the \acs{WoW} project, the following roles are used:
 
@@ -131,7 +132,7 @@ Figure \ref{fig:wow-dbschema-sensors} describes the information associated the s
 \begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth]{images/database-schema-sensordata.pdf}
-    \caption[Components of the database model used to describe sensor measurements.]{Components of the database model used to describe sensor measurements. The database model has one table for each type of biosignal measured in the \acs{WoW} project (temperature, \acs{ECG}, etc.). The properties of the table are defined according to the structure of the data that is acquired by the \textit{SmartBox}, which are detailed in Section \ref{sec:biosticker_data}. The ``pose\_description'' field in ``sensor\_observations.imu'' is a text representation of the different body poses according to an international health standard\footnote{\url{https://loinc.org/8361-8/}}. }
+    \caption[Components of the database model used to describe sensor measurements.]{Components of the database model used to describe sensor measurements. The database model has one table for each type of biosignal measured in the \acs{WoW} project (temperature, \acs{ECG}, etc.). The properties of the table are defined according to the structure of the data that is acquired by the \textit{SmartBox}, which are detailed in Section \ref{sec:biosticker_data}. The ``pose\_description'' field in ``sensor\_observations.imu'' table is a text representation of the different body poses according to an international health standard\footnote{\url{https://loinc.org/8361-8/}}. }
     \label{fig:wow-dbschema-sensors}
 \end{figure}
 
@@ -184,7 +185,7 @@ For example, we can define a permission that grants PUBLISH access to the ``smar
 
 \clearpage 
 \subsubsection{Message Format}
-
+\label{sec:mqtt payload format}
 In order to promote interoperability, all messages exchanged in the \acs{MQTT} communication must follow the \acs{JSON} data format. Additionally, these must have the following structure:
 
 \begin{lstlisting}[language=json]
@@ -350,51 +351,57 @@ One of the major flaws of Mosquitto is that it does not supply proper dynamic au
 \end{figure}
 \section{Data pre-processing}
 
-The Data pre-processing service is used to process the incoming data from the \textit{SmartBoxes} in real-time. It validates the message, filters any irrelevant information, and stores it in the database. Currently, it does not apply any data analytics to detect critical conditions. The code for the service can be found here\footnote{\url{https://github.com/WoW-Institute-of-Systems-and-Robotics/gateway_pyservice}}. Figure \ref{fig:dataprocess_flowdiagram} shows how the data is processed by the service. 
+The Data pre-processing service is used to process the incoming data from the \textit{SmartBoxes} in real-time. It subscribes to incoming \acs{MQTT} messages using a \acs{MQTT} client with superuser privileges to have access to all topics. It validates the \acs{MQTT} messages according to the message formats specified in Section \ref{sec:mqtt payload format}, filters any irrelevant information, and stores it in the database. Currently, it does not apply any data analytics to detect critical conditions. The code for the service can be found here\footnote{\url{https://github.com/WoW-Institute-of-Systems-and-Robotics/gateway_pyservice}}. 
+
+\paragraph{} Figure \ref{fig:dataprocess_flowdiagram} shows how incoming data is processed by the service. 
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\linewidth]{images/mqtt authorization.pdf}
-    \caption[]{}
+    \includegraphics[width=\linewidth]{images/data pre processing.pdf}
+    \caption[Flowchart describing how incoming \acs{MQTT} messages are processed by the data pre-processing service.]{Flowchart describing how incoming \acs{MQTT} messages are processed by the data pre-processing service.}
     \label{fig:dataprocess_flowdiagram}
 \end{figure}
 
 \section{\acs{HIS} \acs{FHIR} Integration}
-\acs{HIS} \acs{FHIR} Integration service is 
+The \acs{HIS} \acs{FHIR} Integration service is used to manage the communication to and from GlobalCare \acs{HIS}. The service must implement a \acs{FHIR} \acs{HTTP} server\footnote{\url{https://www.hl7.org/fhir/http.html}} capable of handling requests from the \acs{HIS}, as well as transform the sensor measurement data into \acs{FHIR} messages and communicate it to the \acs{HIS}.
 
-- Mini introdução ao FHIR;
-- mencionar camada de interoperabilidade da globalcare;
-- indicar que optou-se usar HAPI devido ao facto de ser uma iniciativa open-source suportada por uma empresa de software hospitalar de renome.
-- HAPI FHIR é baseada em Java servlets, fazer mini introdução do que são servlets e explicar o porquê de usar Jetty para correr servlets (é um web container, cujo objetivo é correr servlets). 
+\paragraph{} Out of the open-source implementations of the \acs{FHIR} specification available\footnote{\url{https://confluence.hl7.org/pages/viewpage.action?pageId=35718838}}
+, the HAPI-FHIR Java library\footnote{\url{https://hapifhir.io}} is one of the longest supported \acs{FHIR} implementations, with over 18 years of active development. The project is backed and maintained by Smile CDR\footnote{\url{https://www.smilecdr.com}}, a health technology company with a long-standing reputation in the health \acs{IT} field. Additionally, it is a Java library, which is a programming language used by the author, in contrast to other available implementations.
 
-In order to communicate with the HIS, the gateway must use the FHIR protocol in every communication. The specification for the FHIR communications was defined in a previous deliverable.
+\paragraph{} Thus, we decided to use HAPI-FHIR Java library to implement the \acs{FHIR} server. The HAPI-FHIR library provides a simple and intuitive \acs{API} to interact with \acs{FHIR} Resources\footnote{\url{https://www.hl7.org/fhir/resource.html}}, which are the objects used to exchange data in the protocol.
 
+\paragraph{} HAPI-FHIR provides several mechanisms to build \acs{FHIR} \acs{HTTP} servers. In our case, we use Plain Server implementation\footnote{\url{https://hapifhir.io/hapi-fhir/docs/server_plain/introduction.html}} to develop our \acs{FHIR} server. Using this implementation, we only need to implement the logic associated with the interactions to the data storage solution, while the HAPI-FHIR ensures all the \acs{HTTP} processing, as well as parsing and serialization of data into \acs{FHIR} resources.
+
+\paragraph{} The \acs{HAPI-FHIR} Plain Server implementation is based on Java Servlet  	
+3.1 \acs{API}\footnote{\url{https://docs.oracle.com/javaee/7/tutorial/servlets.htm}}. Servlets, in short, are applications that are hosted on web servers, used to extend their capabilities. 
+
+\paragraph{} In order to have a functional \acs{FHIR} server, we need a web server capable of hosting the \acs{HAPI-FHIR} Plain Server servlet.
 \subsection{FHIR Server}
 
-In order to have a functional system for a stable version, only part of FHIR specification was implemented, which was the transmission of \textit{Observations} as a result of a \textit{ServiceRequest}. In this version, all associations between patients and smartboxes and \textit{ServiceRequests} were pre-configured. Additionally, the authentication protocol used was Basic Authentication instead of \textit{OAuth2}, in this initial phase.
-
-As defined previously, the transmission of \textit{Observations} by gateway is performed by sending a \textit{Bundle resource} \footnote{\url{https://www.hl7.org/fhir/bundle.html}}to the base URL of the HIS FHIR server, which must contain the \textit{Observations resource} itself, the \textit{Device resource} representing the Smart Box and also representing the sensor that reported this observation.
 
 % Ver especificação que a Glintt enviou com as mensagens se quiseres colocar exemplos de mensagens para cada sensor.
 
-A service was developed for the gateway which handles all FHIR communications. The service is an Java EE Servlet container, which was developed using HAPI-FHIR library \footnote{\url{https://hapifhir.io}}, an open-source implementation of the FHIR specification in Java. The servlet is served via the Eclipse Jetty \footnote{\url{https://www.eclipse.org/jetty/}} servlet container.
+A service was developed for the gateway which handles all FHIR communications. The service is an Java EE Servlet container, which was developed using HAPI-FHIR library\footnote{\url{https://hapifhir.io}}, an open-source implementation of the FHIR specification in Java. 
 
 The servlet is composed of three major components:
 \begin{itemize}
-    \item ``Resource Providers'' - which define the different interactions which are supported by our FHIR server and invoke the CRUD operations over our arbitrary data store;
-    \item ``Database Handler'' - which define how the data is actually stored in the gateway, and implements the methods which are used by the "Resource Providers" to interact with the data. This component is also responsible for translating the data, as its stored in the database to valid FHIR resources and vice versa;
-    \item ``Subscription Handler'' - which handles the transmission of Observations to the HIS. The scheduling of the transmission tasks is performed using the Quartz Scheduler library \footnote{\url{http://www.quartz-scheduler.org/}}.
+    \item ``Resource Providers'' - which define the different interactions which are supported by our \acs{FHIR} server and invoke the CRUD (create, read, update and delete) operations over our arbitrary data store through the ``Database Handler'';
+    \item ``Database Handler'' - which defines how the \acs{FHIR} server connects to the data storage solution, which implements and exposes the methods used by the ``Resource Providers'' to interact with the data. This component is also responsible for translating the data, as its stored in the data storage solution into valid \acs{FHIR} resources and vice versa;
+    \item ``Subscription Handler'' - which handles the transmission of sensor data to the \acs{HIS} through \acs{FHIR} Observations\footnote{\url{https://www.hl7.org/fhir/observation.html}}. The scheduling of the transmission tasks is performed using the Quartz Scheduler library\footnote{\url{http://www.quartz-scheduler.org/}}.
 \end{itemize}
 
+
+- Falar do que são os FHIR Resources, e mais especificamente dos Resources usados para transmitir os dados -> Bundle, Device, Observation
+- Apresentação do diagrama de comunicação de informação
 
 \subsubsection{Resource Providers}
 
 \subsubsection{Database Handler}
 
 \subsubsection{Subscription Handler}
+In order to have a functional system for a stable version, only part of FHIR specification was implemented, which was the transmission of \textit{Observations} as a result of a \textit{ServiceRequest}. In this version, all associations between patients and smartboxes and \textit{ServiceRequests} were pre-configured. Additionally, the authentication protocol used was Basic Authentication instead of \textit{OAuth2}, in this initial phase.
 
-- Falar do que são os FHIR Resources, e mais especificamente dos Resources usados para transmitir os dados -> Bundle, Device, Observation
-- Apresentação do diagrama de comunicação de informação
+As defined previously, the transmission of \textit{Observations} by gateway is performed by sending a \textit{Bundle resource} \footnote{\url{https://www.hl7.org/fhir/bundle.html}}to the base URL of the HIS FHIR server, which must contain the \textit{Observations resource} itself, the \textit{Device resource} representing the Smart Box and also representing the sensor that reported this observation.
 
 \section{Summary}
 
