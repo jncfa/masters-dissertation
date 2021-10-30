@@ -375,13 +375,9 @@ The \acs{HIS} \acs{FHIR} Integration service is used to manage the communication
 \paragraph{} The \acs{HAPI-FHIR} Plain Server implementation is based on Java Servlet  	
 3.1 \acs{API}\footnote{\url{https://docs.oracle.com/javaee/7/tutorial/servlets.htm}}. Servlets, in short, are applications that are hosted on web servers, used to extend their capabilities. 
 
-\paragraph{} In order to have a functional \acs{FHIR} server, we need a web server capable of hosting the \acs{HAPI-FHIR} Plain Server servlet.
-\subsection{FHIR Server}
+\paragraph{} In order to have a functional \acs{FHIR} server, we need a web server capable of hosting the \acs{HAPI-FHIR} Plain Server servlet. \footnote{\url{https://www.eclipse.org/jetty/}}
 
-
-% Ver especificação que a Glintt enviou com as mensagens se quiseres colocar exemplos de mensagens para cada sensor.
-
-A service was developed for the gateway which handles all FHIR communications. The service is an Java EE Servlet container, which was developed using HAPI-FHIR library\footnote{\url{https://hapifhir.io}}, an open-source implementation of the FHIR specification in Java. 
+\subsection{FHIR Server} 
 
 The servlet is composed of three major components:
 \begin{itemize}
