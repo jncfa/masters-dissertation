@@ -51,7 +51,7 @@ Wearable, wireless, and non-intrusive devices are viewed as one of the key compo
 Another point to consider is the data requirements of the system, namely how much data is generated and which type of data is transmitted by each device. Some applications can include a single temperature sensor or heart rate sensor, while more complex systems can include pulse oximetry, electrocardiogram (\acs{ECG}), respiration rate sensors, etc. \cite{Wu2020}. From the literature \cite{Wu2020, Wu2019, Adame2018, MinhDang2019}, the sensors used in these devices can be classified into three distinct categories based on the signals that can be extracted from them, as shown in Table \ref{tab:layer1-sensors}:
 
 \begin{itemize}
-    \item \textbf{Physiological Sensors}: used for evaluating the patients health condition.
+    \item \textbf{Physiological Sensors}: used for evaluating the patients' health condition.
     \item \textbf{Activity / Motion sensors}: used for detecting fall events, determining the patients location and the travelled distance, estimating the patients body posture, etc.
     \item \textbf{Environmental Sensors}: used for assessing environment conditions and possible hazards, \textit{e.g.} gas leaks in a patients home or an industrial workplace \cite{Wu2019}.
 \end{itemize}
@@ -59,6 +59,7 @@ Another point to consider is the data requirements of the system, namely how muc
 \renewcommand{\arraystretch}{2}
 \begin{table}[H]
     \centering
+    \caption[Type of sensors commonly used in pervasive healthcare applications.]{Type of sensors commonly used in pervasive healthcare applications. Adapted from \cite{MinhDang2019}.}
     \begin{tabular}{l|l}
         \textbf{Sensor Categories} & \textbf{Examples} \\ 
         \hline
@@ -66,7 +67,6 @@ Another point to consider is the data requirements of the system, namely how muc
         Activity Monitoring & Accelerometer, Gyroscope, Magnetometer\\
         Environmental Monitoring & Air Temperature, Barometer, Humidity, Gas Sensors \\
     \end{tabular}
-    \caption[Type of sensors commonly used in pervasive healthcare applications.]{Type of sensors commonly used in pervasive healthcare applications. Adapted from \cite{MinhDang2019}.}
     \label{tab:layer1-sensors} 
 \end{table}
 \renewcommand{\arraystretch}{1}
@@ -83,7 +83,7 @@ Technology is designed with particular use cases in mind, built to fulfill a cer
 From the literature, a set of key requirements that drive the decision of the communication protocols can be identified \cite{Baker2017, Catarinucci2015, Adame2018}:
 
 \begin{itemize}
-    \item \textbf{Energy consumption}: For networks composed of energy constrained devices, the communication protocol should be lightweight and energy efficient in order to maximize the devices lifetime. 
+    \item \textbf{Energy consumption}: For networks composed of energy constrained devices, the communication protocol should be lightweight and energy efficient in order to maximize the devices' lifetime. 
     \item \textbf{Latency}: Certain applications deal with time critical events, for example the detection of health emergencies \cite{Catarinucci2015}. In these cases, any delays in the communications can cause great detriment to the patients well-being, making it crucial to minimize them.
     \item \textbf{Reliability}: Depending on the critical nature of the data that is being communicated, the network stack may need to implement processes such as error-detection, retransmission or handshakes in the communications to ensure more robust transmissions, \textit{e.g.} as implemented in TCP/IP based protocols. Generally, these features come at the cost of greater latency. Therefore, when choosing the communication protocol, a balance must be found between reliability and latency.
     \item \textbf{Security}: Security is one of the most important requirements of any system, but this is especially true for healthcare applications. Due to the sensitive nature of the information, it is crucial to secure it from malicious actors. Communication protocols must implement security mechanisms, such as encryption or data integrity verifications, that ensure the transmissions are not compromised in transit, thus denying third parties the ability to snoop or tamper the transmissions. This issue is studied in depth in \cite{Gope2016}.
@@ -101,19 +101,19 @@ Out of the abovementioned technologies, \acs{BLE} offers greater throughput, bet
 \renewcommand{\arraystretch}{1.5}
  \begin{table}[H]
      \centering
+     \caption[Overview of the most common communication protocols used within short range]{Overview of the most common communication protocols used within short range. Adapted from \cite{Baker2017}.}
      \begin{adjustbox}{width=0.9\columnwidth,center}
      \begin{tabular}{r|l|l|l}
          & \textbf{\acs{BLE}} & \textbf{EPC/\acs{RFID}}& \textbf{ZigBee}  \\ \hline
          \makecell[r]{\textbf{Band of} \\ \textbf{operation}} & 2.4 GHz & LF, HF, UHF, EHF & 2.4 GHz \\
          \textbf{Communication} & Bidirectional & \makecell{Unidirectional \\ (Bidirectional for\\ Active tags)} & Bidirectional \\
          \textbf{Topology} & \makecell{ Point-to-Point, \\ Piconet, Broadcast,\\ Mesh } & Point-to-Point & Mesh \\
-         \textbf{Range} & <100m & \makecell{<10m, (100m for\\ Active tags)} & 20m \\
+         \textbf{Range} & <100 m & \makecell{<10 m, (100 m for\\ Active tags)} & 20 m \\
          \makecell[r]{\textbf{Data rate} \\ \textbf{(Typical)}} & 1Mbps & 40kbps & 250kbps \\
          \textbf{\acs{IP} Stack} & \xmark & \xmark & \cmark \\
          \makecell[r]{\textbf{Security} \\ \textbf{Features}} & \makecell{AES-128, Secure \\ pairing prior to \\ key exchange} & \xmark & \makecell{AES-128 (Optional),\\ Network key shared \\across network, \\ Optional link key to \\ secure application layer \\ communications}\\
      \end{tabular}
     \end{adjustbox}
-     \caption[Overview of the most common communication protocols used within short range]{Overview of the most common communication protocols used within short range. Adapted from \cite{Baker2017}.}
      \label{tab:comparsion-shortrangeprotocols}
  \end{table} 
 \renewcommand{\arraystretch}{1}
@@ -128,6 +128,7 @@ So far we have discussed the underlying networking technologies that link the de
 \renewcommand{\arraystretch}{1.5}
 \begin{table}[H]
     \centering
+    \caption[Comparison between \acs{CoAP} and \acs{MQTT} protocols.]{Comparison between \acs{CoAP} and \acs{MQTT} protocols. Adapted from \cite{10.5555/3161403}.}
     \begin{tabular}{r|l|l}
         %\textbf{Features} 
         & \textbf{\acs{MQTT}}& \textbf{\acs{CoAP}}  \\ \hline
@@ -138,7 +139,6 @@ So far we have discussed the underlying networking technologies that link the de
         \textbf{Strengths} & \makecell{TCP and Quality of \\ Service (QoS), robust \\communications, easier \\ to implement } & \makecell{Better for lossy networks,\\ lower latency} \\
         \textbf{Weaknesses} & \makecell{Higher overhead and energy\\ consumption than \acs{CoAP}} & \makecell{Not as reliable and \\less supported than MQTT} \\
     \end{tabular}
-    \caption[Comparison between \acs{CoAP} and \acs{MQTT} protocols.]{Comparison between \acs{CoAP} and \acs{MQTT} protocols. Adapted from \cite{10.5555/3161403}.}
     \label{tab:comparsion-applicationprotocols}
 \end{table} 
 \renewcommand{\arraystretch}{1}
@@ -214,6 +214,7 @@ However, since the data in \acs{IoT} can very heterogenous and unstructured, the
 \renewcommand{\arraystretch}{2}
 \begin{table}[H]
     \centering
+    \caption{Comparison between SQL and NoSQL database technologies.}
     \begin{adjustbox}{width=0.9\columnwidth,center}
     \begin{tabular}{r|l|l}
         %\textbf{Features} 
@@ -227,7 +228,6 @@ However, since the data in \acs{IoT} can very heterogenous and unstructured, the
         \textbf{Performance} & \makecell{Generally lower than \\ NoSQL systems} & Optimized for large datasets \\
     \end{tabular}
     \end{adjustbox}
-    \caption{Comparison between SQL and NoSQL database technologies.}
     \label{tab:comparsion-databasetech}
 \end{table} 
 \renewcommand{\arraystretch}{1}
@@ -276,6 +276,7 @@ Table \ref{tab:comparsion-articles} summarizes the key properties of the previou
 \renewcommand{\arraystretch}{2}
 \begin{table}[h]
     \centering
+    \caption{Comparison between different pervasive healthcare applications.}
     \begin{adjustbox}{width=\columnwidth,center}
     \begin{tabular}{l|l|l|l|l|l|l}
       \textbf{References} & \makecell{\textbf{Measured} \textbf{Signals}} & \makecell{\textbf{Networking} \textbf{Protocols}}& \makecell{\textbf{Data} \textbf{Storage}} & \makecell{\textbf{e-Health} \textbf{Standards}} & \makecell{\textbf{Application} \\ \textbf{Features}} & \textbf{Security Features} \\ \hline
@@ -288,7 +289,6 @@ Table \ref{tab:comparsion-articles} summarizes the key properties of the previou
         %\cite{} & & & & & &  \\
       \end{tabular}
     \end{adjustbox}
-    \caption{Comparison between different pervasive healthcare applications.}
     \label{tab:comparsion-articles}
 \end{table} 
 \renewcommand{\arraystretch}{1}
@@ -323,7 +323,7 @@ Fortunately, there are several international initiatives to promote the use of \
     \item and finally, the \textit{Smart Gateway}, which serves as a fog server in order to mitigate latency and other computing issues and acts as the gateway to the \acs{HIS}, by communicating with the ``Interoperability'' \acs{FHIR} layer on the \acs{HIS}.
 \end{itemize}
 
-\paragraph{} As the goal of the project is the deployment of the system in an hospital, Centro Hospitalar e Universitário de Coimbra (CHUC), each \textit{SmartBox} is coupled with an hospital bed, which is referred internally as a \textit{SmartBed}.
+\paragraph{} As the goal of the project is the deployment of the system in an hospital, Centro Hospitalar e Universitário de Coimbra (CHUC), each \textit{SmartBox} is coupled with a hospital bed, which is referred as a \textit{SmartBed}.
 
 \clearpage
 \begin{figure}[H]
