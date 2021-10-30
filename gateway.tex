@@ -151,7 +151,7 @@ Figure \ref{fig:wow-dbschema-fhir} describes the information associated with the
 
 \subsubsection{Stored Procedures}
 
-Since the data storage implemented in the \textit{Smart Gateway} is a \acs{RDBMS}, services that access the database use \acf{SQL} to perform requests, such as retrieving or inserting data. In order to maximize the performance of our data storage solution, we implement ``Stored Procedures'', which are custom subroutines that are stored in the \acs{RDBMS}. These procedures are pre-compiled \acs{SQL} statements, which are simply a set of instructions to perform a given task, that are defined in the \acs{RDBMS}, and can greatly improve the performance of these systems since these:
+Since the data storage implemented in the \textit{Smart Gateway} is a \acs{RDBMS}, services that access the database use \acf{SQL} to perform requests, such as retrieving or inserting data. In order to maximize the performance of our data storage solution, we implement ``Stored Procedures'', which are custom subroutines that are stored in the \acs{RDBMS}. These procedures are pre-compiled \acs{SQL} statements, which are simply a set of instructions that perform a given task, that are defined in the \acs{RDBMS}, and can greatly improve the performance of these systems since these:
 
 \begin{itemize}
     \item Reduce significantly the amount of data that is exchanged -- instead of sending a request with a complex \acs{SQL} query to the database, the application sends a request for the execution of a subroutine along with its parameters, thus reducing the size of the request and the time it takes to interpret it.
