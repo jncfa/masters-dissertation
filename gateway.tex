@@ -373,6 +373,8 @@ The \acs{HIS} \acs{FHIR} Integration service is used to manage the communication
 \paragraph{} The HAPI-FHIR Plain Server implementation is based on Java Servlet  	
 3.1 \acs{API}\footnote{\url{https://docs.oracle.com/javaee/7/tutorial/servlets.htm}}. Servlets are applications that are hosted on web servers, used to extend their capabilities. This means that in order to have a functional \acs{FHIR} server, we need a web server capable of hosting the HAPI-FHIR Plain Server servlet. Since Eclipse Jetty9\footnote{\url{https://www.eclipse.org/jetty/}} is the web server used on the HAPI-FHIR documentation, and is a relatively popular server (being used by Facebook, Google, Yahoo, etc.), we chose to proceed with it for the development of the \acs{HIS} \acs{FHIR} Integration service. The code for the service can be found here\footnote{\url{https://github.com/WoW-Institute-of-Systems-and-Robotics/gateway_fhir_server/}}.
 
+\paragraph{} In order to prepare the system for deployment in the hospital trials, the development team decided to use a pre-defined list of the subscriptions which remains static for the duration of the execution of the service. Additionally, the authentication protocol used on the \acs{FHIR} communication is Basic Authentication (using a static username and password), instead of the more secure option which is \textit{OAuth2} \footnote{\url{https://oauth.net/2/}}, that was planned to implement initially.
+
 \subsection{FHIR Server} 
 
 The servlet is composed by three major components:
@@ -387,7 +389,7 @@ The servlet is composed by three major components:
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\linewidth]{images/fhir get device.pdf}
+    \includegraphics[width=0.9\linewidth]{images/fhir get device.pdf}
     \caption[Sequence diagram describing the \textit{read} interaction on \acs{FHIR} Device resource.]{Sequence diagram describing the \textit{read} interaction on \acs{FHIR} Device resource. Although this is describing an interaction on the Device resources, the sequence diagram for \textit{read} interaction on any other \acs{FHIR} resource should be very similar to this one.}
     \label{fig:fhir-get-device}
 \end{figure} 
@@ -457,13 +459,11 @@ The servlet is composed by three major components:
 % }
 % \end{lstlisting} 
 
-\paragraph{} The Subscription Handler is the component responsible for handling data subscription requests from the \acs{HIS}. In order to prepare the system for the upcoming hospital trials, the research team decided to use a pre-defined list of the subscriptions which remains static for the duration of the execution of the service. 
-
-\paragraph{} To setup the subscriptions, after the \acs{FHIR} server initializes, the Subscription Handler sends a request to the Database Handler to retrieve the list of all active subscriptions. Subscription Handler then schedules tasks according to the data specified in the subscription data, which trigger periodically notification events, as seen in Figure \ref{fig:fhir-post-bundle}. The scheduling of the transmission tasks is performed using the Quartz Scheduler library\footnote{\url{http://www.quartz-scheduler.org/}}.
+\paragraph{} The Subscription Handler is the component responsible for handling data subscription requests from the \acs{HIS}. To setup the subscriptions, after the \acs{FHIR} server initializes, the Subscription Handler sends a request to the Database Handler to retrieve the list of all active subscriptions. It then schedules tasks according to the information specified in the subscription data, in order to trigger notification events periodically, as seen in Figure \ref{fig:fhir-post-bundle}. The scheduling of the transmission tasks is performed using the Quartz Scheduler library\footnote{\url{http://www.quartz-scheduler.org/}}.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\linewidth]{images/fhir post bundle.pdf}
+    \includegraphics[width=\linewidth]{images/fhir post bundle.pdf}
     \caption[Sequence diagram describing the communication of sensor data to the \acs{HIS}.]{Sequence diagram describing the communication of sensor data to the \acs{HIS}. The process is triggered by the Quartz Scheduler when there is a scheduled notification task at that given time. The \acs{FHIR} server parses the sensor data into its \acs{FHIR} representation, the \acs{FHIR} Observation resource, and then bundles it (in a Bundle resource\footnote{\url{https://www.hl7.org/fhir/bundle.html}}) with the \acs{FHIR} Device resources of the sensor and \textit{SmartBox} associated to that sensor. This is necessary because the ``Interoperability'' layer on the GlobalCare \acs{HIS} does not hold information regarding the associations between the sensors and the \textit{SmartBox}, and the associations with patients are performed in regard to the \textit{SmartBox}, not the sensor. Instead, it relies on the \textit{Smart Gateway} to send that data, along with the measurement to properly process it.}
     \label{fig:fhir-post-bundle}
 \end{figure} 
