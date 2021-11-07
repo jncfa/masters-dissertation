@@ -2,8 +2,7 @@ After developing and analyzing the different \acs{IoT} system components, it is 
 
 \section{Hospital Pilot}
 
-For the hospital trial, the proposed \acs{IoT} system was deployed in an clinical facility within Centro Hospitalar e Universitário de Coimbra (CHUC). The trial lasted 3 days, during which 2 volunteers performed 8 hour. 
-
+For the hospital trial, the proposed \acs{IoT} system was deployed in an clinical facility within Centro Hospitalar e Universitário de Coimbra (CHUC), during which two volunteers were continuously monitoring using the system.
 
 \begin{figure}[H]
     \centering
@@ -13,20 +12,52 @@ For the hospital trial, the proposed \acs{IoT} system was deployed in an clinica
 \end{figure}
 \dots
 
-To evaluate the performance of the proposed system, 
+To evaluate the performance of the proposed system, the following performance indicators were defined and measured throughout the tests:
 
 \begin{itemize}
-    \item \acs{MQTT} Communication Latency:
-    \item Average \acs{MQTT} Bandwidth over time: 
-    \item \acs{FHIR} Communication Latency:
-    \item Average \acs{FHIR} Bandwidth over time: 
-    \item Average total CPU and RAM usage over time:
+    \item Average \acs{MQTT} Bandwidth over time;
+    \item Average \acs{FHIR} Bandwidth;
+    \item Average CPU and RAM usage of each service;
 \end{itemize}
 
-
+In the next section, 8 hours of the monitorization are analyzed and presented. 
 
 \section{Results}
-\dots
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.66\linewidth]{images/PILOTfhir_bandwidth.pdf}
+    \caption{Average \acs{FHIR} usage measured over time.}
+    \label{fig:pilot-fhir-bandwidth}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.66\linewidth]{images/PILOTmqtt_bandwidth.pdf}
+    \caption{Average \acs{MQTT} usage measured over time.}
+    \label{fig:pilot-mqtt-bandwidth}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.66\linewidth]{images/PILOTcpu_usage.pdf}
+    \caption{Average CPU usage measured over time.}
+    \label{fig:pilot-cou-usage}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.66\linewidth]{images/PILOTram_usage.pdf}
+    \caption{Average RAM usage measured over time.}
+    \label{fig:pilot-ram-usage}
+\end{figure}
+
+
+
+
+
+
+
 
 \section{Summary}
 In this chapter, the performance of the proposed system during the hospital trial was tested and discussed. 
