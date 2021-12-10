@@ -1,4 +1,4 @@
-In this chapter a survey of pervasive healthcare applications is presented. In order to gain a greater understanding of the building blocks of a typical \acf{IoT} system, a reference model for \acs{IoT} systems is also discussed. With this knowledge, we present a comparative analysis of similar works in the literature, identifying their strengths and weaknesses. The chapter is concluded by stating the contributions that this work proposes to achieve.
+In this chapter a survey of pervasive healthcare applications is presented. In order to gain a greater understanding of the building blocks of a typical \acf{IoT} system, a reference model for \acs{IoT} systems is also discussed. With this knowledge, a comparative analysis of similar works in the literature is presented, identifying the strengths and weaknesses of each approach. The chapter is concluded by stating the contributions that this work proposes to achieve.
 
 \section{Internet of Things}
 
@@ -22,9 +22,7 @@ In the specific context of healthcare, this technology can provide many benefits
 
 Reference models provide an abstract framework for designing systems and a set of commonly recommended practices for the application domain. It serves as a starting point in the design process, enabling the comprehension of complex systems by breaking them down into simple and distinct functional layers, while also defining some common terminology used in its domain. \bigskip
 
-In 2014, the \acs{IoT} World Forum (IoTWF) architectural committee published an \acs{IoT} architectural reference model, composed by seven layers as shown in Figure \ref{fig:iotwf-referencemodel}. This model \cite{Cisco2014} provides a simple and clean functional view into the different components of an \acs{IoT} system, without narrowing the scope or locality of its components. While this model can be used to generically develop \acs{IoT} systems for any industry (\textit{e.g.} from agriculture to smart cities), in the context of the dissertation we will focus on pervasive healthcare applications. \bigskip
-
-%\todo[inline]{To-do: Make new image based on this one. (!!)}
+In 2014, the \acs{IoT} World Forum (IoTWF) architectural committee published an \acs{IoT} architectural reference model, composed by seven layers as shown in Figure \ref{fig:iotwf-referencemodel}. This model \cite{Cisco2014} provides a simple and clean functional view into the different components of an \acs{IoT} system, without narrowing the scope or locality of its components. While this model can be used to generically develop \acs{IoT} systems for any industry (\textit{e.g.} from agriculture to smart cities), in the context of the dissertation our focus will remain on pervasive healthcare applications and related technologies. \bigskip
 
 \begin{figure}[H]
     \centering
@@ -94,7 +92,7 @@ From the literature, a set of key requirements that drive the decision of the co
 \end{itemize}
 
 % IEEE 802.15.4?
-Regarding communications within the local network, these generally have short transmission ranges \cite{Baker2017}. Wearable devices can be often arranged in networks, aptly designated \acf{WBAN}. The most widely adopted protocol is \acf{BLE}, a low-energy version of the classic Bluetooth protocol \cite{Doukas2012, Wu2019, Wu2020}. ZigBee and \acf{RFID} are also used in many systems in this domain, particularly in asset tracking oriented applications \cite{Fuhrer2006, Catarinucci2015, Adame2018}. Despite the absence of a universal specification for \acs{RFID}, the most widely used standard is the EPCglobal Gen2 RFID \cite{EPCglobal2006}. For the sake of simplicity, we use \acs{EPC/RFID} to designate it. \bigskip
+Regarding communications within the local network, these generally have short transmission ranges \cite{Baker2017}. Wearable devices can be often arranged in networks, aptly designated \acf{WBAN}. The most widely adopted protocol is \acf{BLE}, a low-energy version of the classic Bluetooth protocol \cite{Doukas2012, Wu2019, Wu2020}. ZigBee and \acf{RFID} are also used in many systems in this domain, particularly in asset tracking oriented applications \cite{Fuhrer2006, Catarinucci2015, Adame2018}. Despite the absence of a universal specification for \acs{RFID}, the most widely used standard is the EPCglobal Gen2 RFID \cite{EPCglobal2006}. For the sake of simplicity, \acs{EPC/RFID} is used to designate it. \bigskip
 
 Out of the abovementioned technologies, \acs{BLE} offers greater throughput, better security, and nearly the lowest energy consumption \cite{dementyev2013power}. Table \ref{tab:comparsion-shortrangeprotocols} shows a comparison between the different protocols.
 
@@ -123,12 +121,13 @@ Regarding communications between the gateway devices and the central server, mos
 \subsubsection{Application Protocols}
 %\todo[inline]{To-do: Remake this intro paragraph?}
 
-So far we have discussed the underlying networking technologies that link the devices in system. But according to the OSI Model, many of these technologies do not define the application layer: how the devices communicate with each other, how the data is formatted, if there is a hierarchy within the network, etc. When considering networks composed of constrained devices, generic web-based protocols such as \acf{HTTP} may not be adequate for \acs{IoT} applications, which prompts the development of novel lightweight messaging protocols suited for these systems. The most used application layer protocols in \acs{IoT} systems are \acf{MQTT} and \acf{CoAP}. Table \ref{tab:comparsion-applicationprotocols} overviews these widely used protocols. \bigskip
+So far the underlying networking technologies that link the devices in system have been discussed. But according to the OSI Model, many of these technologies do not define the application layer: how the devices communicate with each other, how the data is formatted, if there is a hierarchy within the network, etc. When considering networks composed of constrained devices, generic web-based protocols such as \acf{HTTP} may not be adequate for \acs{IoT} applications, which prompts the development of novel lightweight messaging protocols suited for these systems. The most used application layer protocols in \acs{IoT} systems are \acf{MQTT} and \acf{CoAP}. Table \ref{tab:comparsion-applicationprotocols} overviews these widely used protocols. \bigskip
 
 \renewcommand{\arraystretch}{1.5}
 \begin{table}[H]
     \centering
     \caption[Comparison between \acs{CoAP} and \acs{MQTT} protocols.]{Comparison between \acs{CoAP} and \acs{MQTT} protocols. Adapted from \cite{10.5555/3161403}.}
+    \begin{adjustbox}{width=0.9\columnwidth,center}
     \begin{tabular}{r|l|l}
         %\textbf{Features} 
         & \textbf{\acs{MQTT}}& \textbf{\acs{CoAP}}  \\ \hline
@@ -139,30 +138,32 @@ So far we have discussed the underlying networking technologies that link the de
         \textbf{Strengths} & \makecell{TCP and Quality of \\ Service (QoS), robust \\communications, easier \\ to implement } & \makecell{Better for lossy networks,\\ lower latency} \\
         \textbf{Weaknesses} & \makecell{Higher overhead and energy\\ consumption than \acs{CoAP}} & \makecell{Not as reliable and \\less supported than MQTT} \\
     \end{tabular}
+    \end{adjustbox}
     \label{tab:comparsion-applicationprotocols}
 \end{table} 
 \renewcommand{\arraystretch}{1}
 
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.5\linewidth]{images/coap message sequence diagram.pdf}
-    \caption[Diagram of a \acs{CoAP} message sequence.]{ Diagram of a \acs{CoAP} message sequence. In this diagram, we have a client making a GET request to the \acs{CoAP} server to retrieve information. In \acs{CoAP}, the requests are delivered asynchronously, and so the response messages must contain a ``token'' value so that the client can identify which request resulted in this response.}
-    \label{fig:coap-message-sequence-diagram}
-\end{figure}
-
 In \cite{Rubi2019}, the authors compare these two protocols in greater length, along with the more commonly used web-based protocol Hypertext Transfer Protocol (HTTP). They analyze the latency in the communications (from the edge devices to remote servers) and the RAM usage in the devices for each protocol and for different data sources (respiration rate, oxygen saturation and heart rate signals) and found that \acs{CoAP} presented the best overall performance. Nonetheless, all protocols had very low latencies (less than 1.5s) and low memory usage.
 
-\paragraph{} The authors indicate that \acs{MQTT} might be more suitable when considering a certain messaging pattern — the ``Publish/Subscribe'' model. In this model, the devices that send messages, called ``publishers'', communicate them to an intermediary message broker, through a ``message topic'' (also called logical channels). The devices that wish to receive messages, called ``subscribers'', can subscribe to these topics by requesting it to the message broker. Whenever a publisher sends a message, the broker broadcasts it to all devices that have subscribed to the selected topic.
-
-\paragraph{} \acs{CoAP} uses a different messaging pattern, called ``Request-Response''. In this paradigm, a device sends a request to receive certain data and the second responds to this request.
- % observe that the former model is event-driven while the latter is query-based \cite{Rubi2019}. % Due to the nature of how the data is generated in these types of pervasive applications, an event-driven protocol like \acs{MQTT} might be more adequate.
+\paragraph{} The authors indicate that \acs{MQTT} might be more suitable when considering a certain messaging pattern — the ``Publish/Subscribe'' model. In this model, the devices that send messages, called ``publishers'', communicate them to an intermediary message broker, through a ``message topic'' (also called logical channels). The devices that wish to receive messages, called ``subscribers'', can subscribe to these topics by requesting it to the message broker. Whenever a publisher sends a message, the broker broadcasts it to all devices that have subscribed to the selected topic.  Figure \ref{fig:mqtt-message-sequence-diagram} shows a diagram of \acs{MQTT} of two clients (A and B) connecting to the \acs{MQTT} broker, and where client A transmits two messages to the topic ``client/b'' while client B subscribes to that topic. In \acs{MQTT}, a client subscribed to a topic receives a message whenever an authorized client (including itself) publishes a message on that topic.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.75\linewidth]{images/mqtt message sequence diagram.pdf}
-    \caption[Diagram of a \acs{MQTT} message sequence.]{ Diagram of a \acs{MQTT} message sequence. In this diagram, we have two clients (A and B) connecting to the \acs{MQTT} broker, where client A transmits two messages to the topic ``client/b'' while client B subscribes to that topic. In \acs{MQTT}, a client receives a message whenever a client (including itself) publishes a message on that topic.}
+    \includegraphics[width=0.63\linewidth]{images/mqtt message sequence diagram.pdf}
+    \caption[Diagram of a \acs{MQTT} message sequence.]{ Diagram of a \acs{MQTT} message sequence.}
     \label{fig:mqtt-message-sequence-diagram}
+\end{figure}
+
+\paragraph{} \acs{CoAP} uses a different messaging pattern, called ``Request-Response''. In this paradigm, a device sends a request to receive certain data and the second responds to this request. In \acs{CoAP}, the requests are delivered asynchronously, and so the response messages must contain a ``token'' value so that the client can identify which request resulted in this response.Figure \ref{fig:coap-message-sequence-diagram} shows a diagram of the communication, where a client makes a GET request to the \acs{CoAP} server to retrieve information. 
+
+ % observe that the former model is event-driven while the latter is query-based \cite{Rubi2019}. % Due to the nature of how the data is generated in these types of pervasive applications, an event-driven protocol like \acs{MQTT} might be more adequate.
+
+ \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.45\linewidth]{images/coap message sequence diagram.pdf}
+    \caption[Diagram of a \acs{CoAP} message sequence.]{ Diagram of a \acs{CoAP} message sequence.}
+    \label{fig:coap-message-sequence-diagram}
 \end{figure}
 
 \subsection{Layer 3: Edge (Fog) Computing}
@@ -186,9 +187,9 @@ The different processes applied at this stage can be summarized into four distin
 \subsection{Layer 4: Data Accumulation}
 \label{sec:iot-model-layer4}
 
-The data that is generated by the edge devices is propagated through the system, and eventually reaches the central server. Up to this point, the model is event driven. However, most applications cannot make use of the data at the rate it is generated \cite{10.5555/3161403}. In the Data Accumulation layer, we need to define how the system captures the data and stores it, so it becomes usable for applications when needed, thus transiting from event to query-based processing. \bigskip
+The data that is generated by the edge devices is propagated through the system, and eventually reaches the central server. Up to this point, the model is event driven. However, most applications cannot make use of the data at the rate it is generated \cite{10.5555/3161403}. The Data Accumulation layer details how the system captures the data and stores it, so applications can make use of it when needed, thus transiting from event to query-based processing. \bigskip
 
-As the devices continuously generate data, the system will require more and more resources in order to process and store all of this information, raising some concerns regarding how the data can be managed. In \cite{Doukas2012}, the authors propose the usage of cloud platforms as a solution to these problems. This is made possible due to the elasticity in allocating, swiftly and inexpensively, computing and storage resources on-demand, adjusting itself to the needs of each application. We can identify three distinct types of cloud services: 
+As the devices continuously generate data, the system will require more and more resources in order to process and store all of this information, raising some concerns regarding how the data can be managed. In \cite{Doukas2012}, the authors propose the usage of cloud platforms as a solution to these problems. This is made possible due to the elasticity in allocating, swiftly and inexpensively, computing and storage resources on-demand, adjusting itself to the needs of each application. In general, three distinct types of cloud services can be identified: 
 
 \begin{itemize}
     \item \textbf{Infrastructure as Service (IaaS)}: Provides control over the remote machine (composed of virtual or dedicated hardware), operative system and middleware. This approach gives system designers the highest level of flexibility over the infrastructure, but requires more maintenance.
@@ -198,7 +199,7 @@ As the devices continuously generate data, the system will require more and more
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.85\linewidth]{images/cloud-services.pdf}
+    \includegraphics[width=0.8\linewidth]{images/cloud-services.pdf}
     \caption[Differences between the cloud offerings and on-premise solutions.]{ Differences between the cloud offerings and on-premise solutions. Source: \cite{RedHat2021}}
     \label{fig:differences-between-cloud-services}
 \end{figure}
@@ -215,7 +216,7 @@ However, since the data in \acs{IoT} can very heterogenous and unstructured, the
 \begin{table}[H]
     \centering
     \caption{Comparison between SQL and NoSQL database technologies.}
-    \begin{adjustbox}{width=0.9\columnwidth,center}
+    \begin{adjustbox}{width=0.875\columnwidth,center}
     \begin{tabular}{r|l|l}
         %\textbf{Features} 
         & \textbf{SQL}& \textbf{NoSQL}  \\ \hline
@@ -237,7 +238,7 @@ However, since the data in \acs{IoT} can very heterogenous and unstructured, the
 
 %\todo[inline]{To-do: Complete section (develop FHIR section).} 
 
-In the previous layer, we have defined how the system captures the information. In some cases, the collection of data may require the development of multiple concurrent storage solutions, each using different technologies, resulting in a very complex environment. The purpose of this layer is to develop services that simplify how the applications access the data, to reconcile the different data stores and ensure the information is complete and consistent \cite{Cisco2014}. Applications can then interact with these databases through interfaces exposed by these services, designated \acl{API}s (\acs{API}s). \bigskip 
+The previous layer defines how the system captures the information. In some cases, the collection of data may require the development of multiple concurrent storage solutions, each using different technologies, resulting in a very complex environment. The purpose of this layer is to define services that simplify how the applications access the data, to reconcile the different data stores and ensure the information is complete and consistent \cite{Cisco2014}. Applications can then interact with these databases through interfaces exposed by these services, designated \acl{API}s (\acs{API}s). \bigskip 
 
 An \acs{API} is a computing interface that defines a set of rules that ``explain how computers and applications communicate with one another'', acting as an intermediary between these different components \cite{IBMAPI}. It defines which operations can be performed, how to request them, which are the accepted data types, etc. In this case, it decouples applications from the storage solutions, by encapsulating their functionality behind the interface. This ensures the modularity of the system as the applications become independent of whichever technologies are used in the data stores. \bigskip
 
@@ -270,7 +271,7 @@ The information that is created by the \acs{IoT} systems yields little value unl
 \label{sec:sim-approaches}
 \input{state_of_art-sysrev}
 
-Table \ref{tab:comparsion-articles} summarizes the key properties of the previously discussed solutions.
+\paragraph{} Table \ref{tab:comparsion-articles} summarizes the key properties of the previously discussed solutions.
 
 \begin{landscape}
 \renewcommand{\arraystretch}{2}
@@ -301,20 +302,21 @@ Table \ref{tab:comparsion-articles} summarizes the key properties of the previou
 % Pensa tb nas questões de segurança e escalabilidade. 
 % Pode não ser uma fraqueza/desafio comum a *todos* os trabalhos na literatura mas ser algo q nem sempre é bem resolvido.
 
-From the literature, we find that many solutions secure communications between the devices using standard encryption algorithms like Advanced Encryption Standard (AES) \cite{Adame2018, Wu2020, Doukas2012}. However, very few discuss authentication and authorization processes \cite{Doukas2012, Gope2016}. To ensure that no data is leaked to malicious authors, the networking protocols used must ensure these \textbf{security} properties. \bigskip
+In the literature, many solutions secure communications between the devices using standard encryption algorithms like Advanced Encryption Standard (AES) \cite{Adame2018, Wu2020, Doukas2012}. However, very few discuss authentication and authorization processes \cite{Doukas2012, Gope2016}. To ensure that no data is leaked to malicious authors, the networking protocols used must ensure these \textbf{security} properties. \bigskip
 
-Several web services currently use \acf{TLS}\footnote{The Transport Layer Security (TLS) Protocol Version 1.3: https://tools.ietf.org/html/rfc8446}. This protocol ensures integrity, confidentiality and authentication as it combines public key cryptography to validate the identity of the communicating parties, symmetric-key algorithms to encrypt the transmissions and message integrity checks to ensure the transmissions are not tampered during transport. These properties make this protocol invaluable for secure communications over the web, and thus should be an integral component of \acs{IoT} networks. Moreover, access control needs to be considered. Systems are composed by many devices, which may have different levels of access level for each device. For example, limiting access to certain topics in \acs{MQTT}, so that devices can only subscribe and publish messages in specific topics.      
+Several web services currently use \acf{TLS} \cite{tls}. This protocol ensures integrity, confidentiality and authentication as it combines public key cryptography to validate the identity of the communicating parties, symmetric-key algorithms to encrypt the transmissions and message integrity checks to ensure the transmissions are not tampered during transport. These properties make this protocol invaluable for secure communications over the web, and thus should be an integral component of \acs{IoT} networks. Moreover, access control needs to be considered. Systems are composed by many devices, which may have different levels of access level for each device. For example, limiting access to certain topics in \acs{MQTT}, so that devices can only subscribe and publish messages in specific topics.      
 
-Despite recent efforts, \textbf{interoperability} is still an issue for \acs{IoT} systems. Due to the lack of clear and concise industry standards and regulations, many manufacturers develop their own proprietary data formats and communication protocols, which hampers the integration of new resources since solutions are designed within closed ecosystems \cite{Rubi2019}. \bigskip
+\paragraph{} Despite recent efforts, \textbf{interoperability} is still an issue for \acs{IoT} systems. Due to the lack of clear and concise industry standards and regulations, many manufacturers develop their own proprietary data formats and communication protocols, which hampers the integration of new resources since solutions are designed within closed ecosystems \cite{Rubi2019}. \bigskip
 
 Fortunately, there are several international initiatives to promote the use of \acs{IoT} in health in a standardized way, such as HIMSS (Healthcare Information and Management Systems Society) and the Personal Connected Health Alliance (PCHAlliance). PCHAlliance, for example, advocates the adoption of the Continua Design Guidelines (CDG), which facilitates the integration of personal health devices into health systems. These guidelines have been recognized by ITU (International Telecommunication Union) and the European Commission and are adopted by countries such as Denmark, Norway and the USA, among others \cite{PersonalConnectedHealthAlliance2017}. These guidelines promote a series of e-health standards like \acs{FHIR} which facilitate the exchange of information between systems, in order to ensure that the implementations become truly interoperable.
 
+\clearpage
 \section{Statement of Contributions}
 %\section{System Architecture}
 
-\paragraph{} In the scope of the \acs{WoW} R\&D project, wearable devices, designated ``Biostickers'', have been developed to collect physiological patient signals using the \acs{BLE} networking stack. As an alternative, the project also studied the possibility of using of \acs{RFID} as theater networking stack, in an effort of creating battery-less devices. However, this has shown to be unfeasible due to strict energy consumption and energy transfer requirements that could not be met during development. 
+\paragraph{} In the scope of the \acs{WoW} R\&D project, wearable devices, designated ``Biostickers'', have been developed to collect physiological patient signals using the \acs{BLE} networking stack. As an alternative, the project also studied the possibility of using of \acs{RFID} for the networking stack, in an effort of creating battery-less wearable devices. However, this has shown to be unfeasible due to strict energy consumption and energy transfer requirements that could not be met during development. 
 
-\paragraph{} Having this in mind, and in the context of this dissertation work, we propose a novel fully modular \acs{IoT} infrastructure that uses the \acs{FHIR} standard in order to fully integrate the data into an existing and widely used \acs{HIS} -- GlobalCare\footnote{GlobalCare by Glintt: \url{https://globalcare.glintt.com/}} by Glintt - Healthcare Solutions, S.A. 
+\paragraph{} Having this in mind, and in the context of this dissertation work, a novel fully modular \acs{IoT} infrastructure is proposed, making use the \acs{FHIR} standard in order to fully integrate the data into an existing and widely used \acs{HIS} -- GlobalCare\footnote{GlobalCare by Glintt: \url{https://globalcare.glintt.com/}} by Glintt - Healthcare Solutions, S.A. 
 
 \paragraph{} From a hardware perspective, the \acs{IoT} system is composed of 3 different components, as seen in Figure \ref{fig:wow-architecture}:
 \begin{itemize}
@@ -329,11 +331,11 @@ Fortunately, there are several international initiatives to promote the use of \
 \begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth]{images/wow-system-architecture.pdf}
-    \caption[System architecture of the \acs{WoW} project.]{System architecture of the \acs{WoW} project. In this work, we discuss the implementation of the \textit{Smart Gateway} components, as well as contributions to the \textit{SmartBox} development.}
+    \caption[System architecture of the \acs{WoW} project.]{System architecture of the \acs{WoW} project. In this work, the details of implementation of the \textit{Smart Gateway} components are discussed, as well as contributions to the \textit{SmartBox} development.}
     \label{fig:wow-architecture}
 \end{figure}
 
-For the work developed throughout the dissertation, we propose the following contributions:
+For the work developed throughout the dissertation, the following contributions are proposed:
 
 \begin{itemize}
     \item Development and deployment of the \textit{SmartBoxes} embedded in hospital beds for data acquisition from \textit{Biostickers} attached to patients’ skin, namely:
@@ -344,17 +346,17 @@ For the work developed throughout the dissertation, we propose the following con
     \end{itemize}
     \item Design and development of data integration pipelines using \acs{MQTT} and management of the multiple \textit{SmartBoxes} in the \textit{Smart Gateway};
     \item Implementation of a \acs{FHIR} \acs{API} layer to integrate the proposed system in the GlobalCare \acs{HIS}.
-    \item Evaluation of the performance of the proposed system on hospital trials within the \acs{WoW} project.
-    % through controlled lab tests and 
+    \item Evaluation of the performance of the proposed system on hospital trials and through controlled lab tests within the \acs{WoW} project.
+    % 
     %\item Evaluate the need for data analysis to extract relevant user profiles/anomalies for long-term biomonitoring data of multiple anonymous users.
 \end{itemize}
 
 \section{Summary}
-In this chapter, we have discussed the importance of \acs{IoT} systems, how these are composed and how these can bring value to healthcare providers. After analyzing different relevant systems proposed previously in the literature, we have defined a set of criteria to guide the development of our own implementation.
+In this chapter, the importance of \acs{IoT} systems is discussed, how these systems are composed and how these can bring value to healthcare providers. After analyzing different relevant systems proposed previously in the literature, a set of criteria was defined to guide the development of our own implementation.
 
 \bigskip
 
-In the next chapter, we begin with the evaluation of the different \acs{IoT} kits for the \textit{Smart Bed} hardware, and afterwards, we evaluate different \acs{BLE} adapters for patient data acquisition to implement secure communications between the \textit{Biostickers} and the \textit{SmartBoxes}. 
+The next chapter begins with the evaluation of the different \acs{IoT} kits for the \textit{Smart Bed} hardware, and afterwards, an evaluation of different \acs{BLE} adapters for patient data acquisition to implement secure communications between the \textit{Biostickers} and the \textit{SmartBoxes}. 
 
 % - Hardware evaluation for edge nodes which integrate electronic wireless patches that gather patient's physiological signals;
 % - Integrating IoT system in an existing healthcare information system (Glintt GlobalCare software) through an FHIR API layer;

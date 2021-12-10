@@ -8,7 +8,7 @@
 
 \paragraph{} In an effort to counter this, many countries and organizations are currently promoting the shift towards digital healthcare through several funding programs, such as European Union \cite{EuropeanUnion2021} and World Health Organization initiatives \cite{WorldHealthOrganization2020}. The usage of digital technologies in health has the potential to radically change how healthcare is delivered, by enhancing the efficiency and cost-effectiveness of care, and enabling new business models for service providers \cite{WorldHealthOrganization2020}.
 
-\paragraph{} In particular, there is one paradigm which has stood out, having potential to fulfill this vision for digital health -- \textbf{\acf{IoT}}. \acs{IoT} has been used to revolutionize different industries, such as smart grids \cite{Faria2020}, oil and gas industry \cite{Shoja2018} and many more. The basic concept of \acs{IoT} is enabling processing capability and connectivity to ``physical objects'' or groups of these, allowing them to be capable of connecting with other devices and exchange data through the Internet \cite{gershenfeld2004internet}. Today, we find that hospitalized patients need to be wired to various measurement instruments when continuous biomonitoring is required. \acs{IoT} is not only capable of challenging this restriction, detaching patients from their beds and restoring their much-needed comfort (perhaps even allowing them to return to their own homes), but also provide value to the various stakeholders in the healthcare system with the automatization of processes, continuous and remote monitoring, clinical decision support, etc.
+\paragraph{} In particular, there is one paradigm which has stood out, having potential to fulfill this vision for digital health -- \textbf{\acf{IoT}}. \acs{IoT} has been used to revolutionize different industries, such as smart grids \cite{Faria2020}, oil and gas industry \cite{Shoja2018} and many more. The basic concept of \acs{IoT} is enabling processing capability and connectivity of ``physical objects'' or groups of these, allowing them to be capable of connecting with other devices and exchange data through the Internet \cite{gershenfeld2004internet}. Today, hospitalized patients need to be wired to various measurement instruments when continuous biomonitoring is required. \acs{IoT} is not only capable of challenging this restriction, detaching patients from their beds and restoring their much-needed comfort (perhaps even allowing them to return to their own homes) \cite{Darwish2011}, but also provide value to the various stakeholders in the healthcare system with the automatization of processes, continuous and remote monitoring, clinical decision support, etc.
 
 \paragraph{} However, there are still many challenges to tackle before deploying such technologies in a medical environment. In particular, interoperability, security, and privacy are challenges which are recurrently identified in the literature. 
 
@@ -28,10 +28,9 @@ Moreover, the adoption of these novel systems can be often met with much objecti
 
 \section{System Requirements}
 
-Previous work by researchers at the Institute of Systems and Robotics (ISR) resulted in the development of innovative wearable devices, designated \textit{Biostickers}, which are electronic patches equipped with sensors that gather the patient's physiological signals and communicate wirelessly \cite{Silva2020}. 
+Previous work by researchers at the Institute of Systems and Robotics (ISR) has resulted in the development of innovative wearable devices, designated \textit{Biostickers}, which are electronic patches equipped with sensors that gather the patient's physiological signals and communicate wirelessly \cite{Silva2020}. 
 
-
-\paragraph{} \textbf{The main objective of this dissertation work} is the development and validation of an \acs{IoT} architecture capable of integrating the data that is acquired by the \textit{Biostickers} into an existing \acs{HIS}, in the context of the \acs{WoW} R\&D project\footnote{WoW -- A step towards domiciliary hospitalization: \url{https://inovglintt.com/financiamento/wow/}}. This system serves as the ``backbone'' of the entire \acf{IT} system for the project, connecting these \textit{Biostickers} to the \acs{HIS} while addressing crucial issues like those described previously.
+\paragraph{} \textbf{The main objective of this dissertation work} is the development and validation of an \acs{IoT} architecture capable of integrating the data that is acquired by the \textit{Biostickers} into an existing \acs{HIS}, in the context of the \acs{WoW} R\&D project\footnote{WoW -- A step towards domiciliary hospitalization: \url{https://inovglintt.com/financiamento/wow/}}. This system serves as the ``backbone'' of the entire \acf{IT} system for the project, connecting these \textit{Biostickers} to the \acs{HIS} while addressing crucial issues as described previously.
 
 %\todo[inline]{To-do: Discuss importance of my work, both general impact and to the WoW project.}
 
@@ -55,7 +54,7 @@ Previous work by researchers at the Institute of Systems and Robotics (ISR) resu
     \item \textbf{Must:}
     \begin{itemize}
         \item The system must be able to communicate with the \acs{HIS}, i.e. capable of processing incoming requests and transmit necessary data.
-        \item All communications within the system must be secure and any sensitive data cannot be accessed by unauthorized third parties.
+        \item All communications within the system must be secure, and any sensitive data cannot be accessed by unauthorized third parties.
         \item The system must be able to function for long periods of time without continuous support or maintenance.
         \item The system must be non-invasive and intuitive.
     \end{itemize}
@@ -76,4 +75,4 @@ Previous work by researchers at the Institute of Systems and Robotics (ISR) resu
 \section{Dissertation Structure}
 
 This document is organized into different sections. The first chapter provides an introduction to the theme of the dissertation, discussing the context and motivation behind the work carried out. In the second chapter a brief overview into \acs{IoT} infrastructures and its healthcare applications is shown, along with a statement of the contributions of this work. The third chapter focuses on hardware analysis for one of the \acs{IoT} system components, the \textit{SmartBox}. The fourth chapter describes the service architecture within another system component, the \textit{Smart Gateway}, which is validated experimentally and analyzed in the fifth chapter.
-Finally, in the sixth and final chapter, we reflect upon the work developed and discuss the completion of the objectives and on future work.
+Finally, in the sixth and final chapter, a reflection upon the work is performed, concluding with a discussion of completed objectives and on future work.

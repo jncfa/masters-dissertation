@@ -4,13 +4,13 @@
     "type": "split",
     "children": [
       {
-        "id": "09d3ec79e2c0ff88",
+        "id": "42dd4c401efd610e",
         "type": "leaf",
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Meeting Notes/20th April Meeting Notes.md",
-            "mode": "source"
+            "file": "Daily Logs/2021-06-12.md",
+            "mode": "preview"
           }
         }
       }
@@ -60,7 +60,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 512.0140953063965
+    "width": 201
   },
   "right": {
     "id": "198dc2f3283e2054",
@@ -76,7 +76,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Meeting Notes/20th April Meeting Notes.md",
+                "file": "Daily Logs/2021-06-12.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -88,31 +88,39 @@
             }
           },
           {
-            "id": "bd97e9884ff26dc9",
+            "id": "f9d067a5dbb74690",
             "type": "leaf",
             "state": {
-              "type": "empty",
+              "type": "calendar",
+              "state": {}
+            }
+          },
+          {
+            "id": "1fb304b74f574c6c",
+            "type": "leaf",
+            "state": {
+              "type": "advanced-tables-toolbar",
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 292.5
   },
-  "active": "09d3ec79e2c0ff88",
+  "active": "42dd4c401efd610e",
   "lastOpenFiles": [
-    "Meeting Notes/20th April Meeting Notes.md",
-    "Thesis Notes/Technical Implementation/Gateway/Database/Setting up Database Service.md",
-    "Thesis Notes/Technical Implementation/Gateway/Database/Database Schema.md",
-    "Thesis Notes/Technical Implementation/Gateway/Database/Compiling C++ Requirements.md",
-    "Thesis Notes/Technical Implementation/Gateway/FHIR/Setting up FHIR Service.md",
     "Daily Logs/2021-06-12.md",
-    "Daily Logs/2021-09-03.md",
     "Daily Logs/2021-06-13.md",
-    "Thesis Notes/Technical Implementation/MQTT Specification.md",
-    "Thesis Notes/Technical Implementation/Smartbox/General Notes for Smartbox.md"
+    "Daily Logs/2021-09-03.md",
+    "Daily Logs/2021-11-01.md",
+    "Daily Logs/2021-W44.md",
+    "Pasted image 20211101215606.png",
+    "Untitled Kanban.md",
+    "Daily Logs/2021-11-09.md",
+    "Meeting Notes/20th April Meeting Notes.md",
+    "Thesis Notes/Technical Implementation/MQTT Specification.md"
   ]
 }

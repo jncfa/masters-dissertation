@@ -249,13 +249,11 @@
 \bibliographystyle{IEEEtran}
 \bibliography{references}
 
-%\titleformat{\chapter}[display]	% Return chapter titles to normal, taking up a whole page (cool for appendices)
-%{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
-%\begin{appendix}			% Start appendices
-%\chapter{My cool appendix!}	% One chapter per appendix
-%\label{app:cool}
-%\includepdf[pages={-}]{path/to/appendix.pdf}
-% or
-%\input{appendix_file}
-%\end{appendix}
+\titleformat{\chapter}[display]	% Return chapter titles to normal, taking up a whole page (cool for appendices)
+{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
+\begin{appendix}			% Start appendices
+\chapter{MQTT Payload Formats}	% One chapter per appendix
+\label{app:mqtt_payloads}
+\input{app_mqtt_payloads}
+\end{appendix}
 \end{document}

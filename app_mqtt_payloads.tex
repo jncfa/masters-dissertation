@@ -1,0 +1,57 @@
+In the implemented system, the field \textit{message\_type} defines what type of message is communicated, and must be one of the following:
+
+\begin{itemize}
+    \item ``MEASUREMENT\_TEMPERATURE'': The payload format for this message is:
+        \begin{lstlisting}[language=json]            
+"payload": {
+    "temperature" : 10.0,
+    "is_celsius" : true 
+} 
+        \end{lstlisting} 
+        where the ``temperature'' field is the temperature measurement, and ``is\_celsius'' field indicates whether the measurement value it is in Celsius or Fahrenheit.
+    
+        \item ``MEASUREMENT\_IMU'': The payload format for this message is:
+        \begin{lstlisting}[language=json]            
+"payload": {
+    "imu": {
+        "linear_acceleration": {"x": 0.00, "y": 0.00, "z": 0.00},
+        "angular_velocity": {"x": 0.00, "y": 0.00, "z": 0.00} 
+    }
+        "pose_description" : "SITTING"
+} 
+        \end{lstlisting} 
+        where the ``linear\_acceleration'' field is the accelerometer measurement,``angular\_velocity'' field is the gyroscope measurement, and ``pose\_description'' is the text description of the current body pose of the patient.
+
+    \item ``MEASUREMENT\_ECG'': The payload format for this message is:
+        \begin{lstlisting}[language=json]            
+"payload": {
+    "ecg" : 10
+} 
+        \end{lstlisting} 
+        where the ``ecg'' field is the \acs{ECG} measurement.
+    \item ``MEASUREMENT\_PULSEOXIMETRY'': The payload format for this message is:
+        \begin{lstlisting}[language=json]            
+"payload": {
+    "spo2" : 10.0
+} 
+        \end{lstlisting} 
+        where the ``spo2'' field is the pulse oximetry measurement.
+
+
+    \item ``MEASUREMENT\_HR'': The payload format for this message is:
+        \begin{lstlisting}[language=json]            
+"payload": {
+    "bpm" : 10.0
+} 
+        \end{lstlisting} 
+        where the ``bpm'' field is the heart rate measurement.
+
+
+    \item ``MEASUREMENT\_RESPIRATION'': The payload format for this message is:
+        \begin{lstlisting}[language=json]            
+"payload": {
+    "respiration" : 10.0
+} 
+        \end{lstlisting} 
+        where the ``respiration'' field is the respiration rate measurement.
+\end{itemize}

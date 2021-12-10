@@ -36,7 +36,7 @@ To implement these components, we propose the following service architecture wit
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.93\linewidth]{images/service overview gateway.pdf}
-    \caption[Service architecture implemented in the \textit{Smart Gateway}.]{Service architecture implemented in the \textit{Smart Gateway}. The diagram displays the different technologies used throughout the development. The services communicate with each other using Unix Domain Sockets, a Linux protocol for \acf{IPC}.}
+    \caption[Service architecture implemented in the \textit{Smart Gateway}.]{Service architecture implemented in the \textit{Smart Gateway}. The diagram displays the different technologies used throughout the development.}
     \label{fig:gateway_serviceoverview}
 \end{figure}
 \begin{table}[H]
@@ -164,11 +164,11 @@ Since the data storage implemented in the \textit{Smart Gateway} is a \acs{RDBMS
 
 % \acs{MQTT} is a centralized protocol, in which the clients (\textit{SmartBoxes}) connect to a broker, which acts as a middle-man for the communication, managing the requests from all clients accordingly. 
 
-As previously mentioned, the connection to the \textit{SmartBoxes} is performed via \acs{MQTT}. In our system, the \acs{MQTT} broker is contained within the \textit{Smart Gateway}, and is the service responsible for ensuring the communication between the \textit{SmartBoxes} and the \textit{Smart Gateway}.
+As previously mentioned, the connection to the \textit{SmartBoxes} is performed via \acs{MQTT}. In this system, the \acs{MQTT} broker is contained within the \textit{Smart Gateway}, and is the service responsible for ensuring the communication between the \textit{SmartBoxes} and the \textit{Smart Gateway}.
 
-\paragraph{} To implement this \acs{MQTT} broker, we use the open-source Eclipse Mosquitto\footnote{\url{https://mosquitto.org/}}. Mosquitto is a lightweight \acs{MQTT} broker that supports the \acs{MQTT} protocol versions 5.0, 3.1.1 and 3.1 and is widely used by the community, making it a fitting solution for the \acs{WoW} project. However, in order to implement all security features required, we need to extend its existing functionality, which is discussed in Section \ref{sec:auth_plugin}.
+\paragraph{} To implement this broker, we use the open-source Eclipse Mosquitto\footnote{\url{https://mosquitto.org/}}. Mosquitto is a lightweight \acs{MQTT} broker that supports the \acs{MQTT} protocol versions 5.0, 3.1.1 and 3.1 and is widely used by the community, making it a fitting solution for the \acs{WoW} project. However, in order to implement all security features required, we need to extend its existing functionality, which is discussed in Section \ref{sec:auth_plugin}.
 
-\paragraph{} But first, we need to define the intricacies of the \acs{MQTT} communication between the \textit{SmartBox} and \textit{Smart Gateway}. To this end, we propose a complete specification, detailing the all security measures implemented, the format for the messages exchanged in the communication and the different endpoints (or topics) used. 
+\paragraph{} But first, the intricacies of the \acs{MQTT} communication between the \textit{SmartBox} and \textit{Smart Gateway} must be defined. To this end, a complete specification is proposed, detailing the all security measures implemented, the format for the messages exchanged in the communication and the different endpoints (or topics) used. 
 
 \subsection{Proposed \acs{MQTT} Specification}
 
@@ -201,72 +201,17 @@ In order to promote interoperability, all messages exchanged in the \acs{MQTT} c
 
 where \textit{client\_id} is the \acs{UUID} of the \acs{MQTT} client, \textit{timestamp} is the UNIX timestamp\footnote{\url{https://www.unixtimestamp.com/}}, and \textit{payload} contains the actual content of the message that is associated to the \textit{message\_type}. The field \textit{message\_type} defines what type of message it is, and must be one of the following:
 
-%\begin{itemize}
-%    \item ``MEASUREMENT\_TEMPERATURE'': Indicates that the message is a temperature %measurement.
-%    \item ``MEASUREMENT\_IMU'': Indicates that the message is an \acs{IMU} measurement.
-%    \item ``MEASUREMENT\_HR'': Indicates that the message is a heart rate measurement.
-%    \item ``MEASUREMENT\_ECG'': Indicates that the message is an \acs{ECG} measurement.
-%    \item ``MEASUREMENT\_PULSEOXIMETRY'': Indicates that the message is a pulse oximetry %measurement.
-%    \item ``MEASUREMENT\_RESPIRATION'': Indicates that the message is a respiratory rate %measurement.
-%\end{itemize}
-
-
 \begin{itemize}
-    \item ``MEASUREMENT\_TEMPERATURE'': Indicates that the message is a temperature measurement. The payload format for this message is:
-        \begin{lstlisting}[language=json]            
-"payload": {
-    "temperature" : 10.0,
-    "is_celsius" : true 
-} 
-        \end{lstlisting} 
-        where the ``temperature'' field is the temperature measurement, and ``is\_celsius'' field indicates whether the measurement value it is in Celsius or Fahrenheit.
-    
-    \clearpage
-        \item ``MEASUREMENT\_IMU'': Indicates that the message is an \acs{IMU} measurement. The payload format for this message is:
-        \begin{lstlisting}[language=json]            
-"payload": {
-    "imu": {
-        "linear_acceleration": {"x": 0.00, "y": 0.00, "z": 0.00},
-        "angular_velocity": {"x": 0.00, "y": 0.00, "z": 0.00} 
-    }
-        "pose_description" : "SITTING"
-} 
-        \end{lstlisting} 
-        where the ``linear\_acceleration'' field is the accelerometer measurement,``angular\_velocity'' field is the gyroscope measurement, and ``pose\_description'' is the text description of the current body pose of the patient.
-
-    \item ``MEASUREMENT\_ECG'': Indicates that the message is an \acs{ECG} measurement. The payload format for this message is:
-        \begin{lstlisting}[language=json]            
-"payload": {
-    "ecg" : 10
-} 
-        \end{lstlisting} 
-        where the ``ecg'' field is the \acs{ECG} measurement.
-    \item ``MEASUREMENT\_PULSEOXIMETRY'': Indicates that the message is a pulse oximetry measurement. The payload format for this message is:
-        \begin{lstlisting}[language=json]            
-"payload": {
-    "spo2" : 10.0
-} 
-        \end{lstlisting} 
-        where the ``spo2'' field is the pulse oximetry measurement.
-
-
-    \item ``MEASUREMENT\_HR'': Indicates that the message is a heart rate measurement. The payload format for this message is:
-        \begin{lstlisting}[language=json]            
-"payload": {
-    "bpm" : 10.0
-} 
-        \end{lstlisting} 
-        where the ``bpm'' field is the heart rate measurement.
-
-
-    \item ``MEASUREMENT\_RESPIRATION'': Indicates that the message is a respiratory rate measurement. The payload format for this message is:
-        \begin{lstlisting}[language=json]            
-"payload": {
-    "respiration" : 10.0
-} 
-        \end{lstlisting} 
-        where the ``respiration'' field is the respiration rate measurement.
+    \item ``MEASUREMENT\_TEMPERATURE'': Indicates that the message is a temperature measurement.
+    \item ``MEASUREMENT\_IMU'': Indicates that the message is an \acs{IMU} measurement.
+    \item ``MEASUREMENT\_HR'': Indicates that the message is a heart rate measurement.
+    \item ``MEASUREMENT\_ECG'': Indicates that the message is an \acs{ECG} measurement.
+    \item ``MEASUREMENT\_PULSEOXIMETRY'': Indicates that the message is a pulse oximetry measurement.
+    \item ``MEASUREMENT\_RESPIRATION'': Indicates that the message is a respiratory rate measurement.
 \end{itemize}
+
+For the payload formats of each of these messages, the reader is referred to Appendix 1.
+
 \subsubsection{Data endpoints}
 To communicate the sensor data, the \textit{SmartBox} must publish to different endpoints, depending on the type of sensor data that is transmitted:
 

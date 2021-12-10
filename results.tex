@@ -12,17 +12,21 @@ For the hospital trial, the proposed \acs{IoT} system was deployed in an clinica
 \end{figure}
 \dots
 
-To evaluate the performance of the proposed system, the following performance indicators were defined and measured throughout the tests:
+To evaluate the performance of the proposed system, the following key performance indicators were defined and measured throughout the tests:
 
 \begin{itemize}
-    \item Average \acs{MQTT} Bandwidth over time;
-    \item Average \acs{FHIR} Bandwidth;
-    \item Average CPU and RAM usage of each service;
+    \item \acs{MQTT} bandwidth -- ;
+    \item \acs{FHIR} bandwidth;
+    \item \acs{MQTT} latency -- Time difference between the data collection at \textit{SmartBox} and ;
+    % \item \acs{MQTT} packet loss -- ;
+   
+    % \item \acs{FHIR} latency -- Time difference between the data collection at ;
+    \item Resource usage of \textit{Gateway} services -- CPU and RAM usage of each \textit{Gateway} service;
 \end{itemize}
 
-In the next section, 8 hours of the monitorization are analyzed and presented. 
+In the next section, 2 hours of the monitorization are analyzed and discussed. 
 
-\section{Results}
+\subsection{Results and Discussion}
 
 \begin{figure}[H]
     \centering
@@ -53,9 +57,18 @@ In the next section, 8 hours of the monitorization are analyzed and presented.
 \end{figure}
 
 
+Network footnote \footnote{https://ubuntu.com/server/docs/network-ntp}
 
+\section{Laboratory Tests}
 
+To evaluate the performance of the proposed system, the following key performance indicators were defined and measured throughout the tests:
 
+\begin{itemize} 
+    \item \acs{MQTT} bandwidth --;
+    \item \acs{MQTT} latency -- Time difference between the data collection at \textit{SmartBox} and ;
+    \item \acs{MQTT} packet loss -- ;
+    \item Resource usage of \textit{Gateway} services -- CPU and RAM usage of each \textit{Gateway} service;
+\end{itemize}
 
 
 

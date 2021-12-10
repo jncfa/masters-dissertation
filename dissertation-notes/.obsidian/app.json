@@ -1,0 +1,10 @@
+{
+  "spellcheck": true,
+  "promptDelete": false,
+  "readableLineLength": false,
+  "attachmentFolderPath": "/",
+  "foldHeading": true,
+  "foldIndent": true,
+  "showLineNumber": false,
+  "showUnsupportedFiles": true
+}
