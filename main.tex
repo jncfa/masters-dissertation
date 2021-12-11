@@ -107,6 +107,34 @@
       {[}{{{\color{delim}{[}}}}{1}
       {]}{{{\color{delim}{]}}}}{1},
 }
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{ltgray}{rgb}{0.5,0.5,0.5}
+
+\lstset{%
+  	backgroundcolor=\color{white},
+  	basicstyle=\ttfamily\small,
+  	breakatwhitespace=false,
+    numberstyle=\small,
+  	breaklines=true,
+  	captionpos=b,
+  	commentstyle=\color{dkgreen},
+  	deletekeywords={...},
+  	escapeinside={\%*}{*)},
+  	extendedchars=true,
+  	frame=single,
+  	keepspaces=true,
+  	keywordstyle=\color{blue},
+  	language=SQL,
+  	morekeywords={*,CREATE,MODIFY,...},
+  	numbers=left,
+  	numbersep=15pt,
+  	rulecolor=\color{ltgray},
+  	showspaces=false,
+  	showstringspaces=false, 
+  	showtabs=false,
+  	stepnumber=1,
+  	tabsize=4
+}
 
 \counterwithout{footnote}{chapter}
 
@@ -252,8 +280,11 @@
 \titleformat{\chapter}[display]	% Return chapter titles to normal, taking up a whole page (cool for appendices)
 {\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
 \begin{appendix}			% Start appendices
-\chapter{MQTT Payload Formats}	% One chapter per appendix
+\chapter{\acs{MQTT} Payload Formats}	% One chapter per appendix
 \label{app:mqtt_payloads}
 \input{app_mqtt_payloads}
+\chapter{\acs{FHIR} Resource \acs{JSON} Representations}	% One chapter per appendix
+\label{app:fhir_payloads}
+\input{app_fhir_resources}
 \end{appendix}
 \end{document}

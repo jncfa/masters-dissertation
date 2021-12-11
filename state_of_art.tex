@@ -31,7 +31,7 @@ In 2014, the \acs{IoT} World Forum (IoTWF) architectural committee published an 
     \label{fig:iotwf-referencemodel}
 \end{figure}
 
-From a hardware perspective, in this work we focus on the most common approach taken by researchers, using 3 distinct components: 
+From a hardware perspective, in this work the most common approach taken by researchers is considered, using 3 distinct components: 
 
 \begin{itemize}
     \item \textbf{Endpoint} or \textbf{edge} nodes (corresponding to Layer 1), which interact with the physical world, capturing data.
@@ -251,7 +251,7 @@ One of the most prominent standards for exchanging \acs{EHR}s is \acf{FHIR}. \ac
 \subsection{Layer 6: Application}
 \label{sec:iot-model-layer6}
 
-The sixth layer corresponds to the application layer, where the system ingests the captured data, analyzes it and delivers the value to the end users. Users can then interact with the system through \acl{UI}s (\acs{UI}s), which provide different functionalities depending on the application. Some may show simple reports regarding the collected data \cite{Doukas2012, Wu2020}, and others may allow users to monitor and have greater control over the different components of the system. \bigskip
+The sixth layer corresponds to the application layer, where the system ingests the captured data, analyzes it and delivers the value to the end users. Users can then interact with the system through an \acf{UI}, which provide different functionalities depending on the application. Some may show simple reports regarding the collected data \cite{Doukas2012, Wu2020}, and others may allow users to monitor and have greater control over the different components of the system. \bigskip
 
 As seen in an earlier section, Table \ref{tab:layer1-sensors} shows what kind of information is generally acquired in \acs{IoT} healthcare applications. Using artificial intelligence, it is also possible to correlate all of this information to guide the clinical decisions from healthcare providers \cite{Gruendner2019, Wagholikar2017, Raposo2021}. \bigskip
 \subsection{Layer 7: Collaboration and Processes}
@@ -312,6 +312,7 @@ Fortunately, there are several international initiatives to promote the use of \
 
 \clearpage
 \section{Statement of Contributions}
+\label{sec:statement_of_contrib}
 %\section{System Architecture}
 
 \paragraph{} In the scope of the \acs{WoW} R\&D project, wearable devices, designated ``Biostickers'', have been developed to collect physiological patient signals using the \acs{BLE} networking stack. As an alternative, the project also studied the possibility of using of \acs{RFID} for the networking stack, in an effort of creating battery-less wearable devices. However, this has shown to be unfeasible due to strict energy consumption and energy transfer requirements that could not be met during development. 
@@ -346,7 +347,7 @@ For the work developed throughout the dissertation, the following contributions 
     \end{itemize}
     \item Design and development of data integration pipelines using \acs{MQTT} and management of the multiple \textit{SmartBoxes} in the \textit{Smart Gateway};
     \item Implementation of a \acs{FHIR} \acs{API} layer to integrate the proposed system in the GlobalCare \acs{HIS}.
-    \item Evaluation of the performance of the proposed system on hospital trials and through controlled lab tests within the \acs{WoW} project.
+    \item Evaluation of the performance of the proposed system on an hospital trial and through controlled lab tests within the \acs{WoW} project.
     % 
     %\item Evaluate the need for data analysis to extract relevant user profiles/anomalies for long-term biomonitoring data of multiple anonymous users.
 \end{itemize}

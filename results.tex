@@ -1,8 +1,20 @@
-After developing and analyzing the different \acs{IoT} system components, it is time to evaluate its overall performance in a real-world scenario. In this chapter, the results of the hospital trial are presented and discussed. 
+
+% Explicar:
+% - objectivos das experiencias
+% - eventuais métricas de desempenho
+% - condições experimentais (ambiente hospitalar, fig 5.1, etc.)
+% - quaisquer eventuais parameterizações importantes no contexto específico dos trials
+% - resultados e discussão
+
+After developing and analyzing the different \acs{IoT} system components, it is time to evaluate its overall performance in a real-world scenario. In this chapter, the results of the trials performed on the overall \acs{IoT} system are presented and discussed. 
+
+\paragraph{} 
 
 \section{Hospital Pilot}
 
-For the hospital trial, the proposed \acs{IoT} system was deployed in an clinical facility within Centro Hospitalar e Universitário de Coimbra (CHUC), during which two volunteers were continuously monitoring using the system.
+For the hospital trial, the proposed \acs{IoT} system has been deployed in a clinical facility within Centro Hospitalar e Universitário de Coimbra (CHUC), during which two volunteers were continuously monitoring using the system. An \textit{SmartBox} and two \textit{Biostickers} are assigned to each volunteer, some \textit{Biostickers} used a different manufacturing process but are otherwise identical.
+
+\paragraph{} The acquisition rates of the sensors are as defined in Section \ref{chap:smartbox}. As mentioned in the previous chapter, for this first trial, the subscriptions for the \acs{FHIR} integration have been predetermined, these are the same for all sensors which are 1 minute intervals: for each biosignal, every 1 minute, the latest measurement is communicated to the \acs{HIS}.  
 
 \begin{figure}[H]
     \centering
@@ -10,68 +22,152 @@ For the hospital trial, the proposed \acs{IoT} system was deployed in an clinica
     \caption[Conceptual illustration of the system components within a medical facility.]{Conceptual illustration of the system components within a medical facility.}
     \label{fig:hospital-trial}
 \end{figure}
-\dots
 
 To evaluate the performance of the proposed system, the following key performance indicators were defined and measured throughout the tests:
 
 \begin{itemize}
-    \item \acs{MQTT} bandwidth -- ;
-    \item \acs{FHIR} bandwidth;
-    \item \acs{MQTT} latency -- Time difference between the data collection at \textit{SmartBox} and ;
-    % \item \acs{MQTT} packet loss -- ;
-   
-    % \item \acs{FHIR} latency -- Time difference between the data collection at ;
-    \item Resource usage of \textit{Gateway} services -- CPU and RAM usage of each \textit{Gateway} service;
+    \item \acs{MQTT} bandwidth -- Rate of data exchanged between all \textit{SmartBoxes} and \textit{Smart Gateway};
+    \item \acs{FHIR} bandwidth -- Rate of data exchanged between the \textit{Smart Gateway} and \acs{HIS};
+    \item Resource usage of \textit{Gateway} services -- \acs{CPU} and \acs{RAM} usage of each \textit{Gateway} service;
 \end{itemize}
 
 In the next section, 2 hours of the monitorization are analyzed and discussed. 
 
 \subsection{Results and Discussion}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.66\linewidth]{images/PILOTfhir_bandwidth.pdf}
-    \caption{Average \acs{FHIR} usage measured over time.}
-    \label{fig:pilot-fhir-bandwidth}
-\end{figure}
+The following graphs have been obtained using the data collected in the hospital trial. Figure \ref{fig:pilot-mqtt-bandwidth} and \ref{fig:pilot-fhir-bandwidth} show the measured \acs{MQTT} and \acs{FHIR} bandwidth respectively, averaged over 1 min.  Figure \ref{fig:pilot-cpu-usage} and \ref{fig:pilot-ram-usage} show the measured \acs{CPU} and \acs{RAM} usage.
+
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.66\linewidth]{images/PILOTmqtt_bandwidth.pdf}
-    \caption{Average \acs{MQTT} usage measured over time.}
+    \includegraphics[width=0.85\linewidth]{images/pilot_mqtt_bandwidth.pdf}
+    \caption{Average \acs{MQTT} bandwidth usage measured over time.}
     \label{fig:pilot-mqtt-bandwidth}
 \end{figure}
 
+Figure \ref{fig:labtest-mqtt-payload-sizes} shows a boxplot of the \acs{MQTT} payload sizes for each type of biosignal message. The deviation in the payload lengths is caused by variations of the number of digits in the numeric entries sent in the messages (\textit{e.g.} acceleration or gyroscope values in the \acs{IMU}), which should result in using more or less characters when the data is serialized into the \acs{JSON} payloads sent to the \acs{MQTT} broker. For the heart rate, respiration rate and pulse oximetry messages, due to the nature of these biosignals the number of digits does not change, so the payload size remains constant throughout the tests. Using this, along with the expected acquisition rate for each biosignal as defined in Section \ref{chap:smartbox}, the expected bandwidth should be close to $21.96 \pm 0.02$ kbps.
+
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.66\linewidth]{images/PILOTcpu_usage.pdf}
-    \caption{Average CPU usage measured over time.}
-    \label{fig:pilot-cou-usage}
+    \includegraphics[width=0.85\linewidth]{images/labtest_mqtt_payload_sizes.pdf}
+    \caption{Boxplot of \acs{MQTT} payload sizes measured for each type of biosignal.}
+    \label{fig:labtest-mqtt-payload-sizes}
+\end{figure}
+
+
+\paragraph{} Unfortunately, the measured bandwidth data is very different from this value -- with an average value of $15.513 \pm 1.605$ kbps. Not only is it $\sim 30\%$ lower than the expected value, the data is very sparse as seen by the standard deviation of 1.605 kbps, which corresponds roughly to 10 messages per second. Despite many efforts, it is not possible to determine the nature of this deviation since there are no records of the \acs{MQTT} transmissions on the \textit{SmartBox} side. 
+
+There are many factors which influence the observed \acs{MQTT} bandwidth, any of which (or combination of which) could be causing this issue:
+
+\begin{itemize}
+    \item The custom \textit{Mosquitto} plugin intercepts messages to authenticate and validate the \textit{SmartBoxes}. This introduces an additional processing delay that could impact the measured bandwidth.
+    \item The \textit{SmartBoxes} receive data from the \textit{Biostickers}, so any interruption of the communication between these devices inevitably would reduce the amount of messages sent. During the hospital trial, many \acs{BLE} connection issues were reported, so this is likely one of the main causes for the observed variance.
+    \item Since the \textit{SmartBoxes} are connected using Wi-Fi, and since the network as being actively used by the researchers throughout the trials, there could be fluctuations in the transmission of the data caused by network constraints. This could contribute to the issue at hand, but should not be significant enough to take into account.
+\end{itemize}
+
+\paragraph{} Due to these irregularities, the \acs{FHIR} bandwidth is impacted, as seen in Figure \ref{fig:pilot-fhir-bandwidth}. The graph shows the data arranged in different ``levels'', each corresponding to the successful transmission of a certain amount of messages. These levels are very discretized as the subscriptions are only triggered once a minute. In this case, the maximum level (at $\sim 270$ bps) corresponds to sending all messages in that minute, $\sim 240$ bps when one message is not sent that minute, and $\sim 200$ bps when two messages are not sent instead. The messages are not being sent because there is no new information in the data storage, which is caused by the issues previously detected in the \acs{MQTT} results.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\linewidth]{images/PILOTfhir_bandwidth.pdf}
+    \caption{Average \acs{FHIR} bandwidth usage measured over time.}
+    \label{fig:pilot-fhir-bandwidth}
+\end{figure}
+
+\paragraph{} Regarding \acs{CPU} usage and \acs{RAM} usage, for all services it is very low, with less than 10\% \acs*{CPU} usage and 2\% \acs*{RAM} usage overall, meaning the services are fairly efficient. This also provides ample availability for deploying analytics services locally, instead of relying on cloud services.  
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\linewidth]{images/pilot_cpu_usage.pdf}
+    \caption{Boxplot of \acs{CPU} usage of each \textit{Smart Gateway} service measured over time.}
+    \label{fig:pilot-cpu-usage}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.66\linewidth]{images/PILOTram_usage.pdf}
-    \caption{Average RAM usage measured over time.}
+    \includegraphics[width=0.85\linewidth]{images/pilot_ram_usage.pdf}
+    \caption{Boxplot of \acs{RAM} usage of each \textit{Smart Gateway} service measured over time.}
     \label{fig:pilot-ram-usage}
 \end{figure}
 
 
-Network footnote \footnote{https://ubuntu.com/server/docs/network-ntp}
+\paragraph{} When analyzing the data of the trial, the latency values for each \textit{SmartBox} were observed to be significantly different from one another. This was later determined to have been caused by clock drift\footnote{https://ubuntu.com/server/docs/network-ntp}, as the service used to maintain the system clock updated (which was the default service that is pre-installed in Ubuntu) could not provide sufficient precision when using public \acf{NTP} servers. To solve this, a different strategy is required: the \textit{SmartBoxes} must periodically synchronize the system clock directly from the \textit{Smart Gateway}, and the \textit{Smart Gateway} synchronizes its clock with a pool of \acs{NTP} servers. This minimizes the differences between the system clocks of the \textit{Smart Gateway} and the \textit{SmartBoxes}, significantly improving the precision of the timestamps (from $\sim 100$ ms to $\sim 10\ \mu$s). This strategy does introduce additional time differences when comparing the \textit{SmartBoxes} with public \acs{NTP} servers, but these are negligible ($\sim 10\ \mu$s). To implement this, a \acs{NTP} server has been installed in \textit{Smart Gateway} as well as a high performance \acs{NTP} client in both the \textit{Smart Gateway} and \textit{SmartBoxes}. 
+
+\paragraph{} Unfortunately, due to all the aforementioned issues, it is not possible to adequately assess the performance of the overall system. As such, additional tests in a controlled environment have been performed to evaluate it, which are discussed in the next section.
 
 \section{Laboratory Tests}
 
-To evaluate the performance of the proposed system, the following key performance indicators were defined and measured throughout the tests:
+As mentioned, due to the sparsity of the results obtained in the hospital trial, additional tests have been performed to evaluate the performance in a controlled environment.
+
+\paragraph{} The tests have been formulated based on the results of the hospital trial. Since there were \acs{BLE} connection issues on the \textit{SmartBox} reported throughout the hospital trial, for these tests the \textit{SmartBoxes} generate simulated data to send via \acs{MQTT}. Additionally, the \acs{FHIR} server has not been used as the remote \acs{HIS} endpoints were not provided and valid replacements could not be found. To determine if the usage of the custom \textit{Mosquitto} plugin is causing the aforementioned issues, tests have been performed using and without using the plugin.
+
+\paragraph{} To assess the performance of the proposed system, the following key performance indicators were defined and measured throughout the tests:
 
 \begin{itemize} 
-    \item \acs{MQTT} bandwidth --;
-    \item \acs{MQTT} latency -- Time difference between the data collection at \textit{SmartBox} and ;
-    \item \acs{MQTT} packet loss -- ;
-    \item Resource usage of \textit{Gateway} services -- CPU and RAM usage of each \textit{Gateway} service;
+    \item \acs{MQTT} bandwidth -- Rate of data exchanged between all \textit{SmartBoxes} and \textit{Smart Gateway}.
+    \item \acs{MQTT} latency -- Interval of time between the data collection at each \textit{SmartBox} and the reception of the data in the \textit{Smart Gateway}.
+    %\item Execution time of \acs{SQL} stored procedures -- Interval of time to execute a stored procedure in the data storage.
+    \item \acs{MQTT} packet loss -- Loss of data observed.
+    \item Resource usage of \textit{Gateway} services -- \acs{CPU} and \acs{RAM} usage of each \textit{Gateway} service;
 \end{itemize}
 
 
+\subsection{Results and Discussion}
+
+The following graphs have been obtained using the data collected in the laboratory tests. Figure \ref{fig:labtest-mqtt-bandwidth} and \ref{fig:labtest-mqtt-latency} show the measured \acs{MQTT} bandwidth and latency respectively, averaged over 5 minutes. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\linewidth]{images/labtest_mqtt_bandwidth.pdf}
+    \caption{Average \acs{MQTT} bandwidth usage measured over time.}
+    \label{fig:labtest-mqtt-bandwidth}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\linewidth]{images/labtest_mqtt_latency.pdf}
+    \caption{Average \acs{MQTT} latency measured over time.}
+    \label{fig:labtest-mqtt-latency}
+\end{figure}
+
+As seen in the graphs, the \acs{MQTT} bandwidth is much higher than the value observed in the hospital trials, but still somewhat below the expected value. It was later discovered that when creating the software to simulate the data transmissions, the delay caused by the \acs{MQTT} transmission itself was not accounted for, reducing the transmission rate of the simulated sensors very slightly which translates into a minor difference in the overall \acs{MQTT} bandwidth. Nonetheless, it displays much better results with an average bandwidth of $20.32 \pm 0.026$ kbps using the plugin and $20.31 \pm 0.026$ kbps without using the plugin. Despite this final result seemingly favoring the usage of the plugin, it should be noted that the difference between these values is not statistically significant, and thus can be safely disregarded. It means however that the usage of the plugin does not meaningfully impact the performance of the \acs{MQTT} communications, while providing new authentication and authorization features to the broker.
+
+\paragraph{} One thing to note is that the average latency does show a slight difference ($13.22 \pm 8.55$ ms when using the plugin to $7.86 \pm 0.23$ ms without it) as expected since the plugin does add a significant processing delay caused by the requests to the data storage. In particular, the latency obtained using the plugin seems to be very sparse, which would indicate some sort of loss of data, but this is not the case. A full analysis revealed that \textbf{100\%} of the data generated by the \textit{SmartBoxes} was captured by the \textit{Smart Gateway}. This means that this delay is being compensated somehow, or that is caused by something else, for example, An issue with the recently introduced \acs{NTP} server, and so it should be researched further.
+
+\paragraph{} Figure \ref{fig:labtest-cpu-usage} and \ref{fig:labtest-ram-usage} show the measured \acs{CPU} and \acs{RAM} usage. These values are consistent with those observed in the hospital trials. It is observed that the \acs{CPU} usage of the data storage nearly doubles when using the plugin, which is expected since the plugin performs requests to the data storage whenever a message is received, effectively doubling the amount of requests performed on the data storage -- one request on the plugin to check if the \textit{SmartBox} is authorized, one request on the data pre-processing service to store the received data.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\linewidth]{images/labtest_ram_usage_with_plugin.pdf}
+    \caption{Average \acs{RAM} usage of each \textit{Smart Gateway} service measured over time, when using the custom plugin for Mosquitto.}
+    \label{fig:labtest-ram-usage}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\linewidth]{images/labtest_ram_usage_without_plugin.pdf}
+    \caption{Average \acs{RAM} usage of each \textit{Smart Gateway} service measured over time, without using the custom plugin for Mosquitto.}
+    \label{fig:labtest-ram-usage-noplug}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\linewidth]{images/labtest_cpu_usage_with_plugin.pdf}
+    \caption{Average \acs{CPU} usage of each \textit{Smart Gateway} service measured over time, when using the custom plugin for Mosquitto.}
+    \label{fig:labtest-cpu-usage}
+\end{figure}
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\linewidth]{images/labtest_cpu_usage_without_plugin.pdf}
+    \caption{Average \acs{RAM} usage of each \textit{Smart Gateway} service measured over time, without using the custom plugin for Mosquitto.}
+    \label{fig:labtest-cpu-usage-noplug}
+\end{figure}
+
+
+\paragraph{} Overall, the results are fairly positive, demonstrating the performance of the work developed throughout this past year. Certain phenomenons should be researched further, for example the observed latency deviations, but nonetheless, it is fairly efficient and should provide a solid foundation for the ongoing development of the \acs{WoW} project.
 
 \section{Summary}
-In this chapter, the performance of the proposed system during the hospital trial was tested and discussed. 
+In this chapter, the performance of the proposed system has been tested and discussed. 
 In the next, and final chapter, an overview of the work achieved is presented in light of the proposed contributions, concluding with some final remarks.
