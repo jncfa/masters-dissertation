@@ -88,19 +88,18 @@ Figure \ref{fig:wow-dbschema-full} contains the database model implemented in ou
 \begin{enumerate}
     \item \textbf{System data} -- Information about the devices which are managed by the system: the \textit{Smart boxes}, the \textit{Biostickers} and the sensors in each \textit{Biostickers}. 
     \item \textbf{\acs{MQTT} related data} -- Information about the \acs{MQTT} clients and their permissions. 
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.9\linewidth]{images/database-schema-general.pdf}
+        \caption[Database model implemented in the \textit{Smart Gateway}.]{Database model implemented in the \textit{Smart Gateway}. The bold text in the diagram is used to denote the Primary Key (PK) of each table. The relationships between entities are indicated with a line and using the symbols ``*'' for many and ``1'' for one.}
+        \label{fig:wow-dbschema-full}
+    \end{figure}
     \item \textbf{Sensor observation data} -- Biosignals measured and communicated by the \textit{Smart boxes}.
     \item \textbf{\acs{FHIR} data} -- Data related with \acs{FHIR} communications, such as the subscription requests from the \acs{HIS} to communicate the acquired sensor measurements.
     \item \textbf{Stored procedures} -- Custom subroutines that define the operations used by other services (\textit{e.g.} the \acs{MQTT} broker) to interact with the stored data (insertions, deletions, searches, etc.).
 \end{enumerate}
 
-\clearpage 
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9\linewidth]{images/database-schema-general.pdf}
-    \caption[Database model implemented in the \textit{Smart Gateway}.]{Database model implemented in the \textit{Smart Gateway}. The bold text in the diagram is used to denote the Primary Key (PK) of each table. The relationships between entities are indicated with a line and using the symbols ``*'' for many and ``1'' for one.}
-    \label{fig:wow-dbschema-full}
-\end{figure}
+%\clearpage 
 
 In the next sections, the structure of the data within each of these groups is explored in greater detail.
 
