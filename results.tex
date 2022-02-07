@@ -12,13 +12,13 @@ After developing and analyzing the different \acs{IoT} system components, it is 
 
 \section{Hospital Pilot}
 
-For the hospital trial, the proposed \acs{IoT} system has been deployed in a clinical facility within Centro Hospitalar e Universitário de Coimbra (CHUC), during which two volunteers have been continuously monitored using the system. A \textit{Smart box}, one \textit{Biosticker} and one oximeter are assigned to each volunteer for the duration of the trial. The oximeter is attached to the patient's right-hand index finger recording Pulse Oximeter data and the \textit{Biosticker} is attached to the patient's chest recording the other biosignals (body temperature, \acs{ECG}, \dots, as discussed in Section \ref{sec:biosticker_data}). The patients remained in bed for the entirety of the trial, always keeping the \textit{Smart box} at most 5 meters away from the patient, as shown in Figure \ref{fig:hospital-trial}. The Wi-Fi network used to connect the \textit{Smart box} to the \textit{Smart Gateway} has been provided by the hospital IT, and is also being used concurrently by the researchers during the study. Additionally, each device is assigned a fixed \acs{IP} to facilitate the deployment of the infrastructure, and ensure the devices are able to communicate with one another at all times.
+For the hospital trial, the proposed \acs{IoT} system has been deployed in a clinical facility within Centro Hospitalar e Universitário de Coimbra (CHUC), during which two volunteers have been continuously monitored using the system. A \textit{Smart box}, one \textit{Biosticker} and one oximeter are assigned to each volunteer for the duration of the trial. The oximeter is attached to the patient's right-hand index finger recording pulse oximeter data and the \textit{Biosticker} is attached to the patient's chest recording the other biosignals (body temperature, \acs{ECG}, etc., as discussed in Section \ref{sec:biosticker_data}). The patients remained in bed for the entirety of the trial, always keeping the \textit{Smart box} at most 5 meters away from the patient, as shown in Figure \ref{fig:hospital-trial}. The Wi-Fi network used to connect the \textit{Smart box} to the \textit{Smart Gateway} has been provided by the hospital IT, and is also being used concurrently by the researchers during the study. Additionally, each device is assigned a fixed \acs{IP} to facilitate the deployment of the infrastructure, and ensure the devices are able to communicate with one another at all times.
 
 \paragraph{} The acquisition rates of the sensors are as defined in Section \ref{chap:smartbox}. As mentioned in the previous chapter, for this first trial, the subscription rates for the \acs{FHIR} communications have been previously established, corresponding to 1 minute intervals for all sensors, \textit{i.e.} the latest measurement of each biosignal is communicated every minute to the \acs{HIS}.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\linewidth]{images/hospital-trial.png}
+    \includegraphics[width=\linewidth]{images/hospital-trial-setup.pdf}
     \caption[Conceptual illustration of the system components within a medical facility.]{Conceptual illustration of the system components within a medical facility.}
     \label{fig:hospital-trial}
 \end{figure}
@@ -47,10 +47,19 @@ Figure \ref{fig:labtest-mqtt-payload-sizes} shows a boxplot of the \acs{MQTT} pa
 The following graphs have been obtained using the data collected in the hospital trial using 2 \textit{Smart boxes} and 1 \textit{Smart Gateway}. Figure \ref{fig:pilot-mqtt-bandwidth} and \ref{fig:pilot-fhir-bandwidth} show the measured \acs{MQTT} and \acs{FHIR} bandwidth respectively, averaged over 1 min.  Figure \ref{fig:pilot-cpu-usage} and \ref{fig:pilot-ram-usage} show the measured \acs{CPU} and \acs{RAM} usage.
 
 \begin{figure}[H]
-    \centering
-    \includegraphics[width=0.85\linewidth]{images/pilot_mqtt_bandwidth.pdf}
-    \caption{Average \acs{MQTT} bandwidth usage measured over time during the hospital trial. }
-    \label{fig:pilot-mqtt-bandwidth}
+    \begin{minipage}{0.49\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{images/pilot_mqtt_bandwidth.pdf}
+        \caption{Average \acs{MQTT} bandwidth usage measured over time during the hospital trial. }
+        \label{fig:pilot-mqtt-bandwidth}
+    \end{minipage}
+    \hspace{0.02\linewidth}
+    \begin{minipage}{0.49\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{images/pilot_fhir_bandwidth.pdf}
+        \caption{Average \acs{FHIR} bandwidth usage measured over time during the hospital trial.}
+        \label{fig:pilot-fhir-bandwidth}
+    \end{minipage}
 \end{figure}
 
 
@@ -64,16 +73,9 @@ There are several factors which influence the \acs{MQTT} bandwidth, any of which
     \item Since the \textit{Smart boxes} are connected using Wi-Fi, and since the network was being actively used by researchers throughout the trials, there could be fluctuations in the transmission of the data caused by network constraints. This could contribute to the issue at hand, but should not be significant enough to take into account.
 \end{itemize}
 
-\paragraph{} Due to these irregularities, the \acs{FHIR} bandwidth is impacted, as seen in Figure \ref{fig:pilot-fhir-bandwidth}. The graph shows the data arranged in different ``levels'', each corresponding to the successful transmission of a certain amount of messages. These levels are discretized as the subscriptions are only triggered once a minute. In this case, the maximum level (at ${\sim}  270$ bps) corresponds to sending all messages in that minute, ${\sim}  240$ bps when one message is not sent in that minute, and ${\sim}  200$ bps when two messages are not sent instead. The messages are not being sent because there is no new information in the data storage, which may be caused by the issues previously referred.
+\paragraph{} Due to these irregularities, the \acs{FHIR} bandwidth is impacted, as seen in Figure \ref{fig:pilot-fhir-bandwidth}. The graph shows the data arranged in different ``levels'', each corresponding to the successful transmission of a certain amount of messages. These levels are discretized as the subscriptions are only triggered once a minute. In this case, the maximum level (at ${\sim}  270$ bps) corresponds to sending all messages in that minute, ${\sim}  240$ bps when one message is not sent in that minute, and ${\sim}  200$ bps when two messages are not sent instead. The messages are not being sent because there is no new information in the data storage, which may be caused by the issues previously referred. Additionally, all messages sent by the \textit{Smart Gateway} to GlobalCare \acs{HIS} have been confirmed on the \acs{HIS} side as well, thus validating the \acs{FHIR} service developed.  
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.85\linewidth]{images/pilot_fhir_bandwidth.pdf}
-    \caption{Average \acs{FHIR} bandwidth usage measured over time during the hospital trial.}
-    \label{fig:pilot-fhir-bandwidth}
-\end{figure}
-
-\paragraph{} Regarding \acs{CPU} and \acs{RAM} usage, it is observed to be very low across all services running on the \textit{Smart Gateway} (the hardware specification can be found on Table \ref{tab:NUCspecification}) with less than 10\% \acs*{CPU} usage and 2\% \acs*{RAM} usage overall, meaning that the service architecture is fairly efficient. This also provides ample resources for deploying additional analytics services locally, instead of relying on cloud services.  
+\paragraph{} Regarding \acs{CPU} and \acs{RAM} usage, it is observed to be very low across all services running on the \textit{Smart Gateway} (the hardware specification can be found on Table \ref{tab:NUCspecification}) with less than 10\% \acs*{CPU} usage and 2\% \acs*{RAM} usage overall, meaning that the service architecture is fairly efficient. This also provides ample resources for deploying additional analytics services locally, instead of relying on cloud services.
 
 \begin{figure}[H]
     \begin{minipage}{0.45\linewidth}
@@ -119,17 +121,20 @@ As mentioned, due to the sparsity of the results obtained in the hospital trial,
 The following graphs have been obtained using the data collected in the laboratory tests using 2 \textit{Smart boxes} and 1 \textit{Smart Gateway}. Figure \ref{fig:labtest-mqtt-bandwidth} and \ref{fig:labtest-mqtt-latency} show the measured \acs{MQTT} bandwidth and latency respectively, averaged over 1 minute. 
 
 \begin{figure}[H]
-    \centering
-    \includegraphics[width=0.85\linewidth]{images/labtest_mqtt_bandwidth.pdf}
-    \caption{Average \acs{MQTT} bandwidth usage measured over time during the lab tests.}
-    \label{fig:labtest-mqtt-bandwidth}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.85\linewidth]{images/labtest_mqtt_latency.pdf}
-    \caption{Average \acs{MQTT} latency measured over time during the lab tests.}
-    \label{fig:labtest-mqtt-latency}
+    \begin{minipage}{0.49\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{images/labtest_mqtt_bandwidth.pdf}
+        \caption{Average \acs{MQTT} bandwidth usage measured over time during the lab tests.}
+        \label{fig:labtest-mqtt-bandwidth}
+    \end{minipage}
+    \hspace{0.02\linewidth}
+    \begin{minipage}{0.49\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{images/labtest_mqtt_latency.pdf}
+        \caption{Average \acs{MQTT} latency measured over time during the lab tests.}
+        \label{fig:labtest-mqtt-latency}
+    \end{minipage}
+    
 \end{figure}
 
 As seen in the graphs, the \acs{MQTT} bandwidth is much higher than the value observed in the hospital trials, but still somewhat below the expected value (21.96 kbps). 
@@ -137,7 +142,7 @@ This is because the delay caused by the \acs{MQTT} transmission itself was not a
 
 \paragraph{} One thing to note is that the average latency does show a significant increase ($13.22 \pm 14.07$ ms when using the plugin to $7.86 \pm 0.98$ ms without it), which is expected since the plugin adds a fixed processing delay caused by the requests to the data storage service. However, the latency obtained using the plugin seems to be very sparse (as seen with a standard deviation larger than the latency value itself), which would indicate some sort of data loss, but this is not the case. A full analysis revealed that \textbf{100\%} of the data generated by the \textit{Smart boxes} in this test was captured by the \textit{Smart Gateway}. This means that this delay is being compensated somehow, or that is caused by something else, for example, an issue with the recently introduced \acs{NTP} server, and so it should be researched further. One thing is clear however, and that is that the data is being successfully transmitted and received using \acs{MQTT}. 
 
-\paragraph{} Figure \ref{fig:labtest-cpu-usage}, \ref{fig:labtest-cpu-usage-noplug}, \ref{fig:labtest-ram-usage} and \ref{fig:labtest-ram-usage-noplug} show the measured \acs{CPU} and \acs{RAM} usage, with and without the custom authentication plugin. These values are consistent with those observed in the hospital trials. It is observed that the \acs{CPU} usage of the data storage nearly doubles when using the plugin, which is expected since the plugin performs requests to the data storage whenever a message is received, effectively doubling the amount of requests performed on the data storage -- one request on the plugin to check if the \textit{Smart box} is authorized, one request on the data pre-processing service to store the received data.
+\paragraph{} Figure \ref{fig:labtest-ram-usage}, \ref{fig:labtest-ram-usage-noplug}, \ref{fig:labtest-cpu-usage} and \ref{fig:labtest-cpu-usage-noplug} show the measured \acs{RAM} and \acs{CPU} usage, with and without the custom authentication plugin. These values are consistent with those observed in the hospital trials. It is observed that the \acs{CPU} usage of the data storage nearly doubles when using the plugin, which is expected since the plugin performs requests to the data storage whenever a message is received, effectively doubling the amount of requests performed on the data storage -- one request on the plugin to check if the \textit{Smart box} is authorized, one request on the data pre-processing service to store the received data.
 
 \begin{figure}[H]
     \begin{minipage}{0.45\linewidth}
