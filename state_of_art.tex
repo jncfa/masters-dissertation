@@ -155,7 +155,7 @@ In \cite{Rubi2019}, the authors compare these two protocols in greater length, a
     \label{fig:mqtt-message-sequence-diagram}
 \end{figure}
 
-\paragraph{} \acs{CoAP} uses a different messaging pattern, called ``Request-Response''. In this paradigm, a device sends a request to receive certain data and the second responds to this request. In \acs{CoAP}, the requests are delivered asynchronously, and so the response messages must contain a ``token'' value so that the client can identify which request resulted in this response.Figure \ref{fig:coap-message-sequence-diagram} shows a diagram of the communication, where a client makes a GET request to the \acs{CoAP} server to retrieve information. 
+\paragraph{} \acs{CoAP} uses a different messaging pattern, called ``Request-Response''. In this paradigm, a device sends a request to receive certain data and the second responds to this request. In \acs{CoAP}, the requests are delivered asynchronously, and so the response messages must contain a ``token'' value so that the client can identify which request resulted in this response. Figure \ref{fig:coap-message-sequence-diagram} shows a diagram of the communication, where a client makes a GET request to the \acs{CoAP} server to retrieve information. 
 
  % observe that the former model is event-driven while the latter is query-based \cite{Rubi2019}. % Due to the nature of how the data is generated in these types of pervasive applications, an event-driven protocol like \acs{MQTT} might be more adequate.
 
@@ -196,10 +196,11 @@ As the devices continuously generate data, the system will require more and more
     \item \textbf{Platform as a Service (PaaS)}: Provides a simple framework for developing applications, where the service provider manages the underlying infrastructure issues such as software updates and hardware maintenance. 
     \item \textbf{Software as a Service (SaaS)}: Provides the finished applications to be used by the end users, in this case health workers, that enable them to work. A simple example is a web-based email service, such as Gmail or Microsoft Outlook. 
 \end{itemize}
+Figure \ref{fig:differences-between-cloud-services} shows the differences between these cloud offerings and on-premise deployments.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\linewidth]{images/cloud-services.pdf}
+    \includegraphics[width=0.7\linewidth]{images/cloud-services.pdf}
     \caption[Differences between the cloud offerings and on-premise solutions.]{ Differences between the cloud offerings and on-premise solutions. Source: \cite{RedHat2021}}
     \label{fig:differences-between-cloud-services}
 \end{figure}
