@@ -450,11 +450,11 @@ Figures \crefrange{fig:ble-roundtrip-hci1-0m}{fig:ble-roundtrip-hci0-9m} show th
 
 \paragraph{} Moreover, this could imply that the observed delay is most likely a bottleneck on the \textit{BlueZ} Linux \textit{API}, delaying the transmission of data from the user level to the lower levels of the \acs{BLE} protocol stack and vice versa, as the roundtrip time increases in increments of the connection interval (albeit slightly higher than it) with the payload size, which is the expected behavior, pointing to an issue on the \acs{BLE} stack implementation.
 
-\paragraph{} Overall, it is observed that in order to maximize data throughput, the maximum supported payload size should be used in order to minimize the impact of the ${\sim} $12 ms delay on the transmission.
+\paragraph{} Overall, it is observed that in order to maximize data throughput, the maximum supported payload size should be used to minimize the impact of the ${\sim} $12 ms delay on the transmission.
 
 \subsubsection{Test 2: Bandwidth Measurement}
 
-In this second test, the bandwidth for the \acs{BLE} connection is measured by adjusting the transmission rate of the data sent through the BLE channel, or more accurately, the time between the transmission of each packet. The test has been performed by reducing the time between transmissions from 500 ms to 10 ms, in 5 ms decrements, until the communication is stopped. In the graphs, this is converted to transmission rate in order to facilitate the interpretation of data.
+In this second test, the bandwidth for the \acs{BLE} connection is measured by adjusting the transmission rate of the data sent, or more accurately, the time between the transmission of each packet. The test has been performed by reducing the time between transmissions from 500 ms to 10 ms, in 5 ms decrements, until the communication is stopped. In the graphs, this is converted to transmission rate in order to facilitate the interpretation of data.
 
 \paragraph{} For this test, the nRF52-DK board exposes 7 \acs{GATT} characteristics for the \textit{Smart box} to subscribe to, which corresponds to the maximum amount of concurrent subscriptions using \textit{BlueZ}. This was determined empirically during the setup for the tests. The nRF52-DK then continuously changes the value of the characteristic, immediately triggering a notification to the \textit{Smart box} -- one for each characteristic. The transmission rate is increased until the limit of the connection, which eventually becomes too unstable and suddenly terminates. The payload size used on each characteristic corresponds to the maximum \acs{ATT} payload observed in the roundtrip test -- 20 bytes for the internal \acs{BLE} adapter and 244 bytes for the ASUS USB-BT500 adapter.
 

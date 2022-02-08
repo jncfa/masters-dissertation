@@ -3,10 +3,12 @@
 \noindent
 
 Nos últimos anos, em particular com o desenvolvimento da pandemia COVID-19, temos observado uma transformação digital continua dos cuidados de saúde. Uma tecnologia em específico destaca-se, revelando grande potencial para revolucionar o paradigma atual dos cuidados de saúde -- a Internet das Coisas (\acs{IoT}).
+Atualmente, observa-se na literatura que a maioria dos sistemas não são interoperaveis com sistemas de informação de saúde externos, tal como a falta de medidas de segurança e privacidade mais robustas.
 
-O trabalho desta dissertação consiste no desenvolvimento de uma infrastrutura \acs{IoT} que interliga sensores inteligentes vestíveis a um sistema de informação de saúde utilizado por hospitais nacionais. Em particular, é efetuada uma avaliação de placas de hardware \acs{IoT} comuns para determinar que placa será utilizada para a infraestrutura de aquisição de dados, além de uma análise da comunicação \acf{BLE}. No âmbito deste trabalho foi também proposta uma especificação para comunicação \acf{MQTT}, tal como o desenvolvimento de uma Interface de Programação de Aplicações (\acs{API}) usando o protocolo \acf{FHIR} para integrar a infraestrutura no sistema de informação de saúde, juntamente com uma arquitetura de serviços para o servidor \textit{edge}, desenhado com segurança e privacidade em mente.
+O trabalho desta dissertação consiste no desenvolvimento de uma infrastrutura \acs{IoT} que interliga sensores inteligentes vestíveis a um sistema de informação de saúde utilizado por inúmeros hospitais nacionais. 
+Em particular, é efetuada uma avaliação de diferentes placas de hardware \acs{IoT} comuns para determinar que placa será utilizada para a infraestrutura de aquisição de dados, além de uma análise extensiva da comunicação Bluetooth Low Energy (\acs{BLE}) para avaliar os dispositivos utilizados para efetuar a comunicação \acs{BLE}.
+No âmbito deste trabalho foi também proposta uma especificação para comunicação \acf{MQTT}, tal como o desenvolvimento de uma Interface de Programação de Aplicações (\acs{API}) usando o protocolo \acf{FHIR}, que é um dos protocolos mais utilizados para a transmissão de informação de saúde no ambiente de software clínico, para integrar a infraestrutura no sistema de informação de saúde, juntamente com uma arquitetura de serviços para o servidor \textit{edge}, desenhado com segurança e privacidade em mente.
 
 A plataforma desenvolvida é validada através de um ensaio em instalações hospitalares e testes em ambiente controlado, nos quais a infraestrutura mostrou uso eficiente de recursos, disponibilidade máxima e boa segurança, fornecendo uma base sólida para continuar o desenvolvimento e expandir as funcionalidades existentes do sistema.
 
-
-\paragraph{}\textbf{Palavras-chave:} IoT; Saúde; Sensores vestíveis; Cuidados de saúde remotos; MQTT; BLE; FHIR.
+\paragraph{}\textbf{Palavras-chave:} Internet das Coisas; \acs{FHIR}; \acs{MQTT}; \acl{BLE}; Cuidados de saúde; Sensores vestíveis.
