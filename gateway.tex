@@ -175,19 +175,31 @@ Since the data storage implemented in the \textit{Smart Gateway} is a \acs{RDBMS
     \item Increase the security and robustness of the database system -- since the \acs{SQL} statements are pre-compiled, this mitigates possible \acs{SQL} injections attacks \cite{clarke2012sql}, also providing us with the ability to restrict the permissions of the applications that access the \acs{RDBMS} to execute only certain subroutines, instead of allowing them to perform general \acs{SQL} requests.
 \end{itemize}
 
-\paragraph{} In total, over 33 procedures have been implemented in the data storage. These procedures are very simple, \textit{e.g.} the ``mqtt.get\_wildcards\_for\_client'' procedure is implemented as follows:
+\paragraph{} In total, over 33 procedures have been implemented in the data storage. These procedures are very simple, \textit{e.g.} the {\color{blue}``system.insert\_temperature\_observation''} procedure is implemented as follows:
 
 \begin{lstlisting}[language=sql]     
-CREATE OR REPLACE FUNCTION mqtt.get_wildcards_for_client(ref_client_uuid uuid) RETURNS TABLE (topic_wildcard text, access_type int) AS $$ 
-BEGIN RETURN QUERY
-SELECT mqtt.role_permissions.topic_wildcard,
-  mqtt.role_permissions.access_type
-FROM mqtt.role_permissions
-  INNER JOIN mqtt.clients USING(role_id)
-WHERE (mqtt.clients.client_uuid = ref_client_uuid);
+CREATE PROCEDURE system.insert_temperature_observation(ref_sensor_uuid uuid, ref_timestamp timestamp with time zone, ref_temperature double precision, ref_is_celsius boolean) LANGUAGE plpgsql SECURITY DEFINER
+AS $$
+DECLARE ref_sensor_id integer;
+ref_smartbox_id integer;
+BEGIN
+SELECT system.biostickers.smartbox_id,
+  system.biosticker_sensors.id INTO ref_smartbox_id,
+  ref_sensor_id
+FROM system.biosticker_sensors
+  INNER JOIN system.biostickers ON (
+    system.biosticker_sensors.biosticker_id = system.biostickers.id
+  )
+WHERE system.biosticker_sensors.sensor_uuid = ref_sensor_uuid;
+INSERT INTO sensor_observations.temperature (
+    smartbox_id, sensor_id, timestamp, temperature, is_celsius)
+VALUES(
+    ref_smartbox_id, ref_sensor_id, ref_timestamp, 
+    ref_temperature, ref_is_celsius);
 END;
-$$ LANGUAGE plpgsql SECURITY DEFINER STABLE;
+$$;
 \end{lstlisting}
+
 
 \section{Connection to the Smart boxes}
 
@@ -340,11 +352,11 @@ The Data pre-processing service is used to process the incoming data from the \t
 \end{figure}
 
 \section{\acs{HIS} \acs{FHIR} Integration}
-The \acs{HIS} \acs{FHIR} Integration service is used to manage the communication to and from GlobalCare \acs{HIS}. The service must implement a \acs{FHIR} \acs{HTTP} server \cite{fhir} capable of handling requests from the \acs{HIS}, as well as transform the sensor measurement data into \acs{FHIR} messages and communicate it to the \acs{HIS}.
+The \acs{HIS} \acs{FHIR} Integration service is used to manage the communication to and from GlobalCare \acs{HIS}. The service must {\color{blue} have} a \acs{FHIR} \acs{HTTP} server \cite{fhir} capable of handling requests from the \acs{HIS}, as well as transform the sensor measurement data into \acs{FHIR} messages and communicate it to the \acs{HIS}.
 
 \paragraph{} Out of the open-source implementations of the \acs{FHIR} specification available\footnote{\url{https://confluence.hl7.org/pages/viewpage.action?pageId=35718838}}, the HAPI FHIR Java library \cite{hapifhir} is one of the longest supported \acs{FHIR} implementations, with over 18 years of active development. The project is backed and maintained by Smile CDR\footnote{\url{https://www.smilecdr.com}}, a health technology company with a long-standing reputation in the health \acs{IT} field. The HAPI FHIR library also provides a simple and intuitive \acs{API} to interact with \acs{FHIR} resources \cite{fhir}, the objects used to represent any data in the protocol, handling all data parsing or serialization of data into \acs{FHIR} resources and vice versa.
 
-\paragraph{} For these reasons HAPI FHIR Java library has been used to implement the \acs{FHIR} server. The software library provides several mechanisms to build \acs{FHIR} \acs{HTTP} servers. Although other models are available, the Plain Server model \cite{hapifhir} has been used to develop the \acs{FHIR} server since it just provides the bare-bones structure to build the \acs{API}, and not a full-fledged implementation with its own storage and functionality implemented, making it very flexible to work with. Using this model requires only  the implementation of how the \acs{FHIR} resource interactions translate to interactions with the data storage solution to create our own \acs{FHIR} server, while the HAPI FHIR handles all the \acs{HTTP} processing, as well as parsing and serialization of data into \acs{FHIR} resources. Even though \acs{FHIR} supports both \acf{XML} and \acf{JSON} data formats, only the \acs{JSON} data format is used for representing the \acs{FHIR} resources in the \acs{FHIR} server.
+\paragraph{} For these reasons HAPI FHIR Java library has been used to implement the \acs{FHIR} server. The software library provides several mechanisms to build \acs{FHIR} \acs{HTTP} servers. Although other models are available, the Plain Server model \cite{hapifhir} has been used to develop the \acs{FHIR} server since it just provides the bare-bones structure to build the \acs{API}, and not a full-fledged implementation with its own storage and functionality implemented, making it very flexible to work with. Using this model requires only the implementation of how the \acs{FHIR} resource interactions translate to interactions with the data storage solution to create our own \acs{FHIR} server, while the HAPI FHIR handles all the \acs{HTTP} processing, as well as parsing and serialization of data into \acs{FHIR} resources. Even though \acs{FHIR} supports both \acf{XML} and \acf{JSON} data formats, only the \acs{JSON} data format is used for representing the \acs{FHIR} resources in the \acs{FHIR} server.
 
 \paragraph{} The HAPI FHIR Plain Server implementation is based on Java Servlet 3.1 \acs{API}\footnote{\url{https://docs.oracle.com/javaee/7/tutorial/servlets.htm}}. Servlets are applications that are hosted on web servers, used to extend their capabilities. This means that in order to have a functional \acs{FHIR} server, a web server capable of hosting the HAPI FHIR Plain Server servlet is required. Since Eclipse Jetty9\footnote{\url{https://www.eclipse.org/jetty/}} is the web server used on the HAPI FHIR documentation, and is a relatively popular server (being used by Facebook, Google, Yahoo, etc.), it has been chosen for the development of the \acs{HIS} \acs{FHIR} Integration service. The code for the service can be found here\footnote{\url{https://github.com/WoW-Institute-of-Systems-and-Robotics/gateway_fhir_server/}}.
 

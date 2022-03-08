@@ -39,9 +39,22 @@ It should also be capable of analyzing and processing the data in real time, bef
     \item Oxygen Saturation -- A standard floating-point number (4 bytes) representation of the oxygen saturation, every 1s.
 \end{itemize}
 
-\section{Deciding on a Hardware Platform}
+\clearpage
 
-In the context of this dissertation, two different \acl{SBC}s (\acs{SBC}) have been considered for the development of the \textit{Smart box}: a Raspberry Pi 4 Model B and an UDOO BOLT v3. In the following sections the characteristics of each platform are discussed and compared. 
+\section{Deciding on a Hardware Platform}
+{\color{blue} As discussed, there are multiple requirements the \textit{Smart box} hardware must fulfill, from communication to the \textit{Biostickers} to integration with the \textit{Smart Gateway}:}
+
+{\color{blue}\begin{itemize}
+    \item The device must be small enough to be mounted on a hospital bed.
+    \item The device must be powered via a standard electrical outlet, so power consumption constraints are not an issue.
+    \item It must support \acs{BLE} 5.0, and capable of handling the communication bandwidth required by the \textit{Biostickers}.
+    \item The hardware must support Ubuntu 20.04 LTS as its operative system. 
+    \item It must communicate to the \textit{Smart Gateway} using the protocol \acs{MQTT}, connected via Wi-Fi.
+\end{itemize}
+}
+% - analise de requisitos: o q necessito? eficiencia do ponto de vista energético (baterias ou alimentação?), low consumption? quantidade se sensores? dados? suporta linux? payloads das msgs? - adicionar análise de requisitos 
+
+{\color{blue}With these requirements in mind, and} in context of this dissertation, two different \acl{SBC}s (\acs{SBC}) have been considered for the development of the \textit{Smart box}: a Raspberry Pi 4 Model B and an UDOO BOLT v3. In the following sections the characteristics of each platform are discussed and compared. 
 
 \subsubsection{Raspberry Pi 4 Model B}
 
@@ -80,7 +93,7 @@ In order to decide on which platform to pick for the development of the project,
 \begin{table}[H]
     \centering
     \caption{Specifications of the Raspberry Pi 4B and UDOO BOLT V3.}
-    \begin{adjustbox}{width=0.85\columnwidth,center}
+    \begin{adjustbox}{width=0.80\columnwidth,center}
     \begin{tabular}{r|l|l}
         %\textbf{Features} 
         & \textbf{Raspberry Pi 4B}& \textbf{UDOO BOLT V3}  \\ \hline
@@ -91,11 +104,15 @@ In order to decide on which platform to pick for the development of the project,
         \textbf{I/O Ports} & \makecell{ 2 × USB 3.0, 2 × USB 2.0, \\ 2 × (Mini) HDMI} & \makecell{2 × USB 3.0 Type-A, \\ 2 × USB Type-C (w/ Display Port \\ + Power Delivery), 2 × HDMI} \\
         \makecell[r]{\textbf{Other} \\\textbf{Features}} & \makecell{Power over Ethernet \\(PoE)–enabled} & \makecell{Includes ATmega32U4 microcontroller\\ (Arduino Leonardo compatible), \\ RTC Battery} \\   
         \textbf{Dimensions} & 8.5 x 5.6 x 1.7 cm & 12 x 12 x 7 cm \\
+        {\color{blue} \makecell[r]{\textbf{Max. Power} \\ \textbf{Consumption}}} & {\color{blue}9 W} & {\color{blue} 60 W}  \\
         \textbf{Price} & \makecell{75.93 € (\textbf{8 GB Model}, \\ including a 32 GB SDXC Card\\ and case)} & \makecell{534.48 € (including external power \\ supply and a 16 GB \acs{RAM} module)} \\
     \end{tabular}
     \end{adjustbox}
     \label{tab:comparsion-hardwareplatform}
 \end{table}
+
+%\footnotetext{\url{https://www.raspberrypi.com/documentation/computers/raspberry-pi.html}}
+%\footnotetext{\url{https://www.udoo.org/docs-bolt/Introduction/Introduction.html}}
 \renewcommand{\arraystretch}{1}
 
 \paragraph{} In order to understand how these differences in the hardware specification between the \acs{SBC}s translate to real-world performance, a test suite has been developed and conducted to quantify the performance of each \acs{SBC}. The tools developed for each test can be found here\footnote{\url{https://github.com/WoW-Institute-of-Systems-and-Robotics/smartbox\_benchmark\_tests}}. In the next sections, the details of each test are explained and the performance of each \acs{SBC} is discussed. 
